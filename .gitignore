@@ -1,6 +1,3 @@
-# Prerequisites
-*.d
-
 # Compiled Object files
 *.slo
 *.lo
@@ -28,5 +25,18 @@
 
 # Executables
 *.exe
+!command/PERDIX-BEVELED.exe
+!tools/sleep.exe
+!tools/meshconv.exe
 *.out
 *.app
+make/Debug
+make/Release
+make/x64
+*.u2d
+make/output
+.vs
+*.11
+*.101
+fort.*
+/make/Report_6HB_beveled_max.txt

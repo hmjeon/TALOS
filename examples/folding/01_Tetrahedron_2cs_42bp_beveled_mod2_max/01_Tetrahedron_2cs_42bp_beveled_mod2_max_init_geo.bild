@@ -1,0 +1,78 @@
+.color red
+.sphere      0.00     0.00    12.25     0.75
+.sphere     11.55     0.00    -4.08     0.75
+.sphere     -5.77    10.00    -4.08     0.75
+.sphere     -5.77   -10.00    -4.08     0.75
+.color dark green
+.cylinder      0.00     0.00    12.25    11.55     0.00    -4.08     0.30
+.cylinder     11.55     0.00    -4.08    -5.77    10.00    -4.08     0.30
+.cylinder     -5.77    10.00    -4.08     0.00     0.00    12.25     0.30
+.cylinder     -5.77    10.00    -4.08    -5.77   -10.00    -4.08     0.30
+.cylinder     -5.77   -10.00    -4.08     0.00     0.00    12.25     0.30
+.cylinder     -5.77   -10.00    -4.08    11.55     0.00    -4.08     0.30
+.cmov      1.00     1.00    13.25
+.color red
+.font Helvetica 12 bold
+           1
+.cmov     12.55     1.00    -3.08
+.color red
+.font Helvetica 12 bold
+           2
+.cmov     -4.77    11.00    -3.08
+.color red
+.font Helvetica 12 bold
+           3
+.cmov     -4.77    -9.00    -3.08
+.color red
+.font Helvetica 12 bold
+           4
+.cmov      6.27     0.50     4.58
+.color dark green
+.font Helvetica 12 bold
+           1( 20.0)
+.cmov      3.39     5.50    -3.58
+.color dark green
+.font Helvetica 12 bold
+           2( 20.0)
+.cmov     -2.39     5.50     4.58
+.color dark green
+.font Helvetica 12 bold
+           3( 20.0)
+.cmov     -5.27     0.50    -3.58
+.color dark green
+.font Helvetica 12 bold
+           4( 20.0)
+.cmov     -2.39    -4.50     4.58
+.color dark green
+.font Helvetica 12 bold
+           5( 20.0)
+.cmov      3.39    -4.50    -3.58
+.color dark green
+.font Helvetica 12 bold
+           6( 20.0)
+.cmov      2.92     4.33     2.36
+.color black
+.font Helvetica 12 bold
+      1
+.cmov     -2.85     1.00     2.36
+.color black
+.font Helvetica 12 bold
+      2
+.cmov      2.92    -2.33     2.36
+.color black
+.font Helvetica 12 bold
+      3
+.cmov      1.00     1.00    -3.08
+.color black
+.font Helvetica 12 bold
+      4
+.translate 0.0 0.0 0.0
+.scale 0.5
+.color grey
+.sphere 0 0 0 0.5
+.color red
+.arrow 0 0 0 4 0 0 
+.color blue
+.arrow 0 0 0 0 4 0 
+.color yellow
+.arrow 0 0 0 0 0 4 

@@ -1,0 +1,138 @@
+.color red
+.sphere     1.731    0.000   13.925    0.350
+.sphere    13.705    0.000   -3.010    0.350
+.sphere    12.840    1.499   -5.458    0.350
+.sphere    -5.122   11.869   -5.458    0.350
+.sphere    -6.853   11.869   -3.010    0.350
+.sphere    -0.865    1.499   13.925    0.350
+.sphere    -7.718   10.370   -5.458    0.350
+.sphere    -7.718  -10.370   -5.458    0.350
+.sphere    -6.853  -11.869   -3.010    0.350
+.sphere    -0.865   -1.499   13.925    0.350
+.sphere    -5.122  -11.869   -5.458    0.350
+.sphere    12.840   -1.499   -5.458    0.350
+.color dark green
+.cylinder     1.731    0.000   13.925   13.705    0.000   -3.010    0.150
+.cylinder    12.840    1.499   -5.458   -5.122   11.869   -5.458    0.150
+.cylinder    -6.853   11.869   -3.010   -0.865    1.499   13.925    0.150
+.cylinder    -7.718   10.370   -5.458   -7.718  -10.370   -5.458    0.150
+.cylinder    -6.853  -11.869   -3.010   -0.865   -1.499   13.925    0.150
+.cylinder    -5.122  -11.869   -5.458   12.840   -1.499   -5.458    0.150
+.cmov     2.131    0.400   14.325
+.color red
+.font Helvetica 12 bold
+      1
+.cmov    14.105    0.400   -2.610
+.color red
+.font Helvetica 12 bold
+      2
+.cmov    13.240    1.899   -5.058
+.color red
+.font Helvetica 12 bold
+      3
+.cmov    -4.722   12.269   -5.058
+.color red
+.font Helvetica 12 bold
+      4
+.cmov    -6.453   12.269   -2.610
+.color red
+.font Helvetica 12 bold
+      5
+.cmov    -0.465    1.899   14.325
+.color red
+.font Helvetica 12 bold
+      6
+.cmov    -7.318   10.770   -5.058
+.color red
+.font Helvetica 12 bold
+      7
+.cmov    -7.318   -9.970   -5.058
+.color red
+.font Helvetica 12 bold
+      8
+.cmov    -6.453  -11.469   -2.610
+.color red
+.font Helvetica 12 bold
+      9
+.cmov    -0.465   -1.099   14.325
+.color red
+.font Helvetica 12 bold
+     10
+.cmov    -4.722  -11.469   -5.058
+.color red
+.font Helvetica 12 bold
+     11
+.cmov    13.240   -1.099   -5.058
+.color red
+.font Helvetica 12 bold
+     12
+.cmov     8.118    0.400    5.858
+.color dark green
+.font Helvetica 12 bold
+      1(20.7, 62)
+.cmov     4.259    7.084   -5.058
+.color dark green
+.font Helvetica 12 bold
+      2(20.7, 62)
+.cmov    -3.459    7.084    5.858
+.color dark green
+.font Helvetica 12 bold
+      3(20.7, 62)
+.cmov    -7.318    0.400   -5.058
+.color dark green
+.font Helvetica 12 bold
+      4(20.7, 62)
+.cmov    -3.459   -6.284    5.858
+.color dark green
+.font Helvetica 12 bold
+      5(20.7, 62)
+.cmov     4.259   -6.284   -5.058
+.color dark green
+.font Helvetica 12 bold
+      6(20.7, 62)
+.color red
+.arrow     7.72    0.00    5.46    8.58    0.00    4.23    0.18    0.36    0.60
+.color blue
+.arrow     7.72    0.00    5.46    8.70    0.00    6.15    0.18    0.36    0.60
+.color yellow
+.arrow     7.72    0.00    5.46    7.72   -1.20    5.46    0.18    0.36    0.60
+.color red
+.arrow     3.86    6.68   -5.46    2.56    7.43   -5.46    0.18    0.36    0.60
+.color blue
+.arrow     3.86    6.68   -5.46    4.35    7.53   -6.15    0.18    0.36    0.60
+.color yellow
+.arrow     3.86    6.68   -5.46    3.51    6.08   -6.44    0.18    0.36    0.60
+.color red
+.arrow    -3.86    6.68    5.46   -3.43    5.93    6.68    0.18    0.36    0.60
+.color blue
+.arrow    -3.86    6.68    5.46   -4.35    7.53    6.15    0.18    0.36    0.60
+.color yellow
+.arrow    -3.86    6.68    5.46   -4.90    6.08    5.46    0.18    0.36    0.60
+.color red
+.arrow    -7.72   -0.00   -5.46   -7.72   -1.50   -5.46    0.18    0.36    0.60
+.color blue
+.arrow    -7.72   -0.00   -5.46   -8.70   -0.00   -6.15    0.18    0.36    0.60
+.color yellow
+.arrow    -7.72   -0.00   -5.46   -7.03   -0.00   -6.44    0.18    0.36    0.60
+.color red
+.arrow    -3.86   -6.68    5.46   -3.43   -5.93    6.68    0.18    0.36    0.60
+.color blue
+.arrow    -3.86   -6.68    5.46   -4.35   -7.53    6.15    0.18    0.36    0.60
+.color yellow
+.arrow    -3.86   -6.68    5.46   -2.82   -7.28    5.46    0.18    0.36    0.60
+.color red
+.arrow     3.86   -6.68   -5.46    5.16   -5.93   -5.46    0.18    0.36    0.60
+.color blue
+.arrow     3.86   -6.68   -5.46    4.35   -7.53   -6.15    0.18    0.36    0.60
+.color yellow
+.arrow     3.86   -6.68   -5.46    3.51   -6.08   -6.44    0.18    0.36    0.60
+.translate 0.0 0.0 0.0
+.scale 0.5
+.color grey
+.sphere 0 0 0 0.5
+.color red
+.arrow 0 0 0 4 0 0 
+.color blue
+.arrow 0 0 0 0 4 0 
+.color yellow
+.arrow 0 0 0 0 0 4 

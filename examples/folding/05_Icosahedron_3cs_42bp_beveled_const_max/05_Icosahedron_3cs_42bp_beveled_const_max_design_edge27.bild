@@ -1,0 +1,2152 @@
+.color steel blue
+.cylinder    -21.50    15.00     0.00   -20.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -20.50    15.00     0.00   -19.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -19.50    15.00     0.00   -18.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50    15.00     0.00   -17.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50    15.00     0.00   -16.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50    15.00     0.00   -15.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50    15.00     0.00   -14.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50    15.00     0.00   -13.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50    15.00     0.00   -12.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50    15.00     0.00   -11.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50    15.00     0.00   -10.50    15.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50    15.00     0.00    -9.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50    15.00     0.00    -8.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50    15.00     0.00    -7.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50    15.00     0.00    -6.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50    15.00     0.00    -5.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50    15.00     0.00    -4.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50    15.00     0.00    -3.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50    15.00     0.00    -2.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50    15.00     0.00    -1.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50    15.00     0.00    -0.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50    15.00     0.00     0.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      0.50    15.00     0.00     1.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      1.50    15.00     0.00     2.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      2.50    15.00     0.00     3.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      3.50    15.00     0.00     4.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      4.50    15.00     0.00     5.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      5.50    15.00     0.00     6.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      6.50    15.00     0.00     7.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      7.50    15.00     0.00     8.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      8.50    15.00     0.00     9.50    15.00     0.00     0.10
+.color steel blue
+.cylinder      9.50    15.00     0.00    10.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     10.50    15.00     0.00    11.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     11.50    15.00     0.00    12.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     12.50    15.00     0.00    13.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     13.50    15.00     0.00    14.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     14.50    15.00     0.00    15.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     15.50    15.00     0.00    16.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     16.50    15.00     0.00    17.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     17.50    15.00     0.00    18.50    15.00     0.00     0.10
+.color steel blue
+.cylinder     18.50    15.00     0.00    19.50    15.00     0.00     0.10
+.arrow    19.50   15.00    0.00   20.50   15.00    0.00    0.10    0.40    0.55
+.arrow   -21.50    9.00    0.00  -22.50    9.00    0.00    0.10    0.40    0.55
+.color steel blue
+.cylinder    -21.50     9.00     0.00   -20.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -20.50     9.00     0.00   -19.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -19.50     9.00     0.00   -18.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50     9.00     0.00   -17.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50     9.00     0.00   -16.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50     9.00     0.00   -15.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50     9.00     0.00   -14.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50     9.00     0.00   -13.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50     9.00     0.00   -12.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50     9.00     0.00   -11.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50     9.00     0.00   -10.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50     9.00     0.00    -9.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50     9.00     0.00    -8.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50     9.00     0.00    -7.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50     9.00     0.00    -6.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50     9.00     0.00    -5.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50     9.00     0.00    -4.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50     9.00     0.00    -3.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50     9.00     0.00    -2.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50     9.00     0.00    -1.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50     9.00     0.00    -0.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50     9.00     0.00     0.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      0.50     9.00     0.00     1.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      1.50     9.00     0.00     2.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      2.50     9.00     0.00     3.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      3.50     9.00     0.00     4.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      4.50     9.00     0.00     5.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      5.50     9.00     0.00     6.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      6.50     9.00     0.00     7.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      7.50     9.00     0.00     8.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      8.50     9.00     0.00     9.50     9.00     0.00     0.10
+.color steel blue
+.cylinder      9.50     9.00     0.00    10.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     10.50     9.00     0.00    11.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     11.50     9.00     0.00    12.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     12.50     9.00     0.00    13.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     13.50     9.00     0.00    14.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     14.50     9.00     0.00    15.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     15.50     9.00     0.00    16.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     16.50     9.00     0.00    17.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     17.50     9.00     0.00    18.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     18.50     9.00     0.00    19.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     19.50     9.00     0.00    20.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     20.50     9.00     0.00    21.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     21.50     9.00     0.00    22.50     9.00     0.00     0.10
+.color steel blue
+.cylinder     22.50     9.00     0.00    23.50     9.00     0.00     0.10
+.color steel blue
+.cylinder    -23.50     6.00     0.00   -22.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -22.50     6.00     0.00   -21.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -21.50     6.00     0.00   -20.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -20.50     6.00     0.00   -19.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -19.50     6.00     0.00   -18.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50     6.00     0.00   -17.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50     6.00     0.00   -16.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50     6.00     0.00   -15.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50     6.00     0.00   -14.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50     6.00     0.00   -13.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50     6.00     0.00   -12.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50     6.00     0.00   -11.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50     6.00     0.00   -10.50     6.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50     6.00     0.00    -9.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50     6.00     0.00    -8.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50     6.00     0.00    -7.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50     6.00     0.00    -6.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50     6.00     0.00    -5.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50     6.00     0.00    -4.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50     6.00     0.00    -3.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50     6.00     0.00    -2.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50     6.00     0.00    -1.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50     6.00     0.00    -0.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50     6.00     0.00     0.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      0.50     6.00     0.00     1.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      1.50     6.00     0.00     2.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      2.50     6.00     0.00     3.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      3.50     6.00     0.00     4.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      4.50     6.00     0.00     5.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      5.50     6.00     0.00     6.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      6.50     6.00     0.00     7.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      7.50     6.00     0.00     8.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      8.50     6.00     0.00     9.50     6.00     0.00     0.10
+.color steel blue
+.cylinder      9.50     6.00     0.00    10.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     10.50     6.00     0.00    11.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     11.50     6.00     0.00    12.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     12.50     6.00     0.00    13.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     13.50     6.00     0.00    14.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     14.50     6.00     0.00    15.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     15.50     6.00     0.00    16.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     16.50     6.00     0.00    17.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     17.50     6.00     0.00    18.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     18.50     6.00     0.00    19.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     19.50     6.00     0.00    20.50     6.00     0.00     0.10
+.color steel blue
+.cylinder     20.50     6.00     0.00    21.50     6.00     0.00     0.10
+.arrow    21.50    6.00    0.00   22.50    6.00    0.00    0.10    0.40    0.55
+.arrow   -19.50    0.00    0.00  -20.50    0.00    0.00    0.10    0.40    0.55
+.color steel blue
+.cylinder    -19.50     0.00     0.00   -18.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50     0.00     0.00   -17.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50     0.00     0.00   -16.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50     0.00     0.00   -15.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50     0.00     0.00   -14.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50     0.00     0.00   -13.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50     0.00     0.00   -12.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50     0.00     0.00   -11.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50     0.00     0.00   -10.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50     0.00     0.00    -9.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50     0.00     0.00    -8.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50     0.00     0.00    -7.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50     0.00     0.00    -6.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50     0.00     0.00    -5.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50     0.00     0.00    -4.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50     0.00     0.00    -3.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50     0.00     0.00    -2.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50     0.00     0.00    -1.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50     0.00     0.00    -0.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50     0.00     0.00     0.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      0.50     0.00     0.00     1.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      1.50     0.00     0.00     2.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      2.50     0.00     0.00     3.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      3.50     0.00     0.00     4.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      4.50     0.00     0.00     5.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      5.50     0.00     0.00     6.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      6.50     0.00     0.00     7.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      7.50     0.00     0.00     8.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      8.50     0.00     0.00     9.50     0.00     0.00     0.10
+.color steel blue
+.cylinder      9.50     0.00     0.00    10.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     10.50     0.00     0.00    11.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     11.50     0.00     0.00    12.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     12.50     0.00     0.00    13.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     13.50     0.00     0.00    14.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     14.50     0.00     0.00    15.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     15.50     0.00     0.00    16.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     16.50     0.00     0.00    17.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     17.50     0.00     0.00    18.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     18.50     0.00     0.00    19.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     19.50     0.00     0.00    20.50     0.00     0.00     0.10
+.color steel blue
+.cylinder     20.50     0.00     0.00    21.50     0.00     0.00     0.10
+.color steel blue
+.cylinder    -30.50    -3.00     0.00   -29.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -29.50    -3.00     0.00   -28.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -28.50    -3.00     0.00   -27.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -27.50    -3.00     0.00   -26.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -26.50    -3.00     0.00   -25.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -25.50    -3.00     0.00   -24.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -24.50    -3.00     0.00   -23.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -23.50    -3.00     0.00   -22.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -22.50    -3.00     0.00   -21.50    -3.00     0.00     0.10
+.sphere    -21.00    -3.00     0.00     0.25
+.sphere    -20.00    -3.00     0.00     0.25
+.color steel blue
+.cylinder    -19.50    -3.00     0.00   -18.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50    -3.00     0.00   -17.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50    -3.00     0.00   -16.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50    -3.00     0.00   -15.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50    -3.00     0.00   -14.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50    -3.00     0.00   -13.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50    -3.00     0.00   -12.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50    -3.00     0.00   -11.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50    -3.00     0.00   -10.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50    -3.00     0.00    -9.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50    -3.00     0.00    -8.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50    -3.00     0.00    -7.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50    -3.00     0.00    -6.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50    -3.00     0.00    -5.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50    -3.00     0.00    -4.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50    -3.00     0.00    -3.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50    -3.00     0.00    -2.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50    -3.00     0.00    -1.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50    -3.00     0.00    -0.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50    -3.00     0.00     0.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      0.50    -3.00     0.00     1.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      1.50    -3.00     0.00     2.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      2.50    -3.00     0.00     3.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      3.50    -3.00     0.00     4.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      4.50    -3.00     0.00     5.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      5.50    -3.00     0.00     6.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      6.50    -3.00     0.00     7.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      7.50    -3.00     0.00     8.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      8.50    -3.00     0.00     9.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder      9.50    -3.00     0.00    10.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     10.50    -3.00     0.00    11.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     11.50    -3.00     0.00    12.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     12.50    -3.00     0.00    13.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     13.50    -3.00     0.00    14.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     14.50    -3.00     0.00    15.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     15.50    -3.00     0.00    16.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     16.50    -3.00     0.00    17.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     17.50    -3.00     0.00    18.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     18.50    -3.00     0.00    19.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     19.50    -3.00     0.00    20.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     20.50    -3.00     0.00    21.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     21.50    -3.00     0.00    22.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     22.50    -3.00     0.00    23.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     23.50    -3.00     0.00    24.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     24.50    -3.00     0.00    25.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     25.50    -3.00     0.00    26.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     26.50    -3.00     0.00    27.50    -3.00     0.00     0.10
+.color steel blue
+.cylinder     27.50    -3.00     0.00    28.50    -3.00     0.00     0.10
+.arrow    28.50   -3.00    0.00   29.50   -3.00    0.00    0.10    0.40    0.55
+.cylinder    -21.00    -2.80     0.00   -21.00    -9.20     0.00     0.10
+.cylinder    -20.00    -2.80     0.00   -20.00    -9.20     0.00     0.10
+.arrow   -28.50   -9.00    0.00  -29.50   -9.00    0.00    0.10    0.40    0.55
+.color steel blue
+.cylinder    -28.50    -9.00     0.00   -27.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -27.50    -9.00     0.00   -26.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -26.50    -9.00     0.00   -25.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -25.50    -9.00     0.00   -24.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -24.50    -9.00     0.00   -23.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -23.50    -9.00     0.00   -22.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -22.50    -9.00     0.00   -21.50    -9.00     0.00     0.10
+.sphere    -21.00    -9.00     0.00     0.25
+.sphere    -20.00    -9.00     0.00     0.25
+.color steel blue
+.cylinder    -19.50    -9.00     0.00   -18.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -18.50    -9.00     0.00   -17.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -17.50    -9.00     0.00   -16.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -16.50    -9.00     0.00   -15.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -15.50    -9.00     0.00   -14.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -14.50    -9.00     0.00   -13.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -13.50    -9.00     0.00   -12.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -12.50    -9.00     0.00   -11.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -11.50    -9.00     0.00   -10.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder    -10.50    -9.00     0.00    -9.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -9.50    -9.00     0.00    -8.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -8.50    -9.00     0.00    -7.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -7.50    -9.00     0.00    -6.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -6.50    -9.00     0.00    -5.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -5.50    -9.00     0.00    -4.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -4.50    -9.00     0.00    -3.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -3.50    -9.00     0.00    -2.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -2.50    -9.00     0.00    -1.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -1.50    -9.00     0.00    -0.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     -0.50    -9.00     0.00     0.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      0.50    -9.00     0.00     1.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      1.50    -9.00     0.00     2.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      2.50    -9.00     0.00     3.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      3.50    -9.00     0.00     4.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      4.50    -9.00     0.00     5.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      5.50    -9.00     0.00     6.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      6.50    -9.00     0.00     7.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      7.50    -9.00     0.00     8.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      8.50    -9.00     0.00     9.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder      9.50    -9.00     0.00    10.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     10.50    -9.00     0.00    11.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     11.50    -9.00     0.00    12.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     12.50    -9.00     0.00    13.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     13.50    -9.00     0.00    14.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     14.50    -9.00     0.00    15.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     15.50    -9.00     0.00    16.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     16.50    -9.00     0.00    17.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     17.50    -9.00     0.00    18.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     18.50    -9.00     0.00    19.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     19.50    -9.00     0.00    20.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     20.50    -9.00     0.00    21.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     21.50    -9.00     0.00    22.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     22.50    -9.00     0.00    23.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     23.50    -9.00     0.00    24.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     24.50    -9.00     0.00    25.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     25.50    -9.00     0.00    26.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     26.50    -9.00     0.00    27.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     27.50    -9.00     0.00    28.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     28.50    -9.00     0.00    29.50    -9.00     0.00     0.10
+.color steel blue
+.cylinder     29.50    -9.00     0.00    30.50    -9.00     0.00     0.10
+.color rosy brown
+.arrow   -20.50   13.00    0.00  -21.50   13.00    0.00    0.09    0.40    0.55
+.cmov   -21.300   13.400    0.000
+.font arial 20 bold
+G
+.color red
+.cmov   -37.000   13.400    0.000
+.font arial 20 bold
+sec 0
+.color rosy brown
+.cylinder    -20.40    13.00     0.00   -19.60    13.00     0.00     0.10
+.cmov   -20.300   13.400    0.000
+.font arial 20 bold
+A
+.color rosy brown
+.cylinder    -19.40    13.00     0.00   -18.60    13.00     0.00     0.10
+.cmov   -19.300   13.400    0.000
+.font arial 20 bold
+C
+.color rosy brown
+.cylinder    -18.40    13.00     0.00   -17.60    13.00     0.00     0.10
+.cmov   -18.300   13.400    0.000
+.font arial 20 bold
+G
+.color rosy brown
+.sphere    -17.00    13.00     0.00     0.25
+.cmov   -17.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.arrow   -15.60   13.00    0.00  -16.40   13.00    0.00    0.10    0.40    0.55
+.cmov   -16.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -15.40    13.00     0.00   -14.60    13.00     0.00     0.10
+.cmov   -15.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -14.40    13.00     0.00   -13.60    13.00     0.00     0.10
+.cmov   -14.300   13.400    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.cylinder    -13.40    13.00     0.00   -12.60    13.00     0.00     0.10
+.cmov   -13.300   13.400    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.sphere    -12.00    13.00     0.00     0.25
+.cmov   -12.300   13.400    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.sphere    -11.00    13.00     0.00     0.25
+.cmov   -11.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -10.40    13.00     0.00    -9.60    13.00     0.00     0.10
+.cmov   -10.300   13.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -9.40    13.00     0.00    -8.60    13.00     0.00     0.10
+.cmov    -9.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -8.40    13.00     0.00    -7.60    13.00     0.00     0.10
+.cmov    -8.300   13.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -7.40    13.00     0.00    -6.60    13.00     0.00     0.10
+.cmov    -7.300   13.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -6.40    13.00     0.00    -5.60    13.00     0.00     0.10
+.cmov    -6.300   13.400    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -5.40    13.00     0.00    -4.60    13.00     0.00     0.10
+.cmov    -5.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -4.40    13.00     0.00    -3.60    13.00     0.00     0.10
+.cmov    -4.300   13.400    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder     -3.40    13.00     0.00    -2.60    13.00     0.00     0.10
+.cmov    -3.300   13.400    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -2.40    13.00     0.00    -1.60    13.00     0.00     0.10
+.cmov    -2.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -1.40    13.00     0.00    -0.60    13.00     0.00     0.10
+.cmov    -1.300   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -0.40    13.00     0.00     0.40    13.00     0.00     0.10
+.cmov    -0.300   13.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder      0.60    13.00     0.00     1.40    13.00     0.00     0.10
+.cmov     0.700   13.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.sphere      2.00    13.00     0.00     0.25
+.cmov     1.700   13.400    0.000
+.font arial 20 bold
+T
+.color sea green
+.sphere      3.00    13.00     0.00     0.25
+.cmov     2.700   13.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      3.60    13.00     0.00     4.40    13.00     0.00     0.10
+.cmov     3.700   13.400    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder      4.60    13.00     0.00     5.40    13.00     0.00     0.10
+.cmov     4.700   13.400    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder      5.60    13.00     0.00     6.40    13.00     0.00     0.10
+.cmov     5.700   13.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      6.60    13.00     0.00     7.40    13.00     0.00     0.10
+.cmov     6.700   13.400    0.000
+.font arial 20 bold
+T
+.color sea green
+.cylinder      7.60    13.00     0.00     8.40    13.00     0.00     0.10
+.cmov     7.700   13.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere      9.00    13.00     0.00     0.25
+.cmov     8.700   13.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.sphere     10.00    13.00     0.00     0.25
+.cmov     9.700   13.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder     10.60    13.00     0.00    11.40    13.00     0.00     0.10
+.cmov    10.700   13.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder     11.60    13.00     0.00    12.40    13.00     0.00     0.10
+.cmov    11.700   13.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder     12.60    13.00     0.00    13.40    13.00     0.00     0.10
+.cmov    12.700   13.400    0.000
+.font arial 20 bold
+C
+.color olive drab
+.sphere     14.00    13.00     0.00     0.25
+.cmov    13.700   13.400    0.000
+.font arial 20 bold
+G
+.color olive drab
+.arrow    15.40   13.00    0.00   14.60   13.00    0.00    0.10    0.40    0.55
+.cmov    14.700   13.400    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder     15.60    13.00     0.00    16.40    13.00     0.00     0.10
+.cmov    15.700   13.400    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder     16.60    13.00     0.00    17.40    13.00     0.00     0.10
+.cmov    16.700   13.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder     17.60    13.00     0.00    18.40    13.00     0.00     0.10
+.cmov    17.700   13.400    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     18.60    13.00     0.00    19.40    13.00     0.00     0.10
+.cmov    18.700   13.400    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder     19.60    13.00     0.00    20.40    13.00     0.00     0.10
+.cmov    19.700   13.400    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.cylinder    -12.00    11.20     0.00   -12.00    12.80     0.00     0.10
+.color dark magenta
+.cylinder    -11.00    11.20     0.00   -11.00    12.80     0.00     0.10
+.color dark magenta
+.cylinder      2.00    11.20     0.00     2.00    12.80     0.00     0.10
+.color sea green
+.cylinder      3.00    11.20     0.00     3.00    12.80     0.00     0.10
+.color sea green
+.cylinder      9.00    11.20     0.00     9.00    12.80     0.00     0.10
+.color olive drab
+.cylinder     10.00    11.20     0.00    10.00    12.80     0.00     0.10
+.color deep pink
+.cylinder    -22.40    11.00     0.00   -21.60    11.00     0.00     0.10
+.cmov   -22.300   10.000    0.000
+.font arial 20 bold
+A
+.color red
+.cmov   -37.000   10.000    0.000
+.font arial 20 bold
+sec 1
+.color deep pink
+.cylinder    -21.40    11.00     0.00   -20.60    11.00     0.00     0.10
+.cmov   -21.300   10.000    0.000
+.font arial 20 bold
+A
+.color deep pink
+.cylinder    -20.40    11.00     0.00   -19.60    11.00     0.00     0.10
+.cmov   -20.300   10.000    0.000
+.font arial 20 bold
+A
+.color deep pink
+.cylinder    -19.40    11.00     0.00   -18.60    11.00     0.00     0.10
+.cmov   -19.300   10.000    0.000
+.font arial 20 bold
+C
+.color deep pink
+.cylinder    -18.40    11.00     0.00   -17.60    11.00     0.00     0.10
+.cmov   -18.300   10.000    0.000
+.font arial 20 bold
+A
+.color deep pink
+.cylinder    -17.40    11.00     0.00   -16.60    11.00     0.00     0.10
+.cmov   -17.300   10.000    0.000
+.font arial 20 bold
+G
+.color deep pink
+.cylinder    -16.40    11.00     0.00   -15.60    11.00     0.00     0.10
+.cmov   -16.300   10.000    0.000
+.font arial 20 bold
+G
+.color deep pink
+.cylinder    -15.40    11.00     0.00   -14.60    11.00     0.00     0.10
+.cmov   -15.300   10.000    0.000
+.font arial 20 bold
+C
+.color deep pink
+.cylinder    -14.40    11.00     0.00   -13.60    11.00     0.00     0.10
+.cmov   -14.300   10.000    0.000
+.font arial 20 bold
+T
+.color deep pink
+.arrow   -13.40   11.00    0.00  -12.60   11.00    0.00    0.10    0.40    0.55
+.cmov   -13.300   10.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.sphere    -12.00    11.00     0.00     0.25
+.cmov   -12.300   10.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder    -11.40    11.00     0.00   -10.60    11.00     0.00     0.10
+.cmov   -11.300   10.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder    -10.40    11.00     0.00    -9.60    11.00     0.00     0.10
+.cmov   -10.300   10.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -9.40    11.00     0.00    -8.60    11.00     0.00     0.10
+.cmov    -9.300   10.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -8.40    11.00     0.00    -7.60    11.00     0.00     0.10
+.cmov    -8.300   10.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -7.40    11.00     0.00    -6.60    11.00     0.00     0.10
+.cmov    -7.300   10.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -6.40    11.00     0.00    -5.60    11.00     0.00     0.10
+.cmov    -6.300   10.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.sphere     -5.00    11.00     0.00     0.25
+.cmov    -5.300   10.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.sphere     -4.00    11.00     0.00     0.25
+.cmov    -4.300   10.000    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -3.40    11.00     0.00    -2.60    11.00     0.00     0.10
+.cmov    -3.300   10.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder     -2.40    11.00     0.00    -1.60    11.00     0.00     0.10
+.cmov    -2.300   10.000    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -1.40    11.00     0.00    -0.60    11.00     0.00     0.10
+.cmov    -1.300   10.000    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -0.40    11.00     0.00     0.40    11.00     0.00     0.10
+.cmov    -0.300   10.000    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder      0.60    11.00     0.00     1.40    11.00     0.00     0.10
+.cmov     0.700   10.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.sphere      2.00    11.00     0.00     0.25
+.cmov     1.700   10.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere      3.00    11.00     0.00     0.25
+.cmov     2.700   10.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder      3.60    11.00     0.00     4.40    11.00     0.00     0.10
+.cmov     3.700   10.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder      4.60    11.00     0.00     5.40    11.00     0.00     0.10
+.cmov     4.700   10.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      5.60    11.00     0.00     6.40    11.00     0.00     0.10
+.cmov     5.700   10.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      6.60    11.00     0.00     7.40    11.00     0.00     0.10
+.cmov     6.700   10.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      7.60    11.00     0.00     8.40    11.00     0.00     0.10
+.cmov     7.700   10.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder      8.60    11.00     0.00     9.40    11.00     0.00     0.10
+.cmov     8.700   10.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder      9.60    11.00     0.00    10.40    11.00     0.00     0.10
+.cmov     9.700   10.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder     10.60    11.00     0.00    11.40    11.00     0.00     0.10
+.cmov    10.700   10.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder     11.60    11.00     0.00    12.40    11.00     0.00     0.10
+.cmov    11.700   10.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder     12.60    11.00     0.00    13.40    11.00     0.00     0.10
+.cmov    12.700   10.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder     13.60    11.00     0.00    14.40    11.00     0.00     0.10
+.cmov    13.700   10.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder     14.60    11.00     0.00    15.40    11.00     0.00     0.10
+.cmov    14.700   10.000    0.000
+.font arial 20 bold
+T
+.color sea green
+.sphere     16.00    11.00     0.00     0.25
+.cmov    15.700   10.000    0.000
+.font arial 20 bold
+G
+.color salmon
+.sphere     17.00    11.00     0.00     0.25
+.cmov    16.700   10.000    0.000
+.font arial 20 bold
+C
+.color salmon
+.cylinder     17.60    11.00     0.00    18.40    11.00     0.00     0.10
+.cmov    17.700   10.000    0.000
+.font arial 20 bold
+A
+.color salmon
+.cylinder     18.60    11.00     0.00    19.40    11.00     0.00     0.10
+.cmov    18.700   10.000    0.000
+.font arial 20 bold
+T
+.color salmon
+.cylinder     19.60    11.00     0.00    20.40    11.00     0.00     0.10
+.cmov    19.700   10.000    0.000
+.font arial 20 bold
+A
+.color salmon
+.cylinder     20.60    11.00     0.00    21.40    11.00     0.00     0.10
+.cmov    20.700   10.000    0.000
+.font arial 20 bold
+T
+.color salmon
+.cylinder     21.60    11.00     0.00    22.40    11.00     0.00     0.10
+.cmov    21.700   10.000    0.000
+.font arial 20 bold
+C
+.color salmon
+.arrow    22.50   11.00    0.00   23.50   11.00    0.00    0.09    0.40    0.55
+.cmov    22.700   10.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -12.00     4.20     0.00   -12.00    10.80     0.00     0.10
+.color dark magenta
+.cylinder    -11.00     4.20     0.00   -11.00    10.80     0.00     0.10
+.color turquoise
+.cylinder     -5.00     4.20     0.00    -5.00    10.80     0.00     0.10
+.color dark magenta
+.cylinder     -4.00     4.20     0.00    -4.00    10.80     0.00     0.10
+.color sea green
+.cylinder      9.00     4.20     0.00     9.00    10.80     0.00     0.10
+.color olive drab
+.cylinder     10.00     4.20     0.00    10.00    10.80     0.00     0.10
+.color sea green
+.cylinder     16.00     4.20     0.00    16.00    10.80     0.00     0.10
+.color salmon
+.cylinder     17.00     4.20     0.00    17.00    10.80     0.00     0.10
+.color tan
+.arrow   -22.50    4.00    0.00  -23.50    4.00    0.00    0.09    0.40    0.55
+.cmov   -23.300    4.400    0.000
+.font arial 20 bold
+C
+.color red
+.cmov   -37.000    4.400    0.000
+.font arial 20 bold
+sec 2
+.color tan
+.cylinder    -22.40     4.00     0.00   -21.60     4.00     0.00     0.10
+.cmov   -22.300    4.400    0.000
+.font arial 20 bold
+A
+.color tan
+.cylinder    -21.40     4.00     0.00   -20.60     4.00     0.00     0.10
+.cmov   -21.300    4.400    0.000
+.font arial 20 bold
+G
+.color tan
+.cylinder    -20.40     4.00     0.00   -19.60     4.00     0.00     0.10
+.cmov   -20.300    4.400    0.000
+.font arial 20 bold
+G
+.color tan
+.cylinder    -19.40     4.00     0.00   -18.60     4.00     0.00     0.10
+.cmov   -19.300    4.400    0.000
+.font arial 20 bold
+A
+.color tan
+.sphere    -18.00     4.00     0.00     0.25
+.cmov   -18.300    4.400    0.000
+.font arial 20 bold
+C
+.color goldenrod
+.arrow   -16.60    4.00    0.00  -17.40    4.00    0.00    0.10    0.40    0.55
+.cmov   -17.300    4.400    0.000
+.font arial 20 bold
+T
+.color goldenrod
+.cylinder    -16.40     4.00     0.00   -15.60     4.00     0.00     0.10
+.cmov   -16.300    4.400    0.000
+.font arial 20 bold
+A
+.color goldenrod
+.cylinder    -15.40     4.00     0.00   -14.60     4.00     0.00     0.10
+.cmov   -15.300    4.400    0.000
+.font arial 20 bold
+T
+.color goldenrod
+.cylinder    -14.40     4.00     0.00   -13.60     4.00     0.00     0.10
+.cmov   -14.300    4.400    0.000
+.font arial 20 bold
+G
+.color goldenrod
+.cylinder    -13.40     4.00     0.00   -12.60     4.00     0.00     0.10
+.cmov   -13.300    4.400    0.000
+.font arial 20 bold
+G
+.color goldenrod
+.sphere    -12.00     4.00     0.00     0.25
+.cmov   -12.300    4.400    0.000
+.font arial 20 bold
+C
+.color turquoise
+.sphere    -11.00     4.00     0.00     0.25
+.cmov   -11.300    4.400    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder    -10.40     4.00     0.00    -9.60     4.00     0.00     0.10
+.cmov   -10.300    4.400    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -9.40     4.00     0.00    -8.60     4.00     0.00     0.10
+.cmov    -9.300    4.400    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -8.40     4.00     0.00    -7.60     4.00     0.00     0.10
+.cmov    -8.300    4.400    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder     -7.40     4.00     0.00    -6.60     4.00     0.00     0.10
+.cmov    -7.300    4.400    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -6.40     4.00     0.00    -5.60     4.00     0.00     0.10
+.cmov    -6.300    4.400    0.000
+.font arial 20 bold
+C
+.color turquoise
+.sphere     -5.00     4.00     0.00     0.25
+.cmov    -5.300    4.400    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.sphere     -4.00     4.00     0.00     0.25
+.cmov    -4.300    4.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -3.40     4.00     0.00    -2.60     4.00     0.00     0.10
+.cmov    -3.300    4.400    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder     -2.40     4.00     0.00    -1.60     4.00     0.00     0.10
+.cmov    -2.300    4.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -1.40     4.00     0.00    -0.60     4.00     0.00     0.10
+.cmov    -1.300    4.400    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -0.40     4.00     0.00     0.40     4.00     0.00     0.10
+.cmov    -0.300    4.400    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder      0.60     4.00     0.00     1.40     4.00     0.00     0.10
+.cmov     0.700    4.400    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.sphere      2.00     4.00     0.00     0.25
+.cmov     1.700    4.400    0.000
+.font arial 20 bold
+C
+.color olive drab
+.arrow     3.40    4.00    0.00    2.60    4.00    0.00    0.10    0.40    0.55
+.cmov     2.700    4.400    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      3.60     4.00     0.00     4.40     4.00     0.00     0.10
+.cmov     3.700    4.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder      4.60     4.00     0.00     5.40     4.00     0.00     0.10
+.cmov     4.700    4.400    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder      5.60     4.00     0.00     6.40     4.00     0.00     0.10
+.cmov     5.700    4.400    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      6.60     4.00     0.00     7.40     4.00     0.00     0.10
+.cmov     6.700    4.400    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      7.60     4.00     0.00     8.40     4.00     0.00     0.10
+.cmov     7.700    4.400    0.000
+.font arial 20 bold
+C
+.color olive drab
+.sphere      9.00     4.00     0.00     0.25
+.cmov     8.700    4.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere     10.00     4.00     0.00     0.25
+.cmov     9.700    4.400    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder     10.60     4.00     0.00    11.40     4.00     0.00     0.10
+.cmov    10.700    4.400    0.000
+.font arial 20 bold
+T
+.color sea green
+.cylinder     11.60     4.00     0.00    12.40     4.00     0.00     0.10
+.cmov    11.700    4.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder     12.60     4.00     0.00    13.40     4.00     0.00     0.10
+.cmov    12.700    4.400    0.000
+.font arial 20 bold
+T
+.color sea green
+.cylinder     13.60     4.00     0.00    14.40     4.00     0.00     0.10
+.cmov    13.700    4.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder     14.60     4.00     0.00    15.40     4.00     0.00     0.10
+.cmov    14.700    4.400    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere     16.00     4.00     0.00     0.25
+.cmov    15.700    4.400    0.000
+.font arial 20 bold
+G
+.color salmon
+.sphere     17.00     4.00     0.00     0.25
+.cmov    16.700    4.400    0.000
+.font arial 20 bold
+A
+.color salmon
+.cylinder     17.60     4.00     0.00    18.40     4.00     0.00     0.10
+.cmov    17.700    4.400    0.000
+.font arial 20 bold
+C
+.color salmon
+.cylinder     18.60     4.00     0.00    19.40     4.00     0.00     0.10
+.cmov    18.700    4.400    0.000
+.font arial 20 bold
+G
+.color salmon
+.cylinder     19.60     4.00     0.00    20.40     4.00     0.00     0.10
+.cmov    19.700    4.400    0.000
+.font arial 20 bold
+C
+.color salmon
+.cylinder     20.60     4.00     0.00    21.40     4.00     0.00     0.10
+.cmov    20.700    4.400    0.000
+.font arial 20 bold
+A
+.color salmon
+.cylinder     21.60     4.00     0.00    22.40     4.00     0.00     0.10
+.cmov    21.700    4.400    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.cylinder    -12.00     2.20     0.00   -12.00     3.80     0.00     0.10
+.color dark magenta
+.cylinder    -11.00     2.20     0.00   -11.00     3.80     0.00     0.10
+.color sea green
+.cylinder      9.00     2.20     0.00     9.00     3.80     0.00     0.10
+.color olive drab
+.cylinder     10.00     2.20     0.00    10.00     3.80     0.00     0.10
+.color goldenrod
+.cylinder    -20.40     2.00     0.00   -19.60     2.00     0.00     0.10
+.cmov   -20.300    1.000    0.000
+.font arial 20 bold
+C
+.color red
+.cmov   -37.000    1.000    0.000
+.font arial 20 bold
+sec 3
+.color goldenrod
+.cylinder    -19.40     2.00     0.00   -18.60     2.00     0.00     0.10
+.cmov   -19.300    1.000    0.000
+.font arial 20 bold
+T
+.color goldenrod
+.cylinder    -18.40     2.00     0.00   -17.60     2.00     0.00     0.10
+.cmov   -18.300    1.000    0.000
+.font arial 20 bold
+G
+.color goldenrod
+.cylinder    -17.40     2.00     0.00   -16.60     2.00     0.00     0.10
+.cmov   -17.300    1.000    0.000
+.font arial 20 bold
+G
+.color goldenrod
+.cylinder    -16.40     2.00     0.00   -15.60     2.00     0.00     0.10
+.cmov   -16.300    1.000    0.000
+.font arial 20 bold
+T
+.color goldenrod
+.cylinder    -15.40     2.00     0.00   -14.60     2.00     0.00     0.10
+.cmov   -15.300    1.000    0.000
+.font arial 20 bold
+C
+.color goldenrod
+.cylinder    -14.40     2.00     0.00   -13.60     2.00     0.00     0.10
+.cmov   -14.300    1.000    0.000
+.font arial 20 bold
+T
+.color goldenrod
+.cylinder    -13.40     2.00     0.00   -12.60     2.00     0.00     0.10
+.cmov   -13.300    1.000    0.000
+.font arial 20 bold
+G
+.color goldenrod
+.sphere    -12.00     2.00     0.00     0.25
+.cmov   -12.300    1.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.sphere    -11.00     2.00     0.00     0.25
+.cmov   -11.300    1.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder    -10.40     2.00     0.00    -9.60     2.00     0.00     0.10
+.cmov   -10.300    1.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder     -9.40     2.00     0.00    -8.60     2.00     0.00     0.10
+.cmov    -9.300    1.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -8.40     2.00     0.00    -7.60     2.00     0.00     0.10
+.cmov    -8.300    1.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -7.40     2.00     0.00    -6.60     2.00     0.00     0.10
+.cmov    -7.300    1.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -6.40     2.00     0.00    -5.60     2.00     0.00     0.10
+.cmov    -6.300    1.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -5.40     2.00     0.00    -4.60     2.00     0.00     0.10
+.cmov    -5.300    1.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -4.40     2.00     0.00    -3.60     2.00     0.00     0.10
+.cmov    -4.300    1.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder     -3.40     2.00     0.00    -2.60     2.00     0.00     0.10
+.cmov    -3.300    1.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -2.40     2.00     0.00    -1.60     2.00     0.00     0.10
+.cmov    -2.300    1.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -1.40     2.00     0.00    -0.60     2.00     0.00     0.10
+.cmov    -1.300    1.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -0.40     2.00     0.00     0.40     2.00     0.00     0.10
+.cmov    -0.300    1.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder      0.60     2.00     0.00     1.40     2.00     0.00     0.10
+.cmov     0.700    1.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.sphere      2.00     2.00     0.00     0.25
+.cmov     1.700    1.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.sphere      3.00     2.00     0.00     0.25
+.cmov     2.700    1.000    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      3.60     2.00     0.00     4.40     2.00     0.00     0.10
+.cmov     3.700    1.000    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder      4.60     2.00     0.00     5.40     2.00     0.00     0.10
+.cmov     4.700    1.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder      5.60     2.00     0.00     6.40     2.00     0.00     0.10
+.cmov     5.700    1.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder      6.60     2.00     0.00     7.40     2.00     0.00     0.10
+.cmov     6.700    1.000    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder      7.60     2.00     0.00     8.40     2.00     0.00     0.10
+.cmov     7.700    1.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.sphere      9.00     2.00     0.00     0.25
+.cmov     8.700    1.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere     10.00     2.00     0.00     0.25
+.cmov     9.700    1.000    0.000
+.font arial 20 bold
+T
+.color sea green
+.cylinder     10.60     2.00     0.00    11.40     2.00     0.00     0.10
+.cmov    10.700    1.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder     11.60     2.00     0.00    12.40     2.00     0.00     0.10
+.cmov    11.700    1.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder     12.60     2.00     0.00    13.40     2.00     0.00     0.10
+.cmov    12.700    1.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder     13.60     2.00     0.00    14.40     2.00     0.00     0.10
+.cmov    13.700    1.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.arrow    14.60    2.00    0.00   15.40    2.00    0.00    0.10    0.40    0.55
+.cmov    14.700    1.000    0.000
+.font arial 20 bold
+G
+.color dark slate gray
+.sphere     16.00     2.00     0.00     0.25
+.cmov    15.700    1.000    0.000
+.font arial 20 bold
+G
+.color dark slate gray
+.cylinder     16.60     2.00     0.00    17.40     2.00     0.00     0.10
+.cmov    16.700    1.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder     17.60     2.00     0.00    18.40     2.00     0.00     0.10
+.cmov    17.700    1.000    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.cylinder     18.60     2.00     0.00    19.40     2.00     0.00     0.10
+.cmov    18.700    1.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder     19.60     2.00     0.00    20.40     2.00     0.00     0.10
+.cmov    19.700    1.000    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.arrow    20.50    2.00    0.00   21.50    2.00    0.00    0.09    0.40    0.55
+.cmov    20.700    1.000    0.000
+.font arial 20 bold
+G
+.color dark slate gray
+.cylinder    -12.00    -4.80     0.00   -12.00     1.80     0.00     0.10
+.color dark magenta
+.cylinder    -11.00    -4.80     0.00   -11.00     1.80     0.00     0.10
+.color turquoise
+.cylinder      2.00    -4.80     0.00     2.00     1.80     0.00     0.10
+.color olive drab
+.cylinder      3.00    -4.80     0.00     3.00     1.80     0.00     0.10
+.color sea green
+.cylinder      9.00    -4.80     0.00     9.00     1.80     0.00     0.10
+.color olive drab
+.cylinder     10.00    -4.80     0.00    10.00     1.80     0.00     0.10
+.color goldenrod
+.arrow   -29.50   -5.00    0.00  -30.50   -5.00    0.00    0.09    0.40    0.55
+.cmov   -30.300   -4.600    0.000
+.font arial 20 bold
+T
+.color red
+.cmov   -37.000   -4.600    0.000
+.font arial 20 bold
+sec 4
+.color goldenrod
+.cylinder    -29.40    -5.00     0.00   -28.60    -5.00     0.00     0.10
+.cmov   -29.300   -4.600    0.000
+.font arial 20 bold
+A
+.color goldenrod
+.cylinder    -28.40    -5.00     0.00   -27.60    -5.00     0.00     0.10
+.cmov   -28.300   -4.600    0.000
+.font arial 20 bold
+C
+.color goldenrod
+.cylinder    -27.40    -5.00     0.00   -26.60    -5.00     0.00     0.10
+.cmov   -27.300   -4.600    0.000
+.font arial 20 bold
+A
+.color goldenrod
+.sphere    -26.00    -5.00     0.00     0.25
+.cmov   -26.300   -4.600    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.arrow   -24.60   -5.00    0.00  -25.40   -5.00    0.00    0.10    0.40    0.55
+.cmov   -25.300   -4.600    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder    -24.40    -5.00     0.00   -23.60    -5.00     0.00     0.10
+.cmov   -24.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -23.40    -5.00     0.00   -22.60    -5.00     0.00     0.10
+.cmov   -23.300   -4.600    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder    -22.40    -5.00     0.00   -21.60    -5.00     0.00     0.10
+.cmov   -22.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -21.40    -5.00     0.00   -20.60    -5.00     0.00     0.10
+.cmov   -21.300   -4.600    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder    -20.40    -5.00     0.00   -19.60    -5.00     0.00     0.10
+.cmov   -20.300   -4.600    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder    -19.40    -5.00     0.00   -18.60    -5.00     0.00     0.10
+.cmov   -19.300   -4.600    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder    -18.40    -5.00     0.00   -17.60    -5.00     0.00     0.10
+.cmov   -18.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -17.40    -5.00     0.00   -16.60    -5.00     0.00     0.10
+.cmov   -17.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -16.40    -5.00     0.00   -15.60    -5.00     0.00     0.10
+.cmov   -16.300   -4.600    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder    -15.40    -5.00     0.00   -14.60    -5.00     0.00     0.10
+.cmov   -15.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -14.40    -5.00     0.00   -13.60    -5.00     0.00     0.10
+.cmov   -14.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -13.40    -5.00     0.00   -12.60    -5.00     0.00     0.10
+.cmov   -13.300   -4.600    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder    -12.40    -5.00     0.00   -11.60    -5.00     0.00     0.10
+.cmov   -12.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -11.40    -5.00     0.00   -10.60    -5.00     0.00     0.10
+.cmov   -11.300   -4.600    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder    -10.40    -5.00     0.00    -9.60    -5.00     0.00     0.10
+.cmov   -10.300   -4.600    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -9.40    -5.00     0.00    -8.60    -5.00     0.00     0.10
+.cmov    -9.300   -4.600    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -8.40    -5.00     0.00    -7.60    -5.00     0.00     0.10
+.cmov    -8.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -7.40    -5.00     0.00    -6.60    -5.00     0.00     0.10
+.cmov    -7.300   -4.600    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder     -6.40    -5.00     0.00    -5.60    -5.00     0.00     0.10
+.cmov    -6.300   -4.600    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.sphere     -5.00    -5.00     0.00     0.25
+.cmov    -5.300   -4.600    0.000
+.font arial 20 bold
+T
+.color turquoise
+.sphere     -4.00    -5.00     0.00     0.25
+.cmov    -4.300   -4.600    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder     -3.40    -5.00     0.00    -2.60    -5.00     0.00     0.10
+.cmov    -3.300   -4.600    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -2.40    -5.00     0.00    -1.60    -5.00     0.00     0.10
+.cmov    -2.300   -4.600    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -1.40    -5.00     0.00    -0.60    -5.00     0.00     0.10
+.cmov    -1.300   -4.600    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -0.40    -5.00     0.00     0.40    -5.00     0.00     0.10
+.cmov    -0.300   -4.600    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder      0.60    -5.00     0.00     1.40    -5.00     0.00     0.10
+.cmov     0.700   -4.600    0.000
+.font arial 20 bold
+C
+.color turquoise
+.sphere      2.00    -5.00     0.00     0.25
+.cmov     1.700   -4.600    0.000
+.font arial 20 bold
+T
+.color olive drab
+.sphere      3.00    -5.00     0.00     0.25
+.cmov     2.700   -4.600    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      3.60    -5.00     0.00     4.40    -5.00     0.00     0.10
+.cmov     3.700   -4.600    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder      4.60    -5.00     0.00     5.40    -5.00     0.00     0.10
+.cmov     4.700   -4.600    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder      5.60    -5.00     0.00     6.40    -5.00     0.00     0.10
+.cmov     5.700   -4.600    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder      6.60    -5.00     0.00     7.40    -5.00     0.00     0.10
+.cmov     6.700   -4.600    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder      7.60    -5.00     0.00     8.40    -5.00     0.00     0.10
+.cmov     7.700   -4.600    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder      8.60    -5.00     0.00     9.40    -5.00     0.00     0.10
+.cmov     8.700   -4.600    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder      9.60    -5.00     0.00    10.40    -5.00     0.00     0.10
+.cmov     9.700   -4.600    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     10.60    -5.00     0.00    11.40    -5.00     0.00     0.10
+.cmov    10.700   -4.600    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     11.60    -5.00     0.00    12.40    -5.00     0.00     0.10
+.cmov    11.700   -4.600    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder     12.60    -5.00     0.00    13.40    -5.00     0.00     0.10
+.cmov    12.700   -4.600    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     13.60    -5.00     0.00    14.40    -5.00     0.00     0.10
+.cmov    13.700   -4.600    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder     14.60    -5.00     0.00    15.40    -5.00     0.00     0.10
+.cmov    14.700   -4.600    0.000
+.font arial 20 bold
+A
+.color olive drab
+.sphere     16.00    -5.00     0.00     0.25
+.cmov    15.700   -4.600    0.000
+.font arial 20 bold
+G
+.color tan
+.sphere     17.00    -5.00     0.00     0.25
+.cmov    16.700   -4.600    0.000
+.font arial 20 bold
+A
+.color tan
+.cylinder     17.60    -5.00     0.00    18.40    -5.00     0.00     0.10
+.cmov    17.700   -4.600    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     18.60    -5.00     0.00    19.40    -5.00     0.00     0.10
+.cmov    18.700   -4.600    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     19.60    -5.00     0.00    20.40    -5.00     0.00     0.10
+.cmov    19.700   -4.600    0.000
+.font arial 20 bold
+A
+.color tan
+.cylinder     20.60    -5.00     0.00    21.40    -5.00     0.00     0.10
+.cmov    20.700   -4.600    0.000
+.font arial 20 bold
+G
+.color tan
+.sphere     22.00    -5.00     0.00     0.25
+.cmov    21.700   -4.600    0.000
+.font arial 20 bold
+C
+.color orange
+.arrow    23.40   -5.00    0.00   22.60   -5.00    0.00    0.10    0.40    0.55
+.cmov    22.700   -4.600    0.000
+.font arial 20 bold
+A
+.color orange
+.cylinder     23.60    -5.00     0.00    24.40    -5.00     0.00     0.10
+.cmov    23.700   -4.600    0.000
+.font arial 20 bold
+A
+.color orange
+.cylinder     24.60    -5.00     0.00    25.40    -5.00     0.00     0.10
+.cmov    24.700   -4.600    0.000
+.font arial 20 bold
+C
+.color orange
+.cylinder     25.60    -5.00     0.00    26.40    -5.00     0.00     0.10
+.cmov    25.700   -4.600    0.000
+.font arial 20 bold
+T
+.color orange
+.cylinder     26.60    -5.00     0.00    27.40    -5.00     0.00     0.10
+.cmov    26.700   -4.600    0.000
+.font arial 20 bold
+A
+.color orange
+.cylinder     27.60    -5.00     0.00    28.40    -5.00     0.00     0.10
+.cmov    27.700   -4.600    0.000
+.font arial 20 bold
+A
+.color orange
+.cylinder     28.60    -5.00     0.00    29.40    -5.00     0.00     0.10
+.cmov    28.700   -4.600    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -12.00    -6.80     0.00   -12.00    -5.20     0.00     0.10
+.color dark magenta
+.cylinder    -11.00    -6.80     0.00   -11.00    -5.20     0.00     0.10
+.color dark magenta
+.cylinder     -5.00    -6.80     0.00    -5.00    -5.20     0.00     0.10
+.color turquoise
+.cylinder     -4.00    -6.80     0.00    -4.00    -5.20     0.00     0.10
+.color sea green
+.cylinder      9.00    -6.80     0.00     9.00    -5.20     0.00     0.10
+.color olive drab
+.cylinder     10.00    -6.80     0.00    10.00    -5.20     0.00     0.10
+.color olive drab
+.cylinder     16.00    -6.80     0.00    16.00    -5.20     0.00     0.10
+.color tan
+.cylinder     17.00    -6.80     0.00    17.00    -5.20     0.00     0.10
+.color dark slate gray
+.cylinder    -29.40    -7.00     0.00   -28.60    -7.00     0.00     0.10
+.cmov   -29.300   -8.000    0.000
+.font arial 20 bold
+T
+.color red
+.cmov   -37.000   -8.000    0.000
+.font arial 20 bold
+sec 5
+.color dark slate gray
+.cylinder    -28.40    -7.00     0.00   -27.60    -7.00     0.00     0.10
+.cmov   -28.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -27.40    -7.00     0.00   -26.60    -7.00     0.00     0.10
+.cmov   -27.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -26.40    -7.00     0.00   -25.60    -7.00     0.00     0.10
+.cmov   -26.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -25.40    -7.00     0.00   -24.60    -7.00     0.00     0.10
+.cmov   -25.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -24.40    -7.00     0.00   -23.60    -7.00     0.00     0.10
+.cmov   -24.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -23.40    -7.00     0.00   -22.60    -7.00     0.00     0.10
+.cmov   -23.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -22.40    -7.00     0.00   -21.60    -7.00     0.00     0.10
+.cmov   -22.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -21.40    -7.00     0.00   -20.60    -7.00     0.00     0.10
+.cmov   -21.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -20.40    -7.00     0.00   -19.60    -7.00     0.00     0.10
+.cmov   -20.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -19.40    -7.00     0.00   -18.60    -7.00     0.00     0.10
+.cmov   -19.300   -8.000    0.000
+.font arial 20 bold
+G
+.color dark slate gray
+.cylinder    -18.40    -7.00     0.00   -17.60    -7.00     0.00     0.10
+.cmov   -18.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark slate gray
+.cylinder    -17.40    -7.00     0.00   -16.60    -7.00     0.00     0.10
+.cmov   -17.300   -8.000    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.cylinder    -16.40    -7.00     0.00   -15.60    -7.00     0.00     0.10
+.cmov   -16.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -15.40    -7.00     0.00   -14.60    -7.00     0.00     0.10
+.cmov   -15.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -14.40    -7.00     0.00   -13.60    -7.00     0.00     0.10
+.cmov   -14.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark slate gray
+.cylinder    -13.40    -7.00     0.00   -12.60    -7.00     0.00     0.10
+.cmov   -13.300   -8.000    0.000
+.font arial 20 bold
+T
+.color dark slate gray
+.sphere    -12.00    -7.00     0.00     0.25
+.cmov   -12.300   -8.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.sphere    -11.00    -7.00     0.00     0.25
+.cmov   -11.300   -8.000    0.000
+.font arial 20 bold
+C
+.color dark magenta
+.cylinder    -10.40    -7.00     0.00    -9.60    -7.00     0.00     0.10
+.cmov   -10.300   -8.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder     -9.40    -7.00     0.00    -8.60    -7.00     0.00     0.10
+.cmov    -9.300   -8.000    0.000
+.font arial 20 bold
+G
+.color dark magenta
+.cylinder     -8.40    -7.00     0.00    -7.60    -7.00     0.00     0.10
+.cmov    -8.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.cylinder     -7.40    -7.00     0.00    -6.60    -7.00     0.00     0.10
+.cmov    -7.300   -8.000    0.000
+.font arial 20 bold
+T
+.color dark magenta
+.cylinder     -6.40    -7.00     0.00    -5.60    -7.00     0.00     0.10
+.cmov    -6.300   -8.000    0.000
+.font arial 20 bold
+A
+.color dark magenta
+.sphere     -5.00    -7.00     0.00     0.25
+.cmov    -5.300   -8.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.sphere     -4.00    -7.00     0.00     0.25
+.cmov    -4.300   -8.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder     -3.40    -7.00     0.00    -2.60    -7.00     0.00     0.10
+.cmov    -3.300   -8.000    0.000
+.font arial 20 bold
+G
+.color turquoise
+.cylinder     -2.40    -7.00     0.00    -1.60    -7.00     0.00     0.10
+.cmov    -2.300   -8.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.cylinder     -1.40    -7.00     0.00    -0.60    -7.00     0.00     0.10
+.cmov    -1.300   -8.000    0.000
+.font arial 20 bold
+C
+.color turquoise
+.cylinder     -0.40    -7.00     0.00     0.40    -7.00     0.00     0.10
+.cmov    -0.300   -8.000    0.000
+.font arial 20 bold
+A
+.color turquoise
+.cylinder      0.60    -7.00     0.00     1.40    -7.00     0.00     0.10
+.cmov     0.700   -8.000    0.000
+.font arial 20 bold
+T
+.color turquoise
+.arrow     1.60   -7.00    0.00    2.40   -7.00    0.00    0.10    0.40    0.55
+.cmov     1.700   -8.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.sphere      3.00    -7.00     0.00     0.25
+.cmov     2.700   -8.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder      3.60    -7.00     0.00     4.40    -7.00     0.00     0.10
+.cmov     3.700   -8.000    0.000
+.font arial 20 bold
+G
+.color sea green
+.cylinder      4.60    -7.00     0.00     5.40    -7.00     0.00     0.10
+.cmov     4.700   -8.000    0.000
+.font arial 20 bold
+C
+.color sea green
+.cylinder      5.60    -7.00     0.00     6.40    -7.00     0.00     0.10
+.cmov     5.700   -8.000    0.000
+.font arial 20 bold
+A
+.color sea green
+.cylinder      6.60    -7.00     0.00     7.40    -7.00     0.00     0.10
+.cmov     6.700   -8.000    0.000
+.font arial 20 bold
+T
+.color sea green
+.cylinder      7.60    -7.00     0.00     8.40    -7.00     0.00     0.10
+.cmov     7.700   -8.000    0.000
+.font arial 20 bold
+T
+.color sea green
+.sphere      9.00    -7.00     0.00     0.25
+.cmov     8.700   -8.000    0.000
+.font arial 20 bold
+A
+.color olive drab
+.sphere     10.00    -7.00     0.00     0.25
+.cmov     9.700   -8.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     10.60    -7.00     0.00    11.40    -7.00     0.00     0.10
+.cmov    10.700   -8.000    0.000
+.font arial 20 bold
+G
+.color olive drab
+.cylinder     11.60    -7.00     0.00    12.40    -7.00     0.00     0.10
+.cmov    11.700   -8.000    0.000
+.font arial 20 bold
+T
+.color olive drab
+.cylinder     12.60    -7.00     0.00    13.40    -7.00     0.00     0.10
+.cmov    12.700   -8.000    0.000
+.font arial 20 bold
+C
+.color olive drab
+.cylinder     13.60    -7.00     0.00    14.40    -7.00     0.00     0.10
+.cmov    13.700   -8.000    0.000
+.font arial 20 bold
+A
+.color olive drab
+.cylinder     14.60    -7.00     0.00    15.40    -7.00     0.00     0.10
+.cmov    14.700   -8.000    0.000
+.font arial 20 bold
+T
+.color olive drab
+.sphere     16.00    -7.00     0.00     0.25
+.cmov    15.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.sphere     17.00    -7.00     0.00     0.25
+.cmov    16.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     17.60    -7.00     0.00    18.40    -7.00     0.00     0.10
+.cmov    17.700   -8.000    0.000
+.font arial 20 bold
+T
+.color tan
+.cylinder     18.60    -7.00     0.00    19.40    -7.00     0.00     0.10
+.cmov    18.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     19.60    -7.00     0.00    20.40    -7.00     0.00     0.10
+.cmov    19.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     20.60    -7.00     0.00    21.40    -7.00     0.00     0.10
+.cmov    20.700   -8.000    0.000
+.font arial 20 bold
+G
+.color tan
+.cylinder     21.60    -7.00     0.00    22.40    -7.00     0.00     0.10
+.cmov    21.700   -8.000    0.000
+.font arial 20 bold
+T
+.color tan
+.cylinder     22.60    -7.00     0.00    23.40    -7.00     0.00     0.10
+.cmov    22.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     23.60    -7.00     0.00    24.40    -7.00     0.00     0.10
+.cmov    23.700   -8.000    0.000
+.font arial 20 bold
+A
+.color tan
+.cylinder     24.60    -7.00     0.00    25.40    -7.00     0.00     0.10
+.cmov    24.700   -8.000    0.000
+.font arial 20 bold
+T
+.color tan
+.cylinder     25.60    -7.00     0.00    26.40    -7.00     0.00     0.10
+.cmov    25.700   -8.000    0.000
+.font arial 20 bold
+G
+.color tan
+.cylinder     26.60    -7.00     0.00    27.40    -7.00     0.00     0.10
+.cmov    26.700   -8.000    0.000
+.font arial 20 bold
+T
+.color tan
+.cylinder     27.60    -7.00     0.00    28.40    -7.00     0.00     0.10
+.cmov    27.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.cylinder     28.60    -7.00     0.00    29.40    -7.00     0.00     0.10
+.cmov    28.700   -8.000    0.000
+.font arial 20 bold
+C
+.color tan
+.arrow    29.50   -7.00    0.00   30.50   -7.00    0.00    0.09    0.40    0.55
+.cmov    29.700   -8.000    0.000
+.font arial 20 bold
+G
