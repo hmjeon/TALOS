@@ -6,7 +6,7 @@
 !
 ! =============================================================================
 !
-! PERDIX-6P is an open-source softeare, which allows scientists to build and
+! PERDIX-6P is an open-source software, which allows scientists to build and
 ! solve the sequence design of complex 3D DNA 6HB wireframe structure.
 ! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
