@@ -33,4 +33,3 @@ Hyungmin Jun (hyungminjun@outlook.com), Laboratory of Computational Biology and 
 
 # License
 PERDIX is an open-source software distributed under the [GPL license, version 3](https://www.gnu.org/licenses/gpl-3.0.en.html/)
-
