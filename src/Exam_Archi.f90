@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Archi
+! Module - Exam_Archi
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Archimedean solids.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Archi
 
@@ -38,7 +49,7 @@ module Exam_Archi
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Cubeoctahedron
 subroutine Exam_Archi_Cubeoctahedron(prob, geom)
@@ -105,7 +116,7 @@ subroutine Exam_Archi_Cubeoctahedron(prob, geom)
     geom.face(14).n_poi = 4; allocate(geom.face(14).poi(4)); geom.face(14).poi(1:4) = [  8,  9, 12, 10 ]
 end subroutine Exam_Archi_Cubeoctahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Icosidodecahedron
 subroutine Exam_Archi_Icosidodecahedron(prob, geom)
@@ -199,7 +210,7 @@ subroutine Exam_Archi_Icosidodecahedron(prob, geom)
     geom.face(32).n_poi = 5; allocate(geom.face(32).poi(5)); geom.face(32).poi(1:5) = [ 25, 26, 27, 30, 28 ]
 end subroutine Exam_Archi_Icosidodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rhombicuboctahedron (Rhombicuboctahedron or Small Rhombicuboctahedron)
 subroutine Exam_Archi_Rhombicuboctahedron(prob, geom)
@@ -284,7 +295,7 @@ subroutine Exam_Archi_Rhombicuboctahedron(prob, geom)
     geom.face(26).n_poi = 4; allocate(geom.face(26).poi(4)); geom.face(26).poi(1:4) = [ 19, 23, 24, 22 ]
 end subroutine Exam_Archi_Rhombicuboctahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Snub Cube (Snub Cuboctahedron)
 subroutine Exam_Archi_Snub_Cube(prob, geom)
@@ -381,7 +392,7 @@ subroutine Exam_Archi_Snub_Cube(prob, geom)
     geom.face(38).n_poi = 4; allocate(geom.face(38).poi(4)); geom.face(38).poi(1:4) = [ 18, 23, 24, 19 ]
 end subroutine Exam_Archi_Snub_Cube
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Cube (Truncated Hexahedron)
 subroutine Exam_Archi_Truncated_Cube(prob, geom)
@@ -454,7 +465,7 @@ subroutine Exam_Archi_Truncated_Cube(prob, geom)
     geom.face(14).n_poi = 8; allocate(geom.face(14).poi(8)); geom.face(14).poi(1:8) = [ 13, 17, 18, 22, 24, 21, 20, 14 ]
 end subroutine Exam_Archi_Truncated_Cube
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Cuboctahedron
 subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
@@ -551,7 +562,7 @@ subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
     geom.face(26).n_poi = 8; allocate(geom.face(26).poi(8)); geom.face(26).poi(1:8) = [ 30, 34, 41, 45, 48, 47, 43, 38 ]
 end subroutine Exam_Archi_truncated_Cuboctahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Dodecahedron
 subroutine Exam_Archi_Truncated_Dodecahedron(prob, geom)
@@ -660,7 +671,7 @@ subroutine Exam_Archi_Truncated_Dodecahedron(prob, geom)
     geom.face(32).n_poi = 10; allocate(geom.face(32).poi(10)); geom.face(32).poi(1:10) = [ 47, 53, 54, 58, 60, 57, 56, 50, 49, 48 ]
 end subroutine Exam_Archi_Truncated_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Icosahedron (bucky ball)
 subroutine Exam_Archi_Truncated_Icosahedron(prob, geom)
@@ -769,7 +780,7 @@ subroutine Exam_Archi_Truncated_Icosahedron(prob, geom)
     geom.face(32).n_poi = 6; allocate(geom.face(32).poi(6)); geom.face(32).poi(1:6) = [ 54, 55, 56, 59, 60, 58 ]
 end subroutine Exam_Archi_Truncated_Icosahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Octahedron
 subroutine Exam_Archi_Truncated_Octahedron(prob, geom)
@@ -842,7 +853,7 @@ subroutine Exam_Archi_Truncated_Octahedron(prob, geom)
     geom.face(14).n_poi = 6; allocate(geom.face(14).poi(6)); geom.face(14).poi(1:6) = [ 15, 20, 23, 24, 22, 18 ]
 end subroutine Exam_Archi_Truncated_Octahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Tetrahedron
 subroutine Exam_Archi_Truncated_Tetrahedron(prob, geom)
@@ -905,7 +916,7 @@ subroutine Exam_Archi_Truncated_Tetrahedron(prob, geom)
     geom.face(8).n_poi = 6; allocate(geom.face(8).poi(6)); geom.face(8).poi(1:6) = [ 6,  7, 10,  9, 12, 11 ]
 end subroutine Exam_Archi_Truncated_Tetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Truncated Icosidodecahedron
 subroutine Exam_Archi_Truncated_Icosidodecahedron(prob, geom)
@@ -1061,7 +1072,7 @@ subroutine Exam_Archi_Truncated_Icosidodecahedron(prob, geom)
     geom.face(62).n_poi = 10; allocate(geom.face(62).poi(10)); geom.face(62).poi(1:10) = [  93, 98,106,113,117,120,119,115,110,102 ]
 end subroutine Exam_Archi_Truncated_Icosidodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rhombicosidodecahedron (Rhombicosidodecahedron, Small Rhombicosidodecahedron)
 subroutine Exam_Archi_Rhombicosidodecahedron(prob, geom)
@@ -1187,7 +1198,7 @@ subroutine Exam_Archi_Rhombicosidodecahedron(prob, geom)
     geom.face(62).n_poi = 5; allocate(geom.face(62).poi(5)); geom.face(62).poi(1:5) = [ 52, 56, 60, 59, 53 ]
 end subroutine Exam_Archi_Rhombicosidodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Snub Dodecahedron (Snub Icosidodecahedron)
 subroutine Exam_Archi_Snub_Dodecahedron(prob, geom)
@@ -1343,6 +1354,6 @@ subroutine Exam_Archi_Snub_Dodecahedron(prob, geom)
     geom.face(92).n_poi = 5; allocate(geom.face(92).poi(5)); geom.face(92).poi(1:5) = [ 46, 54, 59, 60, 55 ]
 end subroutine Exam_Archi_Snub_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Archi

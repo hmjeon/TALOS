@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       2_ModGeo
+! Module - ModGeo
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the function for modifying the geometry.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module ModGeo
 
@@ -52,7 +63,7 @@ module ModGeo
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Geometry modification
 subroutine ModGeo_Modification(prob, geom, bound)
@@ -124,7 +135,7 @@ subroutine ModGeo_Modification(prob, geom, bound)
     call ModGeo_Chimera_Mod_Geometry(prob, geom, "mod2")
 end subroutine ModGeo_Modification
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set neighbor lines on each line
 ! For closed geometry, the number of neighbor faces is always two
@@ -202,7 +213,7 @@ subroutine ModGeo_Set_Neighbor_Point(prob, geom, bound)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Set_Neighbor_Point
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find neighbor face corresponding to line
 function ModGeo_Find_Neighbor_Face(geom, line) result(nei_face)
@@ -254,7 +265,7 @@ function ModGeo_Find_Neighbor_Face(geom, line) result(nei_face)
     end if
 end function ModGeo_Find_Neighbor_Face
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find neighbor point from face
 function ModGeo_Find_Neighbor_Point(geom, line, face) result(nei_point)
@@ -337,7 +348,7 @@ function ModGeo_Find_Neighbor_Point(geom, line, face) result(nei_point)
     end do
 end function ModGeo_Find_Neighbor_Point
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find neighbor point from face information at the boundary
 function ModGeo_Find_Neighbor_Point_Boundary(geom, line, face) result(nei_point) 
@@ -422,7 +433,7 @@ function ModGeo_Find_Neighbor_Point_Boundary(geom, line, face) result(nei_point)
     end do
 end function ModGeo_Find_Neighbor_Point_Boundary
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Get opposite point from line
 ! *-----a-------*------b------** : opint num
@@ -455,7 +466,7 @@ function ModGeo_Get_Point_From_Line(geom, line_a, line_b)
     ModGeo_Get_Point_From_Line = point_num
 end function ModGeo_Get_Point_From_Line
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set neighbor lines on each line
 ! For closed geometry, the number of neighbor faces is always two.
@@ -496,7 +507,7 @@ subroutine ModGeo_Set_Neighbor_Line(prob, geom, bound)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Set_Neighbor_Line
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find neighbor line from neighbor point
 subroutine ModGeo_Find_Neighbor_Line(geom, idxL, nei_line)
@@ -538,7 +549,7 @@ subroutine ModGeo_Find_Neighbor_Line(geom, idxL, nei_line)
     end do
 end subroutine ModGeo_Find_Neighbor_Line
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write check geometry
 subroutine ModGeo_Chimera_Check_Geometry(prob, geom)
@@ -713,7 +724,7 @@ subroutine ModGeo_Chimera_Check_Geometry(prob, geom)
     close(unit=301)
 end subroutine ModGeo_Chimera_Check_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set arm junction data in the whole strcutre
 subroutine ModGeo_Set_Junction_Data(geom, bound)
@@ -817,7 +828,7 @@ subroutine ModGeo_Set_Junction_Data(geom, bound)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Set_Junction_Data
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set local coordinate system on initial geometry
 subroutine ModGeo_Set_Local_Coorindate(geom)
@@ -853,7 +864,7 @@ subroutine ModGeo_Set_Local_Coorindate(geom)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Set_Local_Coorindate
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set local vecotrs on initial geometry
 function ModGeo_Set_Local_Vectors_Old(geom, line, point) result(local)
@@ -904,7 +915,7 @@ function ModGeo_Set_Local_Vectors_Old(geom, line, point) result(local)
     end if
 end function ModGeo_Set_Local_Vectors_Old
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set local vecotrs on initial geometry
 function ModGeo_Set_Local_Vectors(geom, line) result(local)
@@ -974,7 +985,7 @@ function ModGeo_Set_Local_Vectors(geom, line) result(local)
     end if
 end function ModGeo_Set_Local_Vectors
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write initial geometry with local coordinate system
 subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
@@ -1179,7 +1190,7 @@ subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
     close(unit=302)
 end subroutine ModGeo_Chimera_Init_Geometry_Local
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Seperate the edge from the junction, modified geometry
 subroutine ModGeo_Seperate_Line(geom, bound)
@@ -1283,7 +1294,7 @@ subroutine ModGeo_Seperate_Line(geom, bound)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Seperate_Line
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find scale factor and junctional angle to adjust the size of structure
 ! Pre-calculate the junctional gap and midified edge length
@@ -1419,7 +1430,7 @@ function ModGeo_Find_Scale_Factor(prob, geom, bound) result(scale)
     deallocate(pos_modP)
 end function ModGeo_Find_Scale_Factor
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set angle junction between neighboring edges at the junction
 subroutine ModGeo_Set_Angle_Junction(geom, bound)
@@ -1518,7 +1529,7 @@ subroutine ModGeo_Set_Angle_Junction(geom, bound)
     deallocate(junc)
 end subroutine ModGeo_Set_Angle_Junction
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find width cross-section
 function ModGeo_Set_Width_Section(geom) result(width)
@@ -1543,7 +1554,7 @@ function ModGeo_Set_Width_Section(geom) result(width)
     width = (2.0d0*para_rad_helix + para_gap_helix) * dble(n_column)
 end function ModGeo_Set_Width_Section
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set geometric scale
 subroutine ModGeo_Set_Scale_Geometry(geom, scale)
@@ -1564,7 +1575,7 @@ subroutine ModGeo_Set_Scale_Geometry(geom, scale)
     end do
 end subroutine ModGeo_Set_Scale_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write modified geometry
 subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
@@ -1773,7 +1784,7 @@ subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
     close(unit=303)
 end subroutine ModGeo_Chimera_Mod_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set the gap distance between the junction and end of edges
 subroutine ModGeo_Set_Gap_Junction(geom, bound)
@@ -1846,7 +1857,7 @@ subroutine ModGeo_Set_Gap_Junction(geom, bound)
     write(0, "(a)"); write(11, "(a)")
 end subroutine ModGeo_Set_Gap_Junction
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set constant modified edge ratio based on original geometry
 subroutine ModGeo_Set_Const_Geometric_Ratio(geom)
@@ -1924,7 +1935,7 @@ subroutine ModGeo_Set_Const_Geometric_Ratio(geom)
     end do
 end subroutine ModGeo_Set_Const_Geometric_Ratio
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set modified edge length based on multiple of 10.5-bp length
 subroutine ModGeo_Set_Round_Geometric_Ratio(prob, geom)
@@ -2000,7 +2011,7 @@ subroutine ModGeo_Set_Round_Geometric_Ratio(prob, geom)
     end do
 end subroutine ModGeo_Set_Round_Geometric_Ratio
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find round up edge length
 function ModGeo_Find_Round_Length(len_in) result(len_out)
@@ -2011,6 +2022,6 @@ function ModGeo_Find_Round_Length(len_in) result(len_out)
     len_out = dble(floor(idnint(len_in / 10.5d0)*10.5d0))
 end function
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module ModGeo

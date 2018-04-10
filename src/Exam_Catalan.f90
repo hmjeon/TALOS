@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Catalan
+! Module - Exam_Catalan
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Catalan solids.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Catalan
 
@@ -38,7 +49,7 @@ module Exam_Catalan
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rhombic Dodecahedron
 subroutine Exam_Catalan_Rhombic_Dodecahedron(prob, geom)
@@ -104,7 +115,7 @@ subroutine Exam_Catalan_Rhombic_Dodecahedron(prob, geom)
     geom.face(12).n_poi = 4; allocate(geom.face(12).poi(4)); geom.face(12).poi(1:4) = [ 11, 14, 13, 12 ]
 end subroutine Exam_Catalan_Rhombic_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rhombic Triacontahedron
 subroutine Exam_Catalan_Rhombic_Triacontahedron(prob, geom)
@@ -197,7 +208,7 @@ subroutine Exam_Catalan_Rhombic_Triacontahedron(prob, geom)
     geom.face(30).n_poi = 4; allocate(geom.face(30).poi(4)); geom.face(30).poi(1:4) = [ 29, 32, 31, 30 ]
 end subroutine Exam_Catalan_Rhombic_Triacontahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Deltoidal Icositetrahedron (Trapezoidal Icositetrahedron, Tetragonal Icosikaitetrahedron, Strombic Icositetrahedron)
 subroutine Exam_Catalan_Deltoidal_Icositetrahedron(prob, geom)
@@ -281,7 +292,7 @@ subroutine Exam_Catalan_Deltoidal_Icositetrahedron(prob, geom)
     geom.face(24).n_poi = 4; allocate(geom.face(24).poi(4)); geom.face(24).poi(1:4) = [ 22, 26, 25, 23 ]
 end subroutine Exam_Catalan_Deltoidal_Icositetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Pentagonal Icositetrahedron (Pentagonal Icosikaitetrahedron)
 subroutine Exam_Catalan_Pentagonal_Icositetrahedron(prob, geom)
@@ -371,7 +382,7 @@ subroutine Exam_Catalan_Pentagonal_Icositetrahedron(prob, geom)
     geom.face(24).n_poi = 5; allocate(geom.face(24).poi(5)); geom.face(24).poi(1:5) = [ 35, 34, 38, 37, 36 ]
 end subroutine Exam_Catalan_Pentagonal_Icositetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Triakis Octahedron (Kisoctahedron)
 subroutine Exam_Catalan_Triakis_Octahedron(prob, geom)
@@ -449,7 +460,7 @@ subroutine Exam_Catalan_Triakis_Octahedron(prob, geom)
     geom.face(24).n_poi = 3; allocate(geom.face(24).poi(3)); geom.face(24).poi(1:3) = [  9, 12, 14 ]
 end subroutine Exam_Catalan_Triakis_Octahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Disdyakis Dodecahedron (Hexakis Octahedron, Kisrhombic Dodecahedron)
 subroutine Exam_Catalan_Disdyakis_Dodecahedron(prob, geom)
@@ -557,7 +568,7 @@ subroutine Exam_Catalan_Disdyakis_Dodecahedron(prob, geom)
     geom.face(48).n_poi = 3; allocate(geom.face(48).poi(3)); geom.face(48).poi(1:3) = [ 25, 26, 22 ]
 end subroutine Exam_Catalan_Disdyakis_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Triakis Icosahedron (Kisicosahedron)
 subroutine Exam_Catalan_Triakis_Icosahedron(prob, geom)
@@ -680,7 +691,7 @@ subroutine Exam_Catalan_Triakis_Icosahedron(prob, geom)
     geom.face(60).n_poi = 3; allocate(geom.face(60).poi(3)); geom.face(60).poi(1:3) = [ 27, 30, 32 ]
 end subroutine Exam_Catalan_Triakis_Icosahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Pentakis Dodecahedron (Kisdodecahedron)
 subroutine Exam_Catalan_Pentakis_Dodecahedron(prob, geom)
@@ -803,7 +814,7 @@ subroutine Exam_Catalan_Pentakis_Dodecahedron(prob, geom)
     geom.face(60).n_poi = 3; allocate(geom.face(60).poi(3)); geom.face(60).poi(1:3) = [ 30, 32, 31 ]
 end subroutine Exam_Catalan_Pentakis_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Tetrakis Hexahedron (Tetrahexahedron, Kiscube, Jetty Snowflake)
 subroutine Exam_Catalan_Tetrakis_Hexahedron(prob, geom)
@@ -881,7 +892,7 @@ subroutine Exam_Catalan_Tetrakis_Hexahedron(prob, geom)
     geom.face(24).n_poi = 3; allocate(geom.face(24).poi(3)); geom.face(24).poi(1:3) = [ 14, 11, 13 ]
 end subroutine Exam_Catalan_Tetrakis_Hexahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Triakis Tetrahedron (Kistetrahedron)
 subroutine Exam_Catalan_Triakis_Tetrahedron(prob, geom)
@@ -948,7 +959,7 @@ subroutine Exam_Catalan_Triakis_Tetrahedron(prob, geom)
     geom.face(12).n_poi = 3; allocate(geom.face(12).poi(3)); geom.face(12).poi(1:3) = [ 8, 7, 4 ]
 end subroutine Exam_Catalan_Triakis_Tetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Disdyakis Triacontahedron (Hexakis Icosahedron, Kisrhombic Triacontahedron)
 subroutine Exam_Catalan_Disdyakis_Triacontahedron(prob, geom)
@@ -1146,7 +1157,7 @@ subroutine Exam_Catalan_Disdyakis_Triacontahedron(prob, geom)
     geom.face(120).n_poi = 3; allocate(geom.face(120).poi(3)); geom.face(120).poi(1:3) = [ 61, 62, 55 ]
 end subroutine Exam_Catalan_Disdyakis_Triacontahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Deltoidal Hexecontahedron (Trapezoidal Hexecontahedron, Strombic Hexecontahedron, Tetragonal Hexacontahedron)
 subroutine Exam_Catalan_Deltoidal_Hexecontahedron(prob, geom)
@@ -1284,7 +1295,7 @@ subroutine Exam_Catalan_Deltoidal_Hexecontahedron(prob, geom)
     geom.face(60).n_poi = 4; allocate(geom.face(60).poi(4)); geom.face(60).poi(1:4) = [ 59, 58, 62, 61 ]
 end subroutine Exam_Catalan_Deltoidal_Hexecontahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Pentagonal Hexecontahedron
 subroutine Exam_Catalan_Pentagonal_Hexecontahedron(prob, geom)
@@ -1437,6 +1448,6 @@ subroutine Exam_Catalan_Pentagonal_Hexecontahedron(prob, geom)
     geom.face(60).n_poi = 5; allocate(geom.face(60).poi(5)); geom.face(60).poi(1:5) = [ 89, 79, 92, 91, 90 ]
 end subroutine Exam_Catalan_Pentagonal_Hexecontahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Catalan

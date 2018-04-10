@@ -1,16 +1,27 @@
 ﻿!
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       5_Route
+! Module - Route
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the function for the scaffold routing.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Route
 
@@ -72,7 +83,7 @@ module Route
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Generate B-form DNA (set dna.base_scaf and dna.base_stap)
 subroutine Route_Generation(prob, geom, bound, mesh, dna)
@@ -161,7 +172,7 @@ subroutine Route_Generation(prob, geom, bound, mesh, dna)
     call Route_Chimera_Atom(prob, geom, dna)
 end subroutine Route_Generation
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Initialize base connectivity from mesh data
 subroutine Route_Init_Base_Connectivity(mesh, dna)
@@ -232,7 +243,7 @@ subroutine Route_Init_Base_Connectivity(mesh, dna)
     end do
 end subroutine Route_Init_Base_Connectivity
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set base position vector
 subroutine Route_Set_Base_Position(geom, mesh, dna)
@@ -371,7 +382,7 @@ subroutine Route_Set_Base_Position(geom, mesh, dna)
     write(0, "(a)"); write(11, "(a)")
 end subroutine Route_Set_Base_Position
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write scaffold or staple route for Chimera
 subroutine Route_Chimera_Route(prob, geom, mesh, dna, step_route)
@@ -758,7 +769,7 @@ subroutine Route_Chimera_Route(prob, geom, mesh, dna, step_route)
     close(unit=602)
 end subroutine Route_Chimera_Route
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Connect strands at the vertex by poly Tn loop or unpaired nucleotides
 subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
@@ -1102,7 +1113,7 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
     write(0, "(a)"); write(11, "(a)")
 end subroutine Route_Reconnect_Junction
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Connect scaffold with/without unpaired nucleotides
 function Route_Connect_Scaf(mesh, dna, node_cur, node_com) result(n_add_base)
@@ -1244,7 +1255,7 @@ function Route_Connect_Scaf(mesh, dna, node_cur, node_com) result(n_add_base)
     end if
 end function Route_Connect_Scaf
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Connect staple nucleotides by buiding poly T loop
 function Route_Connect_Stap(mesh, dna, node_cur, node_com) result(n_poly_Tn)
@@ -1389,7 +1400,7 @@ function Route_Connect_Stap(mesh, dna, node_cur, node_com) result(n_poly_Tn)
     end if
 end function Route_Connect_Stap
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Add one neucleotide to make single strand(scaffold) or poly Tn loop(staple)
 subroutine Route_Add_Nucleotide(base, n_base, pos)
@@ -1427,7 +1438,7 @@ subroutine Route_Add_Nucleotide(base, n_base, pos)
     deallocate(t_base)
 end subroutine Route_Add_Nucleotide
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set the strand ID in scaffold
 subroutine Route_Set_Strand_ID_Scaf(dna)
@@ -1495,7 +1506,7 @@ subroutine Route_Set_Strand_ID_Scaf(dna)
     end do
 end subroutine Route_Set_Strand_ID_Scaf
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find center scaffold crossovers with splitted algorithm
 subroutine Route_Find_Centered_Scaf_Xover(prob, geom, mesh, dna)
@@ -1754,7 +1765,7 @@ subroutine Route_Find_Centered_Scaf_Xover(prob, geom, mesh, dna)
     deallocate(croL)
 end subroutine Route_Find_Centered_Scaf_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Check whether nighbor crossover exists or not
 function Route_Check_Nei_Xover(geom, mesh, dna, cur, com) result(n_gap)
@@ -1827,7 +1838,7 @@ function Route_Check_Nei_Xover(geom, mesh, dna, cur, com) result(n_gap)
     end do
 end function Route_Check_Nei_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Split crossover to avoid existing one, return crossover position
 function Route_Split_Centered_Scaf_Xover(geom, mesh, cur, com, min_bp1, max_bp1, min_bp2, max_bp2, step) result(b_fail)
@@ -2000,7 +2011,7 @@ function Route_Split_Centered_Scaf_Xover(geom, mesh, cur, com, min_bp1, max_bp1,
     end if
 end function Route_Split_Centered_Scaf_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write centered scaffold crossovers
 subroutine Route_Write_Centered_Scaf_Xover(prob, geom, mesh, dna)
@@ -2244,7 +2255,7 @@ subroutine Route_Write_Centered_Scaf_Xover(prob, geom, mesh, dna)
     close(unit=610)
 end subroutine Route_Write_Centered_Scaf_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Modify scaffold crossovers to avoid duplicated indication
 subroutine Route_Modify_Scaf_Xover(geom, mesh, dna)
@@ -2389,7 +2400,7 @@ subroutine Route_Modify_Scaf_Xover(geom, mesh, dna)
     end do
 end subroutine Route_Modify_Scaf_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Build scaffold DNA origami
 subroutine Route_Graph_Build_Origami(prob, mesh, dna)
@@ -2513,7 +2524,7 @@ subroutine Route_Graph_Build_Origami(prob, mesh, dna)
     if(allocated(tree))     deallocate(tree)
 end subroutine Route_Graph_Build_Origami
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Allocate graph data
 subroutine Route_Graph_Allocate_Data(pos_node, tail, head, cost, n_node, n_edge)
@@ -2537,7 +2548,7 @@ subroutine Route_Graph_Allocate_Data(pos_node, tail, head, cost, n_node, n_edge)
     cost(1:n_edge)        = 0
 end subroutine Route_Graph_Allocate_Data
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set node and edge for dual graph
 subroutine Route_Graph_Set_Data(prob, mesh, dna, pos_node, tail, head, cost)
@@ -2652,7 +2663,7 @@ subroutine Route_Graph_Set_Data(prob, mesh, dna, pos_node, tail, head, cost)
     deallocate(n_base)
 end subroutine Route_Graph_Set_Data
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set node and edge for dual graph
 subroutine Route_Graph_Set_Data1(prob, mesh, dna, pos_node, tail, head, cost)
@@ -2786,7 +2797,7 @@ subroutine Route_Graph_Set_Data1(prob, mesh, dna, pos_node, tail, head, cost)
     deallocate(n_base)
 end subroutine Route_Graph_Set_Data1
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write Adjacent matrix
 subroutine Route_Graph_Write_Adjacent(prob, adj)
@@ -2833,7 +2844,7 @@ subroutine Route_Graph_Write_Adjacent(prob, adj)
     close(unit=603)
 end subroutine Route_Graph_Write_Adjacent
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write all spanning trees
 subroutine Route_Graph_Chimera_All_Spanning_Tree(prob, pos_node, tail, head, idx, src, dst)
@@ -2989,7 +3000,7 @@ subroutine Route_Graph_Chimera_All_Spanning_Tree(prob, pos_node, tail, head, idx
     end do
 end subroutine Route_Graph_Chimera_All_Spanning_Tree
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write edge list
 subroutine Route_Graph_Write_List(prob, tail, head, tree)
@@ -3048,7 +3059,7 @@ subroutine Route_Graph_Write_List(prob, tail, head, tree)
     close(unit=605)
 end subroutine Route_Graph_Write_List
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write Chimera for the spanning tree
 subroutine Route_Graph_Chimera_Spanning_Tree(prob, pos_node, tail, head, tree)
@@ -3200,7 +3211,7 @@ subroutine Route_Graph_Chimera_Spanning_Tree(prob, pos_node, tail, head, tree)
     close(unit = 606)
 end subroutine Route_Graph_Chimera_Spanning_Tree
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Delete non-spanning scaffold crossover
 subroutine Route_Graph_Delete_Scaf_Xover(dna, tail, head, tree)
@@ -3262,7 +3273,7 @@ subroutine Route_Graph_Delete_Scaf_Xover(dna, tail, head, tree)
     end do
 end subroutine Route_Graph_Delete_Scaf_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Make scaffold strand origami
 subroutine Route_Make_Scaf_Origami(prob, mesh, dna)
@@ -3422,7 +3433,7 @@ subroutine Route_Make_Scaf_Origami(prob, mesh, dna)
     deallocate(id_entry)
 end subroutine Route_Make_Scaf_Origami
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find possible staple crossovers
 subroutine Route_Find_Possible_Stap_Xover(geom, mesh, dna)
@@ -3587,7 +3598,7 @@ subroutine Route_Find_Possible_Stap_Xover(geom, mesh, dna)
     deallocate(croL)
 end subroutine Route_Find_Possible_Stap_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set staple crossover
 subroutine Route_Set_Stap_Crossover(prob, dna)
@@ -3653,7 +3664,7 @@ subroutine Route_Set_Stap_Crossover(prob, dna)
     write(0, "(a)"); write(11, "(a)")
 end subroutine Route_Set_Stap_Crossover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set three orientation vectors based on 3DNA convention
 subroutine Route_Set_Orientation(mesh, dna)
@@ -3733,7 +3744,7 @@ subroutine Route_Set_Orientation(mesh, dna)
     end do
 end subroutine Route_Set_Orientation
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write crossovers based on base pairs
 subroutine Route_Chimera_Crossovers(prob, geom, bound, mesh, dna)
@@ -3927,7 +3938,7 @@ subroutine Route_Chimera_Crossovers(prob, geom, bound, mesh, dna)
     close(unit=607)
 end subroutine Route_Chimera_Crossovers
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write 3 orientation vectors based on 3DNA convention
 subroutine Route_Chimera_Orientation(prob, mesh, dna)
@@ -4082,7 +4093,7 @@ subroutine Route_Chimera_Orientation(prob, mesh, dna)
     close(unit=608)
 end subroutine Route_Chimera_Orientation
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write atomic model
 subroutine Route_Chimera_Atom(prob, geom, dna)
@@ -4256,7 +4267,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     close(unit=609)
 end subroutine Route_Chimera_Atom
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Delete possible scaffold crossovers near the junction
 subroutine Route_Delete_End_Pos_Xover_Scaf(prob, geom, mesh, dna)
@@ -4383,7 +4394,7 @@ subroutine Route_Delete_End_Pos_Xover_Scaf(prob, geom, mesh, dna)
     end do
 end subroutine Route_Delete_End_Pos_Xover_Scaf
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Delete possible staple crossovers near the junction
 subroutine Route_Delete_End_Pos_Xover_Stap(prob, geom, mesh, dna)
@@ -4513,7 +4524,7 @@ subroutine Route_Delete_End_Pos_Xover_Stap(prob, geom, mesh, dna)
     end do
 end subroutine Route_Delete_End_Pos_Xover_Stap
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
     
 ! Centered scaffold crossover
 subroutine Route_Center_Scaf_Crossover(geom, mesh, dna)
@@ -4621,6 +4632,6 @@ subroutine Route_Center_Scaf_Crossover(geom, mesh, dna)
     deallocate(croL)
 end subroutine Route_Center_Scaf_Crossover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Route

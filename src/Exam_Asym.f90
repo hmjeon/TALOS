@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Asym
+! Module - Exam_Asym
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of asymmetric geometries.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Asym
 
@@ -39,7 +50,7 @@ module Exam_Asym
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of asymmetric tetrahedron 63-63-63-73-52-42bp
 subroutine Exam_Asym_Tetra_63_63_63_73_52_42(prob, geom)
@@ -97,7 +108,7 @@ subroutine Exam_Asym_Tetra_63_63_63_73_52_42(prob, geom)
     geom.face(4).n_poi = 3; allocate(geom.face(4).poi(3)); geom.face(4).poi(1:3) = [ 2, 4, 3 ]
 end subroutine Exam_Asym_Tetra_63_63_63_73_52_42
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of asymmetric tetrahedron 105-63-84-84-63-42bp
 subroutine Exam_Asym_Tetra_105_63_84_84_63_42(prob, geom)
@@ -157,7 +168,7 @@ subroutine Exam_Asym_Tetra_105_63_84_84_63_42(prob, geom)
     geom.face(4).n_poi = 3; allocate(geom.face(4).poi(3)); geom.face(4).poi(1:3) = [ 2, 4, 3 ]
 end subroutine Exam_Asym_Tetra_105_63_84_84_63_42
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of asymetric triangular bipyramid 42-63-84-105
 subroutine Exam_Asym_Tri_Bipyramid_42_63_84_105(prob, geom)
@@ -220,7 +231,7 @@ subroutine Exam_Asym_Tri_Bipyramid_42_63_84_105(prob, geom)
     geom.face(6).n_poi = 3; allocate(geom.face(6).poi(3)); geom.face(6).poi(1:3) = [ 3, 5, 2 ]
 end subroutine Exam_Asym_Tri_Bipyramid_42_63_84_105
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of asymmetric triangles
 subroutine Exam_Asym_Triangle(prob, geom)
@@ -288,7 +299,7 @@ subroutine Exam_Asym_Triangle(prob, geom)
     geom.face(14).n_poi = 3; allocate(geom.face(14).poi(3)); geom.face(14).poi(1:3) = [ 2, 7, 8 ]
 end subroutine Exam_Asym_Triangle
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Biscribed propello tetrahedron
 subroutine Exam_Asym_Biscribed_Propello_Tetrahedron(prob, geom)
@@ -368,7 +379,7 @@ subroutine Exam_Asym_Biscribed_Propello_Tetrahedron(prob, geom)
     geom.face(16).n_poi = 3; allocate(geom.face(16).poi(3)); geom.face(16).poi(1:3) = [   4,  8, 12 ]
 end subroutine Exam_Asym_Biscribed_Propello_Tetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Biscribed propello cube
 subroutine Exam_Asym_Biscribed_Propello_Cube(prob, geom)
@@ -477,7 +488,7 @@ subroutine Exam_Asym_Biscribed_Propello_Cube(prob, geom)
     geom.face(30).n_poi = 4; allocate(geom.face(30).poi(4)); geom.face(30).poi(1:4) = [ 31, 19,  3, 15 ]
 end subroutine Exam_Asym_Biscribed_Propello_Cube
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Ball
 subroutine Exam_Asym_Ball(prob, geom)
@@ -620,7 +631,7 @@ subroutine Exam_Asym_Ball(prob, geom)
     geom.face(80).n_poi = 3; allocate(geom.face(80).poi(3)); geom.face(80).poi(1:3) = [ 39, 33, 41 ]
 end subroutine Exam_Asym_Ball
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Nickedtorus
 subroutine Exam_Asym_Nickedtorus(prob, geom)
@@ -903,7 +914,7 @@ subroutine Exam_Asym_Nickedtorus(prob, geom)
     geom.face(192).n_poi = 3; allocate(geom.face(192).poi(3)); geom.face(192).poi(1:3) = [ 24,  22,  98 ]
 end subroutine Exam_Asym_Nickedtorus
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Helix
 subroutine Exam_Asym_Helix(prob, geom)
@@ -1204,7 +1215,7 @@ subroutine Exam_Asym_Helix(prob, geom)
     geom.face(206).n_poi = 3; allocate(geom.face(206).poi(3)); geom.face(206).poi(1:3) = [ 103,104,105 ]
 end subroutine Exam_Asym_Helix
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rod
 subroutine Exam_Asym_Rod(prob, geom)
@@ -1505,7 +1516,7 @@ subroutine Exam_Asym_Rod(prob, geom)
     geom.face(206).n_poi = 3; allocate(geom.face(206).poi(3)); geom.face(206).poi(1:3) = [ 103, 104, 105 ]
 end subroutine Exam_Asym_Rod
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Stickman
 subroutine Exam_Asym_Stickman(prob, geom)
@@ -1783,7 +1794,7 @@ subroutine Exam_Asym_Stickman(prob, geom)
     geom.face(188).n_poi = 3; allocate(geom.face(188).poi(3)); geom.face(188).poi(1:3) = [ 96,  89,  93 ]
 end subroutine Exam_Asym_Stickman
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Bottle
 subroutine Exam_Asym_Bottle(prob, geom)
@@ -1991,7 +2002,7 @@ subroutine Exam_Asym_Bottle(prob, geom)
     geom.face(132).n_poi = 3; allocate(geom.face(132).poi(3)); geom.face(132).poi(1:3) = [ 66, 61, 68 ]
 end subroutine Exam_Asym_Bottle
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Bunny
 subroutine Exam_Asym_Bunny(prob, geom)
@@ -2204,6 +2215,6 @@ subroutine Exam_Asym_Bunny(prob, geom)
     geom.face(136).n_poi = 3; allocate(geom.face(136).poi(3)); geom.face(136).poi(1:3) = [ 70, 39,  2 ]
 end subroutine Exam_Asym_Bunny
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Asym

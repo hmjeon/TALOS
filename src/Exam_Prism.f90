@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       Exam_Prism
+! Module - Exam_Prism
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Prism and antiprism.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Prism
 
@@ -43,7 +54,7 @@ module Exam_Prism
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of triangular prism
 subroutine Exam_Prism_Triangular_Prism(prob, geom)
@@ -101,7 +112,7 @@ subroutine Exam_Prism_Triangular_Prism(prob, geom)
     geom.face(5).n_poi = 4; allocate(geom.face(5).poi(4)); geom.face(5).poi(1:4) = [ 3, 1, 4, 6 ]
 end subroutine Exam_Prism_Triangular_Prism
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of triangular prism
 subroutine Exam_Prism_Triangular(prob, geom)
@@ -154,7 +165,7 @@ subroutine Exam_Prism_Triangular(prob, geom)
     geom.face(5).n_poi = 4; allocate(geom.face(5).poi(4)); geom.face(5).poi(1:4) = [ 2, 4, 6, 5 ]
 end subroutine Exam_Prism_Triangular
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of pentagonal prism
 subroutine Exam_Prism_Pentagonal(prob, geom)
@@ -213,7 +224,7 @@ subroutine Exam_Prism_Pentagonal(prob, geom)
     geom.face(7).n_poi = 5; allocate(geom.face(7).poi(5)); geom.face(7).poi(1:5) = [ 3, 5,  9, 10, 7 ]
 end subroutine Exam_Prism_Pentagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of hexagonal prism
 subroutine Exam_Prism_Hexagonal(prob, geom)
@@ -275,7 +286,7 @@ subroutine Exam_Prism_Hexagonal(prob, geom)
     geom.face(8).n_poi = 6; allocate(geom.face(8).poi(6)); geom.face(8).poi(1:6) = [ 3,  5,  9, 12, 11, 7 ]
 end subroutine Exam_Prism_Hexagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of hetagonal prism
 subroutine Exam_Prism_Heptagonal(prob, geom)
@@ -340,7 +351,7 @@ subroutine Exam_Prism_Heptagonal(prob, geom)
     geom.face(9).n_poi = 7; allocate(geom.face(9).poi(7)); geom.face(9).poi(1:7) = [ 3,  5,  9, 13, 14, 11, 7 ]
 end subroutine Exam_Prism_Heptagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of octagonal prism
 subroutine Exam_Prism_Octagonal(prob, geom)
@@ -408,7 +419,7 @@ subroutine Exam_Prism_Octagonal(prob, geom)
     geom.face(10).n_poi = 8; allocate(geom.face(10).poi(8)); geom.face(10).poi(1:8) = [ 3,  5,  9, 13, 16, 15, 11, 7 ]
 end subroutine Exam_Prism_Octagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of enneagonal prism
 subroutine Exam_Prism_Enneagonal(prob, geom)
@@ -479,7 +490,7 @@ subroutine Exam_Prism_Enneagonal(prob, geom)
     geom.face(11).n_poi = 9; allocate(geom.face(11).poi(9)); geom.face(11).poi(1:9) = [ 3,  5,  9, 13, 17, 18, 15, 11, 7 ]
 end subroutine Exam_Prism_Enneagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of decagonal prism
 subroutine Exam_Prism_Decagonal(prob, geom)
@@ -553,7 +564,7 @@ subroutine Exam_Prism_Decagonal(prob, geom)
     geom.face(12).n_poi = 10; allocate(geom.face(12).poi(10)); geom.face(12).poi(1:10) = [ 3,  5,  9, 13, 17, 20, 19, 15, 11, 7 ]
 end subroutine Exam_Prism_Decagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of square antiprism
 subroutine Exam_Antiprism_Square(prob, geom)
@@ -613,7 +624,7 @@ subroutine Exam_Antiprism_Square(prob, geom)
     geom.face(10).n_poi = 4; allocate(geom.face(10).poi(4)); geom.face(10).poi(1:4) = [ 3, 7, 8, 4 ]
 end subroutine Exam_Antiprism_Square
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of pentagonal antiprism
 subroutine Exam_Antiprism_Pentagonal(prob, geom)
@@ -677,7 +688,7 @@ subroutine Exam_Antiprism_Pentagonal(prob, geom)
     geom.face(12).n_poi = 5; allocate(geom.face(12).poi(5)); geom.face(12).poi(1:5) = [ 3,  7, 10, 8, 4 ]
 end subroutine Exam_Antiprism_Pentagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of hexagonal antiprism
 subroutine Exam_Antiprism_Hexagonal(prob, geom)
@@ -745,7 +756,7 @@ subroutine Exam_Antiprism_Hexagonal(prob, geom)
     geom.face(14).n_poi = 6; allocate(geom.face(14).poi(6)); geom.face(14).poi(1:6) = [ 3,  7, 11, 12, 8, 4 ]
 end subroutine Exam_Antiprism_Hexagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of heptagonal antiprism
 subroutine Exam_Antiprism_Heptagonal(prob, geom)
@@ -817,7 +828,7 @@ subroutine Exam_Antiprism_Heptagonal(prob, geom)
     geom.face(16).n_poi = 7; allocate(geom.face(16).poi(7)); geom.face(16).poi(1:7) = [ 3,  7, 11, 14, 12, 8, 4 ]
 end subroutine Exam_Antiprism_Heptagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of octagonal antiprism
 subroutine Exam_Antiprism_Octagonal(prob, geom)
@@ -893,7 +904,7 @@ subroutine Exam_Antiprism_Octagonal(prob, geom)
     geom.face(18).n_poi = 8; allocate(geom.face(18).poi(8)); geom.face(18).poi(1:8) = [ 3,  7, 11, 15, 16, 12, 8, 4 ]
 end subroutine Exam_Antiprism_Octagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of enneagonal antiprism
 subroutine Exam_Antiprism_Enneagonal(prob, geom)
@@ -973,7 +984,7 @@ subroutine Exam_Antiprism_Enneagonal(prob, geom)
     geom.face(20).n_poi = 9; allocate(geom.face(20).poi(9)); geom.face(20).poi(1:9) = [ 3,  7, 11, 15, 18, 16, 12, 8, 4 ]
 end subroutine Exam_Antiprism_Enneagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of decagonal antiprism
 subroutine Exam_Antiprism_Decagonal(prob, geom)
@@ -1057,6 +1068,6 @@ subroutine Exam_Antiprism_Decagonal(prob, geom)
     geom.face(22).n_poi =10; allocate(geom.face(22).poi(10)); geom.face(22).poi(1:10) = [ 3,  7, 11, 15, 19, 20, 16, 12, 8, 4 ]
 end subroutine Exam_Antiprism_Decagonal
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Prism

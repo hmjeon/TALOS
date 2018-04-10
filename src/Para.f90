@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       Para
+! Module - Para
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/08/16
+! =============================================================================
 !
-! Comments: Parameters used in PERDIX
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Para
 
@@ -24,16 +35,8 @@ module Para
     character(10)  :: para_external                     ! [off, on], External parameter loading flag
     character(10)  :: para_preset          = "on"       ! [on, off], Preset parameter defined in pre-defined examples
     character(10)  :: para_output_Tecplot  = "off"      ! [off, on], Output files for Tecplot(http://www.tecplot.com/) to draw vector image
-    character(10)  :: para_cmd_Tecplot     = "off"      ! [off, on], Command file to run TecPlot automatically
-    character(10)  :: para_cmd_Chimera     = "off"      ! [off, on], Command file to run UCSF Chimera(https://www.cgl.ucsf.edu/chimera/) automatically
-    character(10)  :: para_fig_output      = "off"      ! [off, on], Automatic figure generation from outputs
-    character(10)  :: para_fig_route_step  = "off"      ! [off, on], Automatic figure generation from route steps
-    character(10)  :: para_fig_bgcolor     = "black"    ! [black, white, all], Background color for figures from UCSF Chimera
     character(10)  :: para_fig_view        = "xy"       ! [xy, xz, xyz, all], Viewpoint for figures from UCSF Chimera
-    integer        :: para_n_route_step    = 5          ! [5], The number of steps in routing progress
     integer        :: para_type_cndo       = 2          ! [1, 2], CanDo file option, 1 : original format, 2 : updated format
-    character(200) :: para_path_Chimera    = &          ! UCSF Chimera program path
-        "C:\Program Files\Chimera 1.10.2\bin\chimera.exe"
 
     ! Parameters for junction modification
     character(10)  :: para_junc_ang        = "opt"      ! [opt, max, ave, min], Junction gap modification for different arm angle
@@ -136,6 +139,6 @@ module Para
     logical :: para_chimera_609_dir  = .false.  !  Plot with strand direction (_atom.bild)
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Para

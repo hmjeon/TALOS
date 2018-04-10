@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       7_Output
+! Module - Output
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the function for outputs.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Output
 
@@ -22,9 +33,6 @@ module Output
     use Mani
     use Para
     use Math
-
-    use Chimera
-    use Tecplot
 
     implicit none
 
@@ -49,14 +57,11 @@ module Output
     private Output_Write_DNA_Info
     private Output_Write_TecPlot
     private Output_Write_ADINA
-    private Output_Make_Route_Step
-    private Output_Chimera_Route_Step
-    private Output_Figure_Route_Step
     private Output_Write_Sequence_CroL
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Generate output files and run postprocessing tools
 subroutine Output_Generation(prob, geom, bound, mesh, dna)
@@ -111,17 +116,11 @@ subroutine Output_Generation(prob, geom, bound, mesh, dna)
     ! Write ADINA input file
     call Output_Write_ADINA(prob, mesh)
 
-    ! Command for Tecplot and Chimera, and figures for output and route step
-    if(para_cmd_Tecplot    == "on") call TecPlot_Command_Orientation(prob)
-    if(para_cmd_Chimera    == "on") call Chimera_Command_Output(prob)
-    if(para_fig_output     == "on") call Chimera_Figure_Output(prob)
-    if(para_fig_route_step == "on") call Output_Make_Route_Step(prob, mesh, dna)
-
     ! Write sequence based on cross-sectional line
     call Output_Write_Sequence_CroL(prob, mesh, dna)
 end subroutine Output_Generation
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Check connectivity in dna data
 subroutine Output_Check_Output(dna)
@@ -240,7 +239,7 @@ subroutine Output_Check_Output(dna)
     end do
 end subroutine Output_Check_Output
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write cylinderical model with crossovers
 subroutine Output_Write_Cylinder_Xover(prob, geom, bound, mesh, dna)
@@ -361,7 +360,7 @@ subroutine Output_Write_Cylinder_Xover(prob, geom, bound, mesh, dna)
     close(unit=701)
 end subroutine Output_Write_Cylinder_Xover
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write output file for sequence and json
 subroutine Output_Write_Out_All(prob, geom, bound, mesh, dna)
@@ -449,7 +448,7 @@ subroutine Output_Write_Out_All(prob, geom, bound, mesh, dna)
     close(unit=701)
 end subroutine Output_Write_Out_All
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write output of sequence data
 subroutine Output_Write_Out_Sequences(prob, mesh, dna, unit)
@@ -636,7 +635,7 @@ subroutine Output_Write_Out_Sequences(prob, mesh, dna, unit)
     close(unit=702)
 end subroutine Output_Write_Out_Sequences
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write graphical routing
 subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
@@ -1836,7 +1835,7 @@ subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
     end if
 end subroutine Output_Write_Out_Graphics
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write output of unpaired nucleotides
 function Output_Write_Out_Unpaired(mesh, dna, unit) result(max_base)
@@ -1917,7 +1916,7 @@ function Output_Write_Out_Unpaired(mesh, dna, unit) result(max_base)
     write(unit, "(a)")
 end function Output_Write_Out_Unpaired
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Outputs based on strands and nucleotides
 subroutine Output_Write_Out_Strand_Base(mesh, dna, unit)
@@ -1985,7 +1984,7 @@ subroutine Output_Write_Out_Strand_Base(mesh, dna, unit)
     write(unit, "(a)")
 end subroutine Output_Write_Out_Strand_Base
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Output about staple length
 subroutine Output_Write_Out_Staple_Length(dna, unit)
@@ -2019,7 +2018,7 @@ subroutine Output_Write_Out_Staple_Length(dna, unit)
     deallocate(length_stap)
 end subroutine Output_Write_Out_Staple_Length
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write JSON guide model
 subroutine Output_Write_Out_Guide_JSON(prob, geom, bound, mesh)
@@ -2196,7 +2195,7 @@ subroutine Output_Write_Out_Guide_JSON(prob, geom, bound, mesh)
     close(unit=998)
 end subroutine Output_Write_Out_Guide_JSON
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write JSON output
 subroutine Output_Write_Out_JSON(prob, geom, mesh, dna, max_unpaired)
@@ -2541,7 +2540,7 @@ subroutine Output_Write_Out_JSON(prob, geom, mesh, dna, max_unpaired)
     deallocate(edge)
 end subroutine Output_Write_Out_JSON
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write information related with basepair
 subroutine Output_Write_Basepair(prob, mesh, dna)
@@ -2590,7 +2589,7 @@ subroutine Output_Write_Basepair(prob, mesh, dna)
     close(unit=801)
 end subroutine Output_Write_Basepair
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write information related with base
 subroutine Output_Write_Base(prob, dna)
@@ -2629,7 +2628,7 @@ subroutine Output_Write_Base(prob, dna)
     close(unit=802)
 end subroutine Output_Write_Base
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write cndo file for PDB atom generation and CanDo simulation
 subroutine Output_Write_CanDo(prob, mesh, dna)
@@ -2802,7 +2801,7 @@ subroutine Output_Write_CanDo(prob, mesh, dna)
     close(unit=803)
 end subroutine Output_Write_CanDo
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write cndo file for PDB atom generation and CanDo simulation
 subroutine Output_Write_CanDo_New(prob, mesh, dna)
@@ -2891,7 +2890,7 @@ subroutine Output_Write_CanDo_New(prob, mesh, dna)
     close(unit=803)
 end subroutine Output_Write_CanDo_New
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write PLY
 subroutine Output_Write_PLY(prob, geom)
@@ -2930,7 +2929,7 @@ subroutine Output_Write_PLY(prob, geom)
     close(unit=704)
 end subroutine Output_Write_PLY
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write basepair and nucleotide information
 subroutine Output_Write_DNA_Info(prob, dna)
@@ -2962,7 +2961,7 @@ subroutine Output_Write_DNA_Info(prob, dna)
     close(unit=100)
 end subroutine Output_Write_DNA_Info
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write TecPlot input file
 subroutine Output_Write_TecPlot(prob, mesh)
@@ -3008,7 +3007,7 @@ subroutine Output_Write_TecPlot(prob, mesh)
     close(unit=804)
 end subroutine Output_Write_TecPlot
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write ADINA input file
 subroutine Output_Write_ADINA(prob, mesh)
@@ -3105,225 +3104,7 @@ subroutine Output_Write_ADINA(prob, mesh)
     close(unit = 805)
 end subroutine Output_Write_ADINA
 
-! ---------------------------------------------------------------------------------------
-
-! Make route step using Chimera
-subroutine Output_Make_Route_Step(prob, mesh, dna)
-    type(ProbType), intent(in) :: prob
-    type(MeshType), intent(in) :: mesh
-    type(DNAType),  intent(in) :: dna
-
-    integer :: i, j, id, step
-    logical :: results
-    character(10) :: str
-
-    ! Make folder to save route step Chimera files
-    results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_bild\")
-
-    ! Go to the first base of the strand
-    id = dna.strand(1).base(1)
-    do
-        if(dna.top(id).dn == -1) exit
-        id = dna.top(id).dn
-    end do
-
-    step = dna.n_base_scaf / para_n_route_step
-    do i = 1, para_n_route_step - 1
-
-        ! Go to upper base
-        do j = 1, step
-            id = dna.base_scaf(id).up
-        end do
-
-        write(str, "(i0)"), i
-        call Output_Chimera_Route_Step(prob, mesh, dna, id, str)
-    end do
-
-    ! go to the end of the strand
-    do
-        if(dna.top(id).up == -1) exit
-        id = dna.top(id).up
-    end do
-
-    ! The last route step
-    write(str, "(i0)"), para_n_route_step
-    call Output_Chimera_Route_Step(prob, mesh, dna, id, str)
-
-    ! Make figures from route step
-    call Output_Figure_Route_Step(prob, para_n_route_step)
-end subroutine Output_Make_Route_Step
-
-! ---------------------------------------------------------------------------------------
-
-! Write Chimera for route progress
-subroutine Output_Chimera_Route_Step(prob, mesh, dna, stop_base, str)
-    type(ProbType),  intent(in) :: prob
-    type(MeshType),  intent(in) :: mesh
-    type(DNAType),   intent(in) :: dna
-    integer,         intent(in) :: stop_base
-    character(10),   intent(in) :: str
-
-    double precision :: pos_1(3), pos_2(3)
-    integer :: i, id, up, base_1, base_2, node_1, node_2
-    logical :: f_axis
-    character(200) :: path
-
-    ! Set option
-    f_axis = para_chimera_axis
-
-    ! Open file
-    path = trim(prob.path_work1)//"step_bild\"//trim(prob.name_file)
-    open(unit=806, file=trim(path)//"_rstep_"//trim(str)//".bild", form="formatted")
-
-    ! Go to the first base of the strand
-    id = dna.strand(1).base(1)
-    do
-        if(dna.top(id).dn == -1) exit
-        id = dna.top(id).dn
-    end do
-
-    write(806, "(a)"), ".color steel blue"
-    do
-        ! If the ID meets the stop base number, terminate the current subroutine
-        if(id == stop_base) then
-            !exit
-            write(806, "(a)"), ".color grey"
-        end if
-
-        ! If the upper ID is negative, terminate loop
-        if(dna.top(id).up == -1) then
-            exit
-        end if
-
-        ! Set base ID
-        base_1 = dna.top(id).id
-        base_2 = dna.top(id).up
-
-        ! Set node number
-        node_1 = dna.top(base_1).node
-        node_2 = dna.top(base_2).node
-
-        ! Set position vector
-        pos_1(1:3) = mesh.node(node_1).pos(1:3)
-        pos_2(1:3) = mesh.node(node_2).pos(1:3)
-
-        write(806, "(a$    )"), ".cylinder "
-        write(806, "(3f9.3$)"), pos_1(1:3)
-        write(806, "(3f9.3$)"), pos_2(1:3)
-        write(806, "(1f9.3 )"), 0.15d0
-
-        ! Update ID number to upward base
-        id = dna.top(id).up
-    end do
-
-    ! Write global axis
-    if(f_axis == .true.) then
-        write(806, "(a)"), ".translate 0.0 0.0 0.0"
-        write(806, "(a)"), ".scale 0.5"
-        write(806, "(a)"), ".color grey"
-        write(806, "(a)"), ".sphere 0 0 0 0.5"      ! center
-        write(806, "(a)"), ".color red"             ! x-axis
-        write(806, "(a)"), ".arrow 0 0 0 4 0 0 "
-        write(806, "(a)"), ".color blue"            ! y-axis
-        write(806, "(a)"), ".arrow 0 0 0 0 4 0 "
-        write(806, "(a)"), ".color yellow"          ! z-axis
-        write(806, "(a)"), ".arrow 0 0 0 0 0 4 "
-    end if
-
-    close(unit=806)
-end subroutine Output_Chimera_Route_Step
-
-! ---------------------------------------------------------------------------------------
-
-! Make figures from route step
-subroutine Output_Figure_Route_Step(prob, n_progress)
-    type(ProbType), intent(in) :: prob
-    integer,  intent(in) :: n_progress
-
-    character(200) :: path, str
-    logical :: results
-    integer :: i
-
-    ! Make step directories for PNG files
-    if(para_fig_bgcolor == "WHITE" .or. para_fig_bgcolor == "white") then
-        ! --------------------------------------------------
-        ! White background
-        ! --------------------------------------------------
-        if(para_fig_view == "xy") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XY\")
-        else if(para_fig_view == "xz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XZ\")
-        else if(para_fig_view == "yz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_YZ\")
-        else if(para_fig_view == "xyz" .or. para_fig_view == "all" ) then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XYZ\")
-        end if
-    else if(para_fig_bgcolor == "black") then
-        ! --------------------------------------------------
-        ! Black background
-        ! --------------------------------------------------
-        if(para_fig_view == "xy") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XY\")
-        else if(para_fig_view == "xz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XZ\")
-        else if(para_fig_view == "yz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_YZ\")
-        else if(para_fig_view == "xyz" .or. para_fig_view == "all" ) then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XYZ\")
-        end if
-    else if(para_fig_bgcolor == "all") then
-        ! --------------------------------------------------
-        ! White and black background
-        ! --------------------------------------------------
-        if(para_fig_view == "xy") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XY\")
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XY\")
-        else if(para_fig_view == "xz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XZ\")
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XZ\")
-        else if(para_fig_view == "yz") then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_YZ\")
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_YZ\")
-        else if(para_fig_view == "xyz" .or. para_fig_view == "all" ) then
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_white_XYZ\")
-            results = SYSTEMQQ("md "//trim(prob.path_work1)//"step_fig_black_XYZ\")
-        end if
-    end if
-
-    ! Make batch file to make figures
-    path = trim(prob.path_work1)//trim(prob.name_file)
-    open(unit=807, file=trim(path)//"_rstep.bat", form="formatted")
-
-    write(807, "(a)"), "@echo off"
-    do i = 1, n_progress
-
-        write(str, "(i0)"), i
-        str = trim(prob.name_file)//trim("_rstep_"//trim(str))
-
-        ! Make Python script to save imanges
-        if(i == 1) then
-            ! First Python script
-            call Chimera_Figure_Route_Step(prob, str, 1)
-        else if(i == n_progress) then
-            ! Last Python script
-            call Chimera_Figure_Route_Step(prob, str, 2)
-        else
-            call Chimera_Figure_Route_Step(prob, str, 0)
-        end if
-    end do
-
-    ! Write python file into batch script
-    path = " "//trim(prob.path_work1)//trim(prob.name_file)//"_rstep.py"
-    write(807, "(a)"), '"'//trim(prob.path_chimera)//'" --script'//path
-
-    ! Run batch file
-    path = trim(prob.path_work1)//trim(prob.name_file)
-    results = SYSTEMQQ("start cmd /C call "//trim(path)//"_rstep.bat")
-
-    close (unit=807)
-end subroutine Output_Figure_Route_Step
-
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write sequence based on cross-sectional line
 subroutine Output_Write_Sequence_CroL(prob, mesh, dna)
@@ -3376,6 +3157,6 @@ subroutine Output_Write_Sequence_CroL(prob, mesh, dna)
     close(unit=808)
 end subroutine Output_Write_Sequence_CroL
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Output

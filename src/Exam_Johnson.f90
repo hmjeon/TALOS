@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Johnson
+! Module - Exam_Johnson
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Johnson solids.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Johnson
 
@@ -37,7 +48,7 @@ module Exam_Johnson
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of gyroelongated pentagonal pyramid(J11)
 subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11(prob, geom)
@@ -111,7 +122,7 @@ subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11(prob, geom)
     geom.face(16).n_poi = 5; allocate(geom.face(16).poi(5)); geom.face(16).poi(1:5) = [  2,  4,  5, 3, 1 ]
 end subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of triangular bipyramid(J12)
 subroutine Exam_Johnson_Triangular_Bipyramid_J12(prob, geom)
@@ -169,7 +180,7 @@ subroutine Exam_Johnson_Triangular_Bipyramid_J12(prob, geom)
     geom.face(6).n_poi = 3; allocate(geom.face(6).poi(3)); geom.face(6).poi(1:3) = [ 3, 5, 2 ]
 end subroutine Exam_Johnson_Triangular_Bipyramid_J12
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of pentagonal bipyramid(J13)
 subroutine Exam_Johnson_Pentagonal_Bipyramid_J13(prob, geom)
@@ -237,7 +248,7 @@ subroutine Exam_Johnson_Pentagonal_Bipyramid_J13(prob, geom)
     geom.face(10).n_poi = 3; allocate(geom.face(10).poi(3)); geom.face(10).poi(1:3) = [ 5, 6, 7 ]
 end subroutine Exam_Johnson_Pentagonal_Bipyramid_J13
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of gyroelongated square bipyramid(J17)
 subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17(prob, geom)
@@ -310,7 +321,7 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17(prob, geom)
     geom.face(16).n_poi = 3; allocate(geom.face(16).poi(3)); geom.face(16).poi(1:3) = [  9,  3,  6 ]
 end subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of square gyrobicupola(J29)
 subroutine Exam_Johnson_Square_Gyrobicupola_J29(prob, geom)
@@ -391,7 +402,7 @@ subroutine Exam_Johnson_Square_Gyrobicupola_J29(prob, geom)
     geom.face(18).n_poi = 4; allocate(geom.face(18).poi(4)); geom.face(18).poi(1:4) = [  6, 12, 14,  7 ]
 end subroutine Exam_Johnson_Square_Gyrobicupola_J29
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of pentagonal orthocupolarotunda(J32)
 subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32(prob, geom)
@@ -490,7 +501,7 @@ subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32(prob, geom)
     geom.face(27).n_poi = 5; allocate(geom.face(27).poi(5)); geom.face(27).poi(1:5) = [ 12,  5,  2,  7, 14 ]
 end subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of pentagonal orthobirotunda(J34)
 subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34(prob, geom)
@@ -599,7 +610,7 @@ subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34(prob, geom)
     geom.face(32).n_poi = 5; allocate(geom.face(32).poi(5)); geom.face(32).poi(1:5) = [  3,  7,  6,  2,  1 ]
 end subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of elongated pentagonal gyrobicupola(J39)
 subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39(prob, geom)
@@ -708,7 +719,7 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39(prob, geom)
     geom.face(32).n_poi = 5; allocate(geom.face(32).poi(5)); geom.face(32).poi(1:5) = [ 18, 10, 11, 19, 24 ]
 end subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of elongated pentagonal gyrobirotunda(J43)
 subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43(prob, geom)
@@ -837,7 +848,7 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43(prob, geom)
     geom.face(42).n_poi = 5; allocate(geom.face(42).poi(5)); geom.face(42).poi(1:5) = [ 37, 36, 28, 24, 29 ]
 end subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of gyroelongated square bicupola(J45)
 subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45(prob, geom)
@@ -942,7 +953,7 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45(prob, geom)
     geom.face(34).n_poi = 4; allocate(geom.face(34).poi(4)); geom.face(34).poi(1:4) = [ 22, 18, 20, 24 ]
 end subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Pentagonal pyramid(J2)
 subroutine Exam_Johnson_Pentagonal_Pyramid_J2(prob, geom)
@@ -1001,7 +1012,7 @@ subroutine Exam_Johnson_Pentagonal_Pyramid_J2(prob, geom)
     geom.face(6).n_poi = 5; allocate(geom.face(6).poi(5)); geom.face(6).poi(1:5) = [ 1, 4, 6, 5, 2 ]
 end subroutine Exam_Johnson_Pentagonal_Pyramid_J2
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Elongated square bipyramid(J15)
 subroutine Exam_Johnson_Elongated_Square_Bipyramid_J15(prob, geom)
@@ -1070,6 +1081,6 @@ subroutine Exam_Johnson_Elongated_Square_Bipyramid_J15(prob, geom)
     geom.face(12).n_poi = 4; allocate(geom.face(12).poi(4)); geom.face(12).poi(1:4) = [  5, 10,  7, 2 ]
 end subroutine Exam_Johnson_Elongated_Square_Bipyramid_J15
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Johnson

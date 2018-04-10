@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Miscel
+! Module - Exam_Miscel
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Miscellaneous solids.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Miscel
 
@@ -34,7 +45,7 @@ module Exam_Miscel
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Heptagonal Bipyramid
 subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
@@ -104,7 +115,7 @@ subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
     geom.face(14).n_poi = 3; allocate(geom.face(14).poi(3)); geom.face(14).poi(1:3) = [ 8, 5, 9 ]
 end subroutine Exam_Miscel_Heptagonal_Bipyramid
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Enneagonal Trapezohedron
 subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
@@ -189,7 +200,7 @@ subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
     geom.face(18).n_poi = 4; allocate(geom.face(18).poi(4)); geom.face(18).poi(1:4) = [ 19, 18, 20,  7 ]
 end subroutine Exam_Miscel_Enneagonal_Trapezohedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Small Stell Dodecahedron
 subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
@@ -328,7 +339,7 @@ subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
     geom.face(60).n_poi = 3; allocate(geom.face(60).poi(3)); geom.face(60).poi(1:3) = [ 18, 15, 32 ]
 end subroutine Exam_Miscel_Small_Stell_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Rhombic Hexecontahedron
 subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
@@ -497,7 +508,7 @@ subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
     geom.face(60).n_poi = 4; allocate(geom.face(60).poi(4)); geom.face(60).poi(1:4) = [ 62, 39, 15, 48 ]
 end subroutine Exam_Miscel_Rhombic_Hexecontahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Goldberg dk5dgD
 subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
@@ -756,7 +767,7 @@ subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
     geom.face(72).n_poi = 5; allocate(geom.face(72).poi(5)); geom.face(72).poi(1:5) = [ 137, 138, 139, 140, 136 ]
 end subroutine Exam_Miscel_Goldberg_Dk5dgD
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Double Helix
 subroutine Exam_Miscel_Double_Helix(prob, geom)
@@ -905,7 +916,7 @@ subroutine Exam_Miscel_Double_Helix(prob, geom)
     geom.face(66).n_poi = 4; allocate(geom.face(66).poi(4)); geom.face(66).poi(1:4) = [ 33, 34, 35, 36 ]
 end subroutine Exam_Miscel_Double_Helix
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Nested Cube
 subroutine Exam_Miscel_Nested_Cube(prob, geom)
@@ -984,7 +995,7 @@ subroutine Exam_Miscel_Nested_Cube(prob, geom)
     geom.face(16).n_poi = 4; allocate(geom.face(16).poi(4)); geom.face(16).poi(1:4) = [  8,  5, 13, 16 ]
 end subroutine Exam_Miscel_Nested_Cube
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Nested Octahedron
 subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
@@ -1061,7 +1072,7 @@ subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
     geom.face(18).n_poi = 4; allocate(geom.face(18).poi(4)); geom.face(18).poi(1:4) = [ 6,  4, 10, 12 ]
 end subroutine Exam_Miscel_Nested_Octahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Torus
 subroutine Exam_Miscel_Torus(prob, geom)
@@ -1216,7 +1227,7 @@ subroutine Exam_Miscel_Torus(prob, geom)
     geom.face(72).n_poi = 3; allocate(geom.face(72).poi(3)); geom.face(72).poi(1:3) = [ 36, 29,  5 ]
 end subroutine Exam_Miscel_Torus
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Double Torus
 subroutine Exam_Miscel_Double_Torus(prob, geom)
@@ -1353,6 +1364,6 @@ subroutine Exam_Miscel_Double_Torus(prob, geom)
     geom.face(46).n_poi = 4; allocate(geom.face(46).poi(4)); geom.face(46).poi(1:4) = [ 15, 40, 44, 16 ]
 end subroutine Exam_Miscel_Double_Torus
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Miscel

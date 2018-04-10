@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Exam_Platonic
+! Module - Exam_Platonic
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the example of Platonic solids.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Exam_Platonic
 
@@ -29,7 +40,7 @@ module Exam_Platonic
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Tetrahedron
 subroutine Exam_Platonic_Tetrahedron(prob, geom)
@@ -111,7 +122,7 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
     !geom.face(4).n_poi = 3; allocate(geom.face(4).poi(3)); geom.face(4).poi(1:3) = [ 2, 3, 4 ]
 end subroutine Exam_Platonic_Tetrahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Cube
 subroutine Exam_Platonic_Cube(prob, geom)
@@ -182,7 +193,7 @@ subroutine Exam_Platonic_Cube(prob, geom)
     !face(6).n_poi = 4; allocate(face(6).poi(4)); face(6).poi(1:4) = [ 4, 7, 8, 6 ]
 end subroutine Exam_Platonic_Cube
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Octahedron
 subroutine Exam_Platonic_Octahedron(prob, geom)
@@ -252,7 +263,7 @@ subroutine Exam_Platonic_Octahedron(prob, geom)
     geom.face(8).n_poi = 3; allocate(geom.face(8).poi(3)); geom.face(8).poi(1:3) = [ 4, 6, 5 ]
 end subroutine Exam_Platonic_Octahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Dodecahedron
 subroutine Exam_Platonic_Dodecahedron(prob, geom)
@@ -321,7 +332,7 @@ subroutine Exam_Platonic_Dodecahedron(prob, geom)
     geom.face(12).n_poi = 5; allocate(geom.face(12).poi(5)); geom.face(12).poi(1:5) = [ 15, 16, 19, 20, 18 ]
 end subroutine Exam_Platonic_Dodecahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Example of Icosahedron
 subroutine Exam_Platonic_Icosahedron(prob, geom)
@@ -394,6 +405,6 @@ subroutine Exam_Platonic_Icosahedron(prob, geom)
     geom.face(20).n_poi = 3; allocate(geom.face(20).poi(3)); geom.face(20).poi(1:3) = [ 10, 12, 11 ]
 end subroutine Exam_Platonic_Icosahedron
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Exam_Platonic

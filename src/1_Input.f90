@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       1_Input
+! Module - Input
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define the function for the geometry and cross-section.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Input
 
@@ -38,7 +49,6 @@ module Input
     private Input_Print_Parameters
     private Input_Read_Parameter
     private Input_Reset_Para_Report
-    private Input_Set_Parameter_Dependence
     private Input_Set_Command
     private Input_Print_Problem
     private Input_Print_Section
@@ -64,7 +74,7 @@ module Input
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Initialize parameters and inputs
 subroutine Input_Initialize(prob, geom)
@@ -216,7 +226,7 @@ subroutine Input_Initialize(prob, geom)
     call Input_Print_Parameters(prob, geom)
 end subroutine Input_Initialize
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Initialize all parameters
 subroutine Input_Initialize_Report(prob, geom, mesh, i, sec, edge, char_vert, char_cut)
@@ -345,7 +355,7 @@ subroutine Input_Initialize_Report(prob, geom, mesh, i, sec, edge, char_vert, ch
     call Input_Print_Parameters(prob, geom)
 end subroutine Input_Initialize_Report
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print progress
 subroutine Input_Print_Parameters(prob, geom)
@@ -474,7 +484,7 @@ subroutine Input_Print_Parameters(prob, geom)
     end do
 end subroutine Input_Print_Parameters
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Read parameters from external txt file, env.txt
 subroutine Input_Read_Parameter
@@ -493,16 +503,8 @@ subroutine Input_Read_Parameter
         ! Program parameters
         read(1, *), ctemp, para_preset
         read(1, *), ctemp, para_output_Tecplot
-        read(1, *), ctemp, para_cmd_Tecplot
-        read(1, *), ctemp, para_cmd_Chimera
-        read(1, *), ctemp, para_fig_output
-        read(1, *), ctemp, para_fig_route_step
-        read(1, *), ctemp, para_fig_bgcolor
         read(1, *), ctemp, para_fig_view
-        read(1, *), ctemp, para_n_route_step
         read(1, *), ctemp, para_type_cndo
-        read(1, *), ctemp
-        read(1, "(a100)"), para_path_Chimera
 
         ! Parameters for junction modification
         read(1, *), ctemp, para_junc_ang
@@ -602,13 +604,10 @@ subroutine Input_Read_Parameter
         read(1, *), ctemp, para_chimera_609_dir
     end if
 
-    ! Set parameter dependence
-    call Input_Set_Parameter_Dependence
-
     close(unit=1)
 end subroutine Input_Read_Parameter
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Reset paramters as default values
 subroutine Input_Reset_Para_Report
@@ -616,16 +615,8 @@ subroutine Input_Reset_Para_Report
     ! Program parameters
     para_preset          = "on"     ! [on, off], Preset parameter defined in pre-defined examples
     !para_output_Tecplot  = "off"    ! [off, on], Output files for Tecplot(http://www.tecplot.com/) to draw vector image
-    para_cmd_Tecplot     = "off"    ! [off, on], Command file to run TecPlot automatically
-    para_cmd_Chimera     = "off"    ! [off, on], Command file to run UCSF Chimera(https://www.cgl.ucsf.edu/chimera/) automatically
-    para_fig_output      = "off"    ! [off, on], Automatic figure generation from outputs
-    para_fig_route_step  = "off"    ! [off, on], Automatic figure generation from route steps
-    para_fig_bgcolor     = "black"  ! [black, white, all], Background color for figures from UCSF Chimera
     para_fig_view        = "xy"     ! [xy, xz, xyz, all], Viewpoint for figures from UCSF Chimera
-    para_n_route_step    = 5        ! [5], The number of steps in routing progress
     para_type_cndo       = 2        ! [1, 2], CanDo file option, 1 : original format, 2 : updated format
-    para_path_Chimera    = &        ! UCSF Chimera program path
-        "C:\Program Files\Chimera 1.10.2\bin\chimera.exe"
 
     ! Parameters for junction modification
     para_junc_ang        = "opt"    ! [opt, max, ave, min], Junction gap modification for different arm angle
@@ -681,77 +672,9 @@ subroutine Input_Reset_Para_Report
     !para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
     !para_n_base_tn       = 7        ! The number of nucleotides
     ! =======================================================================================================
-
-    ! Set parameter dependence
-    call Input_Set_Parameter_Dependence
 end subroutine Input_Reset_Para_Report
 
-! ---------------------------------------------------------------------------------------
-
-! Set parameter dependence
-subroutine Input_Set_Parameter_Dependence
-
-    ! For auto generation of output figures
-    if(para_fig_output == "on" .or. para_cmd_Chimera == "on") then
-        para_fig_bgcolor      = "white"     ! [black, white, all], Background color
-        para_chimera_axis     = .false.     ! Plot with axis at the ceneter of geometry (*.bild)
-        para_chimera_102_info = .false.     ! Plot with edge and point number (_01_init_geo.bild)
-        para_chimera_301_info = .false.     ! Plot with edge and point number (_check_geo.bild)
-        para_chimera_302_info = .false.     ! Plot with edge and point number (_02_init_geo_local.bild)
-        para_chimera_303_info = .false.     ! Plot with edge and point number (_03_sep_line.bild)
-        para_chimera_401_info = .false.     ! Plot with edge and point number (_cross_geo.bild)
-        para_chimera_502_ori  = .false.     ! Plot with helix z-direction (_line.bild / _node.bild)
-        para_chimera_503_mod  = .false.     ! Plot with modified edges (_mesh.bild)
-        para_chimera_504_info = .false.     ! Plot with edge and point number (_06_multi_line.bild)
-        para_chimera_601_dir  = .false.     ! Plot with strand direction (_scaf.bild / _stap.bild)
-        para_chimera_609_cyl  = .false.     ! Plot with cylinderical representation (_atom.bild)
-        para_chimera_609_dir  = .false.     ! Plot with strand direction (_atom.bild)
-
-        ! UCSF Chimera output control
-        if(para_fig_output == "on") then
-            para_write_101   = .false.      !  GEO file,                                Input_Write_GEO_File,             ".geo"
-            para_write_102   = .false.      !  Initial geometry,                        Input_Chimera_Init_Geometry,      "_01_init_geo.bild"
-            para_write_103   = .false.      !  Faced initial geometry,                  Input_Tecplot_Init_Geometry,      "init_geo_face.dat"
-            para_write_104   = .false.      !  Schlegel diagram,                        Input_Chimera_Schlegel_Diagram,   "_schlegel.bild"
-            para_write_301   = .false.      !  Initial geometry with face orientation,  ModGeo_Chimera_Check_Geometry,    "_check_geo.bild"
-            para_write_302   = .false.      !  Initial geometry with local vector,      ModGeo_Chimera_Init_Geometry_L,   "_02_init_geo_local.bild"
-            para_write_303   = .false.      !  Modified geometry seperated from vertex, ModGeo_Chimera_Mod_Geometry,      "_03_sep_line.bild"
-            para_write_401   = .false.      !  Cross-sectional geometry,                Section_Chimera_Cross_Geometry,   "_cross_geo.bild"
-            para_write_501   = .false.      !  Cylindrical model with orientation,      Basepair_Chimera_Cylinder_Ori,    "_cyl_ori1.bild"
-            para_write_502   = .true.       ! *Cylindrical model,                       Basepair_Chimera_Cylinder,        "_04_cylinder_1.bild", "_05_cylinder_2.bild"
-            para_write_503   = .false.      !  Basepair model,                          Basepair_Chimera_Mesh,            "_mesh.bild"
-            para_write_504   = .false.      !  Cross-sectional geometry,                Basepair_Chimera_Cross_Geometry,  "_06_multi_line.bild"
-            para_write_505   = .true.       ! *Txt file on edge length,                 Basepair_Write_Edge_Length,       "_edge_length_1.txt", "_edge_length_2.txt"
-            para_write_601_1 = .false.      !  Route 1, seperated edges,                Route_Chimera_Route, step 1,      "_route1_scaf.bild", "_route1_stap.bild"
-            para_write_601_2 = .false.      !  Route 2, contruction closed loop,        Route_Chimera_Route, step 2,      "_route2_scaf.bild", "_route2_stap.bild"
-            para_write_601_3 = .false.      !  Route 3, centered crossovers             Route_Chimera_Route, step 3,      "_route3_scaf.bild", "_route3_stap.bild"
-            para_write_601_4 = .false.      !  Route 4, modified centered crossovers,   Route_Chimera_Route, step 4,      "_route4_scaf.bild", "_route4_stap.bild"
-            para_write_601_5 = .false.      !  Route 5, scaffold route,                 Route_Chimera_Route, step 5,      "_route5_scaf.bild", "_route5_stap.bild"
-            para_write_606   = .false.      !  Sapnning tree for dual-graph,            Route_Graph_Chimera_Spanning_Tre, "_07_spantree.bild"
-            para_write_607   = .false.      !  Crossovers based on basepair model,      Route_Chimera_Crossovers,         "_08_xovers.bild"
-            para_write_608   = .false.      !  3-orientation vectors,                   Route_Chimera_Orientation,        "_orientation.bild"
-            para_write_609   = .false.      !  Atomic model without sequence design,    Route_Chimera_Atom,               "_atom.bild"
-            para_write_610   = .false.      !  Possible centered scaffold crossovers,   Route_Write_Centered_Scaf_Xover,  "_scaf_xover.txt"
-            para_write_701   = .false.      !  Txt on sequence design data,             SeqDesign_Write_Strand,           "TXT_Sequence.txt"
-            para_write_711   = .false.      !  CSV file for sequence data,              SeqDesign_Write_Strand,           "sequence.csv"
-            para_write_702   = .false.      !  Atomic model with sequence design,       SeqDesign_Chimera_Atom,           "_09_atom_model.bild"
-            para_write_703   = .false.      !  Route 6, strand route with nick,         SeqDesign_Chimera_Route,          "_10_route_scaf.bild", "_11_route_stap.bild"
-            para_write_705   = .false.      !  Sequence model,                          SeqDesign_Chimera_Sequence,       "_12_route_all.bild"
-            para_write_706   = .false.      !  Atomic model bases on strands/sequence,  SeqDesign_Chimera_Strand,         "_strand.bild", "_sequence.bild"
-            para_write_710   = .false.      !  Edge-based sequence design,              SeqDesign_Write_Graphical_Output, "_design_edgeX"
-            para_write_801   = .false.      !  Txt on basepair based data,              Output_Write_Basepair,            "_basepair.txt"
-            para_write_802   = .false.      !  Txt on nucleotide based data,            Output_Write_Base,                "_base.txt"
-            para_write_803   = .true.       ! *CanDo input file,                        Output_Write_CanDo,               "_16_cndo.cndo"
-            para_write_804   = .false.      !  Tecplot input file,                      Output_Write_TecPlot,             "_tecplot.dat"
-            para_write_805   = .false.      !  ADINA input file,                        Output_Write_ADINA,               "_adina.in"
-            para_write_808   = .false.      !  Txt on sectional edges based sequence,   Output_Write_Sequence_CroL,       "_seq_line.txt"
-            para_type_cndo   = 2            !  [1, 2], CanDo file option, 1 : original format, 2 : updated format
-            para_cmd_Chimera = "on"
-        end if
-    end if
-end subroutine Input_Set_Parameter_Dependence
-
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set command environment
 subroutine Input_Set_Command
@@ -766,7 +689,7 @@ subroutine Input_Set_Command
     !results = SYSTEMQQ('ver')                               ! display version information
 end subroutine Input_Set_Command
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined problems
 subroutine Input_Print_Problem
@@ -816,7 +739,7 @@ subroutine Input_Print_Problem
     write(0, "(a)"), "   Select the number or type geometry file (*.ply) [Enter] : "
 end subroutine Input_Print_Problem
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print vertex design options
 subroutine Input_Print_Vertex_Design
@@ -830,7 +753,7 @@ subroutine Input_Print_Vertex_Design
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Vertex_Design
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined cross-sections
 subroutine Input_Print_Section
@@ -849,7 +772,7 @@ subroutine Input_Print_Section
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Section
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined cross-sections
 subroutine Input_Print_Section1
@@ -881,7 +804,7 @@ subroutine Input_Print_Section1
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Section1
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined cross-sections
 subroutine Input_Print_Section2
@@ -924,7 +847,7 @@ subroutine Input_Print_Section2
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Section2
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined the number of base pair on edges
 subroutine Input_Print_Num_BP_Edge(prob)
@@ -945,7 +868,7 @@ subroutine Input_Print_Num_BP_Edge(prob)
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Num_BP_Edge
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print pre-defined the number of base pair on edges
 subroutine Input_Print_Num_BP_Edge1(prob)
@@ -994,7 +917,7 @@ subroutine Input_Print_Num_BP_Edge1(prob)
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Num_BP_Edge1
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set problem to be solved
 subroutine Input_Set_Problem(prob, geom)
@@ -1006,7 +929,7 @@ subroutine Input_Set_Problem(prob, geom)
     if(prob.sel_prob /= 0) call Input_Select_Problem(prob, geom)
 end subroutine Input_Set_Problem
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set vertex design
 subroutine Input_Set_Vertex_Design(prob)
@@ -1021,7 +944,7 @@ subroutine Input_Set_Vertex_Design(prob)
     print *, para_vertex_design
 end subroutine Input_Set_Vertex_Design
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! File selector
 subroutine Input_Select_File(prob, geom)
@@ -1104,7 +1027,7 @@ subroutine Input_Select_File(prob, geom)
     !end do
 end subroutine Input_Select_File
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Select the pre-defined example from user input
 subroutine Input_Select_Problem(prob, geom)
@@ -1202,7 +1125,7 @@ subroutine Input_Select_Problem(prob, geom)
     end select
 end subroutine Input_Select_Problem
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set cross-section based on square or honeycomb lattices
 subroutine Input_Set_Section(prob, geom)
@@ -1287,7 +1210,7 @@ subroutine Input_Set_Section(prob, geom)
     call Input_Find_Max_Min_Section(geom)
 end subroutine Input_Set_Section
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set cross-section based on square or honeycomb lattices
 subroutine Input_Set_Section1(prob, geom)
@@ -1445,7 +1368,7 @@ subroutine Input_Set_Section1(prob, geom)
     call Input_Find_Max_Min_Section(geom)
 end subroutine Input_Set_Section1
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set cross-section based on square or honeycomb lattices
 subroutine Input_Set_Section2(prob, geom)
@@ -2088,7 +2011,7 @@ subroutine Input_Set_Section2(prob, geom)
     call Input_Find_Max_Min_Section(geom)
 end subroutine Input_Set_Section2
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Find maximum and minimum sectional row and column
 subroutine Input_Find_Max_Min_Section(geom)
@@ -2119,7 +2042,7 @@ subroutine Input_Find_Max_Min_Section(geom)
     end if
 end subroutine Input_Find_Max_Min_Section
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set section connectivity in the defined initial section
 subroutine Input_Set_Section_Connectivity(prob, geom)
@@ -2199,7 +2122,7 @@ subroutine Input_Set_Section_Connectivity(prob, geom)
     end if
 end subroutine Input_Set_Section_Connectivity
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set edge-length of the target DNA structure
 subroutine Input_Set_Num_BP_Edge(prob, geom)
@@ -2222,7 +2145,7 @@ subroutine Input_Set_Num_BP_Edge(prob, geom)
     end if
 end subroutine Input_Set_Num_BP_Edge
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set length of edge
 subroutine Input_Set_Num_BP_Edge1(prob, geom)
@@ -2263,7 +2186,7 @@ subroutine Input_Set_Num_BP_Edge1(prob, geom)
     !end if
 end subroutine Input_Set_Num_BP_Edge1
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Convert surface to line connectivity
 subroutine Input_Convert_Face_To_Line(geom)
@@ -2398,7 +2321,7 @@ subroutine Input_Convert_Face_To_Line(geom)
     deallocate(Basepair_con)
 end subroutine Input_Convert_Face_To_Line
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set geometric scale, initial minimum length of edge is set up 20 nm
 subroutine Input_Scale_Init_Geometry(geom)
@@ -2450,7 +2373,7 @@ subroutine Input_Scale_Init_Geometry(geom)
     !end do
 end subroutine Input_Scale_Init_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set working and Chimera path
 subroutine Input_Set_Path(prob)
@@ -2464,12 +2387,9 @@ subroutine Input_Set_Path(prob)
         prob.path_work1 = "output\"
         prob.path_work2 = "output/"
     end if
-
-    ! Set Chimera path
-    prob.path_chimera = trim(para_path_chimera)
 end subroutine Input_Set_Path
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Remove previous working directory and make new one
 subroutine Input_Set_Workplace(prob)
@@ -2492,7 +2412,7 @@ subroutine Input_Set_Workplace(prob)
     write(0, "(a)")
 end subroutine Input_Set_Workplace
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write geo file file
 subroutine Input_Write_GEO_File(prob, geom)
@@ -2597,7 +2517,7 @@ subroutine Input_Write_GEO_File(prob, geom)
     close(unit=101)
 end subroutine Input_Write_GEO_File
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write ply file file
 subroutine Input_Write_PLY_File(prob, geom)
@@ -2637,7 +2557,7 @@ subroutine Input_Write_PLY_File(prob, geom)
     close(unit=101)
 end subroutine Input_Write_PLY_File
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write initial geometry for Chimera
 subroutine Input_Chimera_Init_Geometry(prob, geom)
@@ -2772,7 +2692,7 @@ subroutine Input_Chimera_Init_Geometry(prob, geom)
     close(unit=102)
 end subroutine Input_Chimera_Init_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write initial geometry for Tecplot
 subroutine Input_Tecplot_Init_Geometry(prob, geom)
@@ -2859,7 +2779,7 @@ subroutine Input_Tecplot_Init_Geometry(prob, geom)
     close(unit=102)
 end subroutine Input_Tecplot_Init_Geometry
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Generate Schlegel diagram
 subroutine Input_Generate_Schlegel_Diagram(prob, geom)
@@ -2974,7 +2894,7 @@ subroutine Input_Generate_Schlegel_Diagram(prob, geom)
     deallocate(pos_xy)
 end subroutine Input_Generate_Schlegel_Diagram
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Write Schlegel diagram
 subroutine Input_Chimera_Schlegel_Diagram(prob, geom, pos_xy)
@@ -3064,6 +2984,6 @@ subroutine Input_Chimera_Schlegel_Diagram(prob, geom, pos_xy)
     close(unit=104)
 end subroutine Input_Chimera_Schlegel_Diagram
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Input

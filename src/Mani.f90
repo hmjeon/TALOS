@@ -1,16 +1,27 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                       Mani
+! Module - Mani
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define functions to initialize and set the data.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Mani
 
@@ -44,7 +55,7 @@ module Mani
 
 contains
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Set geometric type and view
 subroutine Mani_Set_View_Color(prob, color, view)
@@ -62,7 +73,7 @@ subroutine Mani_Set_View_Color(prob, color, view)
     para_fig_view = trim(adjustl(view))
 end subroutine Mani_Set_View_Color
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Print space
 subroutine Space(n_unit, num)
@@ -75,7 +86,7 @@ subroutine Space(n_unit, num)
     end do
 end subroutine Space
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 ! Adapted from http://www.star.le.ac.uk/~cgp/fortran.html (1 Mar 2016)
 function Mani_To_Upper(strIn) result(strOut)
@@ -94,7 +105,7 @@ function Mani_To_Upper(strIn) result(strOut)
     end do
 end function Mani_To_Upper
 
-! ---------------------------------------------------------------------------------------   
+! -----------------------------------------------------------------------------   
     
 ! Print progress bar
 subroutine Mani_Progress_Bar(index, max)

@@ -1,21 +1,31 @@
 !
-! ---------------------------------------------------------------------------------------
+! =============================================================================
 !
-!                                   Data_DNA
+! Module - Data_Geom
+! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
-!                                                                    Updated : 2017/04/29
+! =============================================================================
 !
-! Comments: This module is to define data sturcutre for geometric data including
-!           lines, points and faces.
+! This is part of PERDIX-6P, which allows scientists to build and solve
+! the sequence design of complex DNAnanostructures.
+! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
-! Script written by Hyungmin Jun (hyungminjun@outlook.com)
-! Copyright Hyungmin Jun, 2017. All rights reserved.
+! License - GPL version 3
+! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! the terms of the GNU General Public License as published by the Free Software
+! Foundation, either version 3 of the License, or any later version.
+! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+! FOR A PARTICULAR PURPOSE. See the GNU General Public License
+! for more details.
+! You should have received a copy of the GNU General Public License along with
+! this program. If not, see <http://www.gnu.org/licenses/>.
 !
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 !
 module Data_Geom
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
     ! Section data for arbitrary cross-section
     type :: SecType
@@ -37,7 +47,7 @@ module Data_Geom
         integer, allocatable :: conn(:)
     end type SecType
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
     ! Point type data structure
     type :: PointType
@@ -45,7 +55,7 @@ module Data_Geom
         double precision :: ori_pos(3)  ! Original position vector
     end type PointType
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
     ! Line type data structure
     type :: LineType
@@ -62,7 +72,7 @@ module Data_Geom
         double precision :: t(3, 3) ! Local vector at the center
     end type LineType
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
     ! Face type data structure
     type :: FaceType
@@ -70,7 +80,7 @@ module Data_Geom
         integer, allocatable :: poi(:)  ! Connectivity
     end type FaceType
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
     ! Geometry data type to manage section, point, line and face data
     type :: Geomtype
@@ -87,6 +97,6 @@ module Data_Geom
         type(FaceType),  allocatable :: face(:)                     ! Face
     end type Geomtype
 
-! ---------------------------------------------------------------------------------------
+! -----------------------------------------------------------------------------
 
 end module Data_Geom
