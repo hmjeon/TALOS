@@ -79,8 +79,8 @@ subroutine Input_Initialize(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    integer :: arg, i, j, n_section, n_vertex, n_edge_len, len_char
-    character(10) :: c_sec, c_edge_len, c_vertex, c_stap_break
+    integer :: arg, i, j, n_section, n_vertex, n_edge_len, len_char, ppos
+    character(10) :: c_sec, c_edge_len, c_vertex
     character(100) :: c_prob
     logical :: results
 
@@ -99,23 +99,21 @@ subroutine Input_Initialize(prob, geom)
         call Input_Print_Problem
         read(*, *), c_prob
 
-        if(len_trim(c_prob) <= 3) then
-
+        ppos = scan(trim(c_prob), ".", BACK = .true.)
+        if(ppos > 0) then
+            prob.sel_prob  = 0
+            len_char       = len_trim(c_prob)
+            prob.name_file = trim(adjustl(c_prob(1:ppos-1)))
+            prob.type_file = trim(adjustl(c_prob(ppos+1:len_char)))
+        else
             read(c_prob, *), prob.sel_prob
 
             ! The negative value terminate the program
             if(prob.sel_prob <= 0) stop
-        else
-
-            prob.sel_prob  = 0
-            prob.name_file = c_prob
-            len_char       = len_trim(prob.name_file)
-            prob.type_file = prob.name_file(len_char-2:len_char)
-            prob.name_file = prob.name_file(1:len_char-4)
         end if
 
         ! Clean the screen
-        !results = SYSTEMQQ("cls")
+        results = SYSTEMQQ("cls")
 
         ! Print vertex design options
         call Input_Print_Vertex_Design()
@@ -146,18 +144,18 @@ subroutine Input_Initialize(prob, geom)
         arg = 2; call getarg(arg, c_vertex)     ! 2nd argument, vertex design
         arg = 3; call getarg(arg, c_sec)        ! 3rd argument, section
         arg = 4; call getarg(arg, c_edge_len)   ! 4th argument, edge length
-        arg = 5; call getarg(arg, c_stap_break) ! 5th argument, staple-break rule
 
-        if(len_trim(c_prob) <= 3) then
-
-            read(c_prob, *), prob.sel_prob
-        else
-
+        ppos = scan(trim(c_prob), ".", BACK = .true.)
+        if(ppos > 0) then
             prob.sel_prob  = 0
-            prob.name_file = c_prob
-            len_char       = len_trim(prob.name_file)
-            prob.type_file = prob.name_file(len_char-2:len_char)
-            prob.name_file = prob.name_file(1:len_char-4)
+            len_char       = len_trim(c_prob)
+            prob.name_file = trim(adjustl(c_prob(1:ppos-1)))
+            prob.type_file = trim(adjustl(c_prob(ppos+1:len_char)))
+        else
+            read(c_prob, *), prob.sel_prob
+
+            ! The negative value terminate the program
+            if(prob.sel_prob <= 0) stop
         end if
 
         read(c_sec,      *), n_section
@@ -166,10 +164,9 @@ subroutine Input_Initialize(prob, geom)
 
         ! Set inputs for geometry, section, edge length, vertex design, stap-break rule
         ! Zero means that it will take arbitrary inputs
-        prob.sel_sec         = n_section
-        prob.sel_bp_edge     = n_edge_len
-        prob.sel_vertex      = n_vertex
-        para_cut_stap_method = trim(c_stap_break)
+        prob.sel_sec     = n_section
+        prob.sel_bp_edge = n_edge_len
+        prob.sel_vertex  = n_vertex
     end if
 
     ! ==================================================
