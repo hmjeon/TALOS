@@ -1,15 +1,16 @@
-# Makefiles for PERDIX-2L
+# Makefiles for PERDIX-6P
 objects = Data_Bound.o Data_DNA.o Data_Geom.o Data_Mesh.o Data_Prob.o \
 	Para.o List.o Mani.o Math.o SpanTree.o Importer.o \
-	Exam_2D_Open.o \
+	Exam_Platonic.o Exam_Archi.o \
+	Exam_Johnson.o Exam_Catalan.o Exam_Miscel.o \
 	3_Section.o 1_Input.o 2_ModGeo.o 4_Basepair.o 5_Route.o \
-	6_SeqDesign.o 7_Output.o PERDIX-2L.o
+	6_SeqDesign.o 7_Output.o PERDIX-6P.o
 
 f90comp = ifort
 
 # Makefile
-PERDIX-2L: $(objects)
-	$(f90comp) -o PERDIX-2L $(objects)
+PERDIX-6P: $(objects)
+	$(f90comp) -o PERDIX-6P $(objects)
 
 Data_Bound.mod: Data_Bound.o Data_Bound.f90
 	$(f90comp) -c Data_Bound.f90
@@ -66,10 +67,30 @@ Importer.mod: Importer.o Importer.f90
 Importer.o: Importer.f90
 	$(f90comp) -c Importer.f90
 
-Exam_2D_Open.mod: Exam_2D_Open.o Exam_2D_Open.f90
-	$(f90comp) -c Exam_2D_Open.f90
-Exam_2D_Open.o: Exam_2D_Open.f90
-	$(f90comp) -c Exam_2D_Open.f90
+Exam_Platonic.mod: Exam_Platonic.o Exam_Platonic.f90
+	$(f90comp) -c Exam_Platonic.f90
+Exam_Platonic.o: Exam_Platonic.f90
+	$(f90comp) -c Exam_Platonic.f90
+
+Exam_Archi.mod: Exam_Archi.o Exam_Archi.f90
+	$(f90comp) -c Exam_Archi.f90
+Exam_Archi.o: Exam_Archi.f90
+	$(f90comp) -c Exam_Archi.f90
+
+Exam_Johnson.mod: Exam_Johnson.o Exam_Johnson.f90
+	$(f90comp) -c Exam_Johnson.f90
+Exam_Johnson.o: Exam_Johnson.f90
+	$(f90comp) -c Exam_Johnson.f90
+
+Exam_Catalan.mod: Exam_Catalan.o Exam_Catalan.f90
+	$(f90comp) -c Exam_Catalan.f90
+Exam_Catalan.o: Exam_Catalan.f90
+	$(f90comp) -c Exam_Catalan.f90
+
+Exam_Miscel.mod: Exam_Miscel.o Exam_Miscel.f90
+	$(f90comp) -c Exam_Miscel.f90
+Exam_Miscel.o: Exam_Miscel.f90
+	$(f90comp) -c Exam_Miscel.f90
 
 3_Section.mod : 3_Section.o 3_Section.f90
 	$(f90comp) -c 3_Section.f90
@@ -106,10 +127,10 @@ Exam_2D_Open.o: Exam_2D_Open.f90
 7_Output.o : 7_Output.f90
 	$(f90comp) -c 7_Output.f90
 
-PERDIX-2L.mod : PERDIX-2L.o PERDIX-2L.f90
-	$(f90comp) -c PERDIX-2L.f90
-PERDIX-2L.o : PERDIX-2L.f90
-	$(f90comp) -c PERDIX-2L.f90
+PERDIX-6P.mod : PERDIX-6P.o PERDIX-6P.f90
+	$(f90comp) -c PERDIX-6P.f90
+PERDIX-6P.o : PERDIX-6P.f90
+	$(f90comp) -c PERDIX-6P.f90
 
 # Cleaning everything
 clean :
