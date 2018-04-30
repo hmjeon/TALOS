@@ -1,8 +1,9 @@
 Running PERDIX on command line
 
-ex) PERDIX-2L 1 0 42          <- pre-defined geometry(1-square) with 42-bp as minimum edge lenth
-ex) PERDIX-2L abc.iges 2 46   <- User-defined geometry named as abc.iges with 46-bp as edge number 2
+ex) PERDIX-6P 1 2 1 2           <- 6HB Tetrahedron 63bp - mitered vertex
+ex) PERDIX-6P ex_tet.ply 1 1 3  <- User-defined geometry named as ex_tet.ply with 84-bp - flat vertex
 
-- First input: Target geometry
-- Second input: Target edge
-- Third input: Edge length of the target edge
+- First input: Target geometry - Pre-defined geometries (from 0 to 45) or type geometry file name
+- Second input: Flat (1) and mitered (2)
+- Third input: Inner (1) or middle (2) reference
+- Third input: Minimum edge length
