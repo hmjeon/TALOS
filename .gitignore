@@ -25,9 +25,9 @@
 
 # Executables
 *.exe
-!release/PERDIX-6P.exe
 !make/tools/sleep.exe
 !make/tools/meshconv.exe
+!release/Win/PERDIX-6P.exe
 *.out
 *.app
 make/Debug

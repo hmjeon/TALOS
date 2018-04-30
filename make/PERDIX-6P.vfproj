@@ -62,12 +62,10 @@
 		<File RelativePath="..\src\SpanTree.f90"/></Filter>
 		<Filter Name="Input">
 		<File RelativePath="..\src\Exam_Archi.f90"/>
-		<File RelativePath="..\src\Exam_Asym.f90"/>
 		<File RelativePath="..\src\Exam_Catalan.f90"/>
 		<File RelativePath="..\src\Exam_Johnson.f90"/>
 		<File RelativePath="..\src\Exam_Miscel.f90"/>
 		<File RelativePath="..\src\Exam_Platonic.f90"/>
-		<File RelativePath="..\src\Exam_Prism.f90"/>
 		<File RelativePath="..\src\Importer.f90"/></Filter>
 		<Filter Name="PERDIX-6P">
 		<File RelativePath="..\src\1_Input.f90"/>

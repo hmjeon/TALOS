@@ -32,8 +32,6 @@ module Input
     use Exam_Catalan
     use Exam_Johnson
     use Exam_Miscel
-    use Exam_Asym
-    use Exam_Prism
 
     use Section
 
@@ -1094,29 +1092,6 @@ subroutine Input_Select_Problem(prob, geom)
         case (43); call Exam_Miscel_Nested_Octahedron        (prob, geom)
         case (44); call Exam_Miscel_Torus                    (prob, geom)
         case (45); call Exam_Miscel_Double_Torus             (prob, geom)
-
-        ! Pre-defined geometries: Asymmetric and non-convex objects
-        case (46); call Exam_Asym_Tetra_105_63_84_84_63_42   (prob, geom)
-        !case (47); call Exam_Asym_Tetra_63_63_63_73_52_42    (prob, geom)
-        !case (48); call Exam_Asym_Tri_Bipyramid_42_63_84_105 (prob, geom)
-
-        !case (48); call Exam_Asym_Triangle                       (prob, geom)
-        !case (49); call Exam_Asym_Biscribed_Propello_Tetrahedron (prob, geom)
-        !case (50); call Exam_Asym_Biscribed_Propello_Cube        (prob, geom)
-
-        !case (51); call Exam_Asym_Ball        (prob, geom)
-        !case (52); call Exam_Asym_Nickedtorus (prob, geom)
-        !case (53); call Exam_Asym_Helix       (prob, geom)
-        !case (54); call Exam_Asym_Rod         (prob, geom)
-        !case (55); call Exam_Asym_Stickman    (prob, geom)
-        !case (56); call Exam_Asym_Bottle      (prob, geom)
-        !case (57); call Exam_Asym_Bunny       (prob, geom)
-
-        ! Pre-defined geometries: prism
-        !case (64); call Exam_Prism_Triangular_Prism (prob, geom)
-        !case (64); call Exam_Prism_Triangular       (prob, geom)
-        !case (65); call Exam_Prism_Pentagonal       (prob, geom)
-        !case (66); call Exam_Prism_Hexagonal        (prob, geom)
 
         case default
             write(0, "(a$)"), "Error - Not defined problem : "
