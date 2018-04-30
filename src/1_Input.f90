@@ -115,7 +115,7 @@ subroutine Input_Initialize(prob, geom)
         end if
 
         ! Clean the screen
-        results = SYSTEMQQ("cls")
+        !results = SYSTEMQQ("cls")
 
         ! Print vertex design options
         call Input_Print_Vertex_Design()
@@ -492,114 +492,12 @@ subroutine Input_Read_Parameter
     ! Open file
     open(unit=1, file="env.txt", form="formatted")
 
-    ! External parameter loading, this should be always ".true."
     read(1, *), ctemp, para_platform
 
-    ! If the external mode is on
+    ! If the mode is not dev
     if(para_platform /= "dev") then
-
-        ! Program parameters
-        read(1, *), ctemp, para_preset
-        read(1, *), ctemp, para_output_Tecplot
-        read(1, *), ctemp, para_fig_view
-        read(1, *), ctemp, para_type_cndo
-
-        ! Parameters for junction modification
-        read(1, *), ctemp, para_junc_ang
-        read(1, *), ctemp, para_const_edge_mesh
-        read(1, *), ctemp, para_sticky_self
-        read(1, *), ctemp, para_unpaired_scaf
-        read(1, *), ctemp, para_vertex_modify
-        read(1, *), ctemp, para_vertex_design
-        read(1, *), ctemp, para_mitered_method
-
-        ! Paramters for B-from DNA generation
-        read(1, *), ctemp, para_dist_pp
-        read(1, *), ctemp, para_dist_bp
-        read(1, *), ctemp, para_rad_helix
-        read(1, *), ctemp, para_gap_helix
-        read(1, *), ctemp, para_ang_minor
-        read(1, *), ctemp, para_ang_correct
-        read(1, *), ctemp, para_n_base_tn
-        read(1, *), ctemp, para_start_bp_ID
-
-        ! Paramters for scaffold route
-        read(1, *), ctemp, para_weight_edge
-        read(1, *), ctemp, para_method_MST
-        read(1, *), ctemp, para_method_sort
-        read(1, *), ctemp, para_adjacent_list
-        read(1, *), ctemp, para_all_spanning
-
-        ! Parameter for sequence design
-        read(1, *), ctemp, para_un_depend_angle
         read(1, *), ctemp, para_cut_stap_method
-        read(1, *), ctemp, para_set_stap_sxover
-        read(1, *), ctemp, para_output_design
-        read(1, *), ctemp, para_set_xover_scaf
-        read(1, *), ctemp, para_gap_xover_two_scaf
-        read(1, *), ctemp, para_gap_xover_bound_scaf
-        read(1, *), ctemp, para_gap_xover_bound_stap
-        read(1, *), ctemp, para_gap_xover_two
-        read(1, *), ctemp, para_gap_xover_nick1
-        read(1, *), ctemp, para_gap_xover_nick
-        read(1, *), ctemp, para_pos_nick_scaf
-        read(1, *), ctemp, para_max_cut_scaf
-        read(1, *), ctemp, para_min_cut_stap
-        read(1, *), ctemp, para_mid_cut_stap
-        read(1, *), ctemp, para_max_cut_stap
         read(1, *), ctemp, para_set_seq_scaf
-        read(1, *), ctemp, para_set_start_scaf
-
-        ! UCSF Chimera output control
-        read(1, *), ctemp, para_write_101
-        read(1, *), ctemp, para_write_102
-        read(1, *), ctemp, para_write_103
-        read(1, *), ctemp, para_write_104
-        read(1, *), ctemp, para_write_301
-        read(1, *), ctemp, para_write_302
-        read(1, *), ctemp, para_write_303
-        read(1, *), ctemp, para_write_401
-        read(1, *), ctemp, para_write_501
-        read(1, *), ctemp, para_write_502
-        read(1, *), ctemp, para_write_503
-        read(1, *), ctemp, para_write_504
-        read(1, *), ctemp, para_write_505
-        read(1, *), ctemp, para_write_601_1
-        read(1, *), ctemp, para_write_601_2
-        read(1, *), ctemp, para_write_601_3
-        read(1, *), ctemp, para_write_601_4
-        read(1, *), ctemp, para_write_601_5
-        read(1, *), ctemp, para_write_606
-        read(1, *), ctemp, para_write_607
-        read(1, *), ctemp, para_write_608
-        read(1, *), ctemp, para_write_609
-        read(1, *), ctemp, para_write_610
-        read(1, *), ctemp, para_write_701
-        read(1, *), ctemp, para_write_711
-        read(1, *), ctemp, para_write_702
-        read(1, *), ctemp, para_write_703
-        read(1, *), ctemp, para_write_705
-        read(1, *), ctemp, para_write_706
-        read(1, *), ctemp, para_write_710
-        read(1, *), ctemp, para_write_801
-        read(1, *), ctemp, para_write_802
-        read(1, *), ctemp, para_write_803
-        read(1, *), ctemp, para_write_804
-        read(1, *), ctemp, para_write_805
-        read(1, *), ctemp, para_write_808
-
-        read(1, *), ctemp, para_chimera_axis
-        read(1, *), ctemp, para_chimera_102_info
-        read(1, *), ctemp, para_chimera_301_info
-        read(1, *), ctemp, para_chimera_302_info
-        read(1, *), ctemp, para_chimera_303_info
-        read(1, *), ctemp, para_chimera_401_info
-        read(1, *), ctemp, para_chimera_502_ori
-        read(1, *), ctemp, para_chimera_503_mod
-        read(1, *), ctemp, para_chimera_504_info
-        read(1, *), ctemp, para_chimera_601_dir
-        read(1, *), ctemp, para_chimera_609_cyl
-        read(1, *), ctemp, para_chimera_609_dir
     end if
 
     close(unit=1)
@@ -694,47 +592,43 @@ subroutine Input_Print_Problem
     write(0, "(a)")
     write(0, "(a)"), "       +=====================================================================================+"
     write(0, "(a)"), "       |                                                                                     |"
-    write(0, "(a)"), "       |      PERDIX-6P by Hyungmin Jun (hyungminjun@outlook.com), MIT, Bathe Lab, 2017      |"
+    write(0, "(a)"), "       |      PERDIX-6P by Hyungmin Jun (hyungminjun@outlook.com), MIT, Bathe Lab, 2018      |"
     write(0, "(a)"), "       |                                                                                     |"
     write(0, "(a)"), "       +=====================================================================================+"
     write(0, "(a)")
-    write(0, "(a)"), "   A. First input - Geometry discretized by surface mesh"
-    write(0, "(a)"), "   ====================================================="
+    write(0, "(a)"), "   A. First input - Pre-defined 3D target geometries"
+    write(0, "(a)"), "   ================================================="
     write(0, "(a)")
-    write(0, "(a)"), "      I - Platonic solids"
-    write(0, "(a)"), "          ---------------"
-    write(0, "(a)"), "        *1. Tetrahedron,      *2. Cube,      *3. Octahedron,      4. Dodecahedron,      5. Icosahedron"
+    write(0, "(a)"), "      [ Platonic solids ]"
+    write(0, "(a)"), "        *1. Tetrahedron,    *2. Cube,    *3. Octahedron,    4. Dodecahedron,    5. Icosahedron"
     write(0, "(a)")
-    write(0, "(a)"), "     II - Archimedean solids"
-    write(0, "(a)"), "          ------------------"
-    write(0, "(a)"), "         6. Cubeoctahedron,                7. Icosidodecahedron,            8. Rhombicuboctahedron"
-    write(0, "(a)"), "         9. Snub Cube,                    10. Truncated Cube,              11. Truncated Cuboctahedron"
-    write(0, "(a)"), "        12. Truncated Dodecahedron,       13. Truncated Icosahedron,       14. Truncated Octahedron"
-    write(0, "(a)"), "       *15. Truncated Tetrahedron"
+    write(0, "(a)"), "      [ Archimedean solids ]"
+    write(0, "(a)"), "         6. Cubeocta,                    7. Icosidodeca,               8. Rhombicubocta"
+    write(0, "(a)"), "         9. Snub Cube,                  10. Truncated Cube,           11. Truncated Cubocta"
+    write(0, "(a)"), "        12. Truncated Dodeca,           13. Truncated Icosa,          14. Truncated Octa"
+    write(0, "(a)"), "       *15. Truncated Tetra"
     write(0, "(a)")
-    write(0, "(a)"), "    III - Johnson solids"
-    write(0, "(a)"), "          --------------"
-    write(0, "(a)"), "        16. Gyroelongated Pentagonal Pyramid (J11),      *17. Triangular Bipyramid (J12)"
-    write(0, "(a)"), "       *18. Pentagonal Bipyramid (J13),                   19. Gyroelongated Square Bipyramid (J17)"
-    write(0, "(a)"), "        20. Square Gyrobicupola (J29),                    21. Pentagonal Orthocupolarotunda (J32)"
-    write(0, "(a)"), "        22. Pentagonal Orthobirotunda (J34),              23. Elongated Pentagonal Gyrobicupola (J39)"
-    write(0, "(a)"), "        24  Elongated Pentagonal Gyrobirotunda (J43),     25. Gyroelongated Square Bicupola (J45)"
+    write(0, "(a)"), "      [ Johnson solids ]"
+    write(0, "(a)"), "        16. Gyroelongated Penta Pyramid,              *17. Triangular Bipyramid"
+    write(0, "(a)"), "       *18. Penta Bipyramid,                           19. Gyroelongated Square Bipyramid"
+    write(0, "(a)"), "        20. Square Gyrobicupola,                       21. Penta Orthocupolarotunda"
+    write(0, "(a)"), "        22. Penta Orthobirotunda,                      23. Elongated Penta Gyrobicupola"
+    write(0, "(a)"), "        24  Elongated Penta Gyrobirotunda,             25. Gyroelongated Square Bicupola"
     write(0, "(a)")
-    write(0, "(a)"), "     IV - Catalan solids"
-    write(0, "(a)"), "          --------------"
-    write(0, "(a)"), "        26. Rhombic Dodecahedron,         27. Rhombic Triacontahedron,  28. Deltoidal Icositetrahedron"
-    write(0, "(a)"), "        29. Pentagonal Icositetrahedron,  30. Triakis Octahedron,       31. Disdyakis Dodecahedron"
-    write(0, "(a)"), "        32. Triakis Icosahedron,          33. Pentakis Dodecahedron,    34. Tetrakis Hexahedron"
-    write(0, "(a)"), "        35. Triakis Tetrahedron"
+    write(0, "(a)"), "      [ Catalan solids ]"
+    write(0, "(a)"), "        26. Rhombic Dodeca,         27. Rhombic Triaconta,       28. Deltoidal Icositetra"
+    write(0, "(a)"), "        29. Penta Icositetra,       30. Triakis Octa,            31. Disdyakis Dodeca"
+    write(0, "(a)"), "        32. Triakis Icosa,          33. Pentakis Dodecahe,       34. Tetrakis Hexa"
+    write(0, "(a)"), "        35. Triakis Tetra"
     write(0, "(a)")
-    write(0, "(a)"), "      V - Miscellaneous polyhedra"
-    write(0, "(a)"), "          -----------------------"
-    write(0, "(a)"), "        36. Heptagonal Bipyramid,       37. Enneagonal Trapezohedron,    38. Small Stell Dodecahedron"
-    write(0, "(a)"), "       #39. Rhombic Hexecontahedron,    40. Goldberg dk5dgD,            *41. Double Helix"
-    write(0, "(a)"), "        42. Nested Cube,               *43. Nested Octahedron,          *44. Torus"
+    write(0, "(a)"), "      [ Miscellaneous polyhedra ]"
+    write(0, "(a)"), "        36. Heptagonal Bipyramid,   37. Enneagonal Trapezo,      38. Small Stell Dodeca"
+    write(0, "(a)"), "       #39. Rhombic Hexeconta,      40. Goldberg dk5dgD,        *41. Double Helix"
+    write(0, "(a)"), "        42. Nested Cube,           *43. Nested Octa,            *44. Torus"
     write(0, "(a)"), "        45. Double Torus"
     write(0, "(a)")
     write(0, "(a)"), "   Select the number or type geometry file (*.ply) [Enter] : "
+    write(0, "(a)")
 end subroutine Input_Print_Problem
 
 ! -----------------------------------------------------------------------------

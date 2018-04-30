@@ -4886,14 +4886,37 @@ subroutine SeqDesign_Import_Sequence(dna)
     integer :: i, j, count, len_seq, n_base_scaf, base, across
     integer, parameter :: max_len = 20000
     character(max_len) :: seq
+    character(200) :: ctemp
 
     ! Encoding should be UTF-8
-    open(unit=701, file="seq.txt")
+    open(unit=701, file="env.txt", form="formatted")
+    read(701, *), ctemp, para_platform
+    read(701, *), ctemp, para_cut_stap_method
+    read(701, *), ctemp, para_set_seq_scaf
+
+    para_set_start_scaf = 1
 
     ! Read sequence and set the sequence lenghth
     read(701, "(a)"), seq
-    read(701, "(a)"), seq
     len_seq = len(trim(seq))
+
+    if(len_seq < dna.n_base_scaf) then
+        do i = 0, 11, 11
+            write(i, "(a)")
+            write(i, "(a)"), "   +====================================================================+"
+            write(i, "(a)"), "   |                                                                    |"
+            write(i, "(a)"), "   |  User-defined scaffold sequence length are shorter than            |"
+            write(i, "(a)"), "   |  # of scaffold nucleotides. PERDIX-6P will be terminated.          |"
+            write(i, "(a)"), "   |                                                                    |"
+            write(i, "(a)"), "   |                                                                    |"
+            write(i, "(a)"), "   +====================================================================+"
+            write(i, "(a)")
+            write(i, "(a)"), "      The length of the scaffold sequences: "//trim(adjustl(Int2Str(len_seq)))
+            write(i, "(a)"), "      # scaffold nt design by PERDIX: "//trim(adjustl(Int2Str(dna.n_base_scaf)))
+            write(i, "(a)")
+        end do
+        stop
+    end if
 
     ! Change upper case if low case
     seq = Mani_To_Upper(seq)
