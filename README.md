@@ -1,4 +1,4 @@
-## PERDIX-6L</br>
+## PERDIX-6P</br>
 
 > Welcome to the PERDIX project! PERDIX is an open-source software written by FORTRAN 90/95, which allows scientists to build and solve the sequence design of complex DNA 6HB wireframe nanoparticles.</br>
 
