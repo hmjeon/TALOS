@@ -25,7 +25,7 @@
 ```git clone https://github.com/hmjeon/PERDIX-6P.git```
 
 **Requirements:**</br>
-1. Intel Fortran compiler (tested version - Interl Parallel Studio XE 2016, 2017 and 2018)</br>
+Intel Fortran compiler (tested version - Interl Parallel Studio XE 2016, 2017 and 2018)</br>
 
 - Compiling the PERDIX sources require [Intel Fortran](https://software.intel.com/en-us/fortran-compilers). Intel Fortran is available under a free, non-commercial license for qualified students on Linux, OS X and WIndows, see the [details](https://software.intel.com/en-us/qualify-for-free-software/).</br>
 - The software document can be downloaded [here](./release/Software%20Document.pdf).</br>
