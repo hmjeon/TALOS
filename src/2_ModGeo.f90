@@ -568,7 +568,7 @@ subroutine ModGeo_Chimera_Check_Geometry(prob, geom)
     f_axis = para_chimera_axis
     f_info = para_chimera_301_info
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=301, file=trim(path)//"_check_geo.bild", form="formatted")
 
     ! Write initial lines
@@ -1003,7 +1003,7 @@ subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
     f_axis = para_chimera_axis
     f_info = para_chimera_302_info
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=302, file=trim(path)//"_02_init_geo_local.bild", form="formatted")
 
     ! Write modified lines
@@ -1103,7 +1103,7 @@ subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot\"//trim(prob.name_file)
     open(unit=302, file=trim(path)//"_02_init_geo_local.dat", form="formatted")
 
     write(302, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -1594,7 +1594,7 @@ subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
     f_axis = para_chimera_axis
     f_info = para_chimera_303_info
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=303, file=trim(path)//"_03_sep_line.bild", form="formatted")
 
     ! Write modified points
@@ -1697,7 +1697,7 @@ subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=303, file=trim(path)//"_03_sep_line.dat", form="formatted")
 
     write(303, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'

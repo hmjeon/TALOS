@@ -56,17 +56,8 @@ subroutine Exam_Archi_Cubeoctahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Cubeoctahedron"
-    prob.name_file = "06_Cubeocta"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "06_Cubeocta"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -80,9 +71,6 @@ subroutine Exam_Archi_Cubeoctahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xz")
 
     ! The number of points and faces
     geom.n_iniP = 12
@@ -123,17 +111,8 @@ subroutine Exam_Archi_Icosidodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Icosidodecahedron"
-    prob.name_file = "07_Icosidodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "07_Icosidodeca"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -147,9 +126,6 @@ subroutine Exam_Archi_Icosidodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xz")
 
     ! The number of points and faces
     geom.n_iniP = 30
@@ -217,17 +193,8 @@ subroutine Exam_Archi_Rhombicuboctahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Rhombicuboctahedron"
-    prob.name_file = "08_Rhombicubocta"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "08_Rhombicubocta"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -241,9 +208,6 @@ subroutine Exam_Archi_Rhombicuboctahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 24
@@ -302,17 +266,8 @@ subroutine Exam_Archi_Snub_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Snub Cube"
-    prob.name_file = "09_Snub_Cube"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "09_Snub_Cube Cube"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -326,9 +281,6 @@ subroutine Exam_Archi_Snub_Cube(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 24
@@ -399,17 +351,8 @@ subroutine Exam_Archi_Truncated_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated cube"
-    prob.name_file = "10_Trunc_Cube"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "10_Trunc_Cube cube"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -423,9 +366,6 @@ subroutine Exam_Archi_Truncated_Cube(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xz")
 
     ! The number of points and faces
     geom.n_iniP = 24
@@ -472,17 +412,8 @@ subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated cuboctahedron"
-    prob.name_file = "11_Trunc_Cubocta"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "11_Trunc_Cubocta_cubocta"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -496,9 +427,6 @@ subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xyz")
 
     ! The number of points and faces
     geom.n_iniP = 48
@@ -569,17 +497,8 @@ subroutine Exam_Archi_Truncated_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated dodecahedron"
-    prob.name_file = "12_Trunc_Dodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "12_Trunc_Dodeca"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -593,9 +512,6 @@ subroutine Exam_Archi_Truncated_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 60
@@ -678,17 +594,8 @@ subroutine Exam_Archi_Truncated_Icosahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated icosahedron"
-    prob.name_file = "13_Trunc_Icosa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "13_Trunc_Icosa"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -702,9 +609,6 @@ subroutine Exam_Archi_Truncated_Icosahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 60
@@ -787,17 +691,8 @@ subroutine Exam_Archi_Truncated_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated octahedron"
-    prob.name_file = "14_Trunc_Octa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "14_Trunc_Octa"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -811,9 +706,6 @@ subroutine Exam_Archi_Truncated_Octahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 24
@@ -860,17 +752,8 @@ subroutine Exam_Archi_Truncated_Tetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated tetrahedron"
-    prob.name_file = "15_Trunc_Tetra"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "15_Trunc_Tetra"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -886,9 +769,6 @@ subroutine Exam_Archi_Truncated_Tetrahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 12
@@ -923,20 +803,8 @@ subroutine Exam_Archi_Truncated_Icosidodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Truncated Icosidodecahedron"
-    prob.name_file = "Trunc_Icosidodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
+    prob.name_prob = "Trunc_Icosidodeca"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 120
@@ -1079,20 +947,8 @@ subroutine Exam_Archi_Rhombicosidodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Rhombicosidodecahedron"
-    prob.name_file = "Rhombicosidodecahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
+    prob.name_prob = "Rhombicosidodeca"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 60
@@ -1205,20 +1061,8 @@ subroutine Exam_Archi_Snub_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Snub Dodecahedron"
-    prob.name_file = "Snub_Dodecahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [231, 76, 60], "xy")
+    prob.name_prob = "Snub_Dodeca"
+    call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 60

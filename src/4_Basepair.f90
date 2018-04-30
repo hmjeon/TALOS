@@ -573,7 +573,7 @@ subroutine Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, mode)
     ! Set option
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work1)//trim(prob.name_file)//"_"
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_"
     open(unit=501, file=trim(path)//trim(mode)//"_ori.bild", form="formatted")
 
     ! Write cylinder model base on cross-sectional edges
@@ -728,8 +728,8 @@ subroutine Basepair_Chimera_Cylinder(prob, geom, bound, mesh, mode)
         f_mitered = .false.
     end if
 
-    if(mode == "cylinder_1") path = trim(prob.path_work1)//trim(prob.name_file)//"_04_"
-    if(mode == "cylinder_2") path = trim(prob.path_work1)//trim(prob.name_file)//"_05_"
+    if(mode == "cylinder_1") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_04_"
+    if(mode == "cylinder_2") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_05_"
     open(unit=502, file=trim(path)//trim(mode)//".bild", form="formatted")
 
     ! Cylinder radius
@@ -2368,7 +2368,7 @@ subroutine Basepair_Chimera_Mesh(prob, geom, mesh)
     b_axis = para_chimera_axis
     b_mod  = para_chimera_503_mod
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=503, file=trim(path)//"_mesh.bild", form="formatted")
 
     ! Write finite nodes(basepair)
@@ -2465,7 +2465,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     f_axis = para_chimera_axis
     f_info = para_chimera_504_info
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=504, file=trim(path)//"_06_multi_line.bild", form="formatted")
 
     ! Write cross-sectional points
@@ -2587,7 +2587,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=504, file=trim(path)//"_06_multi_line.dat", form="formatted")
 
     write(504, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -2634,8 +2634,8 @@ subroutine Basepair_Write_Edge_Length(prob, geom)
     allocate(num_bp(geom.n_croL))
     allocate(num_count(geom.n_croL))
 
-    path = trim(prob.path_work1)
-    open(unit=505, file=trim(path)//"TXT_Edge_Length.txt", form="formatted")
+    path = trim(prob.path_work)
+    open(unit=505, file=trim(path)//"/"//"TXT_Edge_Length.txt", form="formatted")
 
     write(505, "(4a15)"), "Cross line", "Init line", "Cross-sec", "Edge length"
 

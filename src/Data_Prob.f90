@@ -46,8 +46,7 @@ module Data_Prob
         character(200) :: name_file         ! File name
         character(200) :: name_prob         ! Problem name
         character(10)  :: type_file         ! File type
-        character(200) :: path_work1        ! Working directory path
-        character(200) :: path_work2        ! Working directory path
+        character(200) :: path_work         ! Working directory path
     end type ProbType
 
 ! -----------------------------------------------------------------------------

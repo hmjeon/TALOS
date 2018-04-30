@@ -52,17 +52,8 @@ subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Heptagonal bipyramid"
-    prob.name_file = "36_Hepta_Bipyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "36_Hepta_Bipyramid"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -76,9 +67,6 @@ subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP =  9
@@ -122,17 +110,8 @@ subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Enneagonal trapezohedron"
-    prob.name_file = "37_Ennea_Trapezohedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "37_Ennea_Trapezo"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -146,9 +125,6 @@ subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 20
@@ -207,17 +183,8 @@ subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Small stell dodecahedron"
-    prob.name_file = "38_Small_Stell_Dodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "38_Small_Stell_Dodeca"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -231,9 +198,6 @@ subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -346,17 +310,8 @@ subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Rhombic hexecontahedron"
-    prob.name_file = "39_Rhombic_Hexeconta"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "39_Rhombic_Hexeconta"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -370,9 +325,6 @@ subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 62
@@ -515,17 +467,8 @@ subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Goldberg dk5dgD"
-    prob.name_file = "40_Goldberg_dk5dgD"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "40_Goldberg_dk5dgD"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -539,9 +482,6 @@ subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP =  140
@@ -774,17 +714,8 @@ subroutine Exam_Miscel_Double_Helix(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Double helix"
-    prob.name_file = "41_Double_Helix"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "41_Double_Helix"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -798,9 +729,6 @@ subroutine Exam_Miscel_Double_Helix(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 36
@@ -923,17 +851,8 @@ subroutine Exam_Miscel_Nested_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Nested cube"
-    prob.name_file = "42_Nested_Cube"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "42_Nested_Cube"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -947,9 +866,6 @@ subroutine Exam_Miscel_Nested_Cube(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 16
@@ -1002,17 +918,8 @@ subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Nested octahedron"
-    prob.name_file = "43_Nested_Octa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "43_Nested_Octa"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -1026,9 +933,6 @@ subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 12
@@ -1079,17 +983,8 @@ subroutine Exam_Miscel_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Torus"
-    prob.name_file = "44_Torus"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "44_Torus"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Problem specified preset parameters
     if(para_preset == "on") then
@@ -1103,9 +998,6 @@ subroutine Exam_Miscel_Torus(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 36
@@ -1234,17 +1126,8 @@ subroutine Exam_Miscel_Double_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Double torus"
-    prob.name_file = "45_Double_Torus"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "45_Double_Torus"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -1258,9 +1141,6 @@ subroutine Exam_Miscel_Double_Torus(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [150, 58, 228], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 44

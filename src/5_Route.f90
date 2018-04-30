@@ -426,7 +426,7 @@ subroutine Route_Chimera_Route(prob, geom, mesh, dna, step_route)
     f_dir  = para_chimera_601_dir
 
     ! File open for route step
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=601, file=trim(path)//"_"//step_route//"_scaf.bild", form="formatted")
     open(unit=602, file=trim(path)//"_"//step_route//"_stap.bild", form="formatted")
 
@@ -693,7 +693,7 @@ subroutine Route_Chimera_Route(prob, geom, mesh, dna, step_route)
     ! ---------------------------------------------
     if(step_route /= "route3" .or. para_output_Tecplot /= "on") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=601, file=trim(path)//"_"//step_route//"_scaf.dat", form="formatted")
     open(unit=602, file=trim(path)//"_"//step_route//"_stap.dat", form="formatted")
 
@@ -2044,7 +2044,7 @@ subroutine Route_Write_Centered_Scaf_Xover(prob, geom, mesh, dna)
 
     if(para_write_610 == .false.) return
 
-    path = trim(prob.path_work1)
+    path = trim(prob.path_work)
     open(unit=610, file=trim(path)//"scaf_xover.txt", form="formatted")
 
     ! Find maximum and minimum base pair ID
@@ -2807,7 +2807,7 @@ subroutine Route_Graph_Write_Adjacent(prob, adj)
     character(200) :: path
     integer :: i, j, dim
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=603, file=trim(path)//"_adjacent.dl", form="formatted")
 
     ! Find the number of array size
@@ -2866,12 +2866,12 @@ subroutine Route_Graph_Chimera_All_Spanning_Tree(prob, pos_node, tail, head, idx
     n_tree  = ubound(idx, 2)
     n_node  = size(pos_node, 1)
     n_edge  = size(tail)
-    results = SYSTEMQQ("md "//trim(prob.path_work1)//"Spantree\")
+    results = SYSTEMQQ("md "//trim(prob.path_work)//"Spantree/")
 
     do k = 1, n_tree
 
         ! File open
-        path = trim(prob.path_work1)//"Spantree\"//trim(prob.name_file)
+        path = trim(prob.path_work)//"Spantree/"//trim(prob.name_file)
         open(unit=604, file=trim(path)//"_graph"//trim(adjustl(Int2Str(k)))//".bild", form="formatted")
 
         ! Write node as sphere
@@ -2932,7 +2932,7 @@ subroutine Route_Graph_Chimera_All_Spanning_Tree(prob, pos_node, tail, head, idx
         ! ---------------------------------------------
         if(para_output_Tecplot == "on") then
 
-            path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+            path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
             open(unit=604, file=trim(path)//"_graph"//trim(adjustl(Int2Str(k)))//".dat", form="formatted")
 
             write(604, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -3014,7 +3014,7 @@ subroutine Route_Graph_Write_List(prob, tail, head, tree)
     logical :: b_branch
     character(200) :: path, str
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=605, file=trim(path)//"_list.dl", form="formatted")
 
     ! Find the number of nodes
@@ -3081,7 +3081,7 @@ subroutine Route_Graph_Chimera_Spanning_Tree(prob, pos_node, tail, head, tree)
     n_node = ubound(pos_node, 1)
     n_edge = size(tail)
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=606, file=trim(path)//"_07_spantree.bild", form="formatted")
 
     ! Write node as sphere
@@ -3144,7 +3144,7 @@ subroutine Route_Graph_Chimera_Spanning_Tree(prob, pos_node, tail, head, tree)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=606, file=trim(path)//"_07_spantree.dat", form="formatted")
 
     write(606, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -3762,7 +3762,7 @@ subroutine Route_Chimera_Crossovers(prob, geom, bound, mesh, dna)
     if(para_write_607 == .false.) return
 
     f_axis = para_chimera_axis
-    path   = trim(prob.path_work1)//trim(prob.name_file)
+    path   = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=607, file=trim(path)//"_08_xovers.bild", form="formatted")
 
     ! write vertex connection
@@ -3862,7 +3862,7 @@ subroutine Route_Chimera_Crossovers(prob, geom, bound, mesh, dna)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=607, file=trim(path)//"_08_xovers.dat", form="formatted")
 
     write(607, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -3954,7 +3954,7 @@ subroutine Route_Chimera_Orientation(prob, mesh, dna)
 
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=608, file=trim(path)//"_orientation.bild", form="formatted")
 
     ! Write base pair
@@ -4015,7 +4015,7 @@ subroutine Route_Chimera_Orientation(prob, mesh, dna)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=608, file=trim(path)//"_orientation.dat", form="formatted")
 
     write(608, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -4112,7 +4112,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     f_cyn  = para_chimera_609_cyl
     f_dir  = para_chimera_609_dir
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=609, file=trim(path)//"_atom.bild", form="formatted")
 
     ! --------------------------------------------------

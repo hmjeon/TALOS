@@ -47,17 +47,8 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Tetrahedron"
-    prob.name_file = "01_Tetrahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "01_Tet"
+    call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -85,9 +76,6 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
             !para_un_depend_angle = "on"
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 4
@@ -129,17 +117,8 @@ subroutine Exam_Platonic_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Cube"
-    prob.name_file = "02_Cube"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "02_Cube"
+    call Mani_Set_Problem(prob, [52, 152, 219], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -153,9 +132,6 @@ subroutine Exam_Platonic_Cube(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xyz")
 
     ! The number of points and faces
     geom.n_iniP = 8
@@ -200,17 +176,8 @@ subroutine Exam_Platonic_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Octahedron"
-    prob.name_file = "03_Octahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "03_Octa"
+    call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -233,9 +200,6 @@ subroutine Exam_Platonic_Octahedron(prob, geom)
             para_mitered_method = "old"
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 6
@@ -270,17 +234,8 @@ subroutine Exam_Platonic_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-    
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Dodecahedron"
-    prob.name_file = "04_Dodecahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "04_Dodeca"
+    call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -294,9 +249,6 @@ subroutine Exam_Platonic_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 20
@@ -339,17 +291,8 @@ subroutine Exam_Platonic_Icosahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Icosahedron"
-    prob.name_file = "05_Icosahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "05_Icosa"
+    call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -363,9 +306,6 @@ subroutine Exam_Platonic_Icosahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xy")
 
     ! The number of points and faces
     geom.n_iniP = 12

@@ -257,7 +257,7 @@ subroutine Output_Write_Cylinder_Xover(prob, geom, bound, mesh, dna)
     ! Set flag for drawing option
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work1)//trim(prob.name_file)//"_13_cylinder_xover"
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_13_cylinder_xover"
     open(unit=701, file=trim(path)//".bild", form="formatted")
 
     ! Cylinder radius
@@ -373,7 +373,7 @@ subroutine Output_Write_Out_All(prob, geom, bound, mesh, dna)
     integer :: max_unpaired
 
     if(para_write_701 == .false.) return
-    open(unit = 701, file=trim(prob.path_work1)//"TXT_Sequence.txt", form="formatted")
+    open(unit = 701, file=trim(prob.path_work)//"/"//"TXT_Sequence.txt", form="formatted")
 
     ! Write staple sequence results
     write(701, "(a)")
@@ -588,7 +588,7 @@ subroutine Output_Write_Out_Sequences(prob, mesh, dna, unit)
     write(unit, "(a)")
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=702, file=trim(path)//"_17_sequence.csv", form = "formatted")
 
     ! DNA sequence data according to strands
@@ -893,7 +893,7 @@ subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
 
     ! Open file stream
     if(para_write_710 == .true.) then
-        path = trim(prob.path_work1)//trim(prob.name_file)
+        path = trim(prob.path_work)//"/"//trim(prob.name_file)
         do i = 1, n_edge
             open(unit = 710+i, file=trim(path)//"_design_edge"&
                 //trim(adjustl(Int2Str(i)))//".bild", form="formatted")
@@ -1739,7 +1739,7 @@ subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
     if(para_write_710 == .true. .and. para_output_Tecplot == "on") then
 
         ! Open file stream
-        path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+        path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
         open(unit=709, file=trim(path)//"_design_edge.dat", form="formatted")
         do i = 1, 6
 
@@ -2035,7 +2035,7 @@ subroutine Output_Write_Out_Guide_JSON(prob, geom, bound, mesh)
     ! Set option
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=998, file=trim(path)//"_14_json_guide.bild", form="formatted")
 
     ! Write points for multi lines
@@ -2125,7 +2125,7 @@ subroutine Output_Write_Out_Guide_JSON(prob, geom, bound, mesh)
     ! =============================================
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=998, file=trim(path)//"_14_json_guide.dat", form="formatted")
 
     write(998, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -2237,7 +2237,7 @@ subroutine Output_Write_Out_JSON(prob, geom, mesh, dna, max_unpaired)
     logical :: b_stap_json = .true.
     character(200) :: path
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=999, file=trim(path)//"_15_json.json", form="formatted")
 
     ! Hex color code
@@ -2554,7 +2554,7 @@ subroutine Output_Write_Basepair(prob, mesh, dna)
     if(para_write_801 == .false.) return
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=801, file=trim(path)//"_basepair.txt", form="formatted")
 
     ! The number of base pairs
@@ -2602,7 +2602,7 @@ subroutine Output_Write_Base(prob, dna)
     if(para_write_802 == .false.) return
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=802, file=trim(path)//"_base.txt", form="formatted")
 
     ! The total number of bases
@@ -2645,7 +2645,7 @@ subroutine Output_Write_CanDo(prob, mesh, dna)
     if(para_write_803 == .false.) return
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=803, file=trim(path)//"_16_cndo.cndo", form="formatted")
 
     write(803, "(a)"), '"CanDo (.cndo) file format version 1.0"'
@@ -2816,7 +2816,7 @@ subroutine Output_Write_CanDo_New(prob, mesh, dna)
     if(para_write_803 == .false.) return
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=803, file=trim(path)//".cndo", form="formatted")
 
     ! For dnatoop data that is defined by bases
@@ -2901,7 +2901,7 @@ subroutine Output_Write_PLY(prob, geom)
     character(200) :: path
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=704, file=trim(path)//"_18_ply.ply", form="formatted")
 
     write(704, "(a)"), "ply"
@@ -2940,7 +2940,7 @@ subroutine Output_Write_DNA_Info(prob, dna)
     character(200) :: path
 
     ! open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=100, file=trim(path)//"_dnaInfo.dat", form="formatted")
 
     ! the total number of nucleotide
@@ -2973,7 +2973,7 @@ subroutine Output_Write_TecPlot(prob, mesh)
 
     if(para_write_804 == .false.) return
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=804, file=trim(path)//"_tecplot.dat", form="formatted")
 
     ! Loop for 3 orientation vectors
@@ -3022,7 +3022,7 @@ subroutine Output_Write_ADINA(prob, mesh)
     call date_and_time(VALUES=time)
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=805, file=trim(path)//"_adina.in", form="formatted")
 
     ! Write of ADINA infile
@@ -3137,7 +3137,7 @@ subroutine Output_Write_Sequence_CroL(prob, mesh, dna)
     end do
 
     ! Open files
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=808, file=trim(path)//"_seq_line.txt", form="formatted")
 
     ! Write information on sequence

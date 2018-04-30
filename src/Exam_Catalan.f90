@@ -56,17 +56,8 @@ subroutine Exam_Catalan_Rhombic_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Rhombic dodecahedron"
-    prob.name_file = "26_Rhom_Dodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "26_Rhom_Dodeca"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -80,9 +71,6 @@ subroutine Exam_Catalan_Rhombic_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 14
@@ -122,17 +110,8 @@ subroutine Exam_Catalan_Rhombic_Triacontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Rhombic triacontahedron"
-    prob.name_file = "27_Rhom_Triaconta"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "27_Rhom_Triaconta"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -146,9 +125,6 @@ subroutine Exam_Catalan_Rhombic_Triacontahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -215,17 +191,8 @@ subroutine Exam_Catalan_Deltoidal_Icositetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Deltoidal icositetrahedron"
-    prob.name_file = "28_Deltoi_Icositetra"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "28_Deltoi_Icositetra"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -239,9 +206,6 @@ subroutine Exam_Catalan_Deltoidal_Icositetrahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 26
@@ -299,17 +263,8 @@ subroutine Exam_Catalan_Pentagonal_Icositetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal icositetrahedron"
-    prob.name_file = "29_Penta_Icositetra"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "29_Penta_Icositetra"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -323,9 +278,6 @@ subroutine Exam_Catalan_Pentagonal_Icositetrahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 38
@@ -389,17 +341,8 @@ subroutine Exam_Catalan_Triakis_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Triakis octahedron"
-    prob.name_file = "30_Tria_Octa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "30_Tria_Octa"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -413,9 +356,6 @@ subroutine Exam_Catalan_Triakis_Octahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 14
@@ -467,17 +407,8 @@ subroutine Exam_Catalan_Disdyakis_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Disdyakis dodecahedron"
-    prob.name_file = "31_Disdya_Dodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "31_Disdya_Dodeca"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -491,9 +422,6 @@ subroutine Exam_Catalan_Disdyakis_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 26
@@ -575,17 +503,8 @@ subroutine Exam_Catalan_Triakis_Icosahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Triakis icosahedron"
-    prob.name_file = "32_Tria_Icosa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "32_Tria_Icosa"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -599,9 +518,6 @@ subroutine Exam_Catalan_Triakis_Icosahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -698,17 +614,8 @@ subroutine Exam_Catalan_Pentakis_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentakis dodecahedron"
-    prob.name_file = "33_Penta_Dodeca"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "33_Penta_Dodeca"
+    call Mani_Set_Problem(prob, [247, 147, 30], "yz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -722,9 +629,6 @@ subroutine Exam_Catalan_Pentakis_Dodecahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "yz")
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -821,17 +725,8 @@ subroutine Exam_Catalan_Tetrakis_Hexahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Tetrakis hexahedron"
-    prob.name_file = "34_Tetra_Hexa"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "34_Tetra_Hexa"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -845,9 +740,6 @@ subroutine Exam_Catalan_Tetrakis_Hexahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 14
@@ -899,17 +791,8 @@ subroutine Exam_Catalan_Triakis_Tetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Triakis tetrahedron"
-    prob.name_file = "35_Tria_Tetra"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "35_Tria_Tetra"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -923,9 +806,6 @@ subroutine Exam_Catalan_Triakis_Tetrahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 8
@@ -966,17 +846,8 @@ subroutine Exam_Catalan_Disdyakis_Triacontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Disdyakis Triacontahedron"
-    prob.name_file = "Disdy_Triacontahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "Disdy_Triaconta"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -990,9 +861,6 @@ subroutine Exam_Catalan_Disdyakis_Triacontahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 62
@@ -1164,17 +1032,8 @@ subroutine Exam_Catalan_Deltoidal_Hexecontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Deltoidal Hexecontahedron"
-    prob.name_file = "Deltoi_Hexecontahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "Deltoi_Hexeconta"
+    call Mani_Set_Problem(prob, [247, 147, 30], "yz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -1188,9 +1047,6 @@ subroutine Exam_Catalan_Deltoidal_Hexecontahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "yz")
 
     ! Allocate point and face structure
     geom.n_iniP = 62
@@ -1302,17 +1158,8 @@ subroutine Exam_Catalan_Pentagonal_Hexecontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal Hexecontahedron"
-    prob.name_file = "Penta_Hexecontahedron"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "Penta_Hexeconta"
+    call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -1326,9 +1173,6 @@ subroutine Exam_Catalan_Pentagonal_Hexecontahedron(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [247, 147, 30], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 92

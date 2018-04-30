@@ -237,7 +237,7 @@ subroutine Input_Initialize_Report(prob, geom, mesh, i, sec, edge, char_vert, ch
 
     ! Reset parameters
     call Input_Reset_Para_Report
-    para_external        = "on"
+    para_platform        = "dev"
     para_vertex_design   = char_vert    ! Flat or mitered vertex
     para_cut_stap_method = char_cut     ! Staple-break
 
@@ -363,7 +363,7 @@ subroutine Input_Print_Parameters(prob, geom)
     integer :: i
 
     ! Open output progress file (unit 11 is used for global output file)
-    open(unit=11, file=trim(prob.path_work1)//"TXT_PERDIX_6P.txt", form="formatted")
+    open(unit=11, file=trim(prob.path_work)//"/"//"TXT_PERDIX_6P.txt", form="formatted")
 
     do i = 0, 11, 11
         write(i, "(a )"), "   +--------------------------------------------------------------------+"
@@ -493,10 +493,10 @@ subroutine Input_Read_Parameter
     open(unit=1, file="env.txt", form="formatted")
 
     ! External parameter loading, this should be always ".true."
-    read(1, *), ctemp, para_external
+    read(1, *), ctemp, para_platform
 
     ! If the external mode is on
-    if(para_external == "on") then
+    if(para_platform /= "dev") then
 
         ! Program parameters
         read(1, *), ctemp, para_preset
@@ -868,55 +868,6 @@ end subroutine Input_Print_Num_BP_Edge
 
 ! -----------------------------------------------------------------------------
 
-! Print pre-defined the number of base pair on edges
-subroutine Input_Print_Num_BP_Edge1(prob)
-    type(ProbType), intent(in) :: prob
-
-    ! --------------------------------------------------
-    ! Read edge length that is predefined
-    ! The dege that has minimum length is corresponding to the edge lenth
-    ! --------------------------------------------------
-    if(prob.sel_sec <= para_n_square_lattice) then
-        write(0, "(a)")
-        write(0, "(a)"), "   C. Third input - Pre-defined minimum edge length"
-        write(0, "(a)")
-        write(0, "(a)"), "   [Square lattice]"
-        write(0, "(a)")
-        write(0, "(a)"), "    *  1.  32 BPs :  3 turn ->  3 [turn] * 10.67 [BPs/turn] =  32.00 [10.88nm]"
-        write(0, "(a)"), "       2.  43 BPs :  4 turn ->  4 [turn] * 10.67 [BPs/turn] =  42.67 [14.51nm]"
-        write(0, "(a)"), "       3.  53 BPs :  5 turn ->  5 [turn] * 10.67 [BPs/turn] =  53.34 [18.14nm]"
-        write(0, "(a)"), "    *  4.  64 BPs :  6 turn ->  6 [turn] * 10.67 [BPs/turn] =  64.00 [21.76nm]"
-        write(0, "(a)"), "       5.  75 BPs :  7 turn ->  7 [turn] * 10.67 [BPs/turn] =  74.67 [25.39nm]"
-        write(0, "(a)"), "       6.  85 BPs :  8 turn ->  8 [turn] * 10.67 [BPs/turn] =  85.34 [29.02nm]"
-        write(0, "(a)"), "    *  7.  96 BPs :  9 turn ->  9 [turn] * 10.67 [BPs/turn] =  96.00 [32.64nm]"
-        write(0, "(a)"), "       8. 107 BPs : 10 turn -> 10 [turn] * 10.67 [BPs/turn] = 106.67 [36.27nm]"
-        write(0, "(a)"), "       9. 117 BPs : 11 turn -> 11 [turn] * 10.67 [BPs/turn] = 117.34 [39.90nm]"
-        write(0, "(a)"), "    * 10. 128 BPs : 12 turn -> 12 [turn] * 10.67 [BPs/turn] = 128.00 [43.52nm]"
-        write(0, "(a)")
-    else
-        write(0, "(a)")
-        write(0, "(a)"), "   C. Third input - Pre-defined minimum edge length"
-        write(0, "(a)")
-        write(0, "(a)"), "   [Honeycomb lattice]"
-        write(0, "(a)")
-        write(0, "(a)"), "       1.  31 BPs :  3 turn ->  3 [turn] * 10.5 [BPs/turn] =  31.5 [10.71 nm]"
-        write(0, "(a)"), "    *  2.  42 BPs :  4 turn ->  4 [turn] * 10.5 [BPs/turn] =  42.0 [14.28 nm]"
-        write(0, "(a)"), "       3.  52 BPs :  5 turn ->  5 [turn] * 10.5 [BPs/turn] =  52.5 [17.85 nm]"
-        write(0, "(a)"), "    *  4.  63 BPs :  6 turn ->  6 [turn] * 10.5 [BPs/turn] =  63.0 [21.42 nm]"
-        write(0, "(a)"), "       5.  73 BPs :  7 turn ->  7 [turn] * 10.5 [BPs/turn] =  73.5 [24.99 nm]"
-        write(0, "(a)"), "    *  6.  84 BPs :  8 turn ->  8 [turn] * 10.5 [BPs/turn] =  84.0 [28.56 nm]"
-        write(0, "(a)"), "       7.  94 BPs :  9 turn ->  9 [turn] * 10.5 [BPs/turn] =  94.5 [32.13 nm]"
-        write(0, "(a)"), "    *  8. 105 BPs : 10 turn -> 10 [turn] * 10.5 [BPs/turn] = 105.0 [35.70 nm]"
-        write(0, "(a)"), "       9. 115 BPs : 11 turn -> 11 [turn] * 10.5 [BPs/turn] = 115.5 [39.27 nm]"
-        write(0, "(a)"), "    * 10. 126 BPs : 12 turn -> 12 [turn] * 10.5 [BPs/turn] = 126.0 [42.84 nm]"
-        write(0, "(a)")
-    end if
-
-    write(0, "(a)"), "   Select the number [Enter] : "
-end subroutine Input_Print_Num_BP_Edge1
-
-! -----------------------------------------------------------------------------
-
 ! Set problem to be solved
 subroutine Input_Set_Problem(prob, geom)
     type(ProbType), intent(inout) :: prob
@@ -965,12 +916,6 @@ subroutine Input_Select_File(prob, geom)
     !prob.type_file = prob.name_file(len_char-2:len_char)
     !prob.name_file = prob.name_file(1:len_char-4)
 
-    ! Set geometric type and view
-    prob.color    = [52, 152, 219]
-    prob.scale    = 1.0d0      ! Atomic model
-    prob.size     = 1.0d0      ! Cylindrical model
-    prob.move_x   = 0.0d0      ! Cylindrical model
-    prob.move_y   = 0.0d0      ! Cylindrical model
     if(para_fig_view == "PRESET" .or. para_fig_view == "preset") para_fig_view = "xy"
 
     ! Select file type
@@ -1000,12 +945,6 @@ subroutine Input_Select_File(prob, geom)
         stop
     end if
 
-    prob.name_prob = prob.name_file
-    prob.name_file = trim(prob.name_file)//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
-
     ! Problem specified preset parameters
     if(para_vertex_design == "flat" .and. para_preset == "on") then
         para_junc_ang        = "max"    ! Junction gap modification for different arm angle
@@ -1015,7 +954,7 @@ subroutine Input_Select_File(prob, geom)
     end if
 
     ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [52, 152, 219], "xy")
+    call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Print filename and type
     !do i = 0, 11, 11
@@ -2355,12 +2294,12 @@ subroutine Input_Set_Path(prob)
     type(ProbType), intent(inout) :: prob
 
     ! Set working directory
-    if(para_external == "on") then
-        prob.path_work1 = "output\"//trim(prob.name_file)//"\"
-        prob.path_work2 = "output/"//trim(prob.name_file)//"/"
+    if(para_platform == "dev") then
+        prob.path_work = "output"
+    else if(para_platform == "win") then
+        prob.path_work = "output\"//trim(prob.name_file)
     else
-        prob.path_work1 = "output\"
-        prob.path_work2 = "output/"
+        prob.path_work = "output/"//trim(prob.name_file)
     end if
 end subroutine Input_Set_Path
 
@@ -2373,14 +2312,32 @@ subroutine Input_Set_Workplace(prob)
     logical :: results
 
     ! Remove the directory and files
-    results = SYSTEMQQ("rd "//trim(prob.path_work1)//' /s /q')
+    if(para_platform == "dev") then
+        results = systemqq("rd "//trim(prob.path_work)//' /s /q')   ! Windows
+    else if(para_platform == "win") then
+        results = systemqq("rd "//trim(prob.path_work)//' /s /q')   ! Windows
+    else
+        results = systemqq("rm -r "//trim(prob.path_work))          ! Linux & Mac
+    end if
 
     ! Make new working directory
-    results = SYSTEMQQ("md "//trim(prob.path_work1))
+    if(para_platform == "dev") then
+        results = systemqq("md "//trim(prob.path_work))         ! Dev
+    else if(para_platform == "win") then
+        results = systemqq("md "//trim(prob.path_work))         ! Windows
+    else
+        results = systemqq("mkdir -p "//trim(prob.path_work))   ! Linux & Mac
+    end if
 
     ! Directory for Tecplot output
     if(para_output_Tecplot == "on") then
-        results = SYSTEMQQ("md "//trim(prob.path_work1)//"\Tecplot")
+        if(para_platform == "dev" )then
+            results = systemqq("md "//trim(prob.path_work)//"\tecplot")         ! Dev
+        else if(para_platform == "win") then
+            results = systemqq("md "//trim(prob.path_work)//"\tecplot")         ! Windows
+        else
+            results = systemqq("mkdir -p "//trim(prob.path_work)//"/tecplot")   ! Linux & Mac
+        end if
     end if
 
     write(0, "(a)"), "  ...Removed the existing working directory"
@@ -2400,7 +2357,7 @@ subroutine Input_Write_GEO_File(prob, geom)
     ! Exception
     if(para_write_101 == .false.) return
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=101, file=trim(path)//".geo", form="formatted")
 
     ! Write points
@@ -2502,7 +2459,7 @@ subroutine Input_Write_PLY_File(prob, geom)
     character(200) :: path
     integer :: i, j
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=101, file=trim(path)//".ply", form="formatted")
 
     write(101, "(a)"), "ply"
@@ -2550,7 +2507,7 @@ subroutine Input_Chimera_Init_Geometry(prob, geom)
     f_axis = para_chimera_axis
     f_info = para_chimera_102_info
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=102, file=trim(path)//"_01_init_geo.bild", form="formatted")
 
     ! Write initial points
@@ -2642,7 +2599,7 @@ subroutine Input_Chimera_Init_Geometry(prob, geom)
     ! ==================================================
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=102, file=trim(path)//"_01_init_geo.dat", form="formatted")
 
     write(102, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -2682,7 +2639,7 @@ subroutine Input_Tecplot_Init_Geometry(prob, geom)
     if(para_write_103 == .false.) return
 
     ! Open file
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=102, file=trim(path)//"_init_geo_face.dat", form="formatted")
 
     ! Find the number of lines
@@ -2887,7 +2844,7 @@ subroutine Input_Chimera_Schlegel_Diagram(prob, geom, pos_xy)
     ! Set option
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work1)//trim(prob.name_file)
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)
     open(unit=104, file=trim(path)//"_schlegel.bild", form="formatted")
 
     ! Write initial points
@@ -2934,7 +2891,7 @@ subroutine Input_Chimera_Schlegel_Diagram(prob, geom, pos_xy)
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 
-    path = trim(prob.path_work1)//"Tecplot\"//trim(prob.name_file)
+    path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=104, file=trim(path)//"_schlegel.dat", form="formatted")
 
     write(104, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'

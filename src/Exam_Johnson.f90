@@ -55,17 +55,8 @@ subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Gyroelongated pentagonal pyramid"
-    prob.name_file = "16_Gyroelon_Penta_Pyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "16_Gyroelon_Penta_Pyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "yz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -79,9 +70,6 @@ subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "yz")
 
     ! Allocate point and face structure
     geom.n_iniP = 11
@@ -129,17 +117,8 @@ subroutine Exam_Johnson_Triangular_Bipyramid_J12(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Triangular bipyramid"
-    prob.name_file = "17_Triang_Bipyramid"  //&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "17_Triang_Bipyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "yz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -153,9 +132,6 @@ subroutine Exam_Johnson_Triangular_Bipyramid_J12(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "yz")
 
     ! Allocate point and face structure
     geom.n_iniP =  5
@@ -187,17 +163,8 @@ subroutine Exam_Johnson_Pentagonal_Bipyramid_J13(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal bipyramid"
-    prob.name_file = "18_Penta_Bipyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "18_Penta_Bipyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -215,9 +182,6 @@ subroutine Exam_Johnson_Pentagonal_Bipyramid_J13(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP =  7
@@ -255,17 +219,8 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Gyroelongated square bipyramid"
-    prob.name_file = "19_Gyroelong_Square_Bipyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "19_Gyroelong_Square_Bipyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -279,9 +234,6 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 10
@@ -328,17 +280,8 @@ subroutine Exam_Johnson_Square_Gyrobicupola_J29(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Square gyrobicupola"
-    prob.name_file = "20_Square_Gyrobicupola"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "20_Square_Gyrobicupola"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -352,9 +295,6 @@ subroutine Exam_Johnson_Square_Gyrobicupola_J29(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 16
@@ -409,17 +349,8 @@ subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal orthocupolarotunda"
-    prob.name_file = "21_Penta_Orthocupolarotunda"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "21_Penta_Orthocupolarotunda"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -433,9 +364,6 @@ subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 25
@@ -508,17 +436,8 @@ subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal orthobirotunda"
-    prob.name_file = "22_Penta_Orthobirotunda"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "22_Penta_Orthobirotunda"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -532,9 +451,6 @@ subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 30
@@ -617,17 +533,8 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Elongated pentagonal gyrobicupola"
-    prob.name_file = "23_Elong_Penta_Gyrobicupola"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "23_Elong_Penta_Gyrobicupola"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xyz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -641,9 +548,6 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xyz")
 
     ! Allocate point and face structure
     geom.n_iniP = 30
@@ -726,17 +630,8 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Elongated pentagonal gyrobirotunda"
-    prob.name_file = "24_Elong_Penta_Gyrobirotunda"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "24_Elong_Penta_Gyrobirotunda"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xz")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -750,9 +645,6 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xz")
 
     ! Allocate point and face structure
     geom.n_iniP = 40
@@ -855,17 +747,8 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Gyroelongated square bicupola"
-    prob.name_file = "25_Gyroelong_Square_Bicupola"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "25_Gyroelong_Square_Bicupola"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -879,9 +762,6 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 24
@@ -960,17 +840,8 @@ subroutine Exam_Johnson_Pentagonal_Pyramid_J2(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Pentagonal Pyramid"
-    prob.name_file = "Pentagonal_Pyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "Pentagonal_Pyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -984,9 +855,6 @@ subroutine Exam_Johnson_Pentagonal_Pyramid_J2(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 6
@@ -1019,17 +887,8 @@ subroutine Exam_Johnson_Elongated_Square_Bipyramid_J15(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    character(10) :: char_sec, char_bp, char_start_bp
-
-    write(unit=char_sec,      fmt = "(i10)"), prob.sel_sec
-    write(unit=char_bp,       fmt = "(i10)"), prob.n_bp_edge
-    write(unit=char_start_bp, fmt = "(i10)"), para_start_bp_ID
-
-    prob.name_prob = "Elongated Square Bipyramid"
-    prob.name_file = "Elongated_Square_Bipyramid"//&
-        "_"//trim(adjustl(trim(char_sec)))//"cs"//&
-        "_"//trim(adjustl(trim(char_bp)))//"bp"//&
-        "_"//trim(para_vertex_design)
+    prob.name_prob = "Elongated_Square_Bipyramid"
+    call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
     ! Preset parameters
     if(para_preset == "on") then
@@ -1043,9 +902,6 @@ subroutine Exam_Johnson_Elongated_Square_Bipyramid_J15(prob, geom)
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
-
-    ! Set geometric type and view (atom, cylinder size, move_x, move_y)
-    call Mani_Set_View_Color(prob, [77, 175, 74], "xy")
 
     ! Allocate point and face structure
     geom.n_iniP = 10

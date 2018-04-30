@@ -34,7 +34,7 @@ module Mani
 
     implicit none
 
-    public Mani_Set_View_Color
+    public Mani_Set_Problem
     public Space
     public Mani_To_Upper
     public Mani_Progress_Bar
@@ -57,11 +57,23 @@ contains
 
 ! -----------------------------------------------------------------------------
 
-! Set geometric type and view
-subroutine Mani_Set_View_Color(prob, color, view)
+! Set problem
+subroutine Mani_Set_Problem(prob, color, view)
     type(ProbType), intent(inout) :: prob
     character(len=*), intent(in)  :: view
     integer, intent(in) :: color(3)
+
+    character(10) :: char_sec, char_bp
+
+    write(unit=char_sec, fmt = "(i10)"), prob.sel_sec
+    write(unit=char_bp,  fmt = "(i10)"), prob.n_bp_edge
+
+    prob.name_file = trim(prob.name_prob)//"_6HB_"//trim(adjustl(trim(char_bp)))//"bp_"
+    if(para_vertex_design == "flat"   ) then
+        prob.name_file = trim(adjustl(trim(prob.name_file)))//"F"//trim(adjustl(trim(char_sec)))
+    else if(para_vertex_design == "mitered") then
+        prob.name_file = trim(adjustl(trim(prob.name_file)))//"M"//trim(adjustl(trim(char_sec)))
+    end if
 
     prob.color  = color
     prob.scale  = 1.0d0     ! Atomic model
@@ -71,7 +83,7 @@ subroutine Mani_Set_View_Color(prob, color, view)
 
     ! Set view points
     para_fig_view = trim(adjustl(view))
-end subroutine Mani_Set_View_Color
+end subroutine Mani_Set_Problem
 
 ! -----------------------------------------------------------------------------
 

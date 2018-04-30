@@ -59,7 +59,7 @@ subroutine Importer_PLY(prob, geom)
     ! 1st: # of meshes, 2nd: points
     type(MeshType), allocatable, dimension (:) :: Basepair_con
 
-    !path = "Input\"//trim(prob.name_file)//"."//trim(prob.type_file)
+    !path = "input/"//trim(prob.name_file)//"."//trim(prob.type_file)
     path = trim(prob.name_file)//"."//trim(prob.type_file)
     open(unit=1001, file=path, form="formatted")
 
@@ -99,7 +99,6 @@ subroutine Importer_PLY(prob, geom)
 
                 geom.face(i).poi(1:npoint) = Basepair_con(i).cn(1:npoint)
             end do
-
         end if
     end do
 
@@ -116,7 +115,7 @@ subroutine Importer_STL(prob)
     logical :: results
 
     ! run meshconv to generate *.PLY fileformat
-    results = SYSTEMQQ(trim("Library\meshconv -c ply Input\")// &
+    results = SYSTEMQQ(trim("tools/meshconv -c ply input/")// &
         trim(prob.name_file)//"."//trim(prob.type_file)//trim(" -ascii"))
 
     ! change file type to PLY
@@ -132,7 +131,7 @@ subroutine Importer_WRL(prob)
     logical :: results
 
     ! run meshconv to generate *.PLY fileformat
-    results = SYSTEMQQ(trim("Library\meshconv -c ply Input\")// &
+    results = SYSTEMQQ(trim("tools/meshconv -c ply input/")// &
         trim(prob.name_file)//"."//trim(prob.type_file)//trim(" -ascii"))
 
     ! change file type to PLY
@@ -157,7 +156,7 @@ subroutine Importer_GEO(prob, geom)
     ! 1st: # of meshes, 2nd: points
     type(MeshType), allocatable, dimension (:) :: Basepair_con
 
-    path = "Input\"//trim(prob.name_file)//"."//trim(prob.type_file)
+    path = "input/"//trim(prob.name_file)//"."//trim(prob.type_file)
     open(unit=1002, file=path, form="formatted")
 
     ! read points

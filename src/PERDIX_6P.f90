@@ -97,8 +97,6 @@ subroutine Main()
 
     ! Check time consuming
     call Print_TimeConsuming(time)
-
-    !if(para_external == .true.) pause
 end subroutine Main
 
 ! -----------------------------------------------------------------------------
