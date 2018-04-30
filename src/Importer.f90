@@ -59,8 +59,8 @@ subroutine Importer_PLY(prob, geom)
     ! 1st: # of meshes, 2nd: points
     type(MeshType), allocatable, dimension (:) :: Basepair_con
 
-    !path = "input/"//trim(prob.name_file)//"."//trim(prob.type_file)
-    path = trim(prob.name_file)//"."//trim(prob.type_file)
+    path = "input/"//trim(prob.name_file)//"."//trim(prob.type_file)
+    !path = trim(prob.name_file)//"."//trim(prob.type_file)
     open(unit=1001, file=path, form="formatted")
 
     do
