@@ -554,7 +554,6 @@ subroutine Verify_Solution(mesh, dna)
         end if
     end do
 
-
     verify = verify + dble(dna.n_nt_14nt)/dble(dna.n_base_stap)*100.0d0
     verify = verify + dble(dna.n_nt_4nt) /dble(dna.n_base_stap)*100.0d0
     verify = verify + dble(dna.len_ave_stap + dna.n_14nt + dna.n_s14nt + dna.n_4nt + dna.n_only_4nt)
@@ -574,7 +573,6 @@ subroutine Verify_Solution(mesh, dna)
     write(0, "(a25, a)"), "-4.39705561842778E+09"," - Reference:  1-2-1-2 Tetrahedron 63-bp Mitered"
     write(0, "(a25, a)"), "-2.11827579745192E+10"," - Reference:  3-1-1-3 Octahedron  84-bp Flat"
     write(0, "(a25, a)"), "-2.49680908323086E+10"," - Reference:  3-2-1-3 Octahedron  84-bp Mitered"
-    write(0, "(a25, a)"), "-1.09070738579295E+10"," - Reference: 47-2-1-1 Asym Tetrahedron  Mitered"
 
     write(0, "(es25.14)"), verify
 end subroutine Verify_Solution
