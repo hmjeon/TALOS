@@ -14,6 +14,7 @@
 ## Features</br>
 * Fully automatic procedure for the scaffold routing and sequence design</br>
 * Importing [PLY](https://en.wikipedia.org/wiki/PLY_(file_format)) file formats</br>
+* Two vertex designs - flat and mitered vertices</br>
 * [JSON](https://en.wikipedia.org/wiki/JSON) output for editing staples from [caDNAno](https://cadnano.org/)</br>
 * 3D visualization powered by [UCSF Chimera](https://www.cgl.ucsf.edu/chimera/)</br>
 * Pre-defined 45 target geometries</br>
