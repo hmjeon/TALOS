@@ -647,15 +647,15 @@ end subroutine Input_Print_Vertex_Design
 ! Print pre-defined cross-sections
 subroutine Input_Print_Section
     write(0, "(a)")
-    write(0, "(a)"), "   C. Third input - Origin of the local coordinates"
-    write(0, "(a)"), "   ================================================"
+    write(0, "(a)"), "   C. Third input - Vertex connection"
+    write(0, "(a)"), "   =================================="
     write(0, "(a)")
     write(0, "(a)"), "                [sec ID]                  [sec ID] "
     write(0, "(a)"), "      1.  @ @      4 3          2.  @-@      5 4   "
     write(0, "(a)"), "         @   @    5   2           =@   @=  =0   3= "
     write(0, "(a)"), "         =@ @=    =0 1=             @-@      1 2   "
     write(0, "(a)"), "                                                   "
-    write(0, "(a)"), "       [ Bottom origin ]         [ Middle origin ] "
+    write(0, "(a)"), "      [ Inner connection ]      [ Middle connection ] "
     write(0, "(a)")
     write(0, "(a)")
     write(0, "(a)"), "   Select the number [Enter] : "
@@ -745,8 +745,6 @@ subroutine Input_Print_Num_BP_Edge(prob)
     write(0, "(a)")
     write(0, "(a)"), "   D. Fourth input - Pre-defined minimum edge length"
     write(0, "(a)"), "   ================================================="
-    write(0, "(a)")
-    write(0, "(a)"), "   [Honeycomb lattice]"
     write(0, "(a)")
     write(0, "(a)"), "      1.  42 bp =  4 turn * 21 bp/turn ->  42 bp * 0.34 nm/bp = 14.28 nm"
     write(0, "(a)"), "      2.  63 bp =  6 turn * 21 bp/turn ->  63 bp * 0.34 nm/bp = 21.42 nm"
@@ -1935,8 +1933,12 @@ subroutine Input_Set_Num_BP_Edge(prob, geom)
     if(prob.sel_bp_edge == 4) prob.n_bp_edge = 105  ! 21 bp/turn * 5 turn
     if(prob.sel_bp_edge == 5) prob.n_bp_edge = 126  ! 21 bp/turn * 6 turn
 
-    if(prob.sel_bp_edge > 5 .and. prob.sel_bp_edge <= 20) then
-        write(0, "(a)"), "Error: Not defined edge-length"
+    if(prob.sel_bp_edge > 5 .and. prob.sel_bp_edge <= 41) then
+        write(0, "(a)"), "==================================================="
+        write(0, "(a)"), ""
+        write(0, "(a)"), "Error: The minimum edge length should be over 42-bp"
+        write(0, "(a)"), ""
+        write(0, "(a)"), "==================================================="
         stop
     end if
 
