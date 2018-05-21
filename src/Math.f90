@@ -232,7 +232,7 @@ subroutine Rotate_Vector(vec, pseudo, angle)
     vec_new(2) = R(2,1)*vec(1) + R(2,2)*vec(2) + R(2,3)*vec(3)
     vec_new(3) = R(3,1)*vec(1) + R(3,2)*vec(2) + R(3,3)*vec(3)
 
-    vec_new = Normalize(vec_new)
+    !vec_new = Normalize(vec_new)
 
     vec(1:3) = vec_new(1:3)
 end subroutine Rotate_Vector

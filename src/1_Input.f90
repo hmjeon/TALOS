@@ -916,6 +916,8 @@ subroutine Input_Select_Problem(prob, geom)
         case (44); call Exam_Miscel_Torus                    (prob, geom)
         case (45); call Exam_Miscel_Double_Torus             (prob, geom)
 
+        case (50); call Exam_Miscel_Twisted_Triangular_Prism (prob, geom)
+
         case default
             write(0, "(a$)"), "Error - Not defined problem : "
             write(0, "(a )"), "Input_Select_Problem"

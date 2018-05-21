@@ -28,10 +28,12 @@ module Exam_Miscel
     use Data_Prob
     use Data_Geom
 
+    use Math
     use Mani
 
     implicit none
 
+    public Exam_Miscel_Twisted_Triangular_Prism    ! V=6,   E=9,   F=5
     public Exam_Miscel_Heptagonal_Bipyramid        ! V=9,   E=21,  F=14
     public Exam_Miscel_Enneagonal_Trapezohedron    ! V=20,  E=36,  F=18
     public Exam_Miscel_Small_Stell_Dodecahedron    ! V=32,  E=90,  F=60
@@ -44,6 +46,70 @@ module Exam_Miscel
     public Exam_Miscel_Double_Torus                ! V=44,  E=92,  F=46
 
 contains
+
+! -----------------------------------------------------------------------------
+
+! Example of twisted triangular prism
+subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
+    type(ProbType), intent(inout) :: prob
+    type(GeomType), intent(inout) :: geom
+
+    double precision :: r1, r2, h, twist_angle
+
+    prob.name_prob = "50_Twisted_Tri_Prism"
+    call Mani_Set_Problem(prob, [150, 58, 228], "xy")
+
+    ! Allocate point and face structure
+    geom.n_iniP = 6
+    geom.n_face = 5
+
+    allocate(geom.iniP(geom.n_iniP))
+    allocate(geom.face(geom.n_face))
+
+    r1 = 2.0d0
+    r2 = 3.5d0
+    h  = 4.0d0
+    twist_angle = 60.0d0
+
+    ! Set point position vectors
+    geom.iniP(1).pos(1:3) = [  0.0d0,                       r1,                           h/2.0d0 ]
+    geom.iniP(2).pos(1:3) = [ -r1*dsin( 120.d0*pi/180.0d0), r1*dcos( 120.d0*pi/180.0d0),  h/2.0d0 ]
+    geom.iniP(3).pos(1:3) = [ -r1*dsin(-120.d0*pi/180.0d0), r1*dcos(-120.d0*pi/180.0d0),  h/2.0d0 ]
+    geom.iniP(4).pos(1:3) = [  0.0d0,                       r2,                          -h/2.0d0 ]
+    geom.iniP(5).pos(1:3) = [ -r2*dsin( 120.d0*pi/180.0d0), r2*dcos( 120.d0*pi/180.0d0), -h/2.0d0 ]
+    geom.iniP(6).pos(1:3) = [ -r2*dsin(-120.d0*pi/180.0d0), r2*dcos(-120.d0*pi/180.0d0), -h/2.0d0 ]
+
+    call Rotate_Vector(geom.iniP(4).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
+    call Rotate_Vector(geom.iniP(5).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
+    call Rotate_Vector(geom.iniP(6).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
+
+    ! Set point position vectors
+    geom.face(1).n_poi = 3; allocate(geom.face(1).poi(3)); geom.face(1).poi(1:3) = [ 1, 2, 3 ]
+    geom.face(2).n_poi = 3; allocate(geom.face(2).poi(3)); geom.face(2).poi(1:3) = [ 6, 5, 4 ]
+    geom.face(3).n_poi = 4; allocate(geom.face(3).poi(4)); geom.face(3).poi(1:4) = [ 2, 5, 6, 3 ]
+    geom.face(4).n_poi = 4; allocate(geom.face(4).poi(4)); geom.face(4).poi(1:4) = [ 1, 3, 6, 4 ]
+    geom.face(5).n_poi = 4; allocate(geom.face(5).poi(4)); geom.face(5).poi(1:4) = [ 1, 4, 5, 2 ]
+
+    !r1 = 2.0d0
+    !r2 = 4.0d0
+    !h  = 3.15d0
+    !twist_angle = 45.0d0
+    !
+    !! Set point position vectors
+    !geom.iniP(1).pos(1:3) = [  0.0d0,                        r1,                           h/2.0d0 ]
+    !geom.iniP(2).pos(1:3) = [ -r1*dsin( 120.d0*pi/180.0d0),  r1*dcos( 120.d0*pi/180.0d0),  h/2.0d0 ]
+    !geom.iniP(3).pos(1:3) = [ -r1*dsin(-120.d0*pi/180.0d0),  r1*dcos(-120.d0*pi/180.0d0),  h/2.0d0 ]
+    !geom.iniP(4).pos(1:3) = [  0.0d0,                       -r2,                          -h/2.0d0 ]
+    !geom.iniP(5).pos(1:3) = [  r2*dsin( 120.d0*pi/180.0d0), -r2*dcos( 120.d0*pi/180.0d0), -h/2.0d0 ]
+    !geom.iniP(6).pos(1:3) = [  r2*dsin(-120.d0*pi/180.0d0), -r2*dcos(-120.d0*pi/180.0d0), -h/2.0d0 ]
+    !
+    !! Set point position vectors
+    !geom.face(1).n_poi = 3; allocate(geom.face(1).poi(3)); geom.face(1).poi(1:3) = [ 1, 2, 3 ]
+    !geom.face(2).n_poi = 3; allocate(geom.face(2).poi(3)); geom.face(2).poi(1:3) = [ 6, 5, 4 ]
+    !geom.face(3).n_poi = 4; allocate(geom.face(3).poi(4)); geom.face(3).poi(1:4) = [ 2, 4, 5, 3 ]
+    !geom.face(4).n_poi = 4; allocate(geom.face(4).poi(4)); geom.face(4).poi(1:4) = [ 1, 3, 5, 6 ]
+    !geom.face(5).n_poi = 4; allocate(geom.face(5).poi(4)); geom.face(5).poi(1:4) = [ 2, 1, 6, 4 ]
+end subroutine Exam_Miscel_Twisted_Triangular_Prism
 
 ! -----------------------------------------------------------------------------
 
