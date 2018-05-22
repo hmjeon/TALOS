@@ -54,7 +54,7 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    double precision :: r1, r2, h, twist_angle
+    double precision :: r1, r2, height, t_angle
 
     prob.name_prob = "50_Twisted_Tri_Prism"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
@@ -66,22 +66,22 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
     allocate(geom.iniP(geom.n_iniP))
     allocate(geom.face(geom.n_face))
 
-    r1 = 2.0d0
-    r2 = 3.5d0
-    h  = 4.0d0
-    twist_angle = 60.0d0
+    r1      = 2.000d0
+    r2      = 3.315d0
+    height  = 4.000d0
+    t_angle = 30.0d0
 
     ! Set point position vectors
-    geom.iniP(1).pos(1:3) = [  0.0d0,                       r1,                           h/2.0d0 ]
-    geom.iniP(2).pos(1:3) = [ -r1*dsin( 120.d0*pi/180.0d0), r1*dcos( 120.d0*pi/180.0d0),  h/2.0d0 ]
-    geom.iniP(3).pos(1:3) = [ -r1*dsin(-120.d0*pi/180.0d0), r1*dcos(-120.d0*pi/180.0d0),  h/2.0d0 ]
-    geom.iniP(4).pos(1:3) = [  0.0d0,                       r2,                          -h/2.0d0 ]
-    geom.iniP(5).pos(1:3) = [ -r2*dsin( 120.d0*pi/180.0d0), r2*dcos( 120.d0*pi/180.0d0), -h/2.0d0 ]
-    geom.iniP(6).pos(1:3) = [ -r2*dsin(-120.d0*pi/180.0d0), r2*dcos(-120.d0*pi/180.0d0), -h/2.0d0 ]
+    geom.iniP(1).pos(1:3) = [  0.0d0,                       r1,                           height/2.0d0 ]
+    geom.iniP(2).pos(1:3) = [ -r1*dsin( 120.d0*pi/180.0d0), r1*dcos( 120.d0*pi/180.0d0),  height/2.0d0 ]
+    geom.iniP(3).pos(1:3) = [ -r1*dsin(-120.d0*pi/180.0d0), r1*dcos(-120.d0*pi/180.0d0),  height/2.0d0 ]
+    geom.iniP(4).pos(1:3) = [  0.0d0,                       r2,                          -height/2.0d0 ]
+    geom.iniP(5).pos(1:3) = [ -r2*dsin( 120.d0*pi/180.0d0), r2*dcos( 120.d0*pi/180.0d0), -height/2.0d0 ]
+    geom.iniP(6).pos(1:3) = [ -r2*dsin(-120.d0*pi/180.0d0), r2*dcos(-120.d0*pi/180.0d0), -height/2.0d0 ]
 
-    call Rotate_Vector(geom.iniP(4).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
-    call Rotate_Vector(geom.iniP(5).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
-    call Rotate_Vector(geom.iniP(6).pos, [0.0d0, 0.0d0, 1.0d0], twist_angle*pi/180.0d0)
+    call Rotate_Vector(geom.iniP(4).pos, [0.0d0, 0.0d0, 1.0d0], t_angle*pi/180.0d0)
+    call Rotate_Vector(geom.iniP(5).pos, [0.0d0, 0.0d0, 1.0d0], t_angle*pi/180.0d0)
+    call Rotate_Vector(geom.iniP(6).pos, [0.0d0, 0.0d0, 1.0d0], t_angle*pi/180.0d0)
 
     ! Set point position vectors
     geom.face(1).n_poi = 3; allocate(geom.face(1).poi(3)); geom.face(1).poi(1:3) = [ 1, 2, 3 ]
