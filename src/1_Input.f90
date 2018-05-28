@@ -620,7 +620,7 @@ subroutine Input_Print_Problem
     write(0, "(a)")
     write(0, "(a)"), "      [ Miscellaneous polyhedra ]"
     write(0, "(a)"), "       *36. Twisted Tri Prism,      37. Heptagonal Bipyramid,    38. Enneagonal Trapezo"
-    write(0, "(a)"), "        39. Small Stell Dodeca,    #40. Rhombic Hexeconta"
+    write(0, "(a)"), "        39. Small Stell Dodeca,    *40. Rhombic Hexeconta"
     !write(0, "(a)"), "        41. Goldberg dk5dgD,       *42. Double Helix,            43. Nested Cube"
     !write(0, "(a)"), "       *44. Nested Octa,           *45. Torus,                   46. Double Torus"
     write(0, "(a)")
