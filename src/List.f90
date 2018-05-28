@@ -143,7 +143,7 @@ subroutine List_Delete_Conn(self)
             deallocate(current)
             nullify(self)
         end if
-        deallocate(current)
+        !deallocate(current)
         nullify(current)
         current => next
     end do
@@ -165,7 +165,7 @@ subroutine List_Delete_Junc(self)
             deallocate(current)
             nullify(self)
         end if
-        deallocate(current)
+        !deallocate(current)
         nullify(current)
         current => next
     end do
@@ -186,7 +186,7 @@ subroutine List_Delete_Base(self)
             deallocate(current)
             nullify(self)
         end if
-        deallocate(current)
+        !deallocate(current)
         nullify(current)
         current => next
     end do
@@ -208,7 +208,7 @@ subroutine List_Delete_Scaf(self)
             deallocate(current)
             nullify(self)
         end if
-        deallocate(current)
+        !deallocate(current)
         nullify(current)
         current => next
     end do

@@ -206,7 +206,7 @@ subroutine Input_Initialize(prob, geom)
     call Input_Write_GEO_File(prob, geom)
 
     ! Write *.ply file
-    !call Input_Write_PLY_File(prob, geom)
+    call Input_Write_PLY_File(prob, geom)
 
     ! Write initial geometry
     call Input_Chimera_Init_Geometry(prob, geom)
@@ -2350,7 +2350,7 @@ subroutine Input_Write_PLY_File(prob, geom)
     integer :: i, j
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=101, file=trim(path)//".ply", form="formatted")
+    open(unit=101, file=trim(path)//"_00_PLY.ply", form="formatted")
 
     write(101, "(a)"), "ply"
     write(101, "(a)"), "format ascii 1.0"

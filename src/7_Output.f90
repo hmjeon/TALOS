@@ -2036,7 +2036,7 @@ subroutine Output_Write_Out_Guide_JSON(prob, geom, bound, mesh)
     f_axis = para_chimera_axis
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=998, file=trim(path)//"_14_json_guide.bild", form="formatted")
+    open(unit=998, file=trim(path)//"_14_JSON_guide.bild", form="formatted")
 
     ! Write points for multi lines
     write(998, "(a, 3f6.2)"), ".color ", 0.0d0/255.0d0, 114.0d0/255.0d0, 178.0d0/255.0d0
@@ -2238,7 +2238,7 @@ subroutine Output_Write_Out_JSON(prob, geom, mesh, dna, max_unpaired)
     character(200) :: path
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=999, file=trim(path)//"_15_json_caDNAno.json", form="formatted")
+    open(unit=999, file=trim(path)//"_15_JSON_caDNAno.json", form="formatted")
 
     ! Hex color code
     color( 1) = 13369344    ! #cc0000
@@ -2646,7 +2646,7 @@ subroutine Output_Write_CanDo(prob, mesh, dna)
 
     ! Open files
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=803, file=trim(path)//"_16_cndo_format.cndo", form="formatted")
+    open(unit=803, file=trim(path)//"_16_CNDO.cndo", form="formatted")
 
     write(803, "(a)"), '"CanDo (.cndo) file format version 1.0"'
     write(803, "(a)")
