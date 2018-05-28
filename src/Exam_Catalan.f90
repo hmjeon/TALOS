@@ -59,19 +59,6 @@ subroutine Exam_Catalan_Rhombic_Dodecahedron(prob, geom)
     prob.name_prob = "26_Rhom_Dodeca"
     call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 14
     geom.n_face = 12
@@ -112,19 +99,6 @@ subroutine Exam_Catalan_Rhombic_Triacontahedron(prob, geom)
 
     prob.name_prob = "27_Rhom_Triaconta"
     call Mani_Set_Problem(prob, [247, 147, 30], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -194,19 +168,6 @@ subroutine Exam_Catalan_Deltoidal_Icositetrahedron(prob, geom)
     prob.name_prob = "28_Deltoi_Icositetra"
     call Mani_Set_Problem(prob, [247, 147, 30], "xz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 26
     geom.n_face = 24
@@ -265,19 +226,6 @@ subroutine Exam_Catalan_Pentagonal_Icositetrahedron(prob, geom)
 
     prob.name_prob = "29_Penta_Icositetra"
     call Mani_Set_Problem(prob, [247, 147, 30], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 38
@@ -344,19 +292,6 @@ subroutine Exam_Catalan_Triakis_Octahedron(prob, geom)
     prob.name_prob = "30_Tria_Octa"
     call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 14
     geom.n_face = 24
@@ -409,19 +344,6 @@ subroutine Exam_Catalan_Disdyakis_Dodecahedron(prob, geom)
 
     prob.name_prob = "31_Disdya_Dodeca"
     call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 26
@@ -505,19 +427,6 @@ subroutine Exam_Catalan_Triakis_Icosahedron(prob, geom)
 
     prob.name_prob = "32_Tria_Icosa"
     call Mani_Set_Problem(prob, [247, 147, 30], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -617,19 +526,6 @@ subroutine Exam_Catalan_Pentakis_Dodecahedron(prob, geom)
     prob.name_prob = "33_Penta_Dodeca"
     call Mani_Set_Problem(prob, [247, 147, 30], "yz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 32
     geom.n_face = 60
@@ -728,19 +624,6 @@ subroutine Exam_Catalan_Tetrakis_Hexahedron(prob, geom)
     prob.name_prob = "34_Tetra_Hexa"
     call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 14
     geom.n_face = 24
@@ -794,19 +677,6 @@ subroutine Exam_Catalan_Triakis_Tetrahedron(prob, geom)
     prob.name_prob = "35_Tria_Tetra"
     call Mani_Set_Problem(prob, [247, 147, 30], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 8
     geom.n_face = 12
@@ -848,19 +718,6 @@ subroutine Exam_Catalan_Disdyakis_Triacontahedron(prob, geom)
 
     prob.name_prob = "Disdy_Triaconta"
     call Mani_Set_Problem(prob, [247, 147, 30], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 62
@@ -1035,19 +892,6 @@ subroutine Exam_Catalan_Deltoidal_Hexecontahedron(prob, geom)
     prob.name_prob = "Deltoi_Hexeconta"
     call Mani_Set_Problem(prob, [247, 147, 30], "yz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 62
     geom.n_face = 60
@@ -1160,19 +1004,6 @@ subroutine Exam_Catalan_Pentagonal_Hexecontahedron(prob, geom)
 
     prob.name_prob = "Penta_Hexeconta"
     call Mani_Set_Problem(prob, [247, 147, 30], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 92

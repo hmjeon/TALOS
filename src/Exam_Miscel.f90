@@ -59,19 +59,6 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
     prob.name_prob = "36_Twisted_Tri_Prism"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 6
     geom.n_face = 5
@@ -138,19 +125,6 @@ subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
     prob.name_prob = "37_Hepta_Bipyramid"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP =  9
     geom.n_face = 14
@@ -195,19 +169,6 @@ subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
 
     prob.name_prob = "38_Ennea_Trapezo"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 20
@@ -268,19 +229,6 @@ subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
 
     prob.name_prob = "39_Small_Stell_Dodeca"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 32
@@ -395,19 +343,6 @@ subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
 
     prob.name_prob = "40_Rhombic_Hexeconta"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 62
@@ -550,24 +485,11 @@ subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "41_Goldberg_dk5dgD"
+    prob.name_prob = "Goldberg_dk5dgD"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
-    geom.n_iniP =  140
+    geom.n_iniP = 140
     geom.n_face = 72
 
     allocate(geom.iniP(geom.n_iniP))
@@ -797,21 +719,8 @@ subroutine Exam_Miscel_Double_Helix(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "42_Double_Helix"
+    prob.name_prob = "Double_Helix"
     call Mani_Set_Problem(prob, [150, 58, 228], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 36
@@ -937,19 +846,6 @@ subroutine Exam_Miscel_Nested_Cube(prob, geom)
     prob.name_prob = "43_Nested_Cube"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 16
     geom.n_face = 16
@@ -1001,21 +897,8 @@ subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "44_Nested_Octa"
+    prob.name_prob = "Nested_Octa"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 12
@@ -1066,21 +949,8 @@ subroutine Exam_Miscel_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "45_Torus"
+    prob.name_prob = "Torus"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
-
-    ! Problem specified preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 36
@@ -1209,21 +1079,8 @@ subroutine Exam_Miscel_Double_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "46_Double_Torus"
+    prob.name_prob = "Double_Torus"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 44

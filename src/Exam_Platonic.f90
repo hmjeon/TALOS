@@ -53,9 +53,6 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
     ! Preset parameters
     if(para_preset == "on") then
         if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
 
             ! Folding conditions
             para_const_edge_mesh = "on"     ! Constant edge length
@@ -64,9 +61,6 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
             !para_set_seq_scaf    = 0        ! Scaffold sequence, 0 - M13mp18, 1 - import sequence, 2 - random
             !para_set_start_scaf  = 4141     ! Starting nucleotide position of scaffold strand
         else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
 
             ! 42bp
             !para_set_seq_scaf    = 1        ! Scaffold sequence, 0 - M13mp18, 1 - import sequence, 2 - random
@@ -120,19 +114,6 @@ subroutine Exam_Platonic_Cube(prob, geom)
     prob.name_prob = "02_Cube"
     call Mani_Set_Problem(prob, [52, 152, 219], "xyz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 8
     geom.n_face = 6
@@ -182,16 +163,10 @@ subroutine Exam_Platonic_Octahedron(prob, geom)
     ! Preset parameters
     if(para_preset == "on") then
         if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
 
             ! Folding conditions
             para_const_edge_mesh = "on"     ! Constant edge length
         else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
 
             ! The mimimum gap between staple crossover and vertex boundary
             para_gap_xover_bound_stap = 8
@@ -237,19 +212,6 @@ subroutine Exam_Platonic_Dodecahedron(prob, geom)
     prob.name_prob = "04_Dodecahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 20
     geom.n_face = 12
@@ -293,19 +255,6 @@ subroutine Exam_Platonic_Icosahedron(prob, geom)
 
     prob.name_prob = "05_Icosahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 12

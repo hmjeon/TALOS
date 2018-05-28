@@ -59,19 +59,6 @@ subroutine Exam_Archi_Cubeoctahedron(prob, geom)
     prob.name_prob = "06_Cubeocta"
     call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 12
     geom.n_face = 14
@@ -113,19 +100,6 @@ subroutine Exam_Archi_Icosidodecahedron(prob, geom)
 
     prob.name_prob = "07_Icosidodeca"
     call Mani_Set_Problem(prob, [231, 76, 60], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 30
@@ -196,19 +170,6 @@ subroutine Exam_Archi_Rhombicuboctahedron(prob, geom)
     prob.name_prob = "08_Rhombicubocta"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 24
     geom.n_face = 26
@@ -268,19 +229,6 @@ subroutine Exam_Archi_Snub_Cube(prob, geom)
 
     prob.name_prob = "09_Snub_Cube"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 24
@@ -354,19 +302,6 @@ subroutine Exam_Archi_Truncated_Cube(prob, geom)
     prob.name_prob = "10_Trunc_Cube"
     call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 24
     geom.n_face = 14
@@ -414,19 +349,6 @@ subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
 
     prob.name_prob = "11_Trunc_Cubocta"
     call Mani_Set_Problem(prob, [231, 76, 60], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 48
@@ -499,19 +421,6 @@ subroutine Exam_Archi_Truncated_Dodecahedron(prob, geom)
 
     prob.name_prob = "12_Trunc_Dodeca"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 60
@@ -597,19 +506,6 @@ subroutine Exam_Archi_Truncated_Icosahedron(prob, geom)
     prob.name_prob = "13_Trunc_Icosa"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 60
     geom.n_face = 32
@@ -694,19 +590,6 @@ subroutine Exam_Archi_Truncated_Octahedron(prob, geom)
     prob.name_prob = "14_Trunc_Octa"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! The number of points and faces
     geom.n_iniP = 24
     geom.n_face = 14
@@ -754,21 +637,6 @@ subroutine Exam_Archi_Truncated_Tetrahedron(prob, geom)
 
     prob.name_prob = "15_Trunc_Tetra"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-
-            para_const_edge_mesh = "on"     ! Constant edge length from polyhedra mesh
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! The number of points and faces
     geom.n_iniP = 12

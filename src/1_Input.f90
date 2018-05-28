@@ -762,6 +762,17 @@ subroutine Input_Set_Problem(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
+    ! Preset parameters
+    if(para_vertex_design == "flat") then
+        para_junc_ang        = "ave"    ! Junctional gap
+        para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
+        para_n_base_tn       = 7        ! The number of nucleotides
+    else if(para_vertex_design == "mitered") then
+        para_junc_ang        = "opt"    ! Junctional gap
+        para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
+        para_n_base_tn       = -1       ! The number of nucleotides
+    end if
+
     ! Set problem
     if(prob.sel_prob == 0) call Input_Select_File(prob, geom)
     if(prob.sel_prob /= 0) call Input_Select_Problem(prob, geom)

@@ -58,19 +58,6 @@ subroutine Exam_Johnson_Gyroelongated_Pentagonal_Pyramid_J11(prob, geom)
     prob.name_prob = "16_Gyroelon_Penta_Pyramid"
     call Mani_Set_Problem(prob, [77, 175, 74], "yz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 11
     geom.n_face = 16
@@ -120,19 +107,6 @@ subroutine Exam_Johnson_Triangular_Bipyramid_J12(prob, geom)
     prob.name_prob = "17_Triang_Bipyramid"
     call Mani_Set_Problem(prob, [77, 175, 74], "yz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP =  5
     geom.n_face =  6
@@ -169,16 +143,9 @@ subroutine Exam_Johnson_Pentagonal_Bipyramid_J13(prob, geom)
     ! Preset parameters
     if(para_preset == "on") then
         if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
 
             ! Folding conditions
             para_const_edge_mesh = "on"     ! Constant edge length
-            para_n_base_tn       = -1       ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
             para_n_base_tn       = -1       ! The number of nucleotides
         end if
     end if
@@ -221,19 +188,6 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bipyramid_J17(prob, geom)
 
     prob.name_prob = "19_Gyroelong_Square_Bipyramid"
     call Mani_Set_Problem(prob, [77, 175, 74], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 10
@@ -282,19 +236,6 @@ subroutine Exam_Johnson_Square_Gyrobicupola_J29(prob, geom)
 
     prob.name_prob = "20_Square_Gyrobicupola"
     call Mani_Set_Problem(prob, [77, 175, 74], "xyz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 16
@@ -351,19 +292,6 @@ subroutine Exam_Johnson_Pentagonal_Orthocupolarotunda_J32(prob, geom)
 
     prob.name_prob = "21_Penta_Orthocupolarotunda"
     call Mani_Set_Problem(prob, [77, 175, 74], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 25
@@ -438,19 +366,6 @@ subroutine Exam_Johnson_Pentagonal_Orthobirotunda_J34(prob, geom)
 
     prob.name_prob = "22_Penta_Orthobirotunda"
     call Mani_Set_Problem(prob, [77, 175, 74], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 30
@@ -536,19 +451,6 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobicupola_J39(prob, geom)
     prob.name_prob = "23_Elong_Penta_Gyrobicupola"
     call Mani_Set_Problem(prob, [77, 175, 74], "xyz")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 30
     geom.n_face = 32
@@ -632,19 +534,6 @@ subroutine Exam_Johnson_Elongated_Pentagonal_Gyrobirotunda_J43(prob, geom)
 
     prob.name_prob = "24_Elong_Penta_Gyrobirotunda"
     call Mani_Set_Problem(prob, [77, 175, 74], "xz")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 40
@@ -750,19 +639,6 @@ subroutine Exam_Johnson_Gyroelongated_Square_Bicupola_J45(prob, geom)
     prob.name_prob = "25_Gyroelong_Square_Bicupola"
     call Mani_Set_Problem(prob, [77, 175, 74], "xy")
 
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
-
     ! Allocate point and face structure
     geom.n_iniP = 24
     geom.n_face = 34
@@ -842,19 +718,6 @@ subroutine Exam_Johnson_Pentagonal_Pyramid_J2(prob, geom)
 
     prob.name_prob = "Pentagonal_Pyramid"
     call Mani_Set_Problem(prob, [77, 175, 74], "xy")
-
-    ! Preset parameters
-    if(para_preset == "on") then
-        if(para_vertex_design == "flat") then
-            para_junc_ang        = "min"    ! Junctional gap
-            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-            para_n_base_tn       = 7        ! The number of nucleotides
-        else if(para_vertex_design == "mitered") then
-            para_junc_ang        = "opt"    ! Junctional gap
-            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
-            para_n_base_tn       = -1       ! The number of nucleotides
-        end if
-    end if
 
     ! Allocate point and face structure
     geom.n_iniP = 6
