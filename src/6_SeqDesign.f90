@@ -5925,7 +5925,7 @@ subroutine SeqDesign_Chimera_Atom(prob, dna)
     f_axis = para_chimera_axis
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=702, file=trim(path)//"_09_atom_model.bild", form="formatted")
+    open(unit=702, file=trim(path)//"_09_atomic_model.bild", form="formatted")
 
     ! For all bases
     do i = 1, dna.n_strand
@@ -6000,7 +6000,7 @@ subroutine SeqDesign_Chimera_Atom(prob, dna)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=702, file=trim(path)//"_09_atom_model.dat", form="formatted")
+    open(unit=702, file=trim(path)//"_09_atomic_model.dat", form="formatted")
 
     write(702, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
 
@@ -6176,7 +6176,7 @@ subroutine SeqDesign_Chimera_Curved_Cylinder(prob, mesh, dna)
 
         open(unit=702, file=trim(path)//"_curved_cylinder.py", form="formatted")
         write(702, "(a)"), "from chimera import runCommand"
-        write(702, "(a)"), "runCommand('open "//trim(prob.name_file)//"_16_cndo.pdb')"
+        write(702, "(a)"), "runCommand('open "//trim(prob.name_file)//"_16_cndo_format.pdb')"
         write(702, "(a)"), "runCommand('windowsize 800 800')"
         write(702, "(a)"), "runCommand('window')"
         write(702, "(a)"), "runCommand('preset apply publication 3')"
@@ -6226,8 +6226,8 @@ subroutine SeqDesign_Chimera_Route(prob, mesh, dna)
 
     ! File open for route step
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=703, file=trim(path)//"_10_route_scaf.bild", form="formatted")
-    open(unit=704, file=trim(path)//"_11_route_stap.bild", form="formatted")
+    open(unit=703, file=trim(path)//"_10_routing_scaf.bild", form="formatted")
+    open(unit=704, file=trim(path)//"_11_routing_stap.bild", form="formatted")
 
     ! --------------------------------------------------
     !
@@ -6450,8 +6450,8 @@ subroutine SeqDesign_Chimera_Route(prob, mesh, dna)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=703, file=trim(path)//"_10_route_scaf.dat", form="formatted")
-    open(unit=704, file=trim(path)//"_11_route_stap.dat", form="formatted")
+    open(unit=703, file=trim(path)//"_10_routing_scaf.dat", form="formatted")
+    open(unit=704, file=trim(path)//"_11_routing_stap.dat", form="formatted")
 
     ! For scaffold bases
     write(703, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
@@ -6523,7 +6523,7 @@ subroutine SeqDesign_Chimera_Sequence_Design(prob, geom, mesh, dna)
 
     ! File open for sequence design
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=705, file=trim(path)//"_12_route_all.bild", form="formatted")
+    open(unit=705, file=trim(path)//"_12_routing_all.bild", form="formatted")
 
     if(para_output_Tecplot == "on") then
         allocate(base_scaf(dna.n_base_scaf*2, 3))
@@ -6806,7 +6806,7 @@ subroutine SeqDesign_Chimera_Sequence_Design(prob, geom, mesh, dna)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=705, file=trim(path)//"_12_route_all.dat", form="formatted")
+    open(unit=705, file=trim(path)//"_12_routing_all.dat", form="formatted")
     open(unit=706, file=trim(path)//"_15_sep_line.dat", form="formatted")
 
     ! For scaffold bases

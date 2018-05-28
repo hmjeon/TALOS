@@ -1004,7 +1004,7 @@ subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
     f_info = para_chimera_302_info
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=302, file=trim(path)//"_02_init_geo_local.bild", form="formatted")
+    open(unit=302, file=trim(path)//"_02_target_geometry_local.bild", form="formatted")
 
     ! Write modified lines
     write(302, "(a)"), ".color dark green"
@@ -1104,7 +1104,7 @@ subroutine ModGeo_Chimera_Init_Geometry_Local(prob, geom)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot\"//trim(prob.name_file)
-    open(unit=302, file=trim(path)//"_02_init_geo_local.dat", form="formatted")
+    open(unit=302, file=trim(path)//"_02_target_geometry_local.dat", form="formatted")
 
     write(302, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
     write(302, "(a )"), 'VARIABLES = "X", "Y", "Z", "t1", "t2", "t3"'

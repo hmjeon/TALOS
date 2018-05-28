@@ -30,11 +30,13 @@ module Mani
     use Data_DNA
     use Data_Prob
 
+    use Math
     use Para
 
     implicit none
 
     public Mani_Set_Problem
+    public Mani_Set_Geo_Ori
     public Space
     public Mani_To_Upper
     public Mani_Progress_Bar
@@ -84,6 +86,33 @@ subroutine Mani_Set_Problem(prob, color, view)
     ! Set view points
     para_fig_view = trim(adjustl(view))
 end subroutine Mani_Set_Problem
+
+! -----------------------------------------------------------------------------
+
+! Set the orientation of the geometry
+subroutine Mani_Set_Geo_Ori(geom, pseudo, angle)
+    type(GeomType), intent(inout) :: geom
+    double precision, intent(in)  :: pseudo(3)
+    double precision, intent(in)  :: angle
+
+    double precision :: pos_center(3)
+    integer :: i
+
+    pos_center(1:3) = 0.0d0
+
+    do i = 1, geom.n_iniP
+        pos_center(1:3) = pos_center(1:3) + geom.iniP(i).pos(1:3)
+    end do
+    pos_center(1:3) = pos_center(1:3) / dble(geom.n_iniP)
+
+    do i = 1, geom.n_iniP
+        geom.iniP(i).pos(1:3) = geom.iniP(i).pos(1:3) - pos_center(1:3)
+    end do
+
+    do i = 1, geom.n_iniP
+        call Rotate_Vector(geom.iniP(i).pos(:), pseudo, angle)
+    end do
+end subroutine Mani_Set_Geo_Ori
 
 ! -----------------------------------------------------------------------------
 

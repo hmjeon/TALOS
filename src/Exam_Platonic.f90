@@ -47,7 +47,7 @@ subroutine Exam_Platonic_Tetrahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "01_Tet"
+    prob.name_prob = "01_Tetrahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
@@ -176,7 +176,7 @@ subroutine Exam_Platonic_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "03_Octa"
+    prob.name_prob = "03_Octahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
@@ -234,7 +234,7 @@ subroutine Exam_Platonic_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "04_Dodeca"
+    prob.name_prob = "04_Dodecahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters
@@ -291,7 +291,7 @@ subroutine Exam_Platonic_Icosahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "05_Icosa"
+    prob.name_prob = "05_Icosahedron"
     call Mani_Set_Problem(prob, [52, 152, 219], "xy")
 
     ! Preset parameters

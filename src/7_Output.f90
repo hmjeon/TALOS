@@ -106,7 +106,7 @@ subroutine Output_Generation(prob, geom, bound, mesh, dna)
     !call Output_Write_CanDo_New(prob, mesh, dna)
 
     ! Write PLY file
-    call Output_Write_PLY(prob, geom)
+    !call Output_Write_PLY(prob, geom)
 
     !call Output_Write_DNA_Info(prob, dna)
 
@@ -257,7 +257,7 @@ subroutine Output_Write_Cylinder_Xover(prob, geom, bound, mesh, dna)
     ! Set flag for drawing option
     f_axis = para_chimera_axis
 
-    path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_13_cylinder_xover"
+    path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_13_cylindrical_model_xover"
     open(unit=701, file=trim(path)//".bild", form="formatted")
 
     ! Cylinder radius
@@ -2238,7 +2238,7 @@ subroutine Output_Write_Out_JSON(prob, geom, mesh, dna, max_unpaired)
     character(200) :: path
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=999, file=trim(path)//"_15_json.json", form="formatted")
+    open(unit=999, file=trim(path)//"_15_json_caDNAno.json", form="formatted")
 
     ! Hex color code
     color( 1) = 13369344    ! #cc0000
@@ -2646,7 +2646,7 @@ subroutine Output_Write_CanDo(prob, mesh, dna)
 
     ! Open files
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=803, file=trim(path)//"_16_cndo.cndo", form="formatted")
+    open(unit=803, file=trim(path)//"_16_cndo_format.cndo", form="formatted")
 
     write(803, "(a)"), '"CanDo (.cndo) file format version 1.0"'
     write(803, "(a)")

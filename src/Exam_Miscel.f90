@@ -109,6 +109,9 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
     !geom.face(3).n_poi = 4; allocate(geom.face(3).poi(4)); geom.face(3).poi(1:4) = [ 2, 4, 5, 3 ]
     !geom.face(4).n_poi = 4; allocate(geom.face(4).poi(4)); geom.face(4).poi(1:4) = [ 1, 3, 5, 6 ]
     !geom.face(5).n_poi = 4; allocate(geom.face(5).poi(4)); geom.face(5).poi(1:4) = [ 2, 1, 6, 4 ]
+
+    call Mani_Set_Geo_Ori(geom, [1.0d0, 0.0d0, 0.0d0], -90.0d0*pi/180.0d0)
+    call Mani_Set_Geo_Ori(geom, [0.0d0, 1.0d0, 0.0d0],  45.0d0*pi/180.0d0)
 end subroutine Exam_Miscel_Twisted_Triangular_Prism
 
 ! -----------------------------------------------------------------------------

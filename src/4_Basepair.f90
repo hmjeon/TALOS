@@ -93,10 +93,10 @@ subroutine Basepair_Discretize(prob, geom, bound, mesh)
     call Basepair_Set_Conn_Junction(geom, bound, mesh)
 
     ! Write cylindrial model with orientation
-    call Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, "cylinder_1")
+    call Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, "cylindrical_model_1")
 
     ! Write cylindrial model, cylinder 1
-    call Basepair_Chimera_Cylinder(prob, geom, bound, mesh, "cylinder_1")
+    call Basepair_Chimera_Cylinder(prob, geom, bound, mesh, "cylindrical_model_1")
 
     ! Modify junction to fill hole or avoid crash depending on vertex design
     call Basepair_Modify_Junction(geom, bound, mesh)
@@ -108,10 +108,10 @@ subroutine Basepair_Discretize(prob, geom, bound, mesh)
     call Basepair_Make_Sticky_End(geom, bound, mesh)
 
     ! Write cylindrial model with orientation
-    call Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, "cylinder_2")
+    call Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, "cylindrical_model_2")
 
     ! Write cylindrial model, cylinder 2
-    call Basepair_Chimera_Cylinder(prob, geom, bound, mesh, "cylinder_2")
+    call Basepair_Chimera_Cylinder(prob, geom, bound, mesh, "cylindrical_model_2")
 
     ! Write Chimera file for base pairs
     call Basepair_Chimera_Mesh(prob, geom, mesh)
@@ -728,15 +728,15 @@ subroutine Basepair_Chimera_Cylinder(prob, geom, bound, mesh, mode)
         f_mitered = .false.
     end if
 
-    if(mode == "cylinder_1") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_04_"
-    if(mode == "cylinder_2") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_05_"
+    if(mode == "cylindrical_model_1") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_05_"
+    if(mode == "cylindrical_model_2") path = trim(prob.path_work)//"/"//trim(prob.name_file)//"_06_"
     open(unit=502, file=trim(path)//trim(mode)//".bild", form="formatted")
 
     ! Cylinder radius
     radius = para_rad_helix + para_gap_helix / 2.0d0
 
     ! Write cylinder model base on edges
-    if(mode == "cylinder_1" .or. (mode == "cylinder_2" .and. f_mitered == .false.)) then
+    if(mode == "cylindrical_model_1" .or. (mode == "cylindrical_model_2" .and. f_mitered == .false.)) then
 
         write(502, "(a, 3f9.4)"), ".color ", dble(prob.color(1:3))/255.0d0
 
@@ -752,7 +752,7 @@ subroutine Basepair_Chimera_Cylinder(prob, geom, bound, mesh, mode)
             write(502, "(3f10.3$)"), pos_2(1:3) * 10.0d0
             write(502, "(1f9.3  )"), radius * 10.0d0
         end do
-    else if(mode == "cylinder_2" .and. f_mitered == .true.) then
+    else if(mode == "cylindrical_model_2" .and. f_mitered == .true.) then
 
         do i = 1, geom.n_croL
 
@@ -806,7 +806,7 @@ subroutine Basepair_Chimera_Cylinder(prob, geom, bound, mesh, mode)
     end if
 
     !return
-    if(mode == "cylinder_1") then
+    if(mode == "cylindrical_model_1") then
 
         ! Write connection on the section
         do i = 1, bound.n_junc
@@ -850,7 +850,7 @@ subroutine Basepair_Chimera_Cylinder(prob, geom, bound, mesh, mode)
     end if
 
     ! Print initial geometry with cylindrical model 1
-    if(mode == "cylinder_1") then
+    if(mode == "cylindrical_model_1") then
 
         ! Write initial points
         write(502, "(a)"), ".color red"
@@ -2466,7 +2466,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     f_info = para_chimera_504_info
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=504, file=trim(path)//"_06_multi_line.bild", form="formatted")
+    open(unit=504, file=trim(path)//"_04_six_edged_lines.bild", form="formatted")
 
     ! Write cross-sectional points
     write(504, "(a)"), ".color red"
@@ -2588,7 +2588,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=504, file=trim(path)//"_06_multi_line.dat", form="formatted")
+    open(unit=504, file=trim(path)//"_04_six_edged_lines.dat", form="formatted")
 
     write(504, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
     write(504, "(a )"), 'VARIABLES = "X", "Y", "Z", "weight"'
