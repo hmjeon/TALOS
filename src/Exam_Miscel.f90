@@ -56,7 +56,7 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
 
     double precision :: r1, r2, height, t_angle
 
-    prob.name_prob = "50_Twisted_Tri_Prism"
+    prob.name_prob = "36_Twisted_Tri_Prism"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Allocate point and face structure
@@ -121,7 +121,7 @@ subroutine Exam_Miscel_Heptagonal_Bipyramid(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "36_Hepta_Bipyramid"
+    prob.name_prob = "37_Hepta_Bipyramid"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
@@ -179,7 +179,7 @@ subroutine Exam_Miscel_Enneagonal_Trapezohedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "37_Ennea_Trapezo"
+    prob.name_prob = "38_Ennea_Trapezo"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
@@ -252,7 +252,7 @@ subroutine Exam_Miscel_Small_Stell_Dodecahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "38_Small_Stell_Dodeca"
+    prob.name_prob = "39_Small_Stell_Dodeca"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
@@ -379,7 +379,7 @@ subroutine Exam_Miscel_Rhombic_Hexecontahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "39_Rhombic_Hexeconta"
+    prob.name_prob = "40_Rhombic_Hexeconta"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
@@ -536,7 +536,7 @@ subroutine Exam_Miscel_Goldberg_Dk5dgD(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "40_Goldberg_dk5dgD"
+    prob.name_prob = "41_Goldberg_dk5dgD"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Preset parameters
@@ -783,7 +783,7 @@ subroutine Exam_Miscel_Double_Helix(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "41_Double_Helix"
+    prob.name_prob = "42_Double_Helix"
     call Mani_Set_Problem(prob, [150, 58, 228], "xz")
 
     ! Preset parameters
@@ -920,7 +920,7 @@ subroutine Exam_Miscel_Nested_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "42_Nested_Cube"
+    prob.name_prob = "43_Nested_Cube"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
@@ -987,7 +987,7 @@ subroutine Exam_Miscel_Nested_Octahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "43_Nested_Octa"
+    prob.name_prob = "44_Nested_Octa"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
@@ -1052,7 +1052,7 @@ subroutine Exam_Miscel_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "44_Torus"
+    prob.name_prob = "45_Torus"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
     ! Problem specified preset parameters
@@ -1195,7 +1195,7 @@ subroutine Exam_Miscel_Double_Torus(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "45_Double_Torus"
+    prob.name_prob = "46_Double_Torus"
     call Mani_Set_Problem(prob, [150, 58, 228], "xyz")
 
     ! Preset parameters
