@@ -125,7 +125,7 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
 
     call Mani_Set_Geo_Ori(geom, [1.0d0, 0.0d0, 0.0d0], -90.0d0*pi/180.0d0)
     call Mani_Set_Geo_Ori(geom, [0.0d0, 1.0d0, 0.0d0],  45.0d0*pi/180.0d0)
-    call Mani_Set_Geo_Ori(geom, [1.0d0, 0.0d0, 0.0d0],  20.0d0*pi/180.0d0)
+    call Mani_Set_Geo_Ori(geom, [1.0d0, 0.0d0, 0.0d0],  25.0d0*pi/180.0d0)
 end subroutine Exam_Miscel_Twisted_Triangular_Prism
 
 ! -----------------------------------------------------------------------------
