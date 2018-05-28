@@ -266,7 +266,7 @@ subroutine Exam_Archi_Snub_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "09_Snub_Cube Cube"
+    prob.name_prob = "09_Snub_Cube"
     call Mani_Set_Problem(prob, [231, 76, 60], "xy")
 
     ! Preset parameters
@@ -351,7 +351,7 @@ subroutine Exam_Archi_Truncated_Cube(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "10_Trunc_Cube cube"
+    prob.name_prob = "10_Trunc_Cube"
     call Mani_Set_Problem(prob, [231, 76, 60], "xz")
 
     ! Preset parameters
@@ -412,7 +412,7 @@ subroutine Exam_Archi_Truncated_Cuboctahedron(prob, geom)
     type(ProbType), intent(inout) :: prob
     type(GeomType), intent(inout) :: geom
 
-    prob.name_prob = "11_Trunc_Cubocta_cubocta"
+    prob.name_prob = "11_Trunc_Cubocta"
     call Mani_Set_Problem(prob, [231, 76, 60], "xyz")
 
     ! Preset parameters
