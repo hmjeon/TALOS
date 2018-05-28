@@ -59,6 +59,19 @@ subroutine Exam_Miscel_Twisted_Triangular_Prism(prob, geom)
     prob.name_prob = "36_Twisted_Tri_Prism"
     call Mani_Set_Problem(prob, [150, 58, 228], "xy")
 
+    ! Preset parameters
+    if(para_preset == "on") then
+        if(para_vertex_design == "flat") then
+            para_junc_ang        = "min"    ! Junctional gap
+            para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
+            para_n_base_tn       = 7        ! The number of nucleotides
+        else if(para_vertex_design == "mitered") then
+            para_junc_ang        = "opt"    ! Junctional gap
+            para_unpaired_scaf   = "on"     ! Unpaired scaffold nucleotides
+            para_n_base_tn       = -1       ! The number of nucleotides
+        end if
+    end if
+
     ! Allocate point and face structure
     geom.n_iniP = 6
     geom.n_face = 5
