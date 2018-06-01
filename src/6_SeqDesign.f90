@@ -3513,7 +3513,7 @@ subroutine SeqDesign_Print_14nt_Region(prob, geom, mesh, dna)
     integer :: n_nt_14nt, n_nt_4nt, cn_tn, n_win, n_14nt, n_4nt, n_only_4nt, n_sec_14nt, n_sec_4nt
     integer :: len_ave_stap, one_14nt, two_14nt, three_14nt, other_14nt, n_count(30)
     integer :: i, j, k, base, n_region, n_edge, tot_14nt, tot_4nt
-    integer :: across1, across2, node, iniL
+    integer :: across1, across2, node, iniL, edge_c1, edge_c2
     integer :: cir_rgb(3), cir_size
     logical :: b_14nt, b_4nt
     character(200) :: path
@@ -3943,39 +3943,29 @@ subroutine SeqDesign_Print_14nt_Region(prob, geom, mesh, dna)
         !end if
 
         cir_rgb(:) = [0, 114, 188]
-        if(graph.node(base) ==  0) cir_rgb(:) = [   0, 114, 188 ]
 
-        if(graph.node(base) ==  1) cir_rgb(:) = [ 218, 111, 171 ]
-        if(graph.node(base) ==  2) cir_rgb(:) = [ 247, 148,  29 ]
-        if(graph.node(base) ==  3) cir_rgb(:) = [   0, 185, 242 ]
-        if(graph.node(base) ==  4) cir_rgb(:) = [   0, 168, 117 ]
-        if(graph.node(base) ==  5) cir_rgb(:) = [ 236, 222,  56 ]
+        if(graph.node(base) == 0) then
+            cir_rgb(:) = [ 0, 114, 188 ]
+        else
+            edge_c1 = int((graph.node(base) - 1) / 15) * 150
+            edge_c2 = mod(graph.node(base) - 1, 15) + 1
 
-        if(graph.node(base) ==  6) cir_rgb(:) = [ 241,  90,  34 ]
-        if(graph.node(base) ==  7) cir_rgb(:) = [  35,  31,  32 ]
-        if(graph.node(base) ==  8) cir_rgb(:) = [ 194, 181, 155 ]
-        if(graph.node(base) ==  9) cir_rgb(:) = [ 190,  30,  45 ]
-        if(graph.node(base) == 10) cir_rgb(:) = [  46,  49, 146 ]
-
-        if(graph.node(base) == 11) cir_rgb(:) = [ 139,  94,  60 ]
-        if(graph.node(base) == 12) cir_rgb(:) = [ 126,  84, 163 ]
-        if(graph.node(base) == 13) cir_rgb(:) = [ 147, 149, 152 ]
-        if(graph.node(base) == 14) cir_rgb(:) = [  65,  64,  66 ]
-        if(graph.node(base) == 15) cir_rgb(:) = [   0, 148,  68 ]
-
-        if(graph.node(base) == 16) cir_rgb(:) = [  38,  34,  98 ]
-        if(graph.node(base) == 17) cir_rgb(:) = [ 117,  76,  41 ] 
-        if(graph.node(base) == 18) cir_rgb(:) = [ 241,  90,  41 ]
-        if(graph.node(base) == 19) cir_rgb(:) = [  43, 182, 115 ]
-        if(graph.node(base) == 20) cir_rgb(:) = [ 146,  39, 143 ]
-        if(graph.node(base) == 21) cir_rgb(:) = [ 215, 223,  35 ]
-        if(graph.node(base) == 22) cir_rgb(:) = [ 155, 133, 121 ]
-        if(graph.node(base) == 23) cir_rgb(:) = [  33,  64, 154 ]
-        if(graph.node(base) == 24) cir_rgb(:) = [ 237,  28,  36 ]
-        if(graph.node(base) == 25) cir_rgb(:) = [  89,  74,  66 ]
-        if(graph.node(base) == 26) cir_rgb(:) = [ 188, 190, 192 ]
-        if(graph.node(base) == 27) cir_rgb(:) = [ 169, 124,  80 ]
-        if(graph.node(base) == 28) cir_rgb(:) = [ 239,  65,  54 ]
+            if(edge_c2 ==  1) cir_rgb(:) = [ mod(218 + edge_c1, 255), mod(111 + edge_c1, 255), mod(171 + edge_c1, 255) ]
+            if(edge_c2 ==  2) cir_rgb(:) = [ mod(247 + edge_c1, 255), mod(148 + edge_c1, 255), mod( 29 + edge_c1, 255) ]
+            if(edge_c2 ==  3) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(185 + edge_c1, 255), mod(242 + edge_c1, 255) ]
+            if(edge_c2 ==  4) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(168 + edge_c1, 255), mod(117 + edge_c1, 255) ]
+            if(edge_c2 ==  5) cir_rgb(:) = [ mod(236 + edge_c1, 255), mod(222 + edge_c1, 255), mod( 56 + edge_c1, 255) ]
+            if(edge_c2 ==  6) cir_rgb(:) = [ mod(241 + edge_c1, 255), mod( 90 + edge_c1, 255), mod( 34 + edge_c1, 255) ]
+            if(edge_c2 ==  7) cir_rgb(:) = [ mod( 35 + edge_c1, 255), mod( 31 + edge_c1, 255), mod( 32 + edge_c1, 255) ]
+            if(edge_c2 ==  8) cir_rgb(:) = [ mod(194 + edge_c1, 255), mod(181 + edge_c1, 255), mod(155 + edge_c1, 255) ]
+            if(edge_c2 ==  9) cir_rgb(:) = [ mod(190 + edge_c1, 255), mod( 30 + edge_c1, 255), mod( 45 + edge_c1, 255) ]
+            if(edge_c2 == 10) cir_rgb(:) = [ mod( 46 + edge_c1, 255), mod( 49 + edge_c1, 255), mod(146 + edge_c1, 255) ]
+            if(edge_c2 == 11) cir_rgb(:) = [ mod(139 + edge_c1, 255), mod( 94 + edge_c1, 255), mod( 60 + edge_c1, 255) ]
+            if(edge_c2 == 12) cir_rgb(:) = [ mod(126 + edge_c1, 255), mod( 84 + edge_c1, 255), mod(163 + edge_c1, 255) ]
+            if(edge_c2 == 13) cir_rgb(:) = [ mod(147 + edge_c1, 255), mod(149 + edge_c1, 255), mod(152 + edge_c1, 255) ]
+            if(edge_c2 == 14) cir_rgb(:) = [ mod( 65 + edge_c1, 255), mod( 64 + edge_c1, 255), mod( 66 + edge_c1, 255) ]
+            if(edge_c2 == 15) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(148 + edge_c1, 255), mod( 68 + edge_c1, 255) ]
+        end if
 
         cir_size = 100
         !if(dna.top(base).node == -1) then
