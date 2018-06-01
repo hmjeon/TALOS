@@ -3929,6 +3929,8 @@ subroutine SeqDesign_Print_14nt_Region(prob, geom, mesh, dna)
             write(794, "(a$)"), '<data key="label">'//'00'//trim(adjustl(Int2Str(i)))//'</data>'
         else if(i < 10000) then
             write(794, "(a$)"), '<data key="label">'//'0'//trim(adjustl(Int2Str(i)))//'</data>'
+        else if(i < 100000) then
+            write(794, "(a$)"), '<data key="label">'//trim(adjustl(Int2Str(i)))//'</data>'
         end if
 
         ! Change color and size of nodes
