@@ -39,3 +39,4 @@ make/output
 *.11
 *.101
 fort.*
+/make/Report_6HB_flat_max.txt

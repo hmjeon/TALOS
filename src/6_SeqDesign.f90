@@ -3949,24 +3949,24 @@ subroutine SeqDesign_Print_14nt_Region(prob, geom, mesh, dna)
         if(graph.node(base) == 0) then
             cir_rgb(:) = [ 0, 114, 188 ]
         else
-            edge_c1 = int((graph.node(base) - 1) / 15) * 150
+            edge_c1 = int((graph.node(base) - 1) / 15)
             edge_c2 = mod(graph.node(base) - 1, 15) + 1
 
-            if(edge_c2 ==  1) cir_rgb(:) = [ mod(218 + edge_c1, 255), mod(111 + edge_c1, 255), mod(171 + edge_c1, 255) ]
-            if(edge_c2 ==  2) cir_rgb(:) = [ mod(247 + edge_c1, 255), mod(148 + edge_c1, 255), mod( 29 + edge_c1, 255) ]
-            if(edge_c2 ==  3) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(185 + edge_c1, 255), mod(242 + edge_c1, 255) ]
-            if(edge_c2 ==  4) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(168 + edge_c1, 255), mod(117 + edge_c1, 255) ]
-            if(edge_c2 ==  5) cir_rgb(:) = [ mod(236 + edge_c1, 255), mod(222 + edge_c1, 255), mod( 56 + edge_c1, 255) ]
-            if(edge_c2 ==  6) cir_rgb(:) = [ mod(241 + edge_c1, 255), mod( 90 + edge_c1, 255), mod( 34 + edge_c1, 255) ]
-            if(edge_c2 ==  7) cir_rgb(:) = [ mod( 35 + edge_c1, 255), mod( 31 + edge_c1, 255), mod( 32 + edge_c1, 255) ]
-            if(edge_c2 ==  8) cir_rgb(:) = [ mod(194 + edge_c1, 255), mod(181 + edge_c1, 255), mod(155 + edge_c1, 255) ]
-            if(edge_c2 ==  9) cir_rgb(:) = [ mod(190 + edge_c1, 255), mod( 30 + edge_c1, 255), mod( 45 + edge_c1, 255) ]
-            if(edge_c2 == 10) cir_rgb(:) = [ mod( 46 + edge_c1, 255), mod( 49 + edge_c1, 255), mod(146 + edge_c1, 255) ]
-            if(edge_c2 == 11) cir_rgb(:) = [ mod(139 + edge_c1, 255), mod( 94 + edge_c1, 255), mod( 60 + edge_c1, 255) ]
-            if(edge_c2 == 12) cir_rgb(:) = [ mod(126 + edge_c1, 255), mod( 84 + edge_c1, 255), mod(163 + edge_c1, 255) ]
-            if(edge_c2 == 13) cir_rgb(:) = [ mod(147 + edge_c1, 255), mod(149 + edge_c1, 255), mod(152 + edge_c1, 255) ]
-            if(edge_c2 == 14) cir_rgb(:) = [ mod( 65 + edge_c1, 255), mod( 64 + edge_c1, 255), mod( 66 + edge_c1, 255) ]
-            if(edge_c2 == 15) cir_rgb(:) = [ mod(  0 + edge_c1, 255), mod(148 + edge_c1, 255), mod( 68 + edge_c1, 255) ]
+            if(edge_c2 ==  1) cir_rgb(:) = [ mod(218 + edge_c1 * 50, 255), mod(111 + edge_c1 * 100, 255), mod(171 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  2) cir_rgb(:) = [ mod(247 + edge_c1 * 50, 255), mod(148 + edge_c1 * 100, 255), mod( 29 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  3) cir_rgb(:) = [ mod(  0 + edge_c1 * 50, 255), mod(185 + edge_c1 * 100, 255), mod(242 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  4) cir_rgb(:) = [ mod(  0 + edge_c1 * 50, 255), mod(168 + edge_c1 * 100, 255), mod(117 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  5) cir_rgb(:) = [ mod(236 + edge_c1 * 50, 255), mod(222 + edge_c1 * 100, 255), mod( 56 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  6) cir_rgb(:) = [ mod(241 + edge_c1 * 50, 255), mod( 90 + edge_c1 * 100, 255), mod( 34 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  7) cir_rgb(:) = [ mod( 35 + edge_c1 * 50, 255), mod( 31 + edge_c1 * 100, 255), mod( 32 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  8) cir_rgb(:) = [ mod(194 + edge_c1 * 50, 255), mod(181 + edge_c1 * 100, 255), mod(155 + edge_c1 * 150, 255) ]
+            if(edge_c2 ==  9) cir_rgb(:) = [ mod(190 + edge_c1 * 50, 255), mod( 30 + edge_c1 * 100, 255), mod( 45 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 10) cir_rgb(:) = [ mod( 46 + edge_c1 * 50, 255), mod( 49 + edge_c1 * 100, 255), mod(146 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 11) cir_rgb(:) = [ mod(139 + edge_c1 * 50, 255), mod( 94 + edge_c1 * 100, 255), mod( 60 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 12) cir_rgb(:) = [ mod(126 + edge_c1 * 50, 255), mod( 84 + edge_c1 * 100, 255), mod(163 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 13) cir_rgb(:) = [ mod(147 + edge_c1 * 50, 255), mod(149 + edge_c1 * 100, 255), mod(152 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 14) cir_rgb(:) = [ mod( 65 + edge_c1 * 50, 255), mod( 64 + edge_c1 * 100, 255), mod( 66 + edge_c1 * 150, 255) ]
+            if(edge_c2 == 15) cir_rgb(:) = [ mod(  0 + edge_c1 * 50, 255), mod(148 + edge_c1 * 100, 255), mod( 68 + edge_c1 * 150, 255) ]
         end if
 
         cir_size = 100

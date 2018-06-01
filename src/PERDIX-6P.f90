@@ -46,7 +46,6 @@ program PERDIX_6P
 
     call Main           ! Main module
     !call Report        ! Main module for auto run
-
 contains
 
 ! -----------------------------------------------------------------------------
@@ -101,7 +100,7 @@ end subroutine Main
 
 ! -----------------------------------------------------------------------------
 
-! Autorun to calculate design parameters
+! Autorun
 subroutine Report()
 
     ! Declare variables
@@ -115,11 +114,9 @@ subroutine Report()
     integer :: i, sec, edge, max_stap, min_stap
     logical :: results
 
-    para_output_Tecplot = "off"     ! Output files for Tecplot(http://www.tecplot.com/) to draw vector image
-    para_max_cut_scaf   = 0         ! The maximum # nucleotides for one scaffold, 0 : not cutting, -1 : cutting over 7249
-
     char_vert = "flat"      ! Flat or mitered vertex
     char_cut  = "max"       ! Staple-break rule
+    edge      = 42
 
     ! Open file
     open(unit = 90, file = "Report_6HB_"&
@@ -130,9 +127,9 @@ subroutine Report()
 
     ! Infomation
     write(90, "(a)"), "==============================================="
-    write(90, "(a)"), "Sec 1: bottom, Sec 2: middle based on honeycomb"
-    write(90, "(a)"), "Minimum edge length: 42bp, 63bp, 84bp"
-    write(90, "(a)"), "Staple cutting: "//trim(adjustl(char_cut))
+    write(90, "(a)"), "Sec 1: Inner connection, Sec 2: Middle connection"
+    write(90, "(a)"), "Minimum edge length: "//trim(adjustl(Int2Str(edge)))//"-bp length"
+    write(90, "(a)"), "Staple breaking: "//trim(adjustl(char_cut))//" staple breaking rule"
     write(90, "(a)"), "==============================================="
     write(90, "(a)")
 
@@ -149,22 +146,14 @@ subroutine Report()
     max_stap =-10000
 
     ! Problem
-    do i = 1, 46
+    do i = 1, 40
 
         ! Set the bottom reference
-        if(i ==  1 .or. i ==  2 .or. i ==  3 .or. i == 15 .or. i == 17 .or. &
-           i == 18 .or. i == 41 .or. i == 43 .or. i == 44 .or. i == 46) then
+        if(i ==  1 .or. i ==  2 .or. i ==  3 .or. i == 15 .or. &
+           i == 17 .or. i == 18 .or. i == 36) then
             sec = 1
         else
             sec = 2
-        end if
-
-        ! Set edge length as 31-bp (over 40,000 scaffold length in mitered modeling)
-        if(i == 37 .or. i == 38 .or. i == 39 .or. i == 40 .or. i == 41 .or. &
-           i == 44 .or. i == 45) then
-            edge = 31
-        else
-            edge = 42
         end if
 
         ! Initialize input
