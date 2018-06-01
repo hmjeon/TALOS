@@ -119,7 +119,7 @@ subroutine Report()
     edge      = 42
 
     ! Open file
-    open(unit = 90, file = "Report_6HB_"&
+    open(unit = 90, file = "Report_6HB_"//trim(adjustl(Int2Str(edge)))//"_"&
         //trim(char_vert)//"_"//trim(char_cut)//".txt", form="formatted")
 
     ! Remove the directory and files
