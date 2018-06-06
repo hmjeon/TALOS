@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "PERDIX-6P", "PERDIX-6P.vfproj", "{6A1794E8-59F6-46E3-AF82-1B16A6A75FF1}"
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "TALOS", "TALOS.vfproj", "{6A1794E8-59F6-46E3-AF82-1B16A6A75FF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

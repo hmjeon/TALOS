@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by PERDIX-BEVELED.rc
+// Used by TALOS.rc
 //
 #define IDI_ICON1                       102
 

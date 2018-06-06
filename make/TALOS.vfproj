@@ -47,7 +47,7 @@
 	<Files>
 		<Filter Name="Header Files" Filter="fi;fd;h;inc"/>
 		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
-		<File RelativePath=".\resources\PERDIX.rc"/></Filter>
+		<File RelativePath=".\resources\TALOS.rc"/></Filter>
 		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
 		<Filter Name="Common">
 		<File RelativePath="..\src\Data_Bound.f90"/>
@@ -67,7 +67,7 @@
 		<File RelativePath="..\src\Exam_Miscel.f90"/>
 		<File RelativePath="..\src\Exam_Platonic.f90"/>
 		<File RelativePath="..\src\Importer.f90"/></Filter>
-		<Filter Name="PERDIX-6P">
+		<Filter Name="TALOS">
 		<File RelativePath="..\src\1_Input.f90"/>
 		<File RelativePath="..\src\2_ModGeo.f90"/>
 		<File RelativePath="..\src\3_Section.f90"/>
@@ -76,5 +76,5 @@
 		<File RelativePath="..\src\6_SeqDesign.f90"/>
 		<File RelativePath="..\src\7_Output.f90"/></Filter>
 		<File RelativePath=".\env.txt"/>
-		<File RelativePath="..\src\PERDIX-6P.f90"/></Filter></Files>
+		<File RelativePath="..\src\TALOS.f90"/></Filter></Files>
 	<Globals/></VisualStudioProject>

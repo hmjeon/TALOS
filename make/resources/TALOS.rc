@@ -65,13 +65,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "TODO: <Company name>"
-            VALUE "FileDescription", "TODO: <File description>"
+            VALUE "CompanyName", "Hyungmin Jun"
+            VALUE "FileDescription", "TALOS"
             VALUE "FileVersion", "1.0.0.1"
-            VALUE "InternalName", "TODO: <Internal name>"
-            VALUE "LegalCopyright", "Copyright (C) 2017"
-            VALUE "OriginalFilename", "TODO: <Original filename>"
-            VALUE "ProductName", "TODO: <Product name>"
+            VALUE "InternalName", "TALOS"
+            VALUE "LegalCopyright", "Copyright (C) 2018 Hyungmin Jun"
+            VALUE "OriginalFilename", "TALOS"
+            VALUE "ProductName", "TALOS"
             VALUE "ProductVersion", "1.0.0.1"
         END
     END
