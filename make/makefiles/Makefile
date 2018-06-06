@@ -1,5 +1,5 @@
 #
-# Makefiles for PERDIX-6P, written by Hyungmin Jun
+# Makefiles for TALOS, written by Hyungmin Jun
 #
 #	-fast
 #	Maximizes speed across the entire program.
@@ -21,13 +21,13 @@ objects = Data_Bound.o Data_DNA.o Data_Geom.o Data_Mesh.o Data_Prob.o \
 	Exam_Platonic.o Exam_Archi.o \
 	Exam_Johnson.o Exam_Catalan.o Exam_Miscel.o \
 	3_Section.o 1_Input.o 2_ModGeo.o 4_Basepair.o 5_Route.o \
-	6_SeqDesign.o 7_Output.o PERDIX-6P.o
+	6_SeqDesign.o 7_Output.o TALOS.o
 
 f90comp = ifort
 
 # Makefile
-PERDIX-6P: $(objects)
-	$(f90comp) -o PERDIX-6P $(objects)
+TALOS: $(objects)
+	$(f90comp) -o TALOS $(objects)
 
 Data_Bound.mod: Data_Bound.o Data_Bound.f90
 	$(f90comp) -c Data_Bound.f90
@@ -144,10 +144,10 @@ Exam_Miscel.o: Exam_Miscel.f90
 7_Output.o : 7_Output.f90
 	$(f90comp) -c 7_Output.f90
 
-PERDIX-6P.mod : PERDIX-6P.o PERDIX-6P.f90
-	$(f90comp) -c PERDIX-6P.f90
-PERDIX-6P.o : PERDIX-6P.f90
-	$(f90comp) -c PERDIX-6P.f90
+TALOS.mod : TALOS.o TALOS.f90
+	$(f90comp) -c TALOS.f90
+TALOS.o : TALOS.f90
+	$(f90comp) -c TALOS.f90
 
 # Cleaning everything
 clean :
