@@ -92,12 +92,12 @@ module Para
     logical :: para_write_104   = .false.       !  Schlegel diagram,                       "_schlegel.bild"
     logical :: para_write_301   = .false.       !  Initial geometry with face orientation, "_check_geo.bild"
     logical :: para_write_302   = .true.        ! *Initial geometry with local vector,     "_02_target_geometry_local.bild"
-    logical :: para_write_303   = .true.        ! *Seperated lines from vertex,            "_03_sep_line.bild"
+    logical :: para_write_303   = .true.        ! *Seperated lines from vertex,            "_03_sep_lines.bild"
     logical :: para_write_401   = .false.       !  Cross-sectional geometry,               "_cro_geo.bild"
     logical :: para_write_501   = .false.       !  Cylindrical model with orientation,     "_cyl_ori1.bild"
     logical :: para_write_502   = .true.        ! *Cylindrical model,                      "_05_cylindrical_model_1.bild", "_06_cylindrical_model_2.bild"
     logical :: para_write_503   = .false.       !  Basepair model,                         "_mesh.bild"
-    logical :: para_write_504   = .true.        ! *Multiple line,                          "_04_six_edged_lines.bild"
+    logical :: para_write_504   = .true.        ! *Multiple line,                          "_04_six_hb_lines.bild"
     logical :: para_write_505   = .true.        ! *Txt file on edge length,                "_edge_length.txt"
     logical :: para_write_601_1 = .false.       !  Route 1, seperated edges,               "_route1_scaf.bild", "_route1_stap.bild"
     logical :: para_write_601_2 = .false.       !  Route 2, contruction closed loop,       "_route2_scaf.bild", "_route2_stap.bild"
@@ -132,7 +132,7 @@ module Para
     logical :: para_chimera_401_info = .false.  !  Plot with edge and point number (_cro_geo.bild)
     logical :: para_chimera_502_ori  = .false.  !  Plot with helix z-direction (_line.bild / _node.bild)
     logical :: para_chimera_503_mod  = .false.  !  Plot with modified edges (_mesh.bild)
-    logical :: para_chimera_504_info = .true.   ! *Plot with edge and point number (_04_six_edged_lines.bild)
+    logical :: para_chimera_504_info = .true.   ! *Plot with edge and point number (_04_six_hb_lines.bild)
     logical :: para_chimera_601_dir  = .false.  !  Plot with strand direction (_scaf.bild / _stap.bild)
     logical :: para_chimera_609_cyl  = .false.  !  Plot with cylinderical representation (_atom.bild)
     logical :: para_chimera_609_dir  = .false.  !  Plot with strand direction (_atom.bild)

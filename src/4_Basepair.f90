@@ -2466,7 +2466,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     f_info = para_chimera_504_info
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=504, file=trim(path)//"_04_six_edged_lines.bild", form="formatted")
+    open(unit=504, file=trim(path)//"_04_six_hb_lines.bild", form="formatted")
 
     ! Write cross-sectional points
     write(504, "(a)"), ".color red"
@@ -2588,7 +2588,7 @@ subroutine Basepair_Chimera_Cross_Geometry(prob, geom)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=504, file=trim(path)//"_04_six_edged_lines.dat", form="formatted")
+    open(unit=504, file=trim(path)//"_04_six_hb_lines.dat", form="formatted")
 
     write(504, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
     write(504, "(a )"), 'VARIABLES = "X", "Y", "Z", "weight"'

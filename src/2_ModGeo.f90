@@ -1595,7 +1595,7 @@ subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
     f_info = para_chimera_303_info
 
     path = trim(prob.path_work)//"/"//trim(prob.name_file)
-    open(unit=303, file=trim(path)//"_03_sep_line.bild", form="formatted")
+    open(unit=303, file=trim(path)//"_03_sep_lines.bild", form="formatted")
 
     ! Write modified points
     write(303, "(a)"), ".color red"
@@ -1698,7 +1698,7 @@ subroutine ModGeo_Chimera_Mod_Geometry(prob, geom, mode)
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
-    open(unit=303, file=trim(path)//"_03_sep_line.dat", form="formatted")
+    open(unit=303, file=trim(path)//"_03_sep_lines.dat", form="formatted")
 
     write(303, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
     write(303, "(a )"), 'VARIABLES = "X", "Y", "Z", "t1", "t2", "t3"'

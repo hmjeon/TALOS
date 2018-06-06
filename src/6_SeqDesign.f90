@@ -6799,7 +6799,7 @@ subroutine SeqDesign_Chimera_Sequence_Design(prob, geom, mesh, dna)
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
     open(unit=705, file=trim(path)//"_12_routing_all.dat", form="formatted")
-    open(unit=706, file=trim(path)//"_15_sep_line.dat", form="formatted")
+    open(unit=706, file=trim(path)//"_15_sep_lines.dat", form="formatted")
 
     ! For scaffold bases
     write(705, "(a )"), 'TITLE = "'//trim(prob.name_file)//'"'
