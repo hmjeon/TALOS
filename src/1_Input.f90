@@ -6,15 +6,15 @@
 !
 ! =============================================================================
 !
-! This is part of PERDIX-6P, which allows scientists to build and solve
+! This is part of TALOS, which allows scientists to build and solve
 ! the sequence design of complex DNAnanostructures.
 ! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
 ! License - GPL version 3
-! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! TALOS is free software: you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
 ! Foundation, either version 3 of the License, or any later version.
-! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! TALOS is distributed in the hope that it will be useful, but WITHOUT
 ! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 ! FOR A PARTICULAR PURPOSE. See the GNU General Public License
 ! for more details.
@@ -360,7 +360,7 @@ subroutine Input_Print_Parameters(prob, geom)
     integer :: i
 
     ! Open output progress file (unit 11 is used for global output file)
-    open(unit=11, file=trim(prob.path_work)//"/"//"TXT_PERDIX_6P.txt", form="formatted")
+    open(unit=11, file=trim(prob.path_work)//"/"//"TXT_TALOS.txt", form="formatted")
 
     do i = 0, 11, 11
         write(i, "(a )"), "   +--------------------------------------------------------------------+"
@@ -574,7 +574,7 @@ subroutine Input_Set_Command
     logical :: results
 
     ! Set command environments
-    results = SYSTEMQQ('title PERDIX-6P')                  ! cmd title
+    results = SYSTEMQQ('title TALOS')                  ! cmd title
     results = SYSTEMQQ('mode con: cols=135 lines=6000')     ! cmd size
     results = SYSTEMQQ('color')                             ! convert color, 02, f0, f1, f2
     results = SYSTEMQQ('date /t')                           ! display time
@@ -589,7 +589,7 @@ subroutine Input_Print_Problem
     write(0, "(a)")
     write(0, "(a)"), "       +=====================================================================================+"
     write(0, "(a)"), "       |                                                                                     |"
-    write(0, "(a)"), "       |      PERDIX-6P by Hyungmin Jun (hyungminjun@outlook.com), MIT, Bathe Lab, 2018      |"
+    write(0, "(a)"), "       |        TALOS by Hyungmin Jun (hyungminjun@outlook.com), MIT, Bathe Lab, 2018        |"
     write(0, "(a)"), "       |                                                                                     |"
     write(0, "(a)"), "       +=====================================================================================+"
     write(0, "(a)")

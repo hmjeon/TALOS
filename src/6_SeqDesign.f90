@@ -6,15 +6,15 @@
 !
 ! =============================================================================
 !
-! This is part of PERDIX-6P, which allows scientists to build and solve
+! This is part of TALOS, which allows scientists to build and solve
 ! the sequence design of complex DNAnanostructures.
 ! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
 ! License - GPL version 3
-! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! TALOS is free software: you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
 ! Foundation, either version 3 of the License, or any later version.
-! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! TALOS is distributed in the hope that it will be useful, but WITHOUT
 ! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 ! FOR A PARTICULAR PURPOSE. See the GNU General Public License
 ! for more details.
@@ -5767,13 +5767,13 @@ subroutine SeqDesign_Import_Sequence(dna)
             write(i, "(a)"), "   +====================================================================+"
             write(i, "(a)"), "   |                                                                    |"
             write(i, "(a)"), "   |  User-defined scaffold sequence length are shorter than            |"
-            write(i, "(a)"), "   |  # of scaffold nucleotides. PERDIX-6P will be terminated.          |"
+            write(i, "(a)"), "   |  # of scaffold nucleotides. TALOS will be terminated.              |"
             write(i, "(a)"), "   |                                                                    |"
             write(i, "(a)"), "   |                                                                    |"
             write(i, "(a)"), "   +====================================================================+"
             write(i, "(a)")
             write(i, "(a)"), "      The length of the scaffold sequences: "//trim(adjustl(Int2Str(len_seq)))
-            write(i, "(a)"), "      # scaffold nt design by PERDIX: "//trim(adjustl(Int2Str(dna.n_base_scaf)))
+            write(i, "(a)"), "      # scaffold nt design by TALOS: "//trim(adjustl(Int2Str(dna.n_base_scaf)))
             write(i, "(a)")
         end do
         stop

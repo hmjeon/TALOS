@@ -1,12 +1,12 @@
 !
 ! =============================================================================
 !
-! PERDIX-6P v1.0
+! TALOS v1.0
 ! Last Updated : 04/30/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
 ! =============================================================================
 !
-! PERDIX-6P is an open-source software, which allows scientists to build and
+! TALOS is an open-source software, which allows scientists to build and
 ! solve the sequence design of complex 3D DNA 6HB wireframe structure.
 ! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
@@ -23,7 +23,7 @@
 !
 ! -----------------------------------------------------------------------------
 !
-program PERDIX_6P
+program TALOS
 
     use Ifport
 
@@ -230,7 +230,7 @@ end subroutine Report
 
 ! -----------------------------------------------------------------------------
 
-! Print information of the PERDIX
+! Print information of the TALOS
 subroutine Print_Information(prob, geom, bound, mesh, dna)
     type(ProbType),  intent(in) :: prob
     type(GeomType),  intent(in) :: geom
@@ -568,4 +568,4 @@ end subroutine Verify_Solution
 
 ! -----------------------------------------------------------------------------
 
-end program PERDIX_6P
+end program TALOS

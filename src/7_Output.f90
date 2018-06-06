@@ -6,15 +6,15 @@
 !
 ! =============================================================================
 !
-! This is part of PERDIX-6P, which allows scientists to build and solve
+! This is part of TALOS, which allows scientists to build and solve
 ! the sequence design of complex DNAnanostructures.
 ! Copyright 2018 Hyungmin Jun. All rights reserved.
 !
 ! License - GPL version 3
-! PERDIX-6P is free software: you can redistribute it and/or modify it under
+! TALOS is free software: you can redistribute it and/or modify it under
 ! the terms of the GNU General Public License as published by the Free Software
 ! Foundation, either version 3 of the License, or any later version.
-! PERDIX-6P is distributed in the hope that it will be useful, but WITHOUT
+! TALOS is distributed in the hope that it will be useful, but WITHOUT
 ! ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 ! FOR A PARTICULAR PURPOSE. See the GNU General Public License
 ! for more details.
@@ -3027,7 +3027,7 @@ subroutine Output_Write_ADINA(prob, mesh)
 
     ! Write of ADINA infile
     write(805, "(a     )"), "*"
-    write(805, "(a     )"), "* Command file created from PERDIX for command import"
+    write(805, "(a     )"), "* Command file created from TALOS for command import"
     write(805, "(a     )"), "*"
     write(805, "(a$    )"), "*--- Command file created "
     write(805, "(i4, a$)"), time(2), "/"
