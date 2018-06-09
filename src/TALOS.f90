@@ -2,7 +2,7 @@
 ! =============================================================================
 !
 ! TALOS v1.0
-! Last Updated : 04/30/2018, by Hyungmin Jun (hyungminjun@outlook.com)
+! Last Updated : 06/09/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
 ! =============================================================================
 !
