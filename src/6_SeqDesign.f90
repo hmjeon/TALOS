@@ -5753,6 +5753,8 @@ subroutine SeqDesign_Import_Sequence(dna)
     open(unit=701, file="env.txt", form="formatted")
     read(701, *), ctemp, para_platform
     read(701, *), ctemp, para_cut_stap_method
+    read(701, *), ctemp, para_min_cut_stap
+    read(701, *), ctemp, para_max_cut_stap
     read(701, *), ctemp, para_set_seq_scaf
 
     para_set_start_scaf = 1

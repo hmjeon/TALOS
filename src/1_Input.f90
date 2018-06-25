@@ -494,6 +494,8 @@ subroutine Input_Read_Parameter
     ! If the mode is not dev
     if(para_platform /= "dev") then
         read(1, *), ctemp, para_cut_stap_method
+        read(1, *), ctemp, para_min_cut_stap
+        read(1, *), ctemp, para_max_cut_stap
         read(1, *), ctemp, para_set_seq_scaf
     end if
 
