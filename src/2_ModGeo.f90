@@ -78,9 +78,7 @@ subroutine ModGeo_Modification(prob, geom, bound)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |                2. Build modified edges and points                  |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
     end do
@@ -1408,12 +1406,8 @@ function ModGeo_Find_Scale_Factor(prob, geom, bound) result(scale)
     end do
 
     ! Desired length
-    if(geom.sec.types == "square") then
-        length = diff + para_dist_bp * (dble(prob.n_bp_edge-1))
-    else if(geom.sec.types == "honeycomb") then
-        length = diff + para_dist_bp * (dble(prob.n_bp_edge-1-1))
-    end if
-    scale = length / mod_length
+    length = diff + para_dist_bp * (dble(prob.n_bp_edge-1-1))
+    scale  = length / mod_length
 
     ! Print progress
     do i = 0, 11, 11
@@ -1539,15 +1533,11 @@ function ModGeo_Set_Width_Section(geom) result(width)
     integer :: n_column
 
     ! Find the number of columns in terms of reference row
-    if(geom.sec.types == "square") then
-        n_column = geom.sec.ref_maxC - geom.sec.ref_minC + 1
-    else if(geom.sec.types == "honeycomb") then
-        if(geom.sec.ref_row == 1) then
-            n_column = 2
-        else
-            ! 2 -> 3*1, 4 -> 3*2, 6 -> 3*3
-            n_column = 3 * (geom.sec.ref_maxC - geom.sec.ref_minC + 1) / 2
-        end if
+    if(geom.sec.ref_row == 1) then
+        n_column = 2
+    else
+        ! 2 -> 3*1, 4 -> 3*2, 6 -> 3*3
+        n_column = 3 * (geom.sec.ref_maxC - geom.sec.ref_minC + 1) / 2
     end if
 
     ! Find width of cross-section
@@ -1868,8 +1858,7 @@ subroutine ModGeo_Set_Const_Geometric_Ratio(geom)
     integer :: i, ref_edge, iniP1, iniP2, modP1, modP2
 
     ! Calculate magic depending on types of section
-    if(geom.sec.types == "square")    magic = 0.0d0
-    if(geom.sec.types == "honeycomb") magic = 0.34d0
+    magic = 0.34d0
 
     ! Find reference edge
     do i = 1, geom.n_iniL
@@ -1947,8 +1936,7 @@ subroutine ModGeo_Set_Round_Geometric_Ratio(prob, geom)
     integer :: i, ref_edge, iniP1, iniP2, modP1, modP2
 
     ! Calculate magic depending on types of section
-    if(geom.sec.types == "square")    magic = 0.0d0
-    if(geom.sec.types == "honeycomb") magic = 0.34d0
+    magic = 0.34d0
 
     ! Find reference edge
     do i = 1, geom.n_iniL

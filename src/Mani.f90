@@ -231,16 +231,14 @@ end subroutine Mani_Allocate_SecType
 ! ---------------------------------------------------------------------------
 
 ! Initialize section type data
-subroutine Mani_Init_SecType(sec, n_sec, types)
+subroutine Mani_Init_SecType(sec, n_sec)
     type(SecType), intent(inout) :: sec
     integer,       intent(in)    :: n_sec
-    character(*),  intent(in)    :: types
 
     integer :: i, m_value
 
     m_value = 9999999
 
-    sec.types    = types
     sec.maxR     = -m_value     ! Maximum row number
     sec.minR     =  m_value     ! Minimum row number
     sec.maxC     = -m_value     ! Maximum column number

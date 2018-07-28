@@ -76,9 +76,7 @@ subroutine Basepair_Discretize(prob, geom, bound, mesh)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |          4. Build basepairs based on cross-sectional edges         |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
     end do
@@ -590,11 +588,7 @@ subroutine Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, mode)
     end do
 
     ! Angle rotated between neighboring base-pairs
-    if(geom.sec.types == "square") then
-        ang_BP = 360.0d0*3.0d0/32.0d0     ! 360/10.67 = 33.75
-    else if(geom.sec.types == "honeycomb") then
-        ang_BP = 360.0d0*2.0d0/21.0d0     ! 360/10.5  = 34.28
-    end if
+    ang_BP = 360.0d0*2.0d0/21.0d0     ! 360/10.5  = 34.28
 
     ! Loop for junction
     do i = 1, bound.n_junc
@@ -609,13 +603,9 @@ subroutine Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, mode)
                 if(mod(mesh.node(node).sec, 2) == 0) then
 
                     ! Positive z-direction
-                    if(geom.sec.types == "square") then
-                        ang_init = 180.0d0 - ang_BP / 2.0d0 + ang_BP
-                    else if(geom.sec.types == "honeycomb") then
-                        if(geom.sec.dir ==  90) ang_init = 90.0d0
-                        if(geom.sec.dir == 150) ang_init = 90.0d0+60.0d0
-                        if(geom.sec.dir == -90) ang_init = 270.0d0
-                    end if
+                    if(geom.sec.dir ==  90) ang_init = 90.0d0
+                    if(geom.sec.dir == 150) ang_init = 90.0d0+60.0d0
+                    if(geom.sec.dir == -90) ang_init = 270.0d0
 
                     ang_start = dmod(ang_init  + ang_BP*dble(para_start_bp_ID),     360.0d0)
                     ang_start = dmod(ang_start + ang_BP*dble(mesh.node(node).bp-1), 360.0d0)
@@ -623,13 +613,9 @@ subroutine Basepair_Chimera_Cylinder_Ori(prob, geom, bound, mesh, mode)
                 else if(mod(mesh.node(node).sec, 2) == 1) then
 
                     ! Negative z-direction
-                    if(geom.sec.types == "square") then
-                        ang_init = 0.0d0 - ang_BP / 2.0d0 + ang_BP
-                    else if(geom.sec.types == "honeycomb") then
-                        if(geom.sec.dir ==  90) ang_init = 270.0d0
-                        if(geom.sec.dir == 150) ang_init = 270.0d0+60.0d0
-                        if(geom.sec.dir == -90) ang_init = 90.0d0
-                    end if
+                    if(geom.sec.dir ==  90) ang_init = 270.0d0
+                    if(geom.sec.dir == 150) ang_init = 270.0d0+60.0d0
+                    if(geom.sec.dir == -90) ang_init = 90.0d0
 
                     ang_start = dmod(ang_init  + ang_BP*dble(para_start_bp_ID),     360.0d0)
                     ang_start = dmod(ang_start + ang_BP*dble(mesh.node(node).bp-1), 360.0d0)
@@ -998,9 +984,9 @@ subroutine Basepair_Modify_Junction(geom, bound, mesh)
             ! Modify junction depending on connection type
             if(type_conn(j) == 2) then
 
-                ! ============================================================
+                ! ------------------------------------------------------------
                 ! Self-connection modification depending on vertex modeling
-                ! ============================================================
+                ! ------------------------------------------------------------
 
                 ! Assign node from node connection data
                 node_cur = conn(j, 1)
@@ -1083,10 +1069,10 @@ subroutine Basepair_Modify_Junction(geom, bound, mesh)
                     end if
                 end if
             else
-                ! ============================================================
+                ! ------------------------------------------------------------
                 ! Mitered vertex design
                 ! For neighbor-connection, increase edge legnth to fill hole
-                ! ============================================================
+                ! ------------------------------------------------------------
                 ! Node and sectional information
                 node_cur = conn(j, 1)
                 node_com = conn(j, 2)
@@ -1397,13 +1383,11 @@ subroutine Basepair_Increase_Edge(geom, bound, mesh, node_cur, node_com)
     integer :: node_in, node_out, node_in_dn, node_out_up
     integer :: i, count, n_col_bottom
 
-    ! ==================================================
-    !
+    ! --------------------------------------------------
     !     vertex                     vertex
     ! *---->#---->*      or      *<----#<----*
     ! node_cur   node_com        node_cur   node_com
-    !
-    ! ==================================================
+    ! --------------------------------------------------
     ! Set direction of node_in and node_out
     if(mesh.node(node_cur).up == -1) then
 
@@ -1477,7 +1461,7 @@ subroutine Basepair_Increase_Edge(geom, bound, mesh, node_cur, node_com)
     length = dsqrt(((b-a)/2.0d0)**2.0d0 / (1.0d0-((y**2.0d0-((c-b)/2.0d0)**2.0d0)/y**2.0d0)))
     count  = dnint(length / dble(para_dist_bp))
 
-    ! ============================================================
+    ! ------------------------------------------------------------
     line_a = mesh.node(node_in).croL
     line_b = mesh.node(node_out).croL
 
@@ -1515,7 +1499,7 @@ subroutine Basepair_Increase_Edge(geom, bound, mesh, node_cur, node_com)
         count_in  = count
         count_out = count
     end if
-    ! ============================================================
+    ! ------------------------------------------------------------
 
     ! Loop for adding new nodes
     do i = 1, count_in
@@ -2148,13 +2132,6 @@ subroutine Basepair_Make_Sticky_End(geom, bound, mesh)
         call Space(i, 6)
         write(i, "(a)"), "4.6. Make sticky-end at 5'- end node near the junction"
     end do
-
-    ! This modification is only for strucutres based on honeycomb lattice
-    if(geom.sec.types == "square") then
-        write(0, "(a)"); write(11, "(a)")
-        return
-    end if
-    !if(geom.sec.types == "honeycomb") return
 
     pre_n_node = mesh.n_node
     pre_n_ele  = mesh.n_ele

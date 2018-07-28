@@ -2,7 +2,7 @@
 ! =============================================================================
 !
 ! Module - Input
-! Last Updated : 04/10/2018, by Hyungmin Jun (hyungminjun@outlook.com)
+! Last Updated : 07/28/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
 ! =============================================================================
 !
@@ -42,11 +42,9 @@ module Input
     implicit none
 
     public  Input_Initialize
-    public  Input_Initialize_Report
 
     private Input_Print_Parameters
     private Input_Read_Parameter
-    private Input_Reset_Para_Report
     private Input_Set_Command
     private Input_Print_Problem
     private Input_Print_Section
@@ -92,9 +90,9 @@ subroutine Input_Initialize(prob, geom)
 
     if(iargc() == 0) then
 
-        ! ==================================================
+        ! --------------------------------------------------
         ! Running from Win32 console interface menu
-        ! ==================================================
+        ! --------------------------------------------------
         ! Print pre-defined problems
         call Input_Print_Problem
         read(*, *), c_prob
@@ -137,9 +135,9 @@ subroutine Input_Initialize(prob, geom)
         if(prob.sel_bp_edge < 1) stop
     else
 
-        ! ==================================================
+        ! --------------------------------------------------
         ! Running from a command shell with options
-        ! ==================================================
+        ! --------------------------------------------------
         arg = 1; call getarg(arg, c_prob)       ! 1st argument, problem
         arg = 2; call getarg(arg, c_vertex)     ! 2nd argument, vertex design
         arg = 3; call getarg(arg, c_sec)        ! 3rd argument, section
@@ -169,9 +167,9 @@ subroutine Input_Initialize(prob, geom)
         prob.sel_vertex  = n_vertex
     end if
 
-    ! ==================================================
+    ! --------------------------------------------------
     ! Set problem, cross-section, edge length and vertex design
-    ! ==================================================
+    ! --------------------------------------------------
     ! Set vertex design
     call Input_Set_Vertex_Design(prob)
 
@@ -184,18 +182,18 @@ subroutine Input_Initialize(prob, geom)
     ! Set problem
     call Input_Set_Problem(prob, geom)
 
-    ! ==================================================
+    ! --------------------------------------------------
     ! Prepair geometry - line generation and scaling
-    ! ==================================================
+    ! --------------------------------------------------
     ! Convert surface to line connectivity
     call Input_Convert_Face_To_Line(geom)
 
     ! Set geometric scale with initial minimum length
     call Input_Scale_Init_Geometry(geom)
 
-    ! ==================================================
+    ! --------------------------------------------------
     ! Set environment and write initial geometry
-    ! ==================================================
+    ! --------------------------------------------------
     ! Set working and Chimera path
     call Input_Set_Path(prob)
 
@@ -223,135 +221,6 @@ end subroutine Input_Initialize
 
 ! -----------------------------------------------------------------------------
 
-! Initialize all parameters
-subroutine Input_Initialize_Report(prob, geom, mesh, i, sec, edge, char_vert, char_cut)
-    type(ProbType), intent(inout) :: prob
-    type(GeomType), intent(inout) :: geom
-    type(MeshType), intent(inout) :: mesh
-    integer,        intent(inout) :: sec
-    integer,        intent(in)    :: i, edge
-    character(10),  intent(in)    :: char_vert, char_cut
-
-    ! Reset parameters
-    call Input_Reset_Para_Report
-    para_platform        = "dev"
-    para_vertex_design   = char_vert    ! Flat or mitered vertex
-    para_cut_stap_method = char_cut     ! Staple-break
-
-    ! Reset data structures
-    prob.n_cng_min_stap = 0
-    prob.n_cng_max_stap = 0
-    mesh.n_node         = 0
-    mesh.n_ele          = 0
-
-    ! Set command environment
-    call Input_Set_Command
-
-    ! Set parameters of problem
-    prob.sel_prob    = i
-    prob.sel_sec     = sec
-    prob.sel_bp_edge = edge
-
-    ! Set UCSF Chimera output control
-    para_write_101   = .false.       !  GEO file,                                ".geo"
-    para_write_102   = .true.        ! *Initial geometry,                        "_01_target_geometry.bild"
-    para_write_103   = .false.       !  Faced initial geometry,                  "init_geo_face.bild"
-    para_write_104   = .false.       !  Schlegel diagram,                        "_schlegel.bild"
-    para_write_301   = .false.       !  Initial geometry with face orientation,  "_check_geo.bild"
-    para_write_302   = .true.        ! *Initial geometry with local vector,      "_02_target_geometry_local.bild"
-    para_write_303   = .true.        ! *Modified geometry seperated from vertex, "_03_sep_lines.bild"
-    para_write_401   = .false.       !  Cross-sectional geometry,                "_cro_geo.bild"
-    para_write_501   = .false.       !  Cylindrical model with orientation,      "_cyl_ori1.bild"
-    para_write_502   = .true.        ! *Cylindrical model,                       "_05_cylindrical_model_1.bild", "_06_cylindrical_model_2.bild"
-    para_write_503   = .false.       !  Basepair model,                          "_mesh.bild"
-    para_write_504   = .true.        ! *Multiple lines,                          "_04_six_hb_lines.bild"
-    para_write_505   = .true.        ! *Txt file on edge length,                 "TXT_Edge_Length.txt"
-    para_write_601_1 = .false.       !  Route 1, seperated edges,                "_route1_scaf.bild", "_route1_stap.bild"
-    para_write_601_2 = .false.       !  Route 2, contruction closed loop,        "_route2_scaf.bild", "_route2_stap.bild"
-    para_write_601_3 = .false.       !  Route 3, centered crossovers             "_route3_scaf.bild", "_route3_stap.bild"
-    para_write_601_4 = .false.       !  Route 4, modified centered crossovers,   "_route4_scaf.bild", "_route4_stap.bild"
-    para_write_601_5 = .false.       !  Route 5, scaffold route,                 "_route5_scaf.bild", "_route5_stap.bild"
-    para_write_606   = .true.        ! *Sapnning tree for dual-graph,            "_07_spantree.bild"
-    para_write_607   = .true.        ! *Crossovers based on basepair model,      "_08_crossovers.bild"
-    para_write_608   = .false.       !  3-orientation vectors,                   "_orientation.bild"
-    para_write_609   = .false.       !  Atomic model without sequence design,    "_atom.bild"
-    para_write_610   = .false.       !  Possible centered scaffold crossovers,   "_scaf_xover.txt"
-    para_write_701   = .true.        ! *Txt on sequence design data,             "TXT_Sequence.txt"
-    para_write_711   = .false.       !  Csv file for sequence data,              "sequence.csv"
-    para_write_702   = .true.        ! *Atomic model with sequence design,       "_09_atomic_model.bild"
-    para_write_703   = .true.        ! *Route 6, strand route with nick,         "_10_routing_scaf.bild", "_11_routing_stap.bild"
-    para_write_705   = .true.        ! *Route design,                            "_12_routing_all.bild"
-    para_write_706   = .false.       !  Atomic model bases on strands/sequence,  "_strand.bild", "_sequence.bild"
-    para_write_710   = .false.       !  Edge-based sequence design,              "_design_edgeX"
-    para_write_801   = .false.       !  Txt on basepair based data,              "_basepair.txt"
-    para_write_802   = .false.       !  Txt on nucleotide based data,            "_base.txt"
-    para_write_803   = .true.        ! *CanDo input file,                        "_16_cndo_format.cndo"
-    para_write_804   = .false.       !  Tecplot input file,                      "_tecplot.dat"
-    para_write_805   = .false.       !  ADINA input file,                        "_adina.in"
-    para_write_808   = .false.       !  Txt on sectional edges based sequence,   "_seq_line.txt"
-
-    ! UCSF Chimera output option
-    para_chimera_axis     = .false.  !  Plot with axis at the ceneter of geometry (*.bild)
-    para_chimera_102_info = .true.   ! *Plot with edge and point number (_01_target_geometry.bild)
-    para_chimera_301_info = .false.  !  Plot with edge and point number (_check_geo.bild)
-    para_chimera_302_info = .true.   ! *Plot with edge and point number (_02_target_geometry_local.bild)
-    para_chimera_303_info = .true.   ! *Plot with edge and point number (_03_sep_lines.bild)
-    para_chimera_401_info = .false.  !  Plot with edge and point number (_cro_geo.bild)
-    para_chimera_502_ori  = .false.  !  Plot with helix z-direction (_line.bild / _node.bild)
-    para_chimera_503_mod  = .false.  !  Plot with modified edges (_mesh.bild)
-    para_chimera_504_info = .true.   ! *Plot with edge and point number (_04_six_hb_lines.bild)
-    para_chimera_601_dir  = .false.  !  Plot with strand direction (_scaf.bild / _stap.bild)
-    para_chimera_609_cyl  = .false.  !  Plot with cylinderical representation (_atom.bild)
-    para_chimera_609_dir  = .false.  !  Plot with strand direction (_atom.bild)
-
-    ! ==================================================
-    ! Set problem, cross-section and edge length
-    ! ==================================================
-    ! Set cross-section
-    call Input_Set_Section(prob, geom)
-
-    ! Set the minimum edge length
-    call Input_Set_Num_BP_Edge(prob, geom)
-
-    ! Set problem
-    call Input_Set_Problem(prob, geom)
-
-    ! ==================================================
-    ! Prepair geometry - line generation and scaling
-    ! ==================================================
-    ! Convert surface to line connectivity
-    call Input_Convert_Face_To_Line(geom)
-
-    ! Set geometric scale with initial minimum length
-    call Input_Scale_Init_Geometry(geom)
-
-    ! ==================================================
-    ! Set environment and write initial geometry
-    ! ==================================================
-    ! Set working and Chimera path
-    call Input_Set_Path(prob)
-
-    ! Remove previous working directory and make new one
-    call Input_Set_Workplace(prob)
-
-    ! Write *.geo file
-    call Input_Write_GEO_File(prob, geom)
-
-    ! Write initial geometry
-    call Input_Chimera_Init_Geometry(prob, geom)
-
-    ! Write initial geometry for Tecplot
-    call Input_Tecplot_Init_Geometry(prob, geom)
-
-    ! Generate Schlegel diagram
-    call Input_Generate_Schlegel_Diagram(prob, geom)
-
-    ! Print progress
-    call Input_Print_Parameters(prob, geom)
-end subroutine Input_Initialize_Report
-
-! -----------------------------------------------------------------------------
-
 ! Print progress
 subroutine Input_Print_Parameters(prob, geom)
     type(ProbType), intent(inout) :: prob
@@ -364,9 +233,7 @@ subroutine Input_Print_Parameters(prob, geom)
 
     do i = 0, 11, 11
         write(i, "(a )"), "   +--------------------------------------------------------------------+"
-        write(i, "(a )"), "   |                                                                    |"
         write(i, "(a )"), "   |          1. Inputs - geometry, cross-section, edge length          |"
-        write(i, "(a )"), "   |                                                                    |"
         write(i, "(a )"), "   +--------------------------------------------------------------------+"
         write(i, "(a )")
         call Space(i, 6)
@@ -385,8 +252,6 @@ subroutine Input_Print_Parameters(prob, geom)
 
         call Space(i, 6)
         write(i, "(a)"), "1.2. Cross-section information"
-        call Space(i, 11)
-        write(i, "(a)"), "* Section type                      : "//trim(geom.sec.types)//" lattice"
         call Space(i, 11)
         write(i, "(a)"), "* The number of duplexes            : "//trim(adjustl(Int2Str(geom.n_sec)))
         call Space(i, 11)
@@ -504,84 +369,15 @@ end subroutine Input_Read_Parameter
 
 ! -----------------------------------------------------------------------------
 
-! Reset paramters as default values
-subroutine Input_Reset_Para_Report
-
-    ! Program parameters
-    para_preset          = "on"     ! [on, off], Preset parameter defined in pre-defined examples
-    !para_output_Tecplot  = "off"    ! [off, on], Output files for Tecplot(http://www.tecplot.com/) to draw vector image
-    para_fig_view        = "xy"     ! [xy, xz, xyz, all], Viewpoint for figures from UCSF Chimera
-    para_type_cndo       = 2        ! [1, 2], CanDo file option, 1 : original format, 2 : updated format
-
-    ! Parameters for junction modification
-    para_junc_ang        = "opt"    ! [opt, max, ave, min], Junction gap modification for different arm angle
-    para_const_edge_mesh = "off"    ! [off, on], Constant edge length from polyhedra mesh
-    para_sticky_self     = "off"    ! [off, on], Sticky-end for self connection on henycomb cross-section
-    para_unpaired_scaf   = "on"     ! [on, off], Unpaired scaffold nucleotides
-    para_vertex_modify   = "const"  ! [const, mod], Vertex modification to avoid clash
-    !para_vertex_design   = "flat"  ! [flat, mitered], Vertex design
-    para_mitered_method  = "new"    ! [new, old], Mitered method
-
-    ! Paramters for B-from DNA generation
-    para_dist_pp       = 0.42d0     ! [0.42, 0.6], distance between adjacent phosphate groups, nm
-    para_dist_bp       = 0.34d0     ! [0.34 ], Axial rise distance, nm
-    para_rad_helix     = 1.0d0      ! [1.0  ], The radius of the DNA helix, nm
-    para_gap_helix     = 0.25d0     ! [0.25 ], The gap between two helixes, nm
-    para_ang_minor     = 150.0d0    ! [150.0], An angle of minor groove, degree
-    para_ang_correct   = 0.0d0      ! [0.0  ], Correction factor to adjust orientation, degree
-    para_n_base_tn     = -1         ! [-1   ], The number of nucleotides in poly T loop, -1 : depending on distance
-    para_start_bp_ID   = -1         ! [-1   ], Starting base pair ID for the reference, -1 : pre-defined starting BP
-
-    ! Paramters for scaffold route
-    para_weight_edge   = "on"       ! [on, off], Assign weight factor into edges of dual graph
-    para_method_MST    = "prim"     ! [prim, kruskal, greedy], Minimum spanning tree algorithm
-    para_method_sort   = "quick"    ! [none, quick, shell], Sorting algorithm to find MST for Prim or Kruskal
-    para_adjacent_list = "off"      ! [off, on], Output for adjacent list for Prim or Kruskal
-    para_all_spanning  = "off"      ! [off, on], All possible spanning trees when # of edges is less than 12 for Prim or Kruskal
-
-    ! Parameter for sequence design
-    para_un_depend_angle  = "off"      ! [off, on], The addition of the unpaired nucleotide depending on the angle between two edges
-    !para_cut_stap_method  = "max"      ! [max, mix, opt, min, mid], Cutting method to make short staple strand, opt - 14nt seeds
-    para_set_stap_sxover  = "off"      ! [off, on], To make non-circular staple by single crossover (when para_set_stap_sxover is "on")
-    para_output_design    = "arrow"    ! [arrow, seq, strand], Graphical output type for sequence design
-    para_set_xover_scaf   = "split"    ! [split, center], Setting possible scaffold strand
-
-    para_gap_xover_two_scaf   = 3          ! [3 ], The minimum gap between two scaffold crossovers
-    para_gap_xover_bound_scaf = 7          ! [7 ], The mimimum gap between scaffold crossover and vertex boundary
-    para_gap_xover_bound_stap = 6          ! [6 ], The mimimum gap between staple crossover and vertex boundary
-    para_gap_xover_two        = 6          ! [6 ], The minimum gap between scaffold and staple crossovers
-    para_gap_xover_nick1      = 10         ! [10], The minimum gap between xover(scaf/stap)/Tn and first nick
-    para_gap_xover_nick       = 3          ! [3 ], The minimum gap between xover and nick, if staple length exceeds 60, redesign with num - 1
-
-    para_pos_nick_scaf        = 1          ! [1, 2, 3] Sectional position for the scaffold nick
-    !para_max_cut_scaf         = 0          ! [0, 7249], Scaffold break - 0 : not breaking, num : breaking over num
-    para_min_cut_stap         = 20         ! [20], The minimum number of nucleotides for one staple strand
-    para_mid_cut_stap         = 40         ! [40], The optimal number of nucleotides for one staple strand
-    para_max_cut_stap         = 60         ! [60], The maximum number of nucleotides for one staple strand
-    para_set_seq_scaf         = 0          ! [0, 1, 2], Scaffold sequence, 0 - M13mp18(7249nt), 1 - import sequence from seq.txt, 2 - random
-    para_set_start_scaf       = 7217       ! [7217, 4141], Starting nucleotide position of scaffold strand
-
-    ! =======================================================================================================
-    !para_preset          = "off"
-    !para_junc_ang        = "min"    ! Junctional gap
-    !para_unpaired_scaf   = "off"    ! Unpaired scaffold nucleotides
-    !para_n_base_tn       = 7        ! The number of nucleotides
-    ! =======================================================================================================
-end subroutine Input_Reset_Para_Report
-
-! -----------------------------------------------------------------------------
-
 ! Set command environment
 subroutine Input_Set_Command
     logical :: results
 
     ! Set command environments
-    results = SYSTEMQQ('title TALOS')                  ! cmd title
+    results = SYSTEMQQ('title TALOS')                       ! cmd title
     results = SYSTEMQQ('mode con: cols=135 lines=6000')     ! cmd size
     results = SYSTEMQQ('color')                             ! convert color, 02, f0, f1, f2
     results = SYSTEMQQ('date /t')                           ! display time
-    !results = SYSTEMQQ('hostname')                          ! display hostname of the computer
-    !results = SYSTEMQQ('ver')                               ! display version information
 end subroutine Input_Set_Command
 
 ! -----------------------------------------------------------------------------
@@ -623,8 +419,6 @@ subroutine Input_Print_Problem
     write(0, "(a)"), "      [ Miscellaneous polyhedra ]"
     write(0, "(a)"), "       *36. Twisted Tri Prism,      37. Heptagonal Bipyramid,    38. Enneagonal Trapezo"
     write(0, "(a)"), "        39. Small Stell Dodeca,    *40. Rhombic Hexeconta"
-    !write(0, "(a)"), "        41. Goldberg dk5dgD,       *42. Double Helix,            43. Nested Cube"
-    !write(0, "(a)"), "       *44. Nested Octa,           *45. Torus,                   46. Double Torus"
     write(0, "(a)")
     write(0, "(a)"), "   Select the number or type geometry file (*.ply) [Enter] : "
     write(0, "(a)")
@@ -662,81 +456,6 @@ subroutine Input_Print_Section
     write(0, "(a)")
     write(0, "(a)"), "   Select the number [Enter] : "
 end subroutine Input_Print_Section
-
-! -----------------------------------------------------------------------------
-
-! Print pre-defined cross-sections
-subroutine Input_Print_Section1
-    write(0, "(a)")
-    write(0, "(a)"), "   C. Third input - Origin of the local coordinates"
-    write(0, "(a)"), "   ================================================"
-    write(0, "(a)")
-    write(0, "(a)"), "    - : crossover, = reference axis"
-    write(0, "(a)")
-    write(0, "(a)")
-    write(0, "(a)"), "             [sec ID]                  [sec ID] "
-    write(0, "(a)"), "      1.                   2.  @ @      4 3     "
-    write(0, "(a)"), "        =@ @=  =0 1=          @   @    5   2    "
-    write(0, "(a)"), "                              =@ @=    =0 1=    "
-    write(0, "(a)"), "                                                "
-    write(0, "(a)"), "                               [type 1, CW]     "
-    write(0, "(a)"), "         [1 by 2]              [1 honeycomb]    "
-    write(0, "(a)")
-    write(0, "(a)")
-    write(0, "(a)"), "                [sec ID]                [sec ID]                [sec ID]"
-    write(0, "(a)"), "      3.  @-@      5 4        4.  @-@      5 4        5.  @-@      4 3  "
-    write(0, "(a)"), "        =@   @=  =0   3=        =@   @=  =0   3=        =@   @=  =5   2="
-    write(0, "(a)"), "          @-@      1 2            @-@      1 2            @-@      0 1  "
-    write(0, "(a)"), "                                                                        "
-    write(0, "(a)"), "         [type 2, CW]            [type 3, CCW]           [type 3, CW]   "
-    write(0, "(a)"), "         [1 honeycomb]           [1 honeycomb]           [1 honeycomb]  "
-    write(0, "(a)")
-    write(0, "(a)")
-    write(0, "(a)"), "   Select the number [Enter] : "
-end subroutine Input_Print_Section1
-
-! -----------------------------------------------------------------------------
-
-! Print pre-defined cross-sections
-subroutine Input_Print_Section2
-    write(0, "(a)")
-    write(0, "(a)"), "   B. Second input - Pre-defined cross-sections"
-    write(0, "(a)")
-    write(0, "(a)"), "    - : crossover, = reference axis"
-    write(0, "(a)")
-    write(0, "(a)"), "    [Section defined on square lattice]"
-    write(0, "(a)"), "     =============="
-    write(0, "(a)")
-    write(0, "(a)"), "      1.   @-@     2.   @ @     3.   @-@     4. =@ @-@ @=   5.  @-@ @-@    6.  @ @-@ @ "
-    write(0, "(a)"), "          =@ @=         @-@          @ @                       =@ @-@ @=       @-@ @-@ "
-    write(0, "(a)"), "                       =@ @=         @-@                                      =@ @-@ @="
-    write(0, "(a)"), "                                    =@ @=                                              "
-    write(0, "(a)"), "        [2 by 2]     [3 by 2]     [4 by 2]      [1 by 4]       [2 by 4]       [3 by 4] "
-    write(0, "(a)")
-    write(0, "(a)"), "      7.  @-@ @-@      8. =@ @-@ @-@ @=     9.  @-@ @-@ @-@      10.  @ @-@ @-@ @ "
-    write(0, "(a)"), "          @ @-@ @                              =@ @-@ @-@ @=          @-@ @-@ @-@ "
-    write(0, "(a)"), "          @-@ @-@                                                    =@ @-@ @-@ @="
-    write(0, "(a)"), "         =@ @-@ @=                                                                "
-    write(0, "(a)"), "          [4 by 4]          [1 by 6]             [2 by 6]               [3 by 6]  "
-    write(0, "(a)")
-    write(0, "(a)"), "     11. @-@ @-@ @-@   12.  @ @-@ @   13.  @-@ @-@   14.    @ @     15.    @ @    "
-    write(0, "(a)"), "         @ @-@ @-@ @        @     @        @     @       =@ @-@ @=       @-@ @-@  "
-    write(0, "(a)"), "         @-@ @-@ @-@       =@ @-@ @=       @     @          @ @         =@ @-@ @= "
-    write(0, "(a)"), "        =@ @-@ @-@ @=                     =@ @-@ @=                        @ @    "
-    write(0, "(a)"), "          [4 by 6]        [3-4 hole]     [4-4 hole]     [3-4 cross]    [4-4 cross]"
-    write(0, "(a)")
-    write(0, "(a)"), "    [Section defined on honeycomb lattice]"
-    write(0, "(a)"), "     ================="
-    write(0, "(a)"), "                           [sec ID]             [sec ID]                                                        "
-    write(0, "(a)"), "     16.       17.  @-@       5 4     18.  @ @     4 3    19.  @-@   @-@     20.     @-@        21.  @-@   @-@  "
-    write(0, "(a)"), "        =@ @=     =@   @=   =0   3=       @   @   5   2      =@   @-@   @=        @-@   @-@         @   @-@   @ "
-    write(0, "(a)"), "                    @-@       1 2         =@ @=   =0 1=        @-@   @-@        =@   @-@   @=        @-@   @-@  "
-    write(0, "(a)"), "                                                                                  @-@   @-@        =@   @-@   @="
-    write(0, "(a)"), "                  [type 1, const]         [type 2, mod]                              @-@             @-@   @-@  "
-    write(0, "(a)"), "      [1 by 2]     [1 honeycomb]          [1 honeycomb]      [2 honeycomb]      [4 honeycomb]      [5 honeycomb]"
-    write(0, "(a)")
-    write(0, "(a)"), "   Select the number [Enter] : "
-end subroutine Input_Print_Section2
 
 ! -----------------------------------------------------------------------------
 
@@ -803,15 +522,6 @@ subroutine Input_Select_File(prob, geom)
     type(GeomType), intent(inout) :: geom
 
     integer :: i, len_char
-
-    ! Read geometric file
-    !write(0, "(a)")
-    !write(0, "(a)"), " Write the file name (*.ply, *.geo, *.stl, *.wrl), [Enter] : "
-    !read(*, *),  prob.name_file
-
-    !len_char       = len_trim(prob.name_file)
-    !prob.type_file = prob.name_file(len_char-2:len_char)
-    !prob.name_file = prob.name_file(1:len_char-4)
 
     if(para_fig_view == "PRESET" .or. para_fig_view == "preset") para_fig_view = "xy"
 
@@ -970,7 +680,7 @@ subroutine Input_Set_Section(prob, geom)
         geom.sec.ref_maxC = 2
 
         call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
+        call Mani_Init_SecType    (geom.sec, geom.n_sec)
 
         geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
         geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
@@ -998,7 +708,7 @@ subroutine Input_Set_Section(prob, geom)
         geom.sec.ref_maxC = 2
 
         call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
+        call Mani_Init_SecType    (geom.sec, geom.n_sec)
 
         geom.sec.id(1) = 0; geom.sec.posR(1) = 2; geom.sec.posC(1) = 1
         geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 1
@@ -1022,807 +732,6 @@ subroutine Input_Set_Section(prob, geom)
     ! Find maximum and minimum sectional row and column
     call Input_Find_Max_Min_Section(geom)
 end subroutine Input_Set_Section
-
-! -----------------------------------------------------------------------------
-
-! Set cross-section based on square or honeycomb lattices
-subroutine Input_Set_Section1(prob, geom)
-    type(ProbType), intent(in)    :: prob
-    type(GeomType), intent(inout) :: geom
-
-    integer :: bp_id
-
-    ! Cross-section definition on local coordinate - t3-t2
-    !        t2
-    !        ¡è
-    !        |
-    !     ---|-------¡æ t3
-    !        |
-    ! The number of columns should be even
-    if(prob.sel_sec == 1) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 3 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 3, 13
-        !     ¡Ü¡Ü     .00   01.  <------- reference axis
-        geom.sec.dir      = 90
-        geom.n_sec        = 2
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-
-    else if(prob.sel_sec == 2) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 13 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 3, 4 / 13, 14       | caDNAno   02    (CW)
-        !      ¡Ü¡Ü        04 03              |         03  01
-        !     ¡Ü  ¡Ü      05   02             |         04  00
-        !      ¡Ü¡Ü       .00 01.   <--- ref  |           05
-        geom.sec.dir      = 90
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 3; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 2; geom.sec.posC(6) = 1
-
-        ! Increase or decrease edge length except for reference row and column section
-        para_vertex_modify = "mod2"
-
-    else if(prob.sel_sec == 3) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 11 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 1 / 11              | caDNAno   02    (CW)
-        !      ¡Ü¡Ü        05=04              |         03  01
-        !     ¡Ü  ¡Ü     .00   03.  <--- ref  |         04  00
-        !      ¡Ü¡Ü        01=02              |           05
-        geom.sec.dir      = 150
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 2; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 1
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 1; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 2
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 3; geom.sec.posC(6) = 1
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-    else if(prob.sel_sec == 4) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 18 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9 / 18, 19       | caDNAno   00    (CCW)
-        !      ¡Ü¡Ü        05=04              |         01  05
-        !     ¡Ü  ¡Ü     .00   03.  <--- ref  |         02  04
-        !      ¡Ü¡Ü        01=02              |           03
-        geom.sec.dir      = -90
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 2; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 1
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 1; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 2
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 3; geom.sec.posC(6) = 1
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-    else if(prob.sel_sec == 5) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 18 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9 / 18, 19       | caDNAno   02    (CW)
-        !      ¡Ü¡Ü        04 03              |         03  01
-        !     ¡Ü  ¡Ü     .05   02.  <--- ref  |         04  00
-        !      ¡Ü¡Ü        00 01              |           05
-        geom.sec.dir      = 90
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 3; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 2; geom.sec.posC(6) = 1
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-    else
-
-        write(0, "(a$)"), "Error - Not defined cross-section : "
-        write(0, "(a )"), "Input_Set_Section"
-        stop
-    end if
-
-    !! Set section connectivity in the defined initial section
-    call Input_Set_Section_Connectivity(prob, geom)
-
-    ! Find maximum and minimum sectional row and column
-    call Input_Find_Max_Min_Section(geom)
-end subroutine Input_Set_Section1
-
-! -----------------------------------------------------------------------------
-
-! Set cross-section based on square or honeycomb lattices
-subroutine Input_Set_Section2(prob, geom)
-    type(ProbType), intent(in)    :: prob
-    type(GeomType), intent(inout) :: geom
-
-    integer :: bp_id
-
-    ! Cross-section definition on local coordinate - t3-t2
-    !        t2
-    !        ¡è
-    !        |
-    !     ---|-------¡æ t3
-    !        |
-    ! The number of columns should be even
-    if(prob.sel_sec == 1) then
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü      03 = 02
-        !     ¡Ü¡Ü     .00   01.  <------- reference axis
-        geom.n_sec        = 4
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 1
-
-    else if(prob.sel_sec == 2) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü     .04   05.
-        !     ¡Ü¡Ü      03 = 02
-        !     ¡Ü¡Ü     .00   01.  <------- reference axis
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 1
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 3; geom.sec.posC(6) = 2
-
-    else if(prob.sel_sec == 3) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü      07 = 06
-        !     ¡Ü¡Ü     .04   05.
-        !     ¡Ü¡Ü      03 = 02
-        !     ¡Ü¡Ü     .00   01.  <------- reference axis
-        geom.n_sec        = 8
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 1
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 3; geom.sec.posC(6) = 2
-        geom.sec.id(7) = 6; geom.sec.posR(7) = 4; geom.sec.posC(7) = 2
-        geom.sec.id(8) = 7; geom.sec.posR(8) = 4; geom.sec.posC(8) = 1
-
-    else if(prob.sel_sec == 4) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 4
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 1; geom.sec.posC(3) = 3
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 1; geom.sec.posC(4) = 4
-
-    else if(prob.sel_sec == 5) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü      07 = 06   05 = 04
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 8
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 1; geom.sec.posC(3) = 3
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 1; geom.sec.posC(4) = 4
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 2; geom.sec.posC(5) = 4
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 2; geom.sec.posC(6) = 3
-        geom.sec.id(7) = 6; geom.sec.posR(7) = 2; geom.sec.posC(7) = 2
-        geom.sec.id(8) = 7; geom.sec.posR(8) = 2; geom.sec.posC(8) = 1
-
-    else if(prob.sel_sec == 6) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü     .08   09 = 10   11.
-        !     ¡Ü¡Ü¡Ü¡Ü      07 = 06   05 = 04
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 12
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 2; geom.sec.posC(5)  = 4
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 2; geom.sec.posC(6)  = 3
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 2
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2; geom.sec.posC(8)  = 1
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 3; geom.sec.posC(9)  = 1
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 3; geom.sec.posC(10) = 2
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 3; geom.sec.posC(11) = 3
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 3; geom.sec.posC(12) = 4
-
-    else if(prob.sel_sec == 7) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü      15 = 14   13 = 12
-        !     ¡Ü¡Ü¡Ü¡Ü     .08   09 = 10   11.
-        !     ¡Ü¡Ü¡Ü¡Ü      07 = 06   05 = 04
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 16
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 2; geom.sec.posC(5)  = 4
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 2; geom.sec.posC(6)  = 3
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 2
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2; geom.sec.posC(8)  = 1
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 3; geom.sec.posC(9)  = 1
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 3; geom.sec.posC(10) = 2
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 3; geom.sec.posC(11) = 3
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 3; geom.sec.posC(12) = 4
-        geom.sec.id(13) = 12; geom.sec.posR(13) = 4; geom.sec.posC(13) = 4
-        geom.sec.id(14) = 13; geom.sec.posR(14) = 4; geom.sec.posC(14) = 3
-        geom.sec.id(15) = 14; geom.sec.posR(15) = 4; geom.sec.posC(15) = 2
-        geom.sec.id(16) = 15; geom.sec.posR(16) = 4; geom.sec.posC(16) = 1
-
-    else if(prob.sel_sec == 8) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03 = 04   05.  <------- reference axis
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 6
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 1; geom.sec.posC(5)  = 5
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 1; geom.sec.posC(6)  = 6
-
-    else if(prob.sel_sec == 9) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü      11 = 10   09 = 08   07 = 06
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03 = 04   05.  <------- reference axis
-        geom.n_sec        = 12
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 6
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 1; geom.sec.posC(5)  = 5
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 1; geom.sec.posC(6)  = 6
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 6
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2; geom.sec.posC(8)  = 5
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 2; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 2; geom.sec.posC(10) = 3
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 2; geom.sec.posC(11) = 2
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 2; geom.sec.posC(12) = 1
-
-    else if(prob.sel_sec == 10) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü     .12   13 = 14   15 = 16   17.
-        !     ¡Ü¡Ü¡Ü¡Ü      11 = 10   09 = 08   07 = 06
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03 = 04   05.  <------- reference axis
-        geom.n_sec        = 18
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 6
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 1; geom.sec.posC(5)  = 5
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 1; geom.sec.posC(6)  = 6
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 6
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2; geom.sec.posC(8)  = 5
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 2; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 2; geom.sec.posC(10) = 3
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 2; geom.sec.posC(11) = 2
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 2; geom.sec.posC(12) = 1
-        geom.sec.id(13) = 12; geom.sec.posR(13) = 3; geom.sec.posC(13) = 1
-        geom.sec.id(14) = 13; geom.sec.posR(14) = 3; geom.sec.posC(14) = 2
-        geom.sec.id(15) = 14; geom.sec.posR(15) = 3; geom.sec.posC(15) = 3
-        geom.sec.id(16) = 15; geom.sec.posR(16) = 3; geom.sec.posC(16) = 4
-        geom.sec.id(17) = 16; geom.sec.posR(17) = 3; geom.sec.posC(17) = 5
-        geom.sec.id(18) = 17; geom.sec.posR(18) = 3; geom.sec.posC(18) = 6
-
-    else if(prob.sel_sec == 11) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü      23 = 22   21 = 20   19 = 18
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü     .12   13 = 14   15 = 16   17.
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü      11 = 10   09 = 08   07 = 06
-        !     ¡Ü¡Ü¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03 = 04   05.  <------- reference axis
-        geom.n_sec        = 24
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 6
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 1; geom.sec.posC(5)  = 5
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 1; geom.sec.posC(6)  = 6
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 6
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2; geom.sec.posC(8)  = 5
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 2; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 2; geom.sec.posC(10) = 3
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 2; geom.sec.posC(11) = 2
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 2; geom.sec.posC(12) = 1
-        geom.sec.id(13) = 12; geom.sec.posR(13) = 3; geom.sec.posC(13) = 1
-        geom.sec.id(14) = 13; geom.sec.posR(14) = 3; geom.sec.posC(14) = 2
-        geom.sec.id(15) = 14; geom.sec.posR(15) = 3; geom.sec.posC(15) = 3
-        geom.sec.id(16) = 15; geom.sec.posR(16) = 3; geom.sec.posC(16) = 4
-        geom.sec.id(17) = 16; geom.sec.posR(17) = 3; geom.sec.posC(17) = 5
-        geom.sec.id(18) = 17; geom.sec.posR(18) = 3; geom.sec.posC(18) = 6
-        geom.sec.id(19) = 18; geom.sec.posR(19) = 4; geom.sec.posC(19) = 6
-        geom.sec.id(20) = 19; geom.sec.posR(20) = 4; geom.sec.posC(20) = 5
-        geom.sec.id(21) = 20; geom.sec.posR(21) = 4; geom.sec.posC(21) = 4
-        geom.sec.id(22) = 21; geom.sec.posR(22) = 4; geom.sec.posC(22) = 3
-        geom.sec.id(23) = 22; geom.sec.posR(23) = 4; geom.sec.posC(23) = 2
-        geom.sec.id(24) = 23; geom.sec.posR(24) = 4; geom.sec.posC(24) = 1
-
-    else if(prob.sel_sec == 12) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü     .06   07 = 08   09.
-        !     ¡Ü  ¡Ü     .05             04.
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 10
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0; geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1; geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2; geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3; geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4; geom.sec.posR(5)  = 2; geom.sec.posC(5)  = 4
-        geom.sec.id(6)  = 5; geom.sec.posR(6)  = 2; geom.sec.posC(6)  = 1
-        geom.sec.id(7)  = 6; geom.sec.posR(7)  = 3; geom.sec.posC(7)  = 1
-        geom.sec.id(8)  = 7; geom.sec.posR(8)  = 3; geom.sec.posC(8)  = 2
-        geom.sec.id(9)  = 8; geom.sec.posR(9)  = 3; geom.sec.posC(9)  = 3
-        geom.sec.id(10) = 9; geom.sec.posR(10) = 3; geom.sec.posC(10) = 4
-
-    else if(prob.sel_sec == 13) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !     ¡Ü¡Ü¡Ü¡Ü      11 = 10   09 = 08
-        !     ¡Ü  ¡Ü     .06             07.
-        !     ¡Ü  ¡Ü     .05             04.
-        !     ¡Ü¡Ü¡Ü¡Ü     .00   01 = 02   03.  <------- reference axis
-        geom.n_sec        = 12
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 2
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 1; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 2; geom.sec.posC(5)  = 4
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 2; geom.sec.posC(6)  = 1
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 3; geom.sec.posC(7)  = 1
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 3; geom.sec.posC(8)  = 4
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 4; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 4; geom.sec.posC(10) = 3
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 4; geom.sec.posC(11) = 2
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 4; geom.sec.posC(12) = 1
-
-    else if(prob.sel_sec == 14) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !      ¡Ü¡Ü           .06   07.
-        !     ¡Ü¡Ü¡Ü¡Ü     .04   05 = 02   03.  <------- reference axis
-        !      ¡Ü¡Ü           .00   01.
-        geom.n_sec        = 8
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 2
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 3
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 3
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 4
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 2; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 2; geom.sec.posC(6) = 2
-        geom.sec.id(7) = 6; geom.sec.posR(7) = 3; geom.sec.posC(7) = 2
-        geom.sec.id(8) = 7; geom.sec.posR(8) = 3; geom.sec.posC(8) = 3
-
-    else if(prob.sel_sec == 15) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 0
-        bp_id = mod(para_start_bp_ID, 32)
-
-        ! Starting BP - 0, 10, 11, 20, 21
-        !      ¡Ü¡Ü            11 = 10
-        !     ¡Ü¡Ü¡Ü¡Ü      07 = 06   09 = 08
-        !     ¡Ü¡Ü¡Ü¡Ü     .04   05 = 02   03.  <------- reference axis
-        !      ¡Ü¡Ü           .00   01.
-        geom.n_sec        = 12
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "square")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 1; geom.sec.posC(1)  = 2
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 3
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 2; geom.sec.posC(3)  = 3
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 2; geom.sec.posC(4)  = 4
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 2; geom.sec.posC(5)  = 1
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 2; geom.sec.posC(6)  = 2
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 3; geom.sec.posC(7)  = 2
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 3; geom.sec.posC(8)  = 1
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 3; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 3; geom.sec.posC(10) = 3
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 4; geom.sec.posC(11) = 3
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 4; geom.sec.posC(12) = 2
-
-    else if(prob.sel_sec == 16) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 3 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 3, 13
-        !     ¡Ü¡Ü     .00   01.  <------- reference axis
-        geom.n_sec        = 2
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-
-    else if(prob.sel_sec == 17) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 18 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9, 18, 19
-        !      ¡Ü¡Ü        05=04
-        !     ¡Ü  ¡Ü     .00   03.  <------- reference axis
-        !      ¡Ü¡Ü        01=02
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 2; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 1
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 1; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 2; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 2
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 3; geom.sec.posC(6) = 1
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-
-    else if(prob.sel_sec == 18) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 13 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 13, 14
-        !      ¡Ü¡Ü        04 03
-        !     ¡Ü  ¡Ü      05   02
-        !      ¡Ü¡Ü       .00 01.     <------- reference axis
-        geom.n_sec        = 6
-        geom.sec.ref_row  = 1
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 2
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1) = 0; geom.sec.posR(1) = 1; geom.sec.posC(1) = 1
-        geom.sec.id(2) = 1; geom.sec.posR(2) = 1; geom.sec.posC(2) = 2
-        geom.sec.id(3) = 2; geom.sec.posR(3) = 2; geom.sec.posC(3) = 2
-        geom.sec.id(4) = 3; geom.sec.posR(4) = 3; geom.sec.posC(4) = 2
-        geom.sec.id(5) = 4; geom.sec.posR(5) = 3; geom.sec.posC(5) = 1
-        geom.sec.id(6) = 5; geom.sec.posR(6) = 2; geom.sec.posC(6) = 1
-
-        ! Increase or decrease edge length except for reference row and column section
-        para_vertex_modify = "mod2"
-
-    else if(prob.sel_sec == 19) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 8 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9, 18, 19
-        !      ¡Ü¡Ü  ¡Ü¡Ü       05=04   11=10
-        !     ¡Ü  ¡Ü¡Ü  ¡Ü    .00   03=06   09.  <------- reference axis
-        !      ¡Ü¡Ü  ¡Ü¡Ü       01=02   07=08
-        geom.n_sec        = 12
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 2; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 1
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 2
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 2; geom.sec.posC(4)  = 2
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 3; geom.sec.posC(5)  = 2
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 3; geom.sec.posC(6)  = 1
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 2; geom.sec.posC(7)  = 3
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 1; geom.sec.posC(8)  = 3
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 1; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 2; geom.sec.posC(10) = 4
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 3; geom.sec.posC(11) = 4
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 3; geom.sec.posC(12) = 3
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-
-    else if(prob.sel_sec == 20) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 8 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9, 18, 19
-        !        ¡Ü¡Ü              15=14
-        !      ¡Ü¡Ü  ¡Ü¡Ü        05=04   11=10
-        !     ¡Ü  ¡Ü¡Ü  ¡Ü     .00   03=06   09.  <------- reference axis
-        !      ¡Ü¡Ü  ¡Ü¡Ü        01=02   07=08
-        !        ¡Ü¡Ü              13=12
-        geom.n_sec        = 16
-        geom.sec.ref_row  = 3
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 3+1; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 2+1; geom.sec.posC(2)  = 1
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 2+1; geom.sec.posC(3)  = 2
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 3+1; geom.sec.posC(4)  = 2
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 4+1; geom.sec.posC(5)  = 2
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 4+1; geom.sec.posC(6)  = 1
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 3+1; geom.sec.posC(7)  = 3
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 2+1; geom.sec.posC(8)  = 3
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 2+1; geom.sec.posC(9)  = 4
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 3+1; geom.sec.posC(10) = 4
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 4+1; geom.sec.posC(11) = 4
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 4+1; geom.sec.posC(12) = 3
-        geom.sec.id(13) = 12; geom.sec.posR(13) = 1+1; geom.sec.posC(13) = 3
-        geom.sec.id(14) = 13; geom.sec.posR(14) = 1+1; geom.sec.posC(14) = 2
-        geom.sec.id(15) = 14; geom.sec.posR(15) = 5+1; geom.sec.posC(15) = 3
-        geom.sec.id(16) = 15; geom.sec.posR(16) = 5+1; geom.sec.posC(16) = 2
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-
-    else if(prob.sel_sec == 21) then
-
-        if(para_start_bp_ID == -1) para_start_bp_ID = 8 + 1
-        bp_id = mod(para_start_bp_ID, 21)
-
-        ! Starting BP - 8, 9, 18, 19
-        !      ¡Ü¡Ü  ¡Ü¡Ü        07=06   17=16
-        !     ¡Ü  ¡Ü¡Ü  ¡Ü     .08   05=18   15.
-        !      ¡Ü¡Ü  ¡Ü¡Ü        09=04   19=14
-        !     ¡Ü  ¡Ü¡Ü  ¡Ü     .00   03=10   13.  <------- reference axis
-        !      ¡Ü¡Ü  ¡Ü¡Ü        01=02   11=12
-        geom.n_sec        = 20
-        geom.sec.ref_row  = 2
-        geom.sec.ref_minC = 1
-        geom.sec.ref_maxC = 4
-
-        call Mani_Allocate_SecType(geom.sec, geom.n_sec)
-        call Mani_Init_SecType    (geom.sec, geom.n_sec, "honeycomb")
-
-        geom.sec.id(1)  = 0;  geom.sec.posR(1)  = 2; geom.sec.posC(1)  = 1
-        geom.sec.id(2)  = 1;  geom.sec.posR(2)  = 1; geom.sec.posC(2)  = 1
-        geom.sec.id(3)  = 2;  geom.sec.posR(3)  = 1; geom.sec.posC(3)  = 2
-        geom.sec.id(4)  = 3;  geom.sec.posR(4)  = 2; geom.sec.posC(4)  = 2
-        geom.sec.id(5)  = 4;  geom.sec.posR(5)  = 3; geom.sec.posC(5)  = 2
-        geom.sec.id(6)  = 5;  geom.sec.posR(6)  = 4; geom.sec.posC(6)  = 2
-        geom.sec.id(7)  = 6;  geom.sec.posR(7)  = 5; geom.sec.posC(7)  = 2
-        geom.sec.id(8)  = 7;  geom.sec.posR(8)  = 5; geom.sec.posC(8)  = 1
-        geom.sec.id(9)  = 8;  geom.sec.posR(9)  = 4; geom.sec.posC(9)  = 1
-        geom.sec.id(10) = 9;  geom.sec.posR(10) = 3; geom.sec.posC(10) = 1
-        geom.sec.id(11) = 10; geom.sec.posR(11) = 2; geom.sec.posC(11) = 3
-        geom.sec.id(12) = 11; geom.sec.posR(12) = 1; geom.sec.posC(12) = 3
-        geom.sec.id(13) = 12; geom.sec.posR(13) = 1; geom.sec.posC(13) = 4
-        geom.sec.id(14) = 13; geom.sec.posR(14) = 2; geom.sec.posC(14) = 4
-        geom.sec.id(15) = 14; geom.sec.posR(15) = 3; geom.sec.posC(15) = 4
-        geom.sec.id(16) = 15; geom.sec.posR(16) = 4; geom.sec.posC(16) = 4
-        geom.sec.id(17) = 16; geom.sec.posR(17) = 5; geom.sec.posC(17) = 4
-        geom.sec.id(18) = 17; geom.sec.posR(18) = 5; geom.sec.posC(18) = 3
-        geom.sec.id(19) = 18; geom.sec.posR(19) = 4; geom.sec.posC(19) = 3
-        geom.sec.id(20) = 19; geom.sec.posR(20) = 3; geom.sec.posC(20) = 3
-
-        ! Decrease edge length at the bottom
-        if(para_vertex_modify == "mod") para_vertex_modify = "mod1"
-    else
-
-        write(0, "(a$)"), "Error - Not defined cross-section : "
-        write(0, "(a )"), "Input_Set_Section"
-        stop
-    end if
-
-    !! Set section connectivity in the defined initial section
-    call Input_Set_Section_Connectivity(prob, geom)
-
-    ! Find maximum and minimum sectional row and column
-    call Input_Find_Max_Min_Section(geom)
-end subroutine Input_Set_Section2
 
 ! -----------------------------------------------------------------------------
 
@@ -1961,47 +870,6 @@ subroutine Input_Set_Num_BP_Edge(prob, geom)
         prob.n_bp_edge = prob.sel_bp_edge
     end if
 end subroutine Input_Set_Num_BP_Edge
-
-! -----------------------------------------------------------------------------
-
-! Set length of edge
-subroutine Input_Set_Num_BP_Edge1(prob, geom)
-    type(ProbType), intent(inout) :: prob
-    type(GeomType), intent(in)    :: geom
-
-    ! One base pair will be added at the end of nodes after FE meshing
-    if(geom.sec.types == "square") then
-
-        if(prob.sel_bp_edge == 1)  prob.n_bp_edge = 32       ! 32bp * 1
-        if(prob.sel_bp_edge == 2)  prob.n_bp_edge = 43
-        if(prob.sel_bp_edge == 3)  prob.n_bp_edge = 53
-        if(prob.sel_bp_edge == 4)  prob.n_bp_edge = 64       ! 32bp * 2
-        if(prob.sel_bp_edge == 5)  prob.n_bp_edge = 75
-        if(prob.sel_bp_edge == 6)  prob.n_bp_edge = 85
-        if(prob.sel_bp_edge == 7)  prob.n_bp_edge = 96       ! 32bp * 3
-        if(prob.sel_bp_edge == 8)  prob.n_bp_edge = 107
-        if(prob.sel_bp_edge == 9)  prob.n_bp_edge = 117
-        if(prob.sel_bp_edge == 10) prob.n_bp_edge = 128      ! 32bp * 4
-
-    else if(geom.sec.types == "honeycomb") then
-
-        if(prob.sel_bp_edge == 1)  prob.n_bp_edge = 31
-        if(prob.sel_bp_edge == 2)  prob.n_bp_edge = 42       ! 21bp * 2
-        if(prob.sel_bp_edge == 3)  prob.n_bp_edge = 52
-        if(prob.sel_bp_edge == 4)  prob.n_bp_edge = 63       ! 21bp * 3
-        if(prob.sel_bp_edge == 5)  prob.n_bp_edge = 73
-        if(prob.sel_bp_edge == 6)  prob.n_bp_edge = 84       ! 21bp * 4
-        if(prob.sel_bp_edge == 7)  prob.n_bp_edge = 94
-        if(prob.sel_bp_edge == 8)  prob.n_bp_edge = 105      ! 21bp * 5
-        if(prob.sel_bp_edge == 9)  prob.n_bp_edge = 115
-        if(prob.sel_bp_edge == 10) prob.n_bp_edge = 126      ! 21bp * 6
-    end if
-
-    ! Increase the number of basepair for self-connection
-    !if(para_vertex_design == 1) then
-    !    prob.n_bp_edge = prob.n_bp_edge + 1
-    !end if
-end subroutine Input_Set_Num_BP_Edge1
 
 ! -----------------------------------------------------------------------------
 
@@ -2495,11 +1363,9 @@ subroutine Input_Chimera_Init_Geometry(prob, geom)
     end if
     close(unit=102)
 
-    ! ==================================================
-    !
+    ! --------------------------------------------------
     ! Write the file for Tecplot
-    !
-    ! ==================================================
+    ! --------------------------------------------------
     if(para_output_Tecplot == "off") return
 
     path = trim(prob.path_work)//"/tecplot/"//trim(prob.name_file)
@@ -2788,9 +1654,7 @@ subroutine Input_Chimera_Schlegel_Diagram(prob, geom, pos_xy)
     close(unit=104)
 
     ! ---------------------------------------------
-    !
     ! Write the file for Tecplot
-    !
     ! ---------------------------------------------
     if(para_output_Tecplot == "off") return
 

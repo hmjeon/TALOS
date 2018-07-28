@@ -77,9 +77,7 @@ subroutine Output_Generation(prob, geom, bound, mesh, dna)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |                            7. Outputs                              |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
         call Space(i, 6)
@@ -934,9 +932,9 @@ subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
             !write(unit, "(a)"); write(unit, "(a)")
         end if
 
-        ! ==================================================
+        ! --------------------------------------------------
         ! Scaffold strand
-        ! ==================================================
+        ! --------------------------------------------------
         n_conn_scaf = 0
         do j = 1, edge(i).n_sec
 
@@ -1350,9 +1348,9 @@ subroutine Output_Write_Out_Graphics(prob, geom, mesh, dna, unit)
             write(unit, "(a)")
         end do
 
-        ! ==================================================
+        ! --------------------------------------------------
         ! Staple strand
-        ! ==================================================
+        ! --------------------------------------------------
         n_conn_stap = 0
         b_sec       = .true.
         do j = 1, edge(i).n_sec

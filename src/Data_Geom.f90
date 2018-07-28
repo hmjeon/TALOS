@@ -29,7 +29,6 @@ module Data_Geom
 
     ! Section data for arbitrary cross-section
     type :: SecType
-        character(len=10) :: types          ! Lattice type, squre or honeycomb
 
         integer :: dir                      ! Section convection of caDNAnano
         integer :: maxR, minR               ! Maximum and minimum row

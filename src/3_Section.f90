@@ -66,9 +66,7 @@ subroutine Section_Generation(prob, geom, bound)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |                 3. Build cross-sectional edges                     |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
     end do
@@ -95,15 +93,9 @@ function Section_Connection_Scaf(geom, sec_cur, sec_com, bp_id) result(b_connect
     integer :: i, j, bp, row_cur, row_com, col_cur, col_com
     logical :: b_connect
 
-    if(geom.sec.types == "square") then
-        bp = bp_id + para_start_bp_ID - 1
-        if(bp < 0) bp = 32 + bp
-        bp = mod(bp, 32)
-    else if(geom.sec.types == "honeycomb") then
-        bp = bp_id + para_start_bp_ID - 1
-        if(bp < 0) bp = 21 + bp
-        bp = mod(bp, 21)
-    end if
+    bp = bp_id + para_start_bp_ID - 1
+    if(bp < 0) bp = 21 + bp
+    bp = mod(bp, 21)
 
     ! initialize return value
     b_connect = .false.
@@ -119,265 +111,160 @@ function Section_Connection_Scaf(geom, sec_cur, sec_com, bp_id) result(b_connect
     !write(0, "(a)")
 
     ! determine whether the section connects or not
-    if(geom.sec.types == "square") then
+    ! --------------------------------------------------
+    ! For honeycomb lattice, possible crossovers in scaffold
+    ! --------------------------------------------------
+    if(row_cur == row_com .and. col_cur == col_com - 1) then
 
-        ! --------------------------------------------------
-        !
-        ! for square lattice, possible crossovers in scaffold
-        !
-        ! --------------------------------------------------
-        if(row_cur == row_com .and. col_cur == col_com - 1) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-
-                ! left(cur) to right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16 .or. bp==26 .or. bp==27) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Left  ---> Right"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-
-                ! left(cur) to right(com) connection
-                !  1  ------->  0        ===>  row : same
-                ! cur(odd)    com(even)        col : cur < com
-                if(bp==0 .or. bp==10 .or. bp==11 .or. bp==20 .or. bp==21 .or. bp==31) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Left  ---> Right"
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(cur) -> right(com) connection
+            !  1  ------->  0        ===>  row : same
+            ! cur(odd)    com(even)        col : cur < com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com .and. col_cur == col_com + 1) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-
-                ! right(cur) to left(com) connection
-                !  1  <-------  0       ===>  row : same
-                ! com(odd)     cur(even)      col : cur > com
-                if(bp==0 .or. bp==10 .or. bp==11 .or. bp==20 .or. bp==21 .or. bp==31) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Right ---> Left"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-
-                ! right(cur) to left(com) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16 .or. bp==26 .or. bp==27) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Right ---> Left"
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(cur) -> right(com) connection
+            !  0  ------->  1        ===>  row : same
+            ! cur(even)    com(odd)        col : cur < com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com + 1 .and. col_cur == col_com) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-
-                ! up(cur) to bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp==7 .or. bp==8 .or. bp==18 .or. bp==19 .or. bp==28 .or. bp==29) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Top   ---> Bottom"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-
-                ! up(cur) to bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp==2 .or. bp==3 .or. bp==12 .or. bp==13 .or. bp==23 .or. bp==24) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Top   ---> Bottom"
-                    b_connect = .true.
-                end if
-            end if
-
-        else if(row_cur == row_com - 1 .and. col_cur == col_com) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-
-                ! bottom(cur) to up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp==2 .or. bp==3 .or. bp==12 .or. bp==13 .or. bp==23 .or. bp==24) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Bottom ---> Top"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-
-                ! bottom(cur) to up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp==7 .or. bp==8 .or. bp==18 .or. bp==19 .or. bp==28 .or. bp==29) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Bottom ---> Top"
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(cur) -> right(com) connection
+            !  0  ------->  1        ===>  row : same
+            ! cur(even)    com(odd)        col : cur < com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
             end if
         end if
 
-    else if(geom.sec.types == "honeycomb") then
+    else if(row_cur == row_com .and. col_cur == col_com + 1) then
 
-        ! --------------------------------------------------
-        !
-        ! For honeycomb lattice, possible crossovers in scaffold
-        !
-        ! --------------------------------------------------
-        if(row_cur == row_com .and. col_cur == col_com - 1) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(cur) -> right(com) connection
-                !  1  ------->  0        ===>  row : same
-                ! cur(odd)    com(even)        col : cur < com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(cur) -> right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(cur) -> right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(com) <- right(cur) connection
+            !  1  <-------  0       ===>  row : same
+            ! com(odd)     cur(even)      col : cur > com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com .and. col_cur == col_com + 1) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(com) <- right(cur) connection
-                !  1  <-------  0       ===>  row : same
-                ! com(odd)     cur(even)      col : cur > com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(com) <- right(cur) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(com) <- right(cur) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(com) <- right(cur) connection
+            !  0  <-------  1       ===>  row : same
+            ! com(even)     cur(odd)      col : cur > com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com + 1 .and. col_cur == col_com) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(com) <- right(cur) connection
+            !  0  <-------  1       ===>  row : same
+            ! com(even)     cur(odd)      col : cur > com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
             end if
+        end if
 
-        else if(row_cur == row_com - 1 .and. col_cur == col_com) then
+    else if(row_cur == row_com + 1 .and. col_cur == col_com) then
 
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
+            end if
+        end if
+
+    else if(row_cur == row_com - 1 .and. col_cur == col_com) then
+
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp==1 .or. bp==2 .or. bp==11 .or. bp==12) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp==8 .or. bp==9 .or. bp==18 .or. bp==19) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+            if(bp==4 .or. bp==5 .or. bp==15 .or. bp==16) then
+                b_connect = .true.
             end if
         end if
     end if
@@ -393,15 +280,9 @@ function Section_Connection_Stap(geom, sec_cur, sec_com, bp_id) result(b_connect
     integer :: i, j, bp, row_cur, row_com, col_cur, col_com
     logical :: b_connect
 
-    if(geom.sec.types == "square") then
-        bp = bp_id + para_start_bp_ID - 1
-        if(bp < 0) bp = 32 + bp
-        bp = mod(bp, 32)
-    else if(geom.sec.types == "honeycomb") then
-        bp = bp_id + para_start_bp_ID - 1
-        if(bp < 0) bp = 21 + bp
-        bp = mod(bp, 21)
-    end if
+    bp = bp_id + para_start_bp_ID - 1
+    if(bp < 0) bp = 21 + bp
+    bp = mod(bp, 21)
 
     ! initialize boolean return variable
     b_connect = .false.
@@ -419,258 +300,160 @@ function Section_Connection_Stap(geom, sec_cur, sec_com, bp_id) result(b_connect
     ! --------------------------------------------------
     ! determine whether the section connects or not
     ! --------------------------------------------------
-    if(geom.sec.types == "square") then
+    ! for honeycomb lattice, possible crossovers in staple
+    ! --------------------------------------------------
+    if(row_cur == row_com .and. col_cur == col_com - 1) then
 
-        ! --------------------------------------------------
-        !
-        ! for square lattice, possible crossovers in staple
-        !
-        ! --------------------------------------------------
-        if(row_cur == row_com .and. col_cur == col_com - 1) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(cur) to right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp == 0 .or. bp == 31) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Left  ---> Right"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(cur) to right(com) connection
-                !  1  ------->  0        ===>  row : same
-                ! cur(odd)    com(even)        col : cur < com
-                if(bp == 15 .or. bp == 16) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Left  ---> Right"
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(cur) -> right(com) connection
+            !  1  ------->  0        ===>  row : same
+            ! cur(odd)    com(even)        col : cur < com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com .and. col_cur == col_com + 1) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! right(cur) to left(com) connection
-                !  1  <-------  0       ===>  row : same
-                ! com(odd)     cur(even)      col : cur > com
-                if(bp == 15 .or. bp == 16) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Right ---> Left"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! right(cur) to left(com) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp == 0 .or. bp == 31) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Right ---> Left"
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(cur) -> right(com) connection
+            !  0  ------->  1        ===>  row : same
+            ! cur(even)    com(odd)        col : cur < com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com + 1 .and. col_cur == col_com) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) to bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp == 23 .or. bp == 24) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Top   ---> Bottom"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) to bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp == 7 .or. bp == 8) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Top   ---> Bottom"
-                    b_connect = .true.
-                end if
-            end if
-
-        else if(row_cur == row_com - 1 .and. col_cur == col_com) then
-
-            if(mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) to up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp == 7 .or. bp == 8) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Bottom ---> Top"
-                    b_connect = .true.
-                end if
-            else if(mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) to up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp == 23 .or. bp == 24) then
-                    !write(0, "(2i4, a)"), sec_cur, sec_com, ",   Bottom ---> Top"
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(cur) -> right(com) connection
+            !  0  ------->  1        ===>  row : same
+            ! cur(even)    com(odd)        col : cur < com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
             end if
         end if
 
-    else if(geom.sec.types == "honeycomb") then
+    else if(row_cur == row_com .and. col_cur == col_com + 1) then
 
-        ! --------------------------------------------------
-        !
-        ! for honeycomb lattice, possible crossovers in staple
-        !
-        ! --------------------------------------------------
-        if(row_cur == row_com .and. col_cur == col_com - 1) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(cur) -> right(com) connection
-                !  1  ------->  0        ===>  row : same
-                ! cur(odd)    com(even)        col : cur < com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(cur) -> right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(cur) -> right(com) connection
-                !  0  ------->  1        ===>  row : same
-                ! cur(even)    com(odd)        col : cur < com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(com) <- right(cur) connection
+            !  1  <-------  0       ===>  row : same
+            ! com(odd)     cur(even)      col : cur > com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com .and. col_cur == col_com + 1) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(com) <- right(cur) connection
-                !  1  <-------  0       ===>  row : same
-                ! com(odd)     cur(even)      col : cur > com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! left(com) <- right(cur) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! left(com) <- right(cur) connection
-                !  0  <-------  1       ===>  row : same
-                ! com(even)     cur(odd)      col : cur > com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! left(com) <- right(cur) connection
+            !  0  <-------  1       ===>  row : same
+            ! com(even)     cur(odd)      col : cur > com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
             end if
-
-        else if(row_cur == row_com + 1 .and. col_cur == col_com) then
-
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! up(cur) -> bottom(com) connection
-                !  1  cur(odd)
-                !  ก้                ===>  col : same
-                !  0  com(even)           row : cur > com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! up(cur) -> bottom(com) connection
-                !  0  cur(even)
-                !  ก้                ===>  col : same
-                !  1  com(odd)            row : cur > com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! left(com) <- right(cur) connection
+            !  0  <-------  1       ===>  row : same
+            ! com(even)     cur(odd)      col : cur > com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
             end if
+        end if
 
-        else if(row_cur == row_com - 1 .and. col_cur == col_com) then
+    else if(row_cur == row_com + 1 .and. col_cur == col_com) then
 
-            if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp == 6 .or. bp == 7) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp == 13 .or. bp == 14) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
-                ! bottom(cur) -> up(com) connection
-                !  0  com(even)
-                !  ก่                ===>  col : same
-                !  1  cur(odd)            row : cur < com
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
-            else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
-                ! bottom(cur) -> up(com) connection
-                !  1  com(odd)
-                !  ก่                ===>  col : same
-                !  0  cur(even)           row : cur < com
-                if(bp == 0 .or. bp == 20) then
-                    b_connect = .true.
-                end if
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! up(cur) -> bottom(com) connection
+            !  1  cur(odd)
+            !  ก้                ===>  col : same
+            !  0  com(even)           row : cur > com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! up(cur) -> bottom(com) connection
+            !  0  cur(even)
+            !  ก้                ===>  col : same
+            !  1  com(odd)            row : cur > com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
+            end if
+        end if
+
+    else if(row_cur == row_com - 1 .and. col_cur == col_com) then
+
+        if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp == 6 .or. bp == 7) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp == 13 .or. bp == 14) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == -90 .and. mod(sec_cur, 2) == 1 .and. mod(sec_com, 2) == 0) then
+            ! bottom(cur) -> up(com) connection
+            !  0  com(even)
+            !  ก่                ===>  col : same
+            !  1  cur(odd)            row : cur < com
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 90 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
+            end if
+        else if(geom.sec.dir == 150 .and. mod(sec_cur, 2) == 0 .and. mod(sec_com, 2) == 1) then
+            ! bottom(cur) -> up(com) connection
+            !  1  com(odd)
+            !  ก่                ===>  col : same
+            !  0  cur(even)           row : cur < com
+            if(bp == 0 .or. bp == 20) then
+                b_connect = .true.
             end if
         end if
     end if
@@ -736,8 +519,6 @@ subroutine Section_Set_Sectional_Data(geom, bound)
         call Space(i, 6)
         write(i, "(a)"), "3.1. Cross-section information"
         call Space(i, 11)
-        write(i, "(a)"), "* Section type                   : "//trim(geom.sec.types)//" lattice"
-        call Space(i, 11)
         write(i, "(a)"), "* The number of duplexes         : "//trim(adjustl(Int2Str(geom.n_sec)))
         call Space(i, 11)
         write(i, "(a)"), "* The number of rows             : "//trim(adjustl(Int2Str(geom.sec.maxR-geom.sec.minR+1)))
@@ -793,16 +574,8 @@ subroutine Section_Generate_Section_Geometry(geom)
 
     integer :: i
 
-    ! Generate cross-sectional geometry
-    if(geom.sec.types == "square") then
-
-        ! For square lattice
-        call Section_Generate_Square(geom)
-    else if(geom.sec.types == "honeycomb") then
-
-        ! For honeycomb lattice
-        call Section_Generate_Honeycomb(geom)
-    end if
+    ! For honeycomb lattice
+    call Section_Generate_Honeycomb(geom)
 
     ! Reset local coordinate system according to section ID(direction)
     call Section_Reset_Local_Coordinate(geom)
@@ -962,7 +735,7 @@ function Section_Get_Position(geom, r, s, t, num, n_row, n_col) result(pos)
     call Section_Get_Director(geom, num, Vs, Vt)
 
     ! Get parameter y and z bar
-    call Section_Get_Parameter(geom.sec.types, hst, n_row, n_col, yz_bar)
+    call Section_Get_Parameter(hst, n_row, n_col, yz_bar)
 
     ! Set position vector from interpolation function
     pos(1) = hr(1) * geom.modP(geom.iniL(num).poi(1)).pos(1)       + &
@@ -1014,8 +787,7 @@ end subroutine Section_Get_Director
 ! -----------------------------------------------------------------------------
 
 ! Get parameter y and z bar
-subroutine Section_Get_Parameter(type_sec, hst, n_row, n_col, yz_bar)
-    character(10),    intent(in)  :: type_sec
+subroutine Section_Get_Parameter(hst, n_row, n_col, yz_bar)
     double precision, intent(in)  :: hst(4)
     integer,          intent(in)  :: n_row, n_col
     double precision, intent(out) :: yz_bar(2)
@@ -1046,19 +818,8 @@ subroutine Section_Get_Parameter(type_sec, hst, n_row, n_col, yz_bar)
     rad_cylinder = para_rad_helix + para_gap_helix / 2.0d0
 
     ! Find scale factor
-    if(type_sec == "square") then
-        !->--->--->
-        ! * | * | * |
-        ! 1   3   5         : 2->1r, 4->3r, 6->5r
-        y_scale = rad_cylinder * dble(n_col - 1)
-        z_scale = rad_cylinder * dble(n_row - 1)
-
-    else if(type_sec == "honeycomb") then
-
-        y_scale = 0.5d0 * rad_cylinder *      3.0d0  * dble(n_col)
-        z_scale = 0.5d0 * rad_cylinder * sqrt(3.0d0) * dble(n_row - 1)
-
-    end if
+    y_scale = 0.5d0 * rad_cylinder *      3.0d0  * dble(n_col)
+    z_scale = 0.5d0 * rad_cylinder * sqrt(3.0d0) * dble(n_row - 1)
 
     ! Position each corner
     y(1) = -1.0d0 * y_scale

@@ -99,9 +99,7 @@ subroutine Route_Generation(prob, geom, bound, mesh, dna)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |              5. Build B-form DNA and scaffold route                |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
     end do
@@ -260,18 +258,12 @@ subroutine Route_Set_Base_Position(geom, mesh, dna)
     ! para_ang_minor   = 150.0d0, Angle of the minor groove (degree)
     ! para_ang_correct = 0.0d0,   Angle to be correct
     ! Angle rotated between neighboring base-pairs
-    if(geom.sec.types == "square") then
-        ang_BP = 360.0d0*3.0d0/32.0d0     ! 360/10.67 = 33.75
-    else if(geom.sec.types == "honeycomb") then
-        ang_BP = 360.0d0*2.0d0/21.0d0     ! 360/10.5  = 34.28
-    end if
+    ang_BP = 360.0d0*2.0d0/21.0d0     ! 360/10.5  = 34.28
 
     ! Print progress
     do i = 0, 11, 11
         call Space(i, 6)
         write(i, "(a)"), "5.2. Set base position vectors using by parameters"
-        call Space(i, 11)
-        write(i, "(a)"), "* Section type                                : "//trim(geom.sec.types)//" lattice"
         call Space(i, 11)
         write(i, "(a)"), "* Starting base pair ID                       : "//trim(adjustl(Int2Str(para_start_bp_ID)))
         call Space(i, 11)
@@ -295,14 +287,9 @@ subroutine Route_Set_Base_Position(geom, mesh, dna)
         if(mod(mesh.node(i).sec, 2) == 0) then
 
             ! Positive z-direction
-            if(geom.sec.types == "square") then
-                ang_init = 180.0d0 - ang_BP / 2.0d0 + ang_BP
-                ang_init = 180.0d0 + ang_BP / 2.0d0
-            else if(geom.sec.types == "honeycomb") then
-                if(geom.sec.dir ==  90) ang_init = 90.0d0
-                if(geom.sec.dir == 150) ang_init = 90.0d0+60.0d0
-                if(geom.sec.dir == -90) ang_init = 270.0d0
-            end if
+            if(geom.sec.dir ==  90) ang_init = 90.0d0
+            if(geom.sec.dir == 150) ang_init = 90.0d0+60.0d0
+            if(geom.sec.dir == -90) ang_init = 270.0d0
 
             ang_start = dmod(ang_init  + ang_BP*dble(para_start_bp_ID),  360.0d0)
             ang_start = dmod(ang_start + ang_BP*dble(mesh.node(i).bp-1), 360.0d0)
@@ -312,14 +299,9 @@ subroutine Route_Set_Base_Position(geom, mesh, dna)
         else if(mod(mesh.node(i).sec, 2) == 1) then
 
             ! Negative z-direction
-            if(geom.sec.types == "square") then
-                ang_init = 0.0d0 - ang_BP / 2.0d0 + ang_BP
-                ang_init = 0.0d0 + ang_BP / 2.0d0
-            else if(geom.sec.types == "honeycomb") then
-                if(geom.sec.dir ==  90) ang_init = 270.0d0
-                if(geom.sec.dir == 150) ang_init = 270.0d0+60.0d0
-                if(geom.sec.dir == -90) ang_init = 90.0d0
-            end if
+            if(geom.sec.dir ==  90) ang_init = 270.0d0
+            if(geom.sec.dir == 150) ang_init = 270.0d0+60.0d0
+            if(geom.sec.dir == -90) ang_init = 90.0d0
 
             ang_start = dmod(ang_init  + ang_BP*dble(para_start_bp_ID),  360.0d0)
             ang_start = dmod(ang_start + ang_BP*dble(mesh.node(i).bp-1), 360.0d0)
@@ -818,14 +800,12 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
         ! Allocate conn arrary to store node to be connected
         allocate(conn(geom.n_sec*bound.junc(i).n_arm, 2))
 
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Build conn data
         ! conn(j, 1) : current node
         ! conn(j, 2) : comparing node to be connected with conn(j, 1)
         ! Size j     : geom.n_sec * bound.junc(i).n_arm
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         ! Loop for every node at each junction
         do j = 1, geom.n_sec
             do k = 1, bound.junc(i).n_arm
@@ -946,11 +926,9 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
             end if
         end do
 
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Build conn_new data - without any duplicate connection
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         ! Allocate conn_new that is not inlcuded duplicated data
         allocate(conn_new(geom.n_sec*bound.junc(i).n_arm/2, 2))
 
@@ -979,12 +957,10 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
         end do
         deallocate(conn)
 
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Connect node between conn_new(j, 1) and conn_new(j, 2)
         ! Size j : geom.n_sec * bound.junc(i).n_arm / 2
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         ! Connect from current to comparing node
         do j = 1, geom.n_sec * bound.junc(i).n_arm / 2
             !
@@ -995,13 +971,11 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
             node_cur = conn_new(j, 1)
             node_com = conn_new(j, 2)
 
-            ! ==================================================
-            !
+            ! --------------------------------------------------
             ! Neighbor connection
             ! For scaffold - connect with/without unpaired nucleotides
             ! For staple - connect with poly Tn loop
-            !
-            ! ==================================================
+            ! --------------------------------------------------
             if(geom.sec.conn(mesh.node(node_cur).sec + 1) == -1) then
                 ! Connect scaffold with/without unpaired nucleotides
                 n_un_scaf = Route_Connect_Scaf(mesh, dna, node_cur, node_com)
@@ -1019,12 +993,10 @@ subroutine Route_Reconnect_Junction(geom, bound, mesh, dna)
         deallocate(conn_new)
     end do
 
-    ! ==================================================
-    !
+    ! --------------------------------------------------
     ! Self connection
     ! Scaffold strand - connection in the same section
-    !
-    ! ==================================================
+    ! --------------------------------------------------
     ! Loop for junction
     do i = 1, bound.n_junc
         do j = 1, bound.junc(i).n_arm
@@ -1183,13 +1155,11 @@ function Route_Connect_Scaf(mesh, dna, node_cur, node_com) result(n_add_base)
     end if
 
     if(dna.base_scaf(cur).up == -1 .and. dna.base_scaf(com).dn == -1) then
-        !
+
         ! --------------------------------------------------
-        !
         ! If the current node is inward to the junction
         ! ------->*====+====>*-------->
         !        cur  junc  com
-        !
         ! --------------------------------------------------
         ! Set base connectivity of the scaffold strand
         dna.base_scaf(cur).up = dna.base_scaf(com).id
@@ -1216,14 +1186,11 @@ function Route_Connect_Scaf(mesh, dna, node_cur, node_com) result(n_add_base)
             cur = ttt
         end do
     else if(dna.base_scaf(cur).dn == -1 .and. dna.base_scaf(com).up == -1) then
-        !
-        !
+
         ! --------------------------------------------------
-        !
         ! If the current node is inward to the junction
         ! <-------*<====+====*<--------
         !        cur  junc   com
-        !
         ! --------------------------------------------------
         ! Set base connectivity of the scaffold strand
         dna.base_scaf(cur).dn = dna.base_scaf(com).id
@@ -1328,13 +1295,11 @@ function Route_Connect_Stap(mesh, dna, node_cur, node_com) result(n_poly_Tn)
     end if
 
     if(dna.base_stap(cur).up == -1 .and. dna.base_stap(com).dn == -1) then
-        !
+
         ! --------------------------------------------------
-        !
         ! If the current node is inward to the junction
         ! ------->*====+====>*-------->
         !        cur  junc  com
-        !
         ! --------------------------------------------------
         ! Set base connectivity of the staple strand
         dna.base_stap(cur).up = dna.base_stap(com).id
@@ -1361,14 +1326,11 @@ function Route_Connect_Stap(mesh, dna, node_cur, node_com) result(n_poly_Tn)
             cur = ttt
         end do
     else if(dna.base_stap(cur).dn == -1 .and. dna.base_stap(com).up == -1) then
-        !
-        !
+
         ! --------------------------------------------------
-        !
         ! If the current node is inward to the junction
         ! <-------*<====+====*<--------
         !        cur  junc   com
-        !
         ! --------------------------------------------------
         ! Set base connectivity of the staple strand
         dna.base_stap(cur).dn = dna.base_stap(com).id
@@ -1609,11 +1571,9 @@ subroutine Route_Find_Centered_Scaf_Xover(prob, geom, mesh, dna)
             node_cur = mesh.node(i).id
             node_com = mesh.node(j).id
 
-            ! ==================================================
-            !
+            ! --------------------------------------------------
             ! Build spllited crossover
-            !
-            ! ==================================================
+            ! --------------------------------------------------
             max_gap   = n_gap
             max_cur   = node_cur
             max_com   = node_com
@@ -1628,11 +1588,8 @@ subroutine Route_Find_Centered_Scaf_Xover(prob, geom, mesh, dna)
                 ! Consistent pre-defined scaffold crossover for first connection, 0-5
                 if((prob.sel_sec /= 1) .and. (sec_cur /= 0 .or. sec_com /= 5)) cycle
 
-                !
                 ! --------------------------------------------------
-                !
                 ! First crossover at each edge
-                !
                 ! --------------------------------------------------
                 pre_iniL = iniL
 
@@ -1662,11 +1619,9 @@ subroutine Route_Find_Centered_Scaf_Xover(prob, geom, mesh, dna)
                 node_cur = split_cur
                 node_com = split_com
             else
-                !
+
                 ! --------------------------------------------------
-                !
                 ! Split crossover from center
-                !
                 ! --------------------------------------------------
                 do k = 1, 5
 
@@ -1896,11 +1851,9 @@ function Route_Split_Centered_Scaf_Xover(geom, mesh, cur, com, min_bp1, max_bp1,
     select case (direction)
 
     case ("down")
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Going down
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         ! To avoid current crossover
 
         ! Exception
@@ -1946,11 +1899,9 @@ function Route_Split_Centered_Scaf_Xover(geom, mesh, cur, com, min_bp1, max_bp1,
             id_bp2 = mesh.node(node2).bp
         end do
     case ("up")
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Going up
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         ! To avoid current crossover
 
         ! Exception
@@ -1996,11 +1947,9 @@ function Route_Split_Centered_Scaf_Xover(geom, mesh, cur, com, min_bp1, max_bp1,
             id_bp2 = mesh.node(node2).bp
         end do
     case ("center")
-        ! ==================================================
-        !
+        ! --------------------------------------------------
         ! Reamin at center
-        !
-        ! ==================================================
+        ! --------------------------------------------------
         b_fail = .false.
     end select
 
@@ -4116,9 +4065,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     open(unit=609, file=trim(path)//"_atom.bild", form="formatted")
 
     ! --------------------------------------------------
-    !
     ! For the nucleotide of scaffold strand
-    !
     ! --------------------------------------------------
     write(609, "(a)"), ".color steel blue"
     do i = 1, dna.n_base_scaf
@@ -4141,9 +4088,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     end do
 
     ! --------------------------------------------------
-    !
     ! For the nucleotide of staple strand
-    !
     ! --------------------------------------------------
     write(609, "(a)"), ".color orange"
     do i = 1, dna.n_base_stap
@@ -4166,9 +4111,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     end do
 
     ! --------------------------------------------------
-    !
     ! Write crossovers of the scaffold and staple strand
-    !
     ! --------------------------------------------------
     write(609, "(a)"), ".color blue"
     do i = 1, dna.n_base_scaf
@@ -4197,9 +4140,7 @@ subroutine Route_Chimera_Atom(prob, geom, dna)
     end do
 
     ! --------------------------------------------------
-    !
     ! Write cylinder or Watson-Crick base pair connections
-    !
     ! --------------------------------------------------
     if(f_cyn == .true.) then
 

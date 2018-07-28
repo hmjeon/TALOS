@@ -2,7 +2,7 @@
 ! =============================================================================
 !
 ! TALOS v1.0
-! Last Updated : 06/09/2018, by Hyungmin Jun (hyungminjun@outlook.com)
+! Last Updated : 07/28/2018, by Hyungmin Jun (hyungminjun@outlook.com)
 !
 ! =============================================================================
 !
@@ -45,7 +45,7 @@ program TALOS
     implicit none
 
     call Main           ! Main module
-    !call Report        ! Main module for auto run
+
 contains
 
 ! -----------------------------------------------------------------------------
@@ -100,136 +100,6 @@ end subroutine Main
 
 ! -----------------------------------------------------------------------------
 
-! Autorun
-subroutine Report()
-
-    ! Declare variables
-    type(ProbType)  :: prob     ! Problem data
-    type(GeomType)  :: geom     ! Geometry data
-    type(BoundType) :: bound    ! Boundary data
-    type(MeshType)  :: mesh     ! Basepaire data
-    type(DNAType)   :: dna      ! B-form DNA data
-
-    character(10) :: char_sec, char_edge, char_cut, char_vert
-    integer :: i, sec, edge, max_stap, min_stap
-    logical :: results
-
-    char_vert = "flat"      ! Flat or mitered vertex
-    char_cut  = "max"       ! Staple-break rule
-    edge      = 42
-
-    ! Open file
-    open(unit = 90, file = "Report_6HB_"//trim(adjustl(Int2Str(edge)))//"_"&
-        //trim(char_vert)//"_"//trim(char_cut)//".txt", form="formatted")
-
-    ! Remove the directory and files
-    results = SYSTEMQQ("rd "//trim("output")//' /s /q')
-
-    ! Infomation
-    write(90, "(a)"), "==============================================="
-    write(90, "(a)"), "Sec 1: Inner connection, Sec 2: Middle connection"
-    write(90, "(a)"), "Minimum edge length: "//trim(adjustl(Int2Str(edge)))//"-bp length"
-    write(90, "(a)"), "Staple breaking: "//trim(adjustl(char_cut))//" staple breaking rule"
-    write(90, "(a)"), "==============================================="
-    write(90, "(a)")
-
-    call space (90, 30)
-    write(90, "(a)"), "|=========================================================================================================================================================================|"
-    call space (90, 30)
-    write(90, "(a)"), "|=========|==================== TOTAL LENGTH ==================|======== STAPLE =======|===== SEED ====|== STRAND RATIO =|= NU RATIO=|= PARA=|=== CROSSOVER ===|=UNPAIRED=|"
-    call space (90, 30)
-    write(90, "(a)"), " Sec| Edge| L_Scaf| L_Stap|   L_BP|L_Mitered(ratio)| MaxE| MinE| nStap| Min| Max|   ave| 14nt| S14| 4nt| 14nt|  S14|  4nt| 14nt|  4nt| p1| p2| scaf|  stap| one| scaf| stap"
-    write(90, "(a$)"), "----------------------------  "
-    write(90, "(a )"), "----|-----|-------|-------|-------|----------------|-----|-----|------|----|----|------|-----|----|----|-----|-----|-----|-----|-----|---|---|-----|------|----|-----|----|"
-
-    min_stap = 10000
-    max_stap =-10000
-
-    ! Problem
-    do i = 1, 40
-
-        ! Set the bottom reference
-        if(i ==  1 .or. i ==  2 .or. i ==  3 .or. i == 15 .or. &
-           i == 17 .or. i == 18 .or. i == 36) then
-            sec = 1
-        else
-            sec = 2
-        end if
-
-        ! Initialize input
-        call Input_Initialize_Report(prob, geom, mesh, i, sec, edge, char_vert, char_cut)
-
-        ! 2nd step : Modified geometry seperated from vertex
-        call ModGeo_Modification(prob, geom, bound)
-
-        ! 3rd step : Cross-sectional geometry
-        call Section_Generation(prob, geom, bound)
-
-        ! 4th step : Basepair generation from cross-sectional geometry
-        call Basepair_Discretize(prob, geom, bound, mesh)
-
-        ! 5th step : B-form DNA and scaffold route
-        call Route_Generation(prob, geom, bound, mesh, dna)
-
-        ! 6th step : Sequence design
-        call SeqDesign_Design(prob, geom, mesh, dna)
-
-        ! 7th step : Generate outputs and run post-processing tools
-        call Output_Generation(prob, geom, bound, mesh, dna)
-
-        ! Print information
-        call Print_Information(prob, geom, bound, mesh, dna)
-
-        ! Deallocate global dynamic array
-        call Deallocate_Variables(geom, bound, mesh, dna)
-
-        ! Print problem
-        write(90, "(a4, a24, a$)"), trim(adjustl(Int2Str(i)))//". ", trim(prob.name_prob), ","
-
-        ! Print information
-        write(90, "(a6$)"), trim(adjustl(Int2Str(sec)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(edge)))//"|"
-        write(90, "(a8$)"), trim(adjustl(Int2Str(dna.n_base_scaf)))//"|"
-        write(90, "(a8$)"), trim(adjustl(Int2Str(dna.n_base_stap)))//"|"
-        write(90, "(a8$)"), trim(adjustl(Int2Str(mesh.n_node)))//"|"
-        write(90, "(a8$)"), trim(adjustl(Int2Str(mesh.n_mitered)))//"("
-        write(90, "(a9$)"), trim(adjustl(Dble2Str(dble(mesh.n_mitered)/dble(mesh.n_node)*100.0d0)))//"%)|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(geom.max_edge_length)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(geom.min_edge_length)))//"|"
-        write(90, "(a7$)"), trim(adjustl(Int2Str(dna.n_stap)))//"|"
-        write(90, "(a5$)"), trim(adjustl(Int2Str(dna.len_min_stap)))//"|"
-        write(90, "(a5$)"), trim(adjustl(Int2Str(dna.len_max_stap)))//"|"
-        write(90, "(a7$)"), trim(adjustl(Dble2Str2(dna.len_ave_stap)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(dna.n_14nt)))//"|"
-        write(90, "(a5$)"), trim(adjustl(Int2Str(dna.n_s14nt)))//"|"
-        write(90, "(a5$)"), trim(adjustl(Int2Str(dna.n_4nt)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Dble2Str(dble(dna.n_14nt)/dble(dna.n_stap))))//"|"
-        write(90, "(a6$)"), trim(adjustl(Dble2Str(dble(dna.n_s14nt)/dble(dna.n_stap))))//"|"
-        write(90, "(a6$)"), trim(adjustl(Dble2Str(dble(dna.n_4nt)/dble(dna.n_stap))))//"|"
-        write(90, "(a6$)"), trim(adjustl(Dble2Str(dble(dna.n_nt_14nt)/dble(dna.n_base_stap))))//"|"
-        write(90, "(a6$)"), trim(adjustl(Dble2Str(dble(dna.n_nt_4nt)/dble(dna.n_base_stap))))//"|"
-        write(90, "(a4$)"), trim(adjustl(Int2Str(prob.n_cng_min_stap)))//"|"
-        write(90, "(a4$)"), trim(adjustl(Int2Str(prob.n_cng_max_stap)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(dna.n_xover_scaf)))//"|"
-        write(90, "(a7$)"), trim(adjustl(Int2Str(dna.n_xover_stap)))//"|"
-        write(90, "(a5$)"), trim(adjustl(Int2Str(dna.n_sxover_stap)))//"|"
-        write(90, "(a6$)"), trim(adjustl(Int2Str(dna.n_nt_unpaired_scaf)))//"|"
-        write(90, "(a5 )"), trim(adjustl(Int2Str(dna.n_nt_unpaired_stap)))
-
-        if(max_stap < dna.len_max_stap) max_stap = dna.len_max_stap
-        if(min_stap > dna.len_min_stap) min_stap = dna.len_min_stap
-    end do
-
-    write(90, "(a)")
-    write(90, "(a)"), "Minimum staple length   : "//trim(adjustl(Int2Str(min_stap)))
-    write(90, "(a)"), "Maximum staple length   : "//trim(adjustl(Int2Str(max_stap)))
-
-    ! Close file
-    close(unit = 90)
-end subroutine Report
-
-! -----------------------------------------------------------------------------
-
 ! Print information of the TALOS
 subroutine Print_Information(prob, geom, bound, mesh, dna)
     type(ProbType),  intent(in) :: prob
@@ -243,38 +113,22 @@ subroutine Print_Information(prob, geom, bound, mesh, dna)
     do i = 0, 11, 11
         write(i, "(a)")
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   |   8. Summary of DNA Nanostructures with Arbitrary Cross-section    |"
-        write(i, "(a)"), "   |                                                                    |"
         write(i, "(a)"), "   +--------------------------------------------------------------------+"
         write(i, "(a)")
 
-        call Space(i, 6)
-        write(i, "(a)"), "8.1. Geometry, cross-section and problem description"
-        call Space(i, 11)
-        write(i, "(a)"), "* Full geometric name               : "//trim(prob.name_file)
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of initial faces       : "//trim(adjustl(Int2Str(geom.n_face)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of initial points      : "//trim(adjustl(Int2Str(geom.n_iniP)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of initial edges       : "//trim(adjustl(Int2Str(geom.n_iniL)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of modified points     : "//trim(adjustl(Int2Str(geom.n_modP)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of modified edges      : "//trim(adjustl(Int2Str(geom.n_iniL)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of sectional points    : "//trim(adjustl(Int2Str(geom.n_croP)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of sectional edges     : "//trim(adjustl(Int2Str(geom.n_croL)))
-        call Space(i, 11)
-        write(i, "(a)"), "* Section type                      : "//trim(geom.sec.types)//" lattice"
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of duplexes            : "//trim(adjustl(Int2Str(geom.n_sec)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of rows                : "//trim(adjustl(Int2Str(geom.sec.maxR-geom.sec.minR+1)))
-        call Space(i, 11)
-        write(i, "(a)"), "* The number of columns             : "//trim(adjustl(Int2Str(geom.sec.maxC-geom.sec.minC+1)))
+        call Space(i,  6); write(i, "(a)"), "8.1. Geometry, cross-section and problem description"
+        call Space(i, 11); write(i, "(a)"), "* Full geometric name               : "//trim(prob.name_file)
+        call Space(i, 11); write(i, "(a)"), "* The number of initial faces       : "//trim(adjustl(Int2Str(geom.n_face)))
+        call Space(i, 11); write(i, "(a)"), "* The number of initial points      : "//trim(adjustl(Int2Str(geom.n_iniP)))
+        call Space(i, 11); write(i, "(a)"), "* The number of initial edges       : "//trim(adjustl(Int2Str(geom.n_iniL)))
+        call Space(i, 11); write(i, "(a)"), "* The number of modified points     : "//trim(adjustl(Int2Str(geom.n_modP)))
+        call Space(i, 11); write(i, "(a)"), "* The number of modified edges      : "//trim(adjustl(Int2Str(geom.n_iniL)))
+        call Space(i, 11); write(i, "(a)"), "* The number of sectional points    : "//trim(adjustl(Int2Str(geom.n_croP)))
+        call Space(i, 11); write(i, "(a)"), "* The number of sectional edges     : "//trim(adjustl(Int2Str(geom.n_croL)))
+        call Space(i, 11); write(i, "(a)"), "* The number of duplexes            : "//trim(adjustl(Int2Str(geom.n_sec)))
+        call Space(i, 11); write(i, "(a)"), "* The number of rows                : "//trim(adjustl(Int2Str(geom.sec.maxR-geom.sec.minR+1)))
+        call Space(i, 11); write(i, "(a)"), "* The number of columns             : "//trim(adjustl(Int2Str(geom.sec.maxC-geom.sec.minC+1)))
         call Space(i, 11)
         write(i, "(a)"), "* Reference row                     : "//trim(adjustl(Int2Str(geom.sec.ref_row)))
         call Space(i, 11)
@@ -316,12 +170,12 @@ subroutine Print_Information(prob, geom, bound, mesh, dna)
         else if(para_set_seq_scaf == 2) then
             write(i, "(a)"), "random sequence"
         end if
-        call Space(i, 11)
-        write(i, "(a)"), "* Vertex design method              : "//trim(para_vertex_design)//" vertex"
-        call Space(i, 11)
-        write(i, "(a)"), "* Vertex design to avoid clash      : "//trim(para_vertex_modify)
-        call Space(i, 11)
-        write(i, "(a)"), "* Cutting method for short staples  : "//trim(para_cut_stap_method)
+        call Space(i, 11); write(i, "(a)"), "* Vertex design method              : "//&
+            trim(para_vertex_design)//" vertex"
+        call Space(i, 11); write(i, "(a)"), "* Vertex design to avoid clash      : "//&
+            trim(para_vertex_modify)
+        call Space(i, 11); write(i, "(a)"), "* Cutting method for short staples  : "//&
+            trim(para_cut_stap_method)
         call Space(i, 11)
         write(i, "(a)"), "* Non-circular stap by single xover : "//trim(para_set_stap_sxover)
         call Space(i, 11)
@@ -338,9 +192,9 @@ subroutine Print_Information(prob, geom, bound, mesh, dna)
         write(i, "(a)"), "* # of changing for max staple      : "//trim(adjustl(Int2Str(prob.n_cng_max_stap)))
         write(i, "(a)")
 
-        ! ============================================================
+        ! --------------------------------------------------
         ! Base pair information
-        ! ============================================================
+        ! --------------------------------------------------
         call Space(i, 11)
         write(i, "(a)"), "[ BASE PAIR ]"
         call Space(i, 16)
@@ -356,9 +210,9 @@ subroutine Print_Information(prob, geom, bound, mesh, dna)
             trim(adjustl(Int2Str(dna.min_xover_stap)))//"]"
         write(i, "(a)")
 
-        ! ============================================================
+        ! --------------------------------------------------
         ! Scaffold information
-        ! ============================================================
+        ! --------------------------------------------------
         call Space(i, 11)
         write(i, "(a)"), "[ SCAFFOLD ]"
         call Space(i, 16)
@@ -373,9 +227,9 @@ subroutine Print_Information(prob, geom, bound, mesh, dna)
         write(i, "(a)"), "* # of double-crossovers    : "//trim(adjustl(Int2Str(dna.n_xover_scaf/2)))
         write(i, "(a)")
 
-        ! ============================================================
+        ! --------------------------------------------------
         ! Staple information
-        ! ============================================================
+        ! --------------------------------------------------
         call Space(i, 11)
         write(i, "(a)"), "[ STAPLE ]"
         call Space(i, 16)
