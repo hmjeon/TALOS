@@ -25,13 +25,6 @@
 
 # Executables
 *.exe
-!make/tools/sleep.exe
-!make/tools/meshconv.exe
-!release/Win/TALOS.exe
-make/Debug
-make/Release
-make/x64
-make/output
 *.out
 *.app
 *.u2d
@@ -39,4 +32,9 @@ make/output
 *.11
 *.101
 fort.*
-/make/Report_6HB_flat_max.txt
+
+# By Hyyungmin
+build/Debug
+build/Release
+build/x64
+build/output
